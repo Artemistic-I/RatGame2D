@@ -1,11 +1,11 @@
-import java.util.*
+import java.util.*;
 
 /**
  * This is the super class to define an item object
  * @author Josh/Mike
  * @version 1.0
  */
-public abstract Item{
+public abstract class Item{
 
     protected int shortcutKey;
     protected int spawnTime;
@@ -23,8 +23,8 @@ public abstract Item{
 //lethal items - kills rats
 class LethalItem extends Item{
 
-    private int scKey = ;//
-    private int spawnTime = ;//get from level file
+    //private int scKey = ;//
+    //private int spawnTime = ;//get from level file
 
     public LethalItem(){
 
