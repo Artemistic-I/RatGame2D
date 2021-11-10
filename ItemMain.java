@@ -1,4 +1,4 @@
-import java.util*
+import java.util.ArrayList;
 
 /**
  * place in order to keep track of the items and the amount
@@ -7,7 +7,7 @@ import java.util*
  */
 public class ItemMain{
 
-    list<> StoredItems = new ArrayList<>();
+    ArrayList<Item> StoredItems = new ArrayList<>();
     public int itemAmount;
     public final int maxItem = 4;
 
