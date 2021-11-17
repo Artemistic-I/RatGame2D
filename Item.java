@@ -85,6 +85,17 @@ public abstract class Item{
     }
 
     /**
+     * method to find rats to kill
+     * @return arraylist of rats to kill
+     */
+    private ArrayList<Rat> findRats(int x, int y) {
+
+        ArrayList<Rat> ratsFound = new ArrayList<Rat>();
+        //find rats in given area
+        return ratsFound;
+    }
+
+    /**
      * method to remove item once used
      * @param item to be removed
      */
