@@ -1,5 +1,12 @@
 
 public class Poison extends LethalItem{
-    //insta kill
+
+
+    public Poison() {
+
+
+    }
+
+
 
 }
