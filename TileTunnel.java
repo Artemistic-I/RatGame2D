@@ -1,6 +1,6 @@
-public class TunnelTile extends InteractableTile {
+public class TileTunnel extends TileInteractable {
 
-    public TunnelTile(int width, int height) {
+    public TileTunnel(int width, int height) {
         super(width, height);
         // Dark Brown
         setColour(158, 107, 30);
