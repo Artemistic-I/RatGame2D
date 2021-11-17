@@ -1,26 +1,32 @@
 
 public class NoEntry extends Item{
 
-    int health;
+    //static final int SHORTCUT_KEY = ;
+    static final int HEALTH = 5;
 
     /**
      * constructor method
      */
     public NoEntry() {
 
+        super(this.SHORTCUT_KEY)
+
     }
+
+    //changedirection method
 
     /**
      * method to degrade health of sign
      */
-    public void degradeHealth() {
+    public void degradeHealth(this.HEALTH) {
 
-    }
+        private int health = this.HEALTH
 
-    /**
-     * method to remove sign once health has fully depleted
-     */
-    private void removeSign() {
+        health -= 1;
+
+        if (health == 0) {
+            this.removeItem();
+        }
 
     }
 

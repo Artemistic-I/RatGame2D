@@ -7,19 +7,63 @@ import java.util.*;
  */
 public abstract class Item{
 
-    protected int shortcutKey;
-    protected int spawnTime;
+    private int shortcutKey;
     boolean isTouchingRat = False;
     Rat affectedRat;
 
     /**
      * constructor
-     * @param rat that has come into contact with item
+     * @param shortcut key for item
      */
-    public Item(Rat rat){
+    public Item(int scKey){
 
-        affectedRat = setAffectedRat(Rat rat);
+        shortcutKey = setSCKey(scKey);
+    }
+
+    private int setSCKey(key) {
+        return key;
+    }
+
+    /**
+     * method for when rat makes contact with item
+     * @param rat
+     */
+    public void ratContact(Rat rat) {
+
+        affectedRat = setAffectedRat(rat);
         this.isTouchingRat = True;
+
+        //triggers correct method depending on type of item denoted by shortcut key
+        //shortcut keys to be ammended once set
+        switch (shortcutKey) {
+            case 0://bomb
+                this.detonate();
+                break;
+            case 1://gas
+                this.expand();
+                break;
+            case 2://no entry
+                this.changeDirection(getAffectedRat());
+                this.degradeHealth();
+                this.isTouchingRat = False;
+                break;
+            case 3://poison
+                this.killRat(getAffectedRat());
+                this.removeItem();
+                break;
+            case 4://f to m
+                this.changeSex(getAffectedRat());
+                this.removeItem();
+                break;
+            case 5://m to f
+                this.changeSex(getAffectedRat());
+                this.removeItem();
+                break;
+            case 6://sterilize
+                this.sterilize();
+                this.removeItem();
+                break;
+        }
 
     }
 
@@ -38,5 +82,13 @@ public abstract class Item{
      */
     public Rat getAffectedRatRat() {
         return affectedRat;
+    }
+
+    /**
+     * method to remove item once used
+     * @param item to be removed
+     */
+    public void removeItem(Item item) {
+
     }
 }

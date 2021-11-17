@@ -1,10 +1,11 @@
 
 public class SexChangeF extends Item{
 
-    public SexChangeF(Rat rat) {
+    //static final int SHORTCUT_KEY = ;
 
-        super(rat);
-        changeSex(super.getAffectedRat());
+    public SexChangeF() {
+
+        super(SHORTCUT_KEY);
 
     }
 

@@ -1,14 +1,17 @@
 
 public class Gas extends LethalItem{
 
-    int area;
-    int time;
-    int ratExposureTime;
+    //static final int SHORTCUT_KEY = ;
+    //static final int AREA = ;
+    //static final int TIME = ;
+    //static final int RAT_EXPOSURE_TIME = ;
 
     /**
      * constructor method
      */
     public Gas() {
+
+        super(this.SHORTCUT_KEY);
 
     }
 
