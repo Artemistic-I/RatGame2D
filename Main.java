@@ -29,7 +29,8 @@ public class Main extends Application {
 	}
 	
 	private void tick() {
-		System.out.println("It's working...");
+		System.out.println("It's working...(Just for testing)");
+		RatManager.moveRats();
 	}
 
 	private Pane buildGUI() {
