@@ -52,13 +52,12 @@ public class Rat {
     public void giveBirth() {
         Random rand = new Random();
         Boolean babyRatIsMale;
-        Boolean babyRatIsFemale;
         if (rand.nextInt(1) == 0) {
             babyRatIsMale = true;
         } else {
-            babyRatIsFemale = false;
+        	babyRatIsMale = false;
         }
-        RatManager.addRat(new Rat(babyRatIsMale, false, false, 5, 7, this.tileTheRatIsOn, this.direction))
+        RatManager.addRat(new Rat(babyRatIsMale, false, false, 5, 7, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex() {

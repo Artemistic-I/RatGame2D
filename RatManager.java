@@ -4,11 +4,11 @@ public class RatManager {
 
 	private static ArrayList<Rat> liveRats = new ArrayList<>();
 	
-	public void addRat(Rat ratToAdd) {
+	public static void addRat(Rat ratToAdd) {
 		liveRats.add(ratToAdd);
 	}
 
-	public Boolean removeRat(Rat ratToRemove) {
+	public static Boolean removeRat(Rat ratToRemove) {
 		return liveRats.remove(ratToRemove);
 	}
 
