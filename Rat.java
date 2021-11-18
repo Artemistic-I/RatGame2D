@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+enum RatSex {
+	male, female
+}
+
+enum RatMaturity {
+	adult, baby
+}
+
 public class Rat {
 
-    private Boolean isMale;
-    private Boolean isAdult;
+    private RatSex ratSex;
+    private RatMaturity ratMaturity;
     private Boolean isPregnant;
     private Boolean isSterile;
     private int speed;
@@ -12,9 +20,9 @@ public class Rat {
     private Tile tileTheRatIsOn;
     private String direction;
 
-    public Rat(Boolean isMale, Boolean isAdult, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
-        this.isMale = isMale;
-        this.isAdult = isAdult;
+    public Rat(RatSex ratSex, RatMaturity isAdult, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
+        this.ratSex = ratSex;
+        this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
         this.isSterile = false;
         this.speed = speed;
@@ -42,7 +50,7 @@ public class Rat {
     }
 
     public Boolean canBreed() {
-        return (isAdult && !isPregnant && !isSterile);
+        return ((ratMaturity == RatMaturity.adult) && !isPregnant && !isSterile);
     }
 
     public void Breed() {
@@ -51,13 +59,13 @@ public class Rat {
 
     public void giveBirth() {
         Random rand = new Random();
-        Boolean babyRatIsMale;
+        RatSex babyRatSex;
         if (rand.nextInt(1) == 0) {
-            babyRatIsMale = true;
+            babyRatSex = RatSex.male;
         } else {
-        	babyRatIsMale = false;
+        	babyRatSex = RatSex.female;
         }
-        RatManager.addRat(new Rat(babyRatIsMale, false, false, 5, 7, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.baby, false, 5, 7, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex() {
@@ -73,7 +81,7 @@ public class Rat {
         return this.tileTheRatIsOn;
     }
 
-    public Boolean getSex() {
-        return isMale;
+    public RatSex getSex() {
+        return ratSex;
     }
 }
