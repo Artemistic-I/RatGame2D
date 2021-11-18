@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="40.0" layoutY="163.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="START" />
+      <Button layoutX="40.0" layoutY="259.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Settings" />
+      <Button layoutX="40.0" layoutY="210.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Load" />
+      <Button layoutX="40.0" layoutY="474.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Exit" />
+      <Button layoutX="40.0" layoutY="307.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Profiles" />
+      <Text layoutX="40.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RATS VS CURSOR: " wrappingWidth="405.46875">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+      <Text layoutX="40.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="157.982421875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="268.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bomb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="273.0" fitWidth="227.0" layoutX="473.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/evil_rat_gif.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="243.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/CursorIconTransparent.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="40.0" layoutY="353.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" text="Scoreboard" />
+   </children>
+</AnchorPane>
