@@ -1,5 +1,3 @@
-package controllers;
-
 import java.awt.Button;
 import java.awt.Label;
 import java.awt.Window;
