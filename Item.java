@@ -96,7 +96,9 @@ public abstract class Item{
 
     /**
      * method to find rats to kill
-     * @return arraylist of rats to kill
+     * @param x Row of item
+     * @param y Column of item
+     * @return ratsFound Arraylist of rats to kill
      */
     private ArrayList<Rat> findRats(int x, int y) {
 
@@ -107,7 +109,6 @@ public abstract class Item{
 
     /**
      * method to remove item once used
-     * @param item to be removed
      */
     public void removeItem() {
         //remove this item
