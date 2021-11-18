@@ -1,6 +1,6 @@
 public class SexChangeM extends Item{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 118; //bound to F7
 
     public SexChangeM() {
 
@@ -10,7 +10,7 @@ public class SexChangeM extends Item{
 
     /**
      * method to change rats gender from male to female
-     * @param rat to change gender
+     * @param r Rat to change gender
      */
     public void changeSex(Rat r) {
         private boolean rSex = r.getIsMale();
