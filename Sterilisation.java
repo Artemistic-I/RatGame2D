@@ -25,7 +25,7 @@ public class Sterilisation extends Item{
 
         for (int i = 0; i < rats.size(); i++) {
             Rat r = rats(i);
-            r.setIsSterile(True);//this method is required in rat class
+            r.setIsSterile(true);//this method is required in rat class
         }
 
     }

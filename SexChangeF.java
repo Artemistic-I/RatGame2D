@@ -16,8 +16,8 @@ public class SexChangeF extends Item{
     public void changeSex(Rat r) {
         private boolean rSex = r.getIsMale();
 
-        if (rSex == False) {
-            r.setIsMale(True);  //setIsMale method required in Rat class
+        if (rSex == false) {
+            r.setIsMale(true);  //setIsMale method required in Rat class
         }
 
     }

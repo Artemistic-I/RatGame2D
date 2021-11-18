@@ -13,7 +13,7 @@ public class NoEntry extends Item{
 
     }
 
-    //changedirection method
+    //change direction method
 
     /**
      * method to degrade health of sign

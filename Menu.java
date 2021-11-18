@@ -4,6 +4,7 @@ import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 
 	/**
 	 * Controls the Main Menu {@link javafx.scene.Scene}
@@ -44,7 +45,7 @@ import java.util.ResourceBundle;
 	     * @param mouseEvent Event
 	     */
 	    public void cmdDeleteProfileClick(MouseEvent mouseEvent) {
-	        Profiles.showDelete();
+	        PlayerProfile.showDelete();
 	    }
 
 	    /**
@@ -53,7 +54,7 @@ import java.util.ResourceBundle;
 	     * @param mouseEvent Event
 	     */
 	    public void cmdCreateProfileClick(MouseEvent mouseEvent) {
-	        Profiles.showCreate();
+	        PlayerProfile.showCreate();
 	    }
 
 	    /**
