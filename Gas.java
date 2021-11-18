@@ -1,4 +1,24 @@
 
 public class Gas extends LethalItem{
-    //slowly expands, rats can survive for certain amount of time
+
+    //static final int SHORTCUT_KEY = ;
+    //static final int AREA = ;
+    //static final int TIME = ;
+    //static final int RAT_EXPOSURE_TIME = ;
+
+    /**
+     * constructor method
+     */
+    public Gas() {
+
+        super(this.SHORTCUT_KEY);
+
+    }
+
+    /**
+     * method to expand gas to maximum area
+     */
+    public void expand() {
+
+    }
 }

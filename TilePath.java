@@ -1,6 +1,6 @@
-public class PathTile extends InteractableTile {
+public class TilePath extends TileInteractable {
 
-    public PathTile(int width, int height) {
+    public TilePath(int width, int height) {
         super(width, height);
         // Light Brown
         setColour(219, 149, 44);

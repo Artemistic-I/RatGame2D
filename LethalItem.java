@@ -1,11 +1,23 @@
 
 //lethal items - kills rats
+// findRats method here as it appears in bomb and gas
+
 public class LethalItem extends Item{
 
-    //private int scKey = ;//
-    //private int spawnTime = ;//get from level file
+    /**
+     * constructor method
+     */
+    public LethalItem(int scKey){
 
-    public LethalItem(){
+        super(scKey);
+
+    }
+
+    /**
+     * method to kill rat and remove from board
+     * @param rat to be removed
+     */
+    private void killRat(Rat rat) {
 
     }
 
