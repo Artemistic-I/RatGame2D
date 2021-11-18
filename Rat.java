@@ -12,7 +12,7 @@ public class Rat {
 	private Tile tileTheRatIsOn;
 	private String direction;
 
-	public Tile move() {
+	public void move() {
 		ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
 		if (possibleMoves.contains(direction)) {
 			this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
