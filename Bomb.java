@@ -17,7 +17,7 @@
     }
 
     /**
-    * method to detonate bomb (bring all methods together
+    * method to detonate bomb (bring all methods together)
     */
     public void detonate() {
 
@@ -56,7 +56,9 @@
 
     /**
     * method to find items placed on map to destroy
-    * @return arraylist of items to destroy
+     * @param x Row of bomb
+     * @param y Column of bomb
+    * @return itemsFound Arraylist of items to destroy
     */
     private ArrayList<Item> findItems(int x, int y) {
 
@@ -67,10 +69,10 @@
 
     /**
     * method to destroy items in range of explosion
-    * @param araylist of items to destroy
+    * @param item Item to destroy
     */
-    private void destroyItem(Item items) {
-
+    private void destroyItem(Item item) {
+       //may be similar to remove item method
     }
 
 

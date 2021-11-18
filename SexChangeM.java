@@ -10,7 +10,7 @@ public class SexChangeM extends Item{
 
     /**
      * method to change rats gender from male to female
-     * @param rat to change gender
+     * @param r Rat to change gender
      */
     public void changeSex(Rat r) {
         private boolean rSex = r.getIsMale();

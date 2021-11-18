@@ -94,6 +94,7 @@ public abstract class Item{
         return affectedRat;
     }
 
+    //ARE WE LOCATING RATS/ITEMS BY THE TILE THEY OCCUPY OR BY COORDS???
     /**
      * method to find rats to kill
      * @param x Row of item

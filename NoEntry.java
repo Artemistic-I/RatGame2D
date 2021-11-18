@@ -13,10 +13,11 @@ public class NoEntry extends Item{
 
     }
 
-    //change direction method
+    //change rat direction method here
 
     /**
-     * method to degrade health of sign
+     * method to degrade health of sign or remove once health has gone
+     * @param this.Health Current health of sign
      */
     public void degradeHealth(this.HEALTH) {
 
