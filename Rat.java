@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Rat {
 
@@ -8,11 +10,26 @@ public class Rat {
 	private int speed;
 	private int colour;
 	private Tile tileTheRatIsOn;
+	private String direction;
 
 	public Tile move() {
-		return tileTheRatIsOn; //Just for testing
+		ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
+		if (possibleMoves.contains(direction)) {
+			this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+		} else {
+			Random rand = new Random();
+			this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
+			this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+		}
+		this.draw();
+		
 	}
 	
+	private void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public Boolean getIsMale() {
 		return isMale;
 	}
