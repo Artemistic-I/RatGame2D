@@ -26,7 +26,7 @@
        //   find rats and items in range
        //   kill rats and destroy items
 
-       if (super.isTouchingRat == True) {
+       if (super.isTouchingRat == true) {
 
           createExplosion();
 

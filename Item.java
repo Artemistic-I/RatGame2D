@@ -8,7 +8,7 @@ import java.util.*;
 public abstract class Item{
 
     private int shortcutKey;
-    boolean isTouchingRat = False;
+    boolean isTouchingRat = false;
     Rat affectedRat;
 
     /**
@@ -31,7 +31,7 @@ public abstract class Item{
     public void ratContact(Rat rat) {
 
         affectedRat = setAffectedRat(rat);
-        this.isTouchingRat = True;
+        this.isTouchingRat = true;
 
         //triggers correct method depending on type of item denoted by shortcut key
         //shortcut keys to be ammended once set

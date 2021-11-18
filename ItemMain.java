@@ -15,7 +15,7 @@ public class ItemMain{
 
     //temporary variables
     int itemTimer = 4;
-    bool gameRunning = True;
+    Boolean gameRunning = true;
 
 //loop to add a Random item to inventory
     do {
