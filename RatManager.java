@@ -23,7 +23,7 @@ public class RatManager {
 			for (Rat secondRat : liveRats) {
 				if (firstRat.getLocation() == secondRat.getLocation() && firstRat != secondRat) {
 					if (firstRat.canBreed() && secondRat.canBreed() && (firstRat.getSex() != secondRat.getSex())) {
-						if (firstRat.getSex() == false) {
+						if (firstRat.getSex() == RatSex.female) {
 							firstRat.Breed();
 						} else {
 							secondRat.Breed();
