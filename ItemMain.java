@@ -14,23 +14,39 @@ public class ItemMain{
     public final int maxItem = 4;
 
     //temporary variables
-    int lethalTimer = 4;
+    int itemTimer = 4;
     bool gameRunning = True;
 
-//loop to add a lethal item
+//loop to add a Random item to inventory
     do {
-        if (lethalTimer == 0) {
-            int randomLethal = nextInt(3);
+        if (itemTimer == 0) {
+            int randomLethal = nextInt(8);
             switch (randomLethal) {
                 case 0:
-                    StoredItems.add(bomb.java);
+                    StoredItems.add(Bomb.java);
                     break;
                 case 1:
                     StoredItems.add(Gas.java);
                     break;
                 case 2:
-                    StoredItems.add(poison.java);
+                    StoredItems.add(Poison.java);
                     break;
+                case 3:
+                    StoredItems.add(SexChangeF.java);
+                    break;
+                case 4:
+                    StoredItems.add(SexChangeM.java);
+                    break;
+                case 5:
+                    StoredItems.add(NoEntry.java);
+                    break;
+                case 6:
+                    StoredItems.add(DeathRat.java);
+                    break;
+                case 7:
+                    StoredItems.add(Sterilisation.java);
+                    break;
+
             }
         }
         while (gameRunning = True);
