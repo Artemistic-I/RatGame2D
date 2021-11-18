@@ -30,23 +30,11 @@ public class Rat {
 		
 	}
 
-	public Boolean getIsMale() {
-		return isMale;
+	public Boolean canBreed() {
+		return (isAdult && !isPregnant && !isSterile);
 	}
 	
-	public Boolean getIsAdult() {
-		return isAdult;
-	}
-	
-	public Boolean getIsPregnant() {
-		return isPregnant;
-	}
-	
-	public Boolean getIsSterile() {
-		return isSterile;
-	}
-	
-	public void breed() {
+	public void Breed() {
 		
 	}
 	
@@ -56,5 +44,13 @@ public class Rat {
 	
 	public void changeSex() {
 		
+	}
+	
+	public Tile getLocation() {
+		return this.tileTheRatIsOn;
+	}
+	
+	public Boolean getSex() {
+		return isMale;
 	}
 }
