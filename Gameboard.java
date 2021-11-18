@@ -78,14 +78,14 @@ public class Gameboard {
     }
     private Tile createTile(String tileType, int rat){
         if (tileType.equalsIgnoreCase("G")) {
-            Tile grass = new GrassTile(tileSize, tileSize);
+            Tile grass = new TileGrass(tileSize, tileSize);
             return grass;
         } else if (tileType.equalsIgnoreCase("T")) {
-            Tile tunnel = new TunnelTile(tileSize, tileSize);
+            Tile tunnel = new TileTunnel(tileSize, tileSize);
             //code to insert rats
             return tunnel;
         } else if (tileType.equalsIgnoreCase("P")) {
-            Tile path = new PathTile(tileSize, tileSize);
+            Tile path = new TilePath(tileSize, tileSize);
             //code to insert rats
             return path;
         } else {
