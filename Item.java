@@ -7,26 +7,32 @@ import java.util.*;
  */
 public abstract class Item{
 
+    //key to select item from menu
     private int shortcutKey;
     boolean isTouchingRat = False;
     Rat affectedRat;
 
     /**
-     * constructor
-     * @param shortcut key for item
+     * constructor to create a new item
+     * @param scKey Keycode for key related with specific item
      */
     public Item(int scKey){
 
         shortcutKey = setSCKey(scKey);
     }
 
+    /**
+     * set shortcut key
+     * @param key Keycode for key related with specific item
+     * @return key Keycode for key related with specific item
+     */
     private int setSCKey(key) {
         return key;
     }
 
     /**
-     * method for when rat makes contact with item
-     * @param rat
+     * method for rat making contact with item
+     * @param rat Rat for which actions are to be performed upon
      */
     public void ratContact(Rat rat) {
 
@@ -63,14 +69,18 @@ public abstract class Item{
                 this.sterilize();
                 this.removeItem();
                 break;
+            case 7://death rat
+                this.killRat(getAffectedRat());
+                this.ratCounter();
+                break
         }
 
     }
 
     /**
      * method to set rat affected by item
-     * @param rat
-     * @return rat
+     * @param rat Rat which has contacted item
+     * @return rat Rat which has contacted item
      */
     private Rat setAffectedRat(Rat rat) {
         return rat;
@@ -78,7 +88,7 @@ public abstract class Item{
 
     /**
      * method to get rat affected by item
-     * @return rat
+     * @return rat Rat that will be affected by item
      */
     public Rat getAffectedRatRat() {
         return affectedRat;
@@ -99,7 +109,7 @@ public abstract class Item{
      * method to remove item once used
      * @param item to be removed
      */
-    public void removeItem(Item item) {
-
+    public void removeItem() {
+        //remove this item
     }
 }

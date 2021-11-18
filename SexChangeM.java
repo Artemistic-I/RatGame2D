@@ -1,6 +1,6 @@
 public class SexChangeM extends Item{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 118; //bound to F7
 
     public SexChangeM() {
 

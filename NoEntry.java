@@ -1,7 +1,7 @@
 
 public class NoEntry extends Item{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 115; //bound to F4
     static final int HEALTH = 5;
 
     /**
