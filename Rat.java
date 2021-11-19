@@ -72,4 +72,8 @@ public class Rat {
     public RatSex getSex() {
         return ratSex;
     }
+    
+    public void sterilise() {
+    	this.isSterile = true;
+    }
 }
