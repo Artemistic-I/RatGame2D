@@ -11,6 +11,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+	 * Controls the Main Menu {@link javafx.scene.Scene}
+	 *
+	 * @author Alex Gingureanu
+	 * @version 1.0
+	 */
+
 public class Main extends Application {
 
 	private static final int WINDOW_WIDTH = 1000;
