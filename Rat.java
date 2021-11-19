@@ -60,11 +60,9 @@ public class Rat {
         RatManager.addRat(new Rat(babyRatSex, RatMaturity.baby, false, 5, 7, this.tileTheRatIsOn, this.direction));
     }
 
-    public void changeSex() {
-        if  (this.isMale = true) {
-            this.isMale = false;
-        } else {
-            this.isMale = true;
+    public void changeSex(RatSex targetSex) {
+        if  (this.ratSex != targetSex) {
+            this.ratSex = targetSex;
         }
 
     }

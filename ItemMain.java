@@ -32,10 +32,10 @@ public class ItemMain{
                     StoredItems.add(Poison.java);
                     break;
                 case 3:
-                    StoredItems.add(SexChangeF.java);
+                    StoredItems.add(SexChangeFemale.java);
                     break;
                 case 4:
-                    StoredItems.add(SexChangeM.java);
+                    StoredItems.add(SexChangeMale.java);
                     break;
                 case 5:
                     StoredItems.add(NoEntry.java);
