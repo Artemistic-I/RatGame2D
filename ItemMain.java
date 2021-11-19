@@ -6,7 +6,7 @@ import java.util.Random;
  * @author Josh/Mike
  * @version 1.0
  */
-public class ItemMain{
+public class ItemMain {
 
     ArrayList<Item> StoredItems = new ArrayList<>();
     Random rand = new Random();
@@ -23,34 +23,31 @@ public class ItemMain{
             int randomLethal = nextInt(8);
             switch (randomLethal) {
                 case 0:
-                    StoredItems.add(Bomb.java);
+                    StoredItems.add(new Bomb());
                     break;
                 case 1:
-                    StoredItems.add(Gas.java);
+                    StoredItems.add(new Gas());
                     break;
                 case 2:
-                    StoredItems.add(Poison.java);
+                    StoredItems.add(new Poison());
                     break;
                 case 3:
-                    StoredItems.add(SexChangeFemale.java);
+                    StoredItems.add(new SexChangeFemale());
                     break;
                 case 4:
-                    StoredItems.add(SexChangeMale.java);
+                    StoredItems.add(new SexChangeMale());
                     break;
                 case 5:
-                    StoredItems.add(NoEntry.java);
+                    StoredItems.add(new NoEntry());
                     break;
                 case 6:
-                    StoredItems.add(DeathRat.java);
+                    StoredItems.add(new DeathRat());
                     break;
                 case 7:
-                    StoredItems.add(Sterilisation.java);
+                    StoredItems.add(new Sterilisation());
                     break;
 
             }
         }
-        while (gameRunning = True);
-
-    }
-
+    } while (gameRunning = true);
 }
