@@ -1,7 +1,7 @@
 
 public class Poison extends LethalItem{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 116; //bound to F5
 
     /**
      * constructor
