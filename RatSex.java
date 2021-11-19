@@ -1,0 +1,4 @@
+
+enum RatSex {
+	male, female
+}

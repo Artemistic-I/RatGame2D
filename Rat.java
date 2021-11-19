@@ -1,16 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-enum RatSex {
-	male, female
-}
-
-enum RatMaturity {
-	adult, baby
-}
-
 public class Rat {
-
+	
     private RatSex ratSex;
     private RatMaturity ratMaturity;
     private Boolean isPregnant;
@@ -20,7 +12,7 @@ public class Rat {
     private Tile tileTheRatIsOn;
     private String direction;
 
-    public Rat(RatSex ratSex, RatMaturity isAdult, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
