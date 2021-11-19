@@ -7,17 +7,15 @@ public class Rat {
     private RatMaturity ratMaturity;
     private Boolean isPregnant;
     private Boolean isSterile;
-    private int speed;
     private int colour;
     private Tile tileTheRatIsOn;
     private String direction;
 
-    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int colour, Tile tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
         this.isSterile = false;
-        this.speed = speed;
         this.colour = colour;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
@@ -42,7 +40,7 @@ public class Rat {
     }
 
     public Boolean canBreed() {
-        return ((ratMaturity == RatMaturity.adult) && !isPregnant && !isSterile);
+        return ((ratMaturity == RatMaturity.ADULT) && !isPregnant && !isSterile);
     }
 
     public void Breed() {
@@ -57,7 +55,7 @@ public class Rat {
         } else {
         	babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, RatMaturity.baby, false, 5, 7, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, 7, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex(RatSex targetSex) {
