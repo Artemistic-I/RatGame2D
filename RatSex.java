@@ -1,4 +1,4 @@
 
-enum RatSex {
+public enum RatSex {
 	male, female
 }
