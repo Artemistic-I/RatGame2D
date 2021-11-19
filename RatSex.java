@@ -1,4 +1,4 @@
 
 public enum RatSex {
-	male, female
+	MALE, FEMALE
 }

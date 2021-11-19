@@ -53,9 +53,9 @@ public class Rat {
         Random rand = new Random();
         RatSex babyRatSex;
         if (rand.nextInt(1) == 0) {
-            babyRatSex = RatSex.male;
+            babyRatSex = RatSex.MALE;
         } else {
-        	babyRatSex = RatSex.female;
+        	babyRatSex = RatSex.FEMALE;
         }
         RatManager.addRat(new Rat(babyRatSex, RatMaturity.baby, false, 5, 7, this.tileTheRatIsOn, this.direction));
     }
