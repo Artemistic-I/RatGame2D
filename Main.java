@@ -20,12 +20,21 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
+
+		GameBoardCanvas gameBoardCanvas = new GameBoardCanvas();
+		
+		FXMLLoader rootLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));
+		rootLoader.setController(gameBoardCanvas);
+		Parent gameBoard = rootLoader.load();		
 		
 		tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
 		tickTimeline.play();
 		
+		gameBoardCanvas.drawGame();
+		
 		primaryStage.setScene(new Scene(root));
+		primaryStage.setScene(new Scene(gameBoard));
 		primaryStage.show();
 	}
 	
