@@ -8,10 +8,10 @@ public class Rat {
     private Boolean isPregnant;
     private Boolean isSterile;
     private int colour;
-    private Tile tileTheRatIsOn;
+    private TileInteractable tileTheRatIsOn;
     private String direction;
 
-    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int colour, Tile tileTheRatIsOn, String direction) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int colour, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
@@ -24,11 +24,11 @@ public class Rat {
     public void move() {
         ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
         if (possibleMoves.contains(direction)) {
-            this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         } else {
             Random rand = new Random();
             this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
-            this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         }
         this.draw();
 
