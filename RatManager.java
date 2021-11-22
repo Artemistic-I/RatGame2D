@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javafx.scene.canvas.Canvas;
+
 public class RatManager {
 
 	private static ArrayList<Rat> liveRats = new ArrayList<>();
@@ -38,9 +40,9 @@ public class RatManager {
 		return femaleRats;
 	}
 	
-	public static void moveRats() {
+	public static void updateRats(Canvas canvas) {
 		for (Rat rat : liveRats) {
-			rat.move();
+			rat.update(canvas);
 		}
 	}
 	

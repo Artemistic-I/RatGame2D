@@ -45,4 +45,8 @@ public class GameBoardCanvasController implements Initializable {
 				// We draw the row at y value 2.
 		
 	}
+	
+	public Canvas getCanvas() {
+		return canvas;
+	}
 }

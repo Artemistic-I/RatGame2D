@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -15,6 +16,7 @@ public class Main extends Application {
 
 	private static final int WINDOW_WIDTH = 1000;
 	private static final int WINDOW_HEIGHT = 1000;
+	private Canvas canvas;
 	
 	private Timeline tickTimeline; 
 
@@ -30,6 +32,7 @@ public class Main extends Application {
 		tickTimeline.play();
 		
 		gameBoardCanvasController.drawGame();
+		canvas = gameBoardCanvasController.getCanvas();
 		
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setScene(new Scene(gameBoard));
@@ -38,7 +41,7 @@ public class Main extends Application {
 	
 	private void tick() {
 		System.out.println("It's working...(Just for testing)");
-		RatManager.moveRats();
+		RatManager.updateRats(canvas);
 	}
 
 	private Pane buildGUI() {

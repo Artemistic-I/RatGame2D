@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import javafx.scene.canvas.Canvas;
+
 public class Rat {
 	
     private RatSex ratSex;
@@ -21,7 +23,12 @@ public class Rat {
         this.direction = direction;
     } // # When the rat is created it needs to be added to the arraylist in RatManager
 
-    public void move() {
+    public void update(Canvas canvas) {
+    	this.move();
+    	this.draw(canvas);
+    }
+    
+    private void move() {
         ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
         if (possibleMoves.contains(direction)) {
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
@@ -30,13 +37,10 @@ public class Rat {
             this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         }
-        this.draw();
-
     }
 
-    private void draw() {
+    private void draw(Canvas canvas) {
         // # TODO Auto-generated method stub
-
     }
 
     public Boolean canBreed() {
