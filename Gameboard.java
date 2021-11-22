@@ -95,4 +95,12 @@ public class Gameboard {
     public Tile[][] getTiles(){
         return board;
     }
+    
+    public void updateWinLose() {
+    	// #
+    }
+    
+    private void drawWinLose() {
+    	// #
+    }
 }
