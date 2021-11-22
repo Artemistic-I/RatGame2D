@@ -3,19 +3,29 @@ import java.util.ArrayList;
 public class RatManager {
 
 	private static ArrayList<Rat> liveRats = new ArrayList<>();
+	private static int killedRatCount;
 	
 	public static void addRat(Rat ratToAdd) {
 		liveRats.add(ratToAdd);
 	}
 
 	public static Boolean removeRat(Rat ratToRemove) {
-		return liveRats.remove(ratToRemove);
+		if (liveRats.remove(ratToRemove)) {
+			killedRatCount++;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static void moveRats() {
 		for (Rat rat : liveRats) {
 			rat.move();
 		}
+	}
+	
+	public static int getKilledRatCount() {
+		return killedRatCount;
 	}
 	
 	public static void breedRats() {
