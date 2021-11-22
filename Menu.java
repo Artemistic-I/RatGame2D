@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 	/**
 	 * Controls the Main Menu {@link javafx.scene.Scene}
 	 *
-	 * @author Walid Mohamed
+	 * @author Walid Mohamed and Alex Gingureanu
 	 * @version 1.0
 	 */
 	@SuppressWarnings("unused")
@@ -167,7 +167,7 @@ import javafx.stage.Stage;
 		@FXML
 		void addProfBtnClicked(ActionEvent event) {
 	   
-		s}
+		}
 
 	    /**
 	     * Called to initialise a controller after its root element has been completely processed.
