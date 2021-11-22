@@ -45,14 +45,4 @@ public class Tile {
     public boolean getInteractable() {
         return this.interactable;
     }
-
-	public ArrayList<String> possibleMoves() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Tile getNextTile(String direction) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -1,7 +1,7 @@
 
 public class NoEntry extends Item{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 115; //bound to F4
     static final int HEALTH = 5;
 
     /**
@@ -13,10 +13,11 @@ public class NoEntry extends Item{
 
     }
 
-    //changedirection method
+    //change rat direction method here
 
     /**
-     * method to degrade health of sign
+     * method to degrade health of sign or remove once health has gone
+     * @param this.Health Current health of sign
      */
     public void degradeHealth(this.HEALTH) {
 

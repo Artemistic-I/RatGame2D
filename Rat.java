@@ -1,48 +1,50 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Rat {
+import javafx.scene.canvas.Canvas;
 
-    private Boolean isMale;
-    private Boolean isAdult;
+public class Rat {
+	
+    private RatSex ratSex;
+    private RatMaturity ratMaturity;
     private Boolean isPregnant;
     private Boolean isSterile;
-    private int speed;
     private int colour;
-    private Tile tileTheRatIsOn;
+    private TileInteractable tileTheRatIsOn;
     private String direction;
 
-    public Rat(Boolean isMale, Boolean isAdult, Boolean isPregnant, int speed, int colour, Tile tileTheRatIsOn, String direction) {
-        this.isMale = isMale;
-        this.isAdult = isAdult;
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int colour, TileInteractable tileTheRatIsOn, String direction) {
+        this.ratSex = ratSex;
+        this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
         this.isSterile = false;
-        this.speed = speed;
         this.colour = colour;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
     } // # When the rat is created it needs to be added to the arraylist in RatManager
 
-    public void move() {
+    public void update(Canvas canvas) {
+    	this.move();
+    	this.draw(canvas);
+    }
+    
+    private void move() {
         ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
         if (possibleMoves.contains(direction)) {
-            this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         } else {
             Random rand = new Random();
             this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
-            this.tileTheRatIsOn = tileTheRatIsOn.getNextTile(direction);
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         }
-        this.draw();
-
     }
 
-    private void draw() {
+    private void draw(Canvas canvas) {
         // # TODO Auto-generated method stub
-
     }
 
     public Boolean canBreed() {
-        return (isAdult && !isPregnant && !isSterile);
+        return ((ratMaturity == RatMaturity.ADULT) && !isPregnant && !isSterile);
     }
 
     public void Breed() {
@@ -51,21 +53,18 @@ public class Rat {
 
     public void giveBirth() {
         Random rand = new Random();
-        Boolean babyRatIsMale;
-        Boolean babyRatIsFemale;
+        RatSex babyRatSex;
         if (rand.nextInt(1) == 0) {
-            babyRatIsMale = true;
+            babyRatSex = RatSex.MALE;
         } else {
-            babyRatIsFemale = false;
+        	babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatIsMale, false, false, 5, 7, this.tileTheRatIsOn, this.direction))
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, 7, this.tileTheRatIsOn, this.direction));
     }
 
-    public void changeSex() {
-        if  (this.isMale = true) {
-            this.isMale = false;
-        } else {
-            this.isMale = true;
+    public void changeSex(RatSex targetSex) {
+        if  (this.ratSex != targetSex) {
+            this.ratSex = targetSex;
         }
 
     }
@@ -74,7 +73,11 @@ public class Rat {
         return this.tileTheRatIsOn;
     }
 
-    public Boolean getSex() {
-        return isMale;
+    public RatSex getSex() {
+        return ratSex;
+    }
+    
+    public void sterilise() {
+    	this.isSterile = true;
     }
 }

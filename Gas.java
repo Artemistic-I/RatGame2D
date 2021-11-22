@@ -1,7 +1,7 @@
 
 public class Gas extends LethalItem{
 
-    //static final int SHORTCUT_KEY = ;
+    static final int SHORTCUT_KEY = 114; //bound to F3
     //static final int AREA = ;
     //static final int TIME = ;
     //static final int RAT_EXPOSURE_TIME = ;
