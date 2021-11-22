@@ -18,6 +18,26 @@ public class RatManager {
 		}
 	}
 
+	public static int countMaleRats() {
+		int maleRats = 0;
+		for (Rat rat : liveRats) {
+			if (rat.getSex() == RatSex.MALE) {
+				maleRats++;
+			}
+		}
+		return maleRats;
+	}
+	
+	public static int countFemaleRats() {
+		int femaleRats = 0;
+		for (Rat rat : liveRats) {
+			if (rat.getSex() == RatSex.FEMALE) {
+				femaleRats++;
+			}
+		}
+		return femaleRats;
+	}
+	
 	public static void moveRats() {
 		for (Rat rat : liveRats) {
 			rat.move();
