@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ import javafx.stage.Stage;
 		private Parent root;
 		private Scene scene;
 		private Stage stage;
+		private Canvas canvas;
 
 		@FXML
 		private Button loadBtn;
@@ -120,8 +122,14 @@ import javafx.stage.Stage;
 		}
 
 		@FXML
-		void onSubmitBtnClick(ActionEvent event) {
-			
+		void onSubmitBtnClick(ActionEvent event) throws IOException {
+			Gameboard level1 = new Gameboard("levels/level1.txt");
+
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/gameBoard.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
 		}
 
 		@FXML

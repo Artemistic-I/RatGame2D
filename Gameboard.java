@@ -74,6 +74,7 @@ public class Gameboard {
         }
         line.close();
         in.close();
+        System.out.println("Gameboard created");
         return board;
     }
     private Tile createTile(String tileType, int rat){
