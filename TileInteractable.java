@@ -6,12 +6,9 @@ public class TileInteractable extends Tile {
     private boolean isHidden;
     private boolean isMating;
     // stores a list of rats currently on tile
-    private ArrayList<Rat> ratsOnTile;
-    // stores a list of items currently on tile
-    private ArrayList<Item> itemOnTile;
-    // stores tiles adjecent to itself
-    // index 0 = North, index 3 = West
-    Tile[] adjacentTiles = new Tile[4];
+    // private ArrayList<Rat> ratsOnTile;
+    // // stores a list of items currently on tile
+    // private ArrayList<Item> itemOnTile;
 
     public TileInteractable(int width, int height) {
         super(width, height);
@@ -24,34 +21,6 @@ public class TileInteractable extends Tile {
 
     public boolean getIsHidden() {
         return this.isHidden;
-    }
-
-    public Tile getAdjacentTile(String direction) {
-        switch (direction.toLowerCase()) {
-            case "north":
-                return this.adjacentTiles[0];
-            case "east":
-                return this.adjacentTiles[1];
-            case "south":
-                return this.adjacentTiles[2];
-            case "west":
-                return this.adjacentTiles[3];
-        }
-        return null;
-    }
-
-    // takes compass direction as string and tile as input
-    private void setAdjacentTile(String direction, Tile adjacentTile) {
-        switch (direction.toLowerCase()) {
-            case "north":
-                this.adjacentTiles[0] = adjacentTile;
-            case "east":
-                this.adjacentTiles[1] = adjacentTile;
-            case "south":
-                this.adjacentTiles[2] = adjacentTile;
-            case "west":
-                this.adjacentTiles[3] = adjacentTile;
-        }
     }
 
     public ArrayList<String> possibleMoves() {
