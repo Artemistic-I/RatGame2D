@@ -23,7 +23,7 @@ public class Main extends Application {
 
 	private static final int WINDOW_WIDTH = 1000;
 	private static final int WINDOW_HEIGHT = 1000;
-	private Canvas canvas;
+	GameBoardCanvasController gameBoardCanvasController;
 	
 	private Timeline tickTimeline; 
 
@@ -32,14 +32,13 @@ public class Main extends Application {
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 		Parent gameBoard = (Parent)fxmlLoader.load();          
-		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
+		gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 		
 		tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
 		tickTimeline.play();
 		
 		gameBoardCanvasController.drawGame();
-		canvas = gameBoardCanvasController.getCanvas();
 		
 		primaryStage.setScene(new Scene(root));
 		//primaryStage.setScene(new Scene(gameBoard));
@@ -48,7 +47,9 @@ public class Main extends Application {
 	
 	private void tick() {
 		System.out.println("It's working...(Just for testing)");
-		RatManager.updateRats(canvas);
+		RatManager.updateRats(gameBoardCanvasController.getCanvas());
+		
+		gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose()); // # Is gameboard going to be static or will we create one for each playthrough?
 	}
 
 	private Pane buildGUI() {

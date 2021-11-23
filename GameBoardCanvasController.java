@@ -1,16 +1,17 @@
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.control.ProgressBar;
 
 public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
 	Canvas canvas;
+	ProgressBar winLoseIndicator;
 	
 	public void drawGame() {
 		// Get the Graphic Context of the canvas. This is what we draw on.
@@ -48,5 +49,9 @@ public class GameBoardCanvasController implements Initializable {
 	
 	public Canvas getCanvas() {
 		return canvas;
+	}
+	
+	public void drawWinLoseIndicator(double winLoseRatio) {
+		this.winLoseIndicator.setProgress(winLoseRatio);
 	}
 }

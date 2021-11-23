@@ -97,11 +97,14 @@ public class Gameboard {
         return board;
     }
     
-    public void updateWinLose() {
-    	// #
+    public int calculateScore() {
+    	int ratKillPoints = RatManager.getKilledRatCount() * 10;
+    	int timePoints = levelCompletionTime - levelEndTime;
+    	return ratKillPoints + timePoints;
     }
     
-    private void drawWinLose() {
-    	// #
+    public double calculateWinLose() {
+    	return (double) numLivingRats / (double) ratPopulationToLose;
     }
+    
 }
