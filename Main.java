@@ -42,7 +42,7 @@ public class Main extends Application {
 		canvas = gameBoardCanvasController.getCanvas();
 		
 		primaryStage.setScene(new Scene(root));
-		primaryStage.setScene(new Scene(gameBoard));
+		//primaryStage.setScene(new Scene(gameBoard));
 		primaryStage.show();
 	}
 	
