@@ -6,11 +6,70 @@ import java.util.Random;
  * @author Josh/Mike
  * @version 1.0
  */
-public class ItemMain {
+private class ItemMain {
 
     Item inventory[][] = new Item[8][2];
     Random rand = new Random();
-    public final int MAX_ITEM = 4;
+    private final int MAX_ITEM = 4;
+
+    private item getBomb(){
+        return Bomb();
+    }
+
+    private item getGas(){
+        return Gas();
+    }
+
+    private item getPoison(){
+        return Poison();
+    }
+
+    private item getSexChangeFemale(){
+        return SexChangeFemale();
+    }
+
+    private item getSexChangeMale(){
+        return SexChangeMale();
+    }
+
+    private item getNoEntry(){
+        return NoEntry();
+    }
+
+    private item getDeathRat(){
+        return DeathRat();
+    }
+
+    private item getSterilisation(){
+        return Sterilisation();
+    }
+
+
+    public void setBomb(Item bomb){
+        Bomb()= bomb;
+    }
+    public void setGas(Item gas){
+        Gas()= gas;
+    }
+    public void setPoison(Item poison){
+        Poison()= poison;
+    }
+    public void setSexChangeFemale(Item SexChF){
+        SexChangeFemale()= SexChF;
+    }
+    public void setSexChangeMale(Item SexChM){
+        SexChangeMale()= SexChM;
+    }
+    public void setNoEntry(Item noEntry){
+        NoEntry()= noEntry;
+    }
+    public void setDeathRat(Item deathRat){
+        DeathRat()= deathRat;
+    }
+    public void setSterilise(Item sterilise){
+        Sterilisation()= sterilise;
+    }
+
 
     inventory[0][0]= Bomb();
     inventory[1][0]= Gas();
@@ -28,7 +87,7 @@ public class ItemMain {
 
 
 
-//loop to add a Random item to inventory
+    //loop to add a Random item to inventory
     for(gameRunning = True){
         if (itemTimer == 0) {
             int randomItem = nextInt(8);
