@@ -1,15 +1,14 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TileInteractable extends Tile {
 
     private boolean isHidden;
     private boolean isMating;
     // stores a list of rats currently on tile
-    private ArrayList<Rat> ratsOnTile;
-    // stores a list of items currently on tile
-    private ArrayList<Item> itemOnTile;
-    // stores tiles adjecent to itself
-    private Tile northTile, eastTile, southTile, westTile;
+    // private ArrayList<Rat> ratsOnTile;
+    // // stores a list of items currently on tile
+    // private ArrayList<Item> itemOnTile;
 
     public TileInteractable(int width, int height) {
         super(width, height);
@@ -24,23 +23,28 @@ public class TileInteractable extends Tile {
         return this.isHidden;
     }
 
-    // takes compass direction as string and tile as input
-    public void setAdjacentTile(String direction, Tile adjacentTile) {
-        switch (direction.toLowerCase()) {
-            case "north":
-                this.northTile = adjacentTile;
-                break;
-            case "east":
-                this.eastTile = adjacentTile;
-                break;
-            case "south":
-                this.southTile = adjacentTile;
-                break;
-            case "west":
-                this.westTile = adjacentTile;
-                break;
+    public ArrayList<String> possibleMoves() {
+        ArrayList <String> moves = new ArrayList<>();
+		for (int i = 0; i < adjacentTiles.length; i++) {
+            if (adjacentTiles[i] != null) {
+                switch (i) {
+                    case 0:
+                        moves.add("North");
+                        break;
+                    case 1:
+                        moves.add("East");
+                        break;
+                    case 2:
+                        moves.add("South");
+                        break;
+                    default:
+                        moves.add("West");
+                        break;
+                }
+            }
         }
-    }
+        return moves;
+	}        
     
     // isMating depends on if Tile stores the rats that are on it
     // if so isMating can be set from inside the tile as it just has to check

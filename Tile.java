@@ -3,11 +3,16 @@ import java.util.ArrayList;
 public class Tile {
     
     private int width, height;
+    // co-ordinate of tile position on gameboard
+    private int[] tileCoordinates = new int[2];
     // RGB
     // Value between 0 - 255
     private int[] colour = {0,0,0};
     // determines if a rat/item can interact with the tile
     private boolean interactable;
+    // stores tiles adjecent to itself
+    // index 0 = North, index 3 = West
+    Tile[] adjacentTiles = new Tile[4];
 
     public Tile(int width, int height) {
         this.width = width;
@@ -34,6 +39,61 @@ public class Tile {
         }
     }
 
+    public Tile getAdjacentTile(String direction) {
+        switch (direction.toLowerCase()) {
+            case "north":
+                return this.adjacentTiles[0];
+            case "east":
+                return this.adjacentTiles[1];
+            case "south":
+                return this.adjacentTiles[2];
+            case "west":
+                return this.adjacentTiles[3];
+        }
+        return null;
+    }
+
+    private void setAdjacentTiles(Gameboard gameboard) {
+        Tile tile;
+        for (int i = 0; i < gameboard.getHeight(); i++) {
+            for (int j = 0; j < gameboard.getWidth(); j++) {
+                tile = gameboard.getBoard()[i][j];
+                for (int x = 0; x < this.adjacentTiles.length; x++) {
+                    switch (x) {
+                        // North
+                        case 0:
+                            try {
+                                this.adjacentTiles[0] = gameboard.getBoard()[i+1][j];
+                            } catch (ArrayIndexOutOfBoundsException e) {
+                                return;
+                            }
+                        // East
+                        case 1:
+                            try {
+                                this.adjacentTiles[1] = gameboard.getBoard()[i][j+1];
+                            } catch (ArrayIndexOutOfBoundsException e) {
+                                return;
+                            }
+                        // South
+                        case 2:
+                            try {
+                                this.adjacentTiles[2] = gameboard.getBoard()[i-1][j];
+                            } catch (ArrayIndexOutOfBoundsException e) {
+                                return;
+                            }
+                        // West
+                        case 3:
+                            try {
+                                this.adjacentTiles[3] = gameboard.getBoard()[i][j-1];
+                            } catch (ArrayIndexOutOfBoundsException e) {
+                                return;
+                            }
+                    }
+                }
+            }
+        }
+    }
+
     public int[] getColour() {
         return this.colour;
     }
@@ -46,13 +106,11 @@ public class Tile {
         return this.interactable;
     }
 
-	public ArrayList<String> possibleMoves() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public int[] getTileCoordinates() {
+        return this.tileCoordinates;
+    }
 
-	public Tile getNextTile(String direction) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setTileCoordinates(int[] tileCoordinates) {
+        this.tileCoordinates = tileCoordinates;
+    }
 }

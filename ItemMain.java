@@ -6,50 +6,85 @@ import java.util.Random;
  * @author Josh/Mike
  * @version 1.0
  */
-public class ItemMain{
+public class ItemMain {
 
-    ArrayList<Item> StoredItems = new ArrayList<>();
+    Item inventory[][] = new Item[8][2];
     Random rand = new Random();
-    public int itemAmount;
-    public final int maxItem = 4;
+    public final int MAX_ITEM = 4;
+
+    inventory[0][0]= Bomb();
+    inventory[1][0]= Gas();
+    inventory[2][0]= Poison();
+    inventory[3][0]= SexChangeFemale();
+    inventory[4][0]= SexChangeMale();
+    inventory[5][0]= NoEntry();
+    inventory[6][0]= DeathRat();
+    inventory[7][0]= Sterilisation();
+
 
     //temporary variables
     int itemTimer = 4;
     Boolean gameRunning = true;
 
+
+
 //loop to add a Random item to inventory
-    do {
+    for(gameRunning = True){
         if (itemTimer == 0) {
-            int randomLethal = nextInt(8);
-            switch (randomLethal) {
+            int randomItem = nextInt(8);
+            switch (randomItem) {
                 case 0:
-                    StoredItems.add(Bomb.java);
-                    break;
+                    if(inventory[0][1]< MAX_ITEM){
+                    inventory[0][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 1:
-                    StoredItems.add(Gas.java);
-                    break;
+                    if(inventory[1][1]< MAX_ITEM){
+                        inventory[1][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 2:
-                    StoredItems.add(Poison.java);
-                    break;
+                    if(inventory[2][1]< MAX_ITEM){
+                        inventory[2][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 3:
-                    StoredItems.add(SexChangeF.java);
-                    break;
+                    if(inventory[3][1]< MAX_ITEM){
+                        inventory[3][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 4:
-                    StoredItems.add(SexChangeM.java);
-                    break;
+                    if(inventory[4][1]< MAX_ITEM){
+                        inventory[4][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 5:
-                    StoredItems.add(NoEntry.java);
-                    break;
+                    if(inventory[5][1]< MAX_ITEM){
+                        inventory[5][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 6:
-                    StoredItems.add(DeathRat.java);
-                    break;
+                    if(inventory[6][1]< MAX_ITEM){
+                        inventory[6][1] += 1];
+                    } else {
+                        break;
+                    }
                 case 7:
-                    StoredItems.add(Sterilisation.java);
-                    break;
+                    if(inventory[7][1]< MAX_ITEM){
+                        inventory[7s][1] += 1];
+                    } else {
+                        break;
+                    }
 
             }
         }
-        while (gameRunning = True);
+
 
     }
 

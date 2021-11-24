@@ -74,6 +74,7 @@ public class Gameboard {
         }
         line.close();
         in.close();
+        System.out.println("Gameboard created");
         return board;
     }
     private Tile createTile(String tileType, int rat){
@@ -95,4 +96,24 @@ public class Gameboard {
     public Tile[][] getTiles(){
         return board;
     }
+    
+    public int calculateScore() {
+    	int ratKillPoints = RatManager.getKilledRatCount() * 10;
+    	int timePoints = levelCompletionTime - levelEndTime;
+    	return ratKillPoints + timePoints;
+    }
+    
+    public double calculateWinLose() {
+    	return (double) numLivingRats / (double) ratPopulationToLose;
+    }
+    public int getHeight() {
+        return this.boardHeight;
+    }
+    public int getWidth() {
+        return this.boardWidth;
+    }
+    public Tile[][] getBoard() {
+        return this.board;
+    }
+    
 }
