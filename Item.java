@@ -1,4 +1,5 @@
 import java.util.*;
+import java.Math;
 
 /**
  * This is the super class to define an item object
@@ -9,6 +10,7 @@ public abstract class Item{
 
     //key to select item from menu
     private int shortcutKey;
+    Tile itemLocation;
     boolean isTouchingRat = false;
     Rat affectedRat;
 
@@ -31,6 +33,22 @@ public abstract class Item{
     }
 
     /**
+     * set item location by tile
+     * @return loc Tile that item occupies
+     */
+    public Tile setItemLoc(loc) {
+        return loc;
+    }
+
+    /**
+     * get tile where item is located
+     * @return itemLocation Tile that item occupies
+     */
+    public Tile getItemLoc() {
+        return itemLocation;
+    }
+
+    /**
      * method for rat making contact with item
      * @param rat Rat for which actions are to be performed upon
      */
@@ -42,34 +60,34 @@ public abstract class Item{
         //triggers correct method depending on type of item denoted by shortcut key
         //shortcut keys to be ammended once set
         switch (shortcutKey) {
-            case 0://bomb
+            case 112://bomb
                 this.detonate();
                 break;
-            case 1://gas
+            case 114://gas
                 this.expand();
                 break;
-            case 2://no entry
+            case 115://no entry
                 this.changeDirection(getAffectedRat());
                 this.degradeHealth();
                 this.isTouchingRat = False;
                 break;
-            case 3://poison
+            case 116://poison
                 this.killRat(getAffectedRat());
                 this.removeItem();
                 break;
-            case 4://f to m
+            case 117://f to m
                 this.changeSex(getAffectedRat());
                 this.removeItem();
                 break;
-            case 5://m to f
+            case 118://m to f
                 this.changeSex(getAffectedRat());
                 this.removeItem();
                 break;
-            case 6://sterilize
+            case 119://sterilize
                 this.sterilize();
                 this.removeItem();
                 break;
-            case 7://death rat
+            case 113://death rat
                 this.killRat(getAffectedRat());
                 this.ratCounter();
                 break
@@ -94,17 +112,40 @@ public abstract class Item{
         return affectedRat;
     }
 
-    //ARE WE LOCATING RATS/ITEMS BY THE TILE THEY OCCUPY OR BY COORDS???
     /**
-     * method to find rats to kill
-     * @param x Row of item
-     * @param y Column of item
+     * method to find rats to kill/affect
+     * @param origin Tile to start looking for rats from (where item is placed)
+     * @param area Area in which rats should be found
      * @return ratsFound Arraylist of rats to kill
      */
-    private ArrayList<Rat> findRats(int x, int y) {
+    private ArrayList<Rat> findRats(Tile origin, int area) {
 
         ArrayList<Rat> ratsFound = new ArrayList<Rat>();
-        //find rats in given area
+
+        //       find rats in given area
+        //for each column in originx - area/2 to originx + area/2
+        //  for each tile in column within originy + area/2 to originy - area/2
+        //      find rat and add to arraylist
+
+        int oX = (origin.getTileCoordinates())[0];
+        int oY = (origin.getTileCoordinates())[1];
+        int xBounds[] = [oX - area/2, oX + Math.round(area/2)];
+        int yBounds[] = [oY - area/2, oY + Math.round(area/2)];
+
+        board = getBoard()  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
+
+        //for each column in range of item
+        for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
+            //for each tile in column
+            for (int j = yBounds[0], i < (yBounds[1] + 1), i++) {
+                Tile currentTile = board[i][j];
+                if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                    //Rat r = rat on tile
+                    ratsFound.add(r);
+                }
+            }
+        }
+
         return ratsFound;
     }
 

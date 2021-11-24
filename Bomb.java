@@ -60,10 +60,29 @@
      * @param y Column of bomb
     * @return itemsFound Arraylist of items to destroy
     */
-    private ArrayList<Item> findItems(int x, int y) {
+    private ArrayList<Item> findItems(Tile origin) {
 
        ArrayList<Item> itemsFound = new ArrayList<Item>();
-       //find items in given area
+
+       int oX = (origin.getTileCoordinates())[0];
+       int oY = (origin.getTileCoordinates())[1];
+       int xBounds[] = [oX - area/2, oX + Math.round(area/2)];
+       int yBounds[] = [oY - area/2, oY + Math.round(area/2)];
+
+       board = getBoard()  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
+
+       //for each column in range of item
+       for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
+          //for each tile in column
+          for (int j = yBounds[0], i < (yBounds[1] + 1), i++) {
+             Tile currentTile = board[i][j];
+             if (currentTile.containsItem) {  //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
+                //Item item = item on tile
+                itemsFound.add(item);
+             }
+          }
+       }
+
        return itemsFound;
     }
 
