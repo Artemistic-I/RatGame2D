@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Tile {
     
     private int width, height;
+    // co-ordinate of tile position on gameboard
+    private int[] tileCoordinates = new int[2];
     // RGB
     // Value between 0 - 255
     private int[] colour = {0,0,0};
@@ -102,5 +104,13 @@ public class Tile {
 
     public boolean getInteractable() {
         return this.interactable;
+    }
+
+    public int[] getTileCoordinates() {
+        return this.tileCoordinates;
+    }
+
+    public void setTileCoordinates(int[] tileCoordinates) {
+        this.tileCoordinates = tileCoordinates;
     }
 }

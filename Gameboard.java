@@ -106,5 +106,14 @@ public class Gameboard {
     public double calculateWinLose() {
     	return (double) numLivingRats / (double) ratPopulationToLose;
     }
+    public int getHeight() {
+        return this.boardHeight;
+    }
+    public int getWidth() {
+        return this.boardWidth;
+    }
+    public Tile[][] getBoard() {
+        return this.board;
+    }
     
 }

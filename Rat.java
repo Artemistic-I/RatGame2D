@@ -80,4 +80,24 @@ public class Rat {
     public void sterilise() {
     	this.isSterile = true;
     }
+
+    public RatMaturity getRatMaturity() {
+        return this.ratMaturity;
+    }
+
+    public Boolean getIsPregnant() {
+        return this.isPregnant;
+    }
+
+    public Boolean getIsSterile() {
+        return this.isSterile;
+    }
+
+    public int getColour() {
+        return this.colour;
+    }
+
+    public String getDirection() {
+        return this.direction;
+    }
 }
