@@ -15,75 +15,118 @@ public class ItemMain {
     Gameboard gb = new Gameboard();
     int itemTimer;
 
-    private item getBomb(){
-        return Bomb();
-    }
+    private item getBomb() { return Bomb();}
 
-    private item getGas(){
-        return Gas();
-    }
+    private item getGas(){return Gas();}
 
-    private item getPoison(){
-        return Poison();
-    }
+    private item getPoison(){return Poison();}
 
-    private item getSexChangeFemale(){
-        return SexChangeFemale();
-    }
+    private item getSexChangeFemale(){return SexChangeFemale();}
 
-    private item getSexChangeMale(){
-        return SexChangeMale();
-    }
+    private item getSexChangeMale(){return SexChangeMale();}
 
-    private item getNoEntry(){
-        return NoEntry();
-    }
+    private item getNoEntry(){return NoEntry();}
 
-    private item getDeathRat(){
-        return DeathRat();
-    }
+    private item getDeathRat(){return DeathRat();}
 
-    private item getSterilisation(){
-        return Sterilisation();
-    }
+    private item getSterilisation(){return Sterilisation();}
 
 
-    public void setBomb(Item bomb){
-        Bomb()= bomb;
-    }
-    public void setGas(Item gas){
-        Gas()= gas;
-    }
-    public void setPoison(Item poison){
-        Poison()= poison;
-    }
-    public void setSexChangeFemale(Item SexChF){
-        SexChangeFemale()= SexChF;
-    }
-    public void setSexChangeMale(Item SexChM){
-        SexChangeMale()= SexChM;
-    }
-    public void setNoEntry(Item noEntry){
-        NoEntry()= noEntry;
-    }
-    public void setDeathRat(Item deathRat){
-        DeathRat()= deathRat;
-    }
-    public void setSterilise(Item sterilise){
-        Sterilisation()= sterilise;
-    }
+    public void setBomb(Item bomb){Item Bomb= bomb;}
+
+    public void setGas(Item gas){Item Gas= gas;}
+
+    public void setPoison(Item poison){Item Poison= poison;}
+
+    public void setSexChangeFemale(Item SexChF){Item SexChangeFemale= SexChF;}
+
+    public void setSexChangeMale(Item SexChM){Item SexChangeMale= SexChM;}
+
+    public void setNoEntry(Item noEntry){Item NoEntry= noEntry;}
+
+    public void setDeathRat(Item deathRat){Item DeathRat= deathRat;}
+
+    public void setSterilise(Item sterilise){Item Sterilisation= sterilise;}
+
+    inventory[0][0]= Item Bomb;
+    inventory[1][0]= Item Gas;
+    inventory[2][0]= Item Poison;
+    inventory[3][0]= Item SexChangeFemale;
+    inventory[4][0]= Item SexChangeMale;
+    inventory[5][0]= Item NoEntry;
+    inventory[6][0]= Item DeathRat;
+    inventory[7][0]= Item Sterilisation;
 
 
-    inventory[0][0]= Bomb();
-    inventory[1][0]= Gas();
-    inventory[2][0]= Poison();
-    inventory[3][0]= SexChangeFemale();
-    inventory[4][0]= SexChangeMale();
-    inventory[5][0]= NoEntry();
-    inventory[6][0]= DeathRat();
-    inventory[7][0]= Sterilisation();
 
-    public int findTimer(itemTimer;) {
+    //loop to add a Random item to inventory
+    for(gb.numLivingRats > 0){
+        if (itemTimer == 0) {
+            int randomItem = nextInt(8);
+            switch (randomItem) {
+                case 0:
+                    if(inventory[0][1] < MAX_ITEM){
+                        inventory[0][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 1:
+                    if(inventory[1][1]< MAX_ITEM){
+                        inventory[1][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 2:
+                    if(inventory[2][1]< MAX_ITEM){
+                        inventory[2][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 3:
+                    if(inventory[3][1]< MAX_ITEM){
+                        inventory[3][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 4:
+                    if(inventory[4][1]< MAX_ITEM){
+                        inventory[4][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 5:
+                    if(inventory[5][1]< MAX_ITEM){
+                        inventory[5][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 6:
+                    if(inventory[6][1]< MAX_ITEM){
+                        inventory[6][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+                case 7:
+                    if(inventory[7][1]< MAX_ITEM){
+                        inventory[7][1] += 1];
+                        findTimer;
+                    } else {
+                        break;
+                    }
+
+            }
+        }
+
+
+    }
+    public int findTimer(int Timer) {
         if (g.levelNumber == 1) {
             itemTimer = 10;
         }
@@ -100,73 +143,4 @@ public class ItemMain {
             itemTimer = 5;
         }
     }
-
-    //loop to add a Random item to inventory
-    for(gb.numLivingRats > 0){
-        if (itemTimer == 0) {
-            int randomItem = nextInt(8);
-            switch (randomItem) {
-                case 0:
-                    if(inventory[0][1]< MAX_ITEM){
-                        inventory[0][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 1:
-                    if(inventory[1][1]< MAX_ITEM){
-                        inventory[1][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 2:
-                    if(inventory[2][1]< MAX_ITEM){
-                        inventory[2][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 3:
-                    if(inventory[3][1]< MAX_ITEM){
-                        inventory[3][1] += 1];
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 4:
-                    if(inventory[4][1]< MAX_ITEM){
-                        inventory[4][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 5:
-                    if(inventory[5][1]< MAX_ITEM){
-                        inventory[5][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 6:
-                    if(inventory[6][1]< MAX_ITEM){
-                        inventory[6][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-                case 7:
-                    if(inventory[7][1]< MAX_ITEM){
-                        inventory[7][1] += 1;
-                        findTimer();
-                    } else {
-                        break;
-                    }
-
-            }
-        }
-
-
-    }
-
 }
