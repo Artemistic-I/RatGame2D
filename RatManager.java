@@ -50,6 +50,16 @@ public class RatManager {
 		return killedRatCount;
 	}
 	
+	public static ArrayList<Rat> ratsOnTiles(ArrayList<Tile> setOfTiles) {
+		ArrayList<Rat> ratsThatArePresent = new ArrayList<>();
+		for(Rat rat: liveRats) {
+			 if (setOfTiles.contains(rat.getLocation())) {
+				 ratsThatArePresent.add(rat);
+			 }
+		 }
+		return ratsThatArePresent;
+	}
+	
 	public static void breedRats() {
 		for (Rat firstRat : liveRats) {
 			for (Rat secondRat : liveRats) {
