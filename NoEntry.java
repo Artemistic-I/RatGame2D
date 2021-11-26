@@ -9,7 +9,7 @@ public class NoEntry extends Item{
      */
     public NoEntry() {
 
-        super(this.SHORTCUT_KEY)
+        super(this.SHORTCUT_KEY);
 
     }
 
@@ -21,7 +21,7 @@ public class NoEntry extends Item{
      */
     public void degradeHealth(this.HEALTH) {
 
-        private int health = this.HEALTH
+        private int health = this.HEALTH;
 
         health -= 1;
 

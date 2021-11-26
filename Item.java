@@ -1,5 +1,5 @@
 import java.util.*;
-import java.Math;
+import java.lang.Math;
 
 /**
  * This is the super class to define an item object
@@ -28,7 +28,7 @@ public abstract class Item{
      * @param key Keycode for key related with specific item
      * @return key Keycode for key related with specific item
      */
-    private int setSCKey(key) {
+    private int setSCKey(int key) {
         return key;
     }
 
@@ -36,7 +36,7 @@ public abstract class Item{
      * set item location by tile
      * @return loc Tile that item occupies
      */
-    public Tile setItemLoc(loc) {
+    public Tile setItemLoc(Tile loc) {
         return loc;
     }
 
@@ -69,7 +69,7 @@ public abstract class Item{
             case 115://no entry
                 this.changeDirection(getAffectedRat());
                 this.degradeHealth();
-                this.isTouchingRat = False;
+                this.isTouchingRat = false;
                 break;
             case 116://poison
                 this.killRat(getAffectedRat());
@@ -90,7 +90,7 @@ public abstract class Item{
             case 113://death rat
                 this.killRat(getAffectedRat());
                 this.ratCounter();
-                break
+                break;
         }
 
     }
@@ -129,15 +129,15 @@ public abstract class Item{
 
         int oX = (origin.getTileCoordinates())[0];
         int oY = (origin.getTileCoordinates())[1];
-        int xBounds[] = [oX - area/2, oX + Math.round(area/2)];
-        int yBounds[] = [oY - area/2, oY + Math.round(area/2)];
+        int[] xBounds = new int[];// = [oX - area/2, oX + Math.round(area/2)]; <- This is not java code
+        int[] yBounds = new int[];// = [oY - area/2, oY + Math.round(area/2)];    The syntax is wrong.
 
-        board = getBoard()  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
+        Tile[][] board = Gameboard.getBoard();  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
 
         //for each column in range of item
-        for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
+        for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
             //for each tile in column
-            for (int j = yBounds[0], i < (yBounds[1] + 1), i++) {
+            for (int j = yBounds[0]; i < (yBounds[1] + 1); i++) {
                 Tile currentTile = board[i][j];
                 if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                     //Rat r = rat on tile

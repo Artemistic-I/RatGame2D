@@ -1,5 +1,6 @@
+import java.util.ArrayList;
 
- public class Bomb extends LethalItem {
+public class Bomb extends LethalItem {
     /**bomberman bombs until grass
      * shows countdown to explosrion 4s - 1s
     */
@@ -72,9 +73,9 @@
        Tile[][] board = Gameboard.getBoard();  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
 
        //for each column in range of item
-       for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
+       for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
           //for each tile in column
-          for (int j = yBounds[0], i < (yBounds[1] + 1), i++) {
+          for (int j = yBounds[0]; i < (yBounds[1] + 1); i++) {
              Tile currentTile = board[i][j];
              if (currentTile.containsItem) {  //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
                 //Item item = item on tile

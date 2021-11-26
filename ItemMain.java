@@ -108,21 +108,21 @@ public class ItemMain {
             switch (randomItem) {
                 case 0:
                     if(inventory[0][1]< MAX_ITEM){
-                        inventory[0][1] += 1];
+                        inventory[0][1] += 1;
                         findTimer();
                     } else {
                         break;
                     }
                 case 1:
                     if(inventory[1][1]< MAX_ITEM){
-                        inventory[1][1] += 1];
+                        inventory[1][1] += 1;
                         findTimer();
                     } else {
                         break;
                     }
                 case 2:
                     if(inventory[2][1]< MAX_ITEM){
-                        inventory[2][1] += 1];
+                        inventory[2][1] += 1;
                         findTimer();
                     } else {
                         break;
@@ -136,28 +136,28 @@ public class ItemMain {
                     }
                 case 4:
                     if(inventory[4][1]< MAX_ITEM){
-                        inventory[4][1] += 1];
+                        inventory[4][1] += 1;
                         findTimer();
                     } else {
                         break;
                     }
                 case 5:
                     if(inventory[5][1]< MAX_ITEM){
-                        inventory[5][1] += 1];
+                        inventory[5][1] += 1;
                         findTimer();
                     } else {
                         break;
                     }
                 case 6:
                     if(inventory[6][1]< MAX_ITEM){
-                        inventory[6][1] += 1];
+                        inventory[6][1] += 1;
                         findTimer();
                     } else {
                         break;
                     }
                 case 7:
                     if(inventory[7][1]< MAX_ITEM){
-                        inventory[7][1] += 1];
+                        inventory[7][1] += 1;
                         findTimer();
                     } else {
                         break;

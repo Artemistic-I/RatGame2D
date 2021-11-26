@@ -8,7 +8,7 @@ public class DeathRat extends LethalItem {
   */
  public DeathRat() {
 
-  super(this.SHORTCUT_KEY)
+  super(this.SHORTCUT_KEY);
 
  }
 

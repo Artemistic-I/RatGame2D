@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <file url="file://$PROJECT_DIR$/Bomb.java" />
+      <file url="file://$PROJECT_DIR$/ItemMain.java" />
+      <file url="file://$PROJECT_DIR$/NoEntry.java" />
+      <file url="file://$PROJECT_DIR$/RandomMessage.java" />
+      <file url="file://$PROJECT_DIR$/Poison.java" />
+      <file url="file://$PROJECT_DIR$/LethalItem.java" />
+      <file url="file://$PROJECT_DIR$/DeathRat.java" />
+      <file url="file://$PROJECT_DIR$/Gas.java" />
+    </excludeFromCompile>
+  </component>
+</project>
