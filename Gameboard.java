@@ -95,7 +95,7 @@ public class Gameboard {
     
     public int calculateScore() {
     	int ratKillPoints = RatManager.getKilledRatCount() * 10;
-    	int timePoints = levelCompletionTime - levelEndTime;
+    	int timePoints = levelCompletionTime;// - levelEndTime;
     	return ratKillPoints + timePoints;
     }
     
