@@ -6,11 +6,14 @@ import java.util.Random;
  * @author Josh/Mike
  * @version 1.0
  */
-private class ItemMain {
+public class ItemMain {
 
     Item inventory[][] = new Item[8][2];
     Random rand = new Random();
     private final int MAX_ITEM = 4;
+    GameFileManager g = new GameFileManager();
+    Gameboard gb = new Gameboard();
+    int itemTimer;
 
     private item getBomb(){
         return Bomb();
@@ -80,63 +83,82 @@ private class ItemMain {
     inventory[6][0]= DeathRat();
     inventory[7][0]= Sterilisation();
 
-
-    //temporary variables
-    int itemTimer = 4;
-    Boolean gameRunning = true;
-
-
+    public int findTimer(itemTimer;) {
+        if (g.levelNumber == 1) {
+            itemTimer = 10;
+        }
+        if (g.levelNumber == 2) {
+            itemTimer = 9;
+        }
+        if (g.levelNumber == 3) {
+            itemTimer = 8;
+        }
+        if (g.levelNumber == 4) {
+            itemTimer = 7;
+        }
+        if (g.levelNumber == 5) {
+            itemTimer = 5;
+        }
+    }
 
     //loop to add a Random item to inventory
-    for(gameRunning = True){
+    for(gb.numLivingRats > 0){
         if (itemTimer == 0) {
             int randomItem = nextInt(8);
             switch (randomItem) {
                 case 0:
                     if(inventory[0][1]< MAX_ITEM){
-                    inventory[0][1] += 1];
+                        inventory[0][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 1:
                     if(inventory[1][1]< MAX_ITEM){
                         inventory[1][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 2:
                     if(inventory[2][1]< MAX_ITEM){
                         inventory[2][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 3:
                     if(inventory[3][1]< MAX_ITEM){
                         inventory[3][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 4:
                     if(inventory[4][1]< MAX_ITEM){
                         inventory[4][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 5:
                     if(inventory[5][1]< MAX_ITEM){
                         inventory[5][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 6:
                     if(inventory[6][1]< MAX_ITEM){
                         inventory[6][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
                 case 7:
                     if(inventory[7][1]< MAX_ITEM){
-                        inventory[7s][1] += 1];
+                        inventory[7][1] += 1];
+                        findTimer();
                     } else {
                         break;
                     }
