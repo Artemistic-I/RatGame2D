@@ -53,38 +53,39 @@ public class Tile {
         return null;
     }
 
-    private void setAdjacentTiles(Gameboard gameboard) {
+    private void setAdjacentTiles() {
         Tile tile;
-        for (int i = 0; i < gameboard.getHeight(); i++) {
-            for (int j = 0; j < gameboard.getWidth(); j++) {
-                tile = gameboard.getBoard()[i][j];
+        for (int i = 0; i < Gameboard.getHeight(); i++) {
+            for (int j = 0; j < Gameboard.getWidth(); j++) {
+                Tile[][] gameboard = Gameboard.getBoard();
+                tile = gameboard[i][j];
                 for (int x = 0; x < this.adjacentTiles.length; x++) {
                     switch (x) {
                         // North
                         case 0:
                             try {
-                                this.adjacentTiles[0] = gameboard.getBoard()[i+1][j];
+                                this.adjacentTiles[0] = gameboard[i+1][j];
                             } catch (ArrayIndexOutOfBoundsException e) {
                                 return;
                             }
                         // East
                         case 1:
                             try {
-                                this.adjacentTiles[1] = gameboard.getBoard()[i][j+1];
+                                this.adjacentTiles[1] = gameboard[i][j+1];
                             } catch (ArrayIndexOutOfBoundsException e) {
                                 return;
                             }
                         // South
                         case 2:
                             try {
-                                this.adjacentTiles[2] = gameboard.getBoard()[i-1][j];
+                                this.adjacentTiles[2] = gameboard[i-1][j];
                             } catch (ArrayIndexOutOfBoundsException e) {
                                 return;
                             }
                         // West
                         case 3:
                             try {
-                                this.adjacentTiles[3] = gameboard.getBoard()[i][j-1];
+                                this.adjacentTiles[3] = gameboard[i][j-1];
                             } catch (ArrayIndexOutOfBoundsException e) {
                                 return;
                             }

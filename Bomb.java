@@ -69,7 +69,7 @@
        int xBounds[] = [oX - area/2, oX + Math.round(area/2)];
        int yBounds[] = [oY - area/2, oY + Math.round(area/2)];
 
-       board = getBoard()  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
+       Tile[][] board = Gameboard.getBoard();  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
 
        //for each column in range of item
        for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
