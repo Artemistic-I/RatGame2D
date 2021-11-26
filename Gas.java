@@ -2,16 +2,16 @@
 public class Gas extends LethalItem{
 
     static final int SHORTCUT_KEY = 114; //bound to F3
-    //static final int AREA = ;
-    //static final int TIME = ;
-    //static final int RAT_EXPOSURE_TIME = ;
+    static final int AREA = 2;
+    //static final int TIME = ; GET FROM ITEM MAIN
+    //static final int RAT_EXPOSURE_TIME = ; LOOK AT OTHER TIMES FOR A GOOD NUMBER
 
     /**
      * constructor method
      */
     public Gas() {
 
-        super(this.SHORTCUT_KEY);
+        super(SHORTCUT_KEY);
 
     }
 

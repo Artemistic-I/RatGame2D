@@ -3,16 +3,16 @@ import java.Math;
 
 /**
  * This is the super class to define an item object
- * @author Josh/Mike
+ * @author Josh & Mike
  * @version 1.0
  */
 public abstract class Item{
 
     //key to select item from menu
-    private int shortcutKey;
-    Tile itemLocation;
-    boolean isTouchingRat = false;
-    Rat affectedRat;
+    protected int shortcutKey;
+    protected Tile itemLocation;
+    protected boolean isTouchingRat = false;
+    protected Rat affectedRat;
 
     /**
      * constructor to create a new item
@@ -20,32 +20,59 @@ public abstract class Item{
      */
     public Item(int scKey){
 
-        shortcutKey = setSCKey(scKey);
+        setSCKey(scKey);
     }
 
     /**
      * set shortcut key
      * @param key Keycode for key related with specific item
-     * @return key Keycode for key related with specific item
      */
-    private int setSCKey(key) {
-        return key;
-    }
+    private void setSCKey(int key) { shortcutKey = key; }
 
     /**
      * set item location by tile
      * @return loc Tile that item occupies
      */
-    public Tile setItemLoc(loc) {
-        return loc;
+    private void setItemLoc(Tile loc) { itemLocation = loc; }
+
+    /**
+     * set status for whether item is touching a rat
+     * @param status Whether rat is touching the item
+     */
+    private void setTouchStatus(boolean status) { isTouchingRat = status; }
+
+    /**
+     * method to set rat affected by item
+     * @param rat Rat which has contacted item
+     */
+    private void setAffectedRat(Rat rat) {
+        affectedRat = rat;
     }
+
+    /**
+     * get shortcut key assigned to item
+     * @return shortcutKey Shortcut key assigned to item
+     */
+    public int getSCKey() { return shortcutKey; }
 
     /**
      * get tile where item is located
      * @return itemLocation Tile that item occupies
      */
-    public Tile getItemLoc() {
-        return itemLocation;
+    public Tile getItemLoc() { return itemLocation; }
+
+    /**
+     * get boolean telling whether a rat is touching the item
+     * @return isTouchingRat Whether rat is touching item
+     */
+    public boolean getTouchingStatus() { return isTouchingRat; }
+
+    /**
+     * method to get rat affected by item
+     * @return rat Rat that will be affected by item
+     */
+    public Rat getAffectedRat() {
+        return affectedRat;
     }
 
     /**
@@ -54,62 +81,44 @@ public abstract class Item{
      */
     public void ratContact(Rat rat) {
 
-        affectedRat = setAffectedRat(rat);
-        this.isTouchingRat = true;
+        setAffectedRat(rat);
+        setTouchStatus(true);
 
         //triggers correct method depending on type of item denoted by shortcut key
-        //shortcut keys to be ammended once set
         switch (shortcutKey) {
             case 112://bomb
-                this.detonate();
+                detonate();
                 break;
             case 114://gas
-                this.expand();
+                expand();
                 break;
             case 115://no entry
-                this.changeDirection(getAffectedRat());
-                this.degradeHealth();
-                this.isTouchingRat = False;
+                changeDirection(getAffectedRat());
+                degradeHealth();
+                setTouchStatus(false);
                 break;
             case 116://poison
-                this.killRat(getAffectedRat());
-                this.removeItem();
+                killRat(getAffectedRat());
+                removeItem();
                 break;
             case 117://f to m
-                this.changeSex(getAffectedRat());
-                this.removeItem();
+                changeSex(getAffectedRat());
+                removeItem();
                 break;
             case 118://m to f
-                this.changeSex(getAffectedRat());
-                this.removeItem();
+                changeSex(getAffectedRat());
+                removeItem();
                 break;
             case 119://sterilize
-                this.sterilize();
-                this.removeItem();
+                sterilize();
+                removeItem();
                 break;
             case 113://death rat
-                this.killRat(getAffectedRat());
-                this.ratCounter();
-                break
+                killRat(getAffectedRat());
+                ratCounter();
+                break;
         }
 
-    }
-
-    /**
-     * method to set rat affected by item
-     * @param rat Rat which has contacted item
-     * @return rat Rat which has contacted item
-     */
-    private Rat setAffectedRat(Rat rat) {
-        return rat;
-    }
-
-    /**
-     * method to get rat affected by item
-     * @return rat Rat that will be affected by item
-     */
-    public Rat getAffectedRatRat() {
-        return affectedRat;
     }
 
     /**
@@ -118,30 +127,34 @@ public abstract class Item{
      * @param area Area in which rats should be found
      * @return ratsFound Arraylist of rats to kill
      */
-    private ArrayList<Rat> findRats(Tile origin, int area) {
+    protected ArrayList<Rat> findRats(Tile origin, int area) {
 
         ArrayList<Rat> ratsFound = new ArrayList<Rat>();
 
-        //       find rats in given area
-        //for each column in originx - area/2 to originx + area/2
-        //  for each tile in column within originy + area/2 to originy - area/2
-        //      find rat and add to arraylist
-
         int oX = (origin.getTileCoordinates())[0];
         int oY = (origin.getTileCoordinates())[1];
-        int xBounds[] = [oX - area/2, oX + Math.round(area/2)];
-        int yBounds[] = [oY - area/2, oY + Math.round(area/2)];
 
-        board = getBoard()  //NOT SURE HOW TO ACCESS GAMEBOARD, this is just a placeholder
+        //for bomb
+        if (area == 0) {
 
-        //for each column in range of item
-        for (int i = xBounds[0], i < (xBounds[1] + 1), i++) {
-            //for each tile in column
-            for (int j = yBounds[0], i < (yBounds[1] + 1), i++) {
-                Tile currentTile = board[i][j];
-                if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
-                    //Rat r = rat on tile
-                    ratsFound.add(r);
+            //bomberman style
+
+        } else {    //for other items
+
+            int xBounds[] = {oX - Math.round(area/2), oX + Math.round(area/2)};
+            int yBounds[] = {oY - Math.round(area/2), oY + Math.round(area/2)};
+
+            Tile[][] board = Gameboard.getBoard();
+
+            //for each column in range of item
+            for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
+                //for each tile in column
+                for (int j = yBounds[0]; i < (yBounds[1] + 1); i++) {
+                    Tile currentTile = board[i][j];
+                    if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                        //Rat r = rat on tile
+                        ratsFound.add(r);
+                    }
                 }
             }
         }
@@ -154,5 +167,7 @@ public abstract class Item{
      */
     public void removeItem() {
         //remove this item
+        //look in item main
+        itemMain.removeItem();
     }
 }

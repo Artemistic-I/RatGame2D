@@ -8,7 +8,7 @@ public class Poison extends LethalItem{
      */
     public Poison() {
 
-        super(this.SHORTCUT_KEY);
+        super(SHORTCUT_KEY);
 
     }
 

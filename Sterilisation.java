@@ -4,8 +4,8 @@ public class Sterilisation extends Item{
     //rats cannot reproduce
 
     static final int SHORTCUT_KEY = 119; //bound to F8
-    //static final int AREA = ;
-    //static final int TIME = ;
+    static final int AREA = 5;
+    //static final int TIME = ; GET FROM ITEM MAIN
 
     /**
      * constructor
@@ -21,10 +21,10 @@ public class Sterilisation extends Item{
      */
     public void sterilize() {
 
-        rats = findRats(this.AREA, this.AREA);//find rats needs coords
+        Arraylist<Rat> rats = findRats(itemLocation, AREA);
 
         for (int i = 0; i < rats.size(); i++) {
-            Rat rat = rats(i);
+            Rat rat = rats.get(i);
             rat.sterilise();
         }
 

@@ -13,8 +13,8 @@ public class SexChangeMale extends Item{
      * @param r Rat to change gender
      */
     public void changeSex(Rat rat) {
-        if (rat.getSex() == RatSex.MALE) {
-        	rat.changeSex(RatSex.MALE);
+        if (rat.getSex() == MALE) {
+        	rat.changeSex(FEMALE);
         }
     }
 
