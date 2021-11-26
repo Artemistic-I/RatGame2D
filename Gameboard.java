@@ -99,7 +99,7 @@ public class Gameboard {
     	return ratKillPoints + timePoints;
     }
     
-    public double calculateWinLose() {
+    public static double calculateWinLose() {
     	return (double) numLivingRats / (double) ratPopulationToLose;
     }
     public static int getHeight() {

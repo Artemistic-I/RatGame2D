@@ -49,7 +49,7 @@ public class Main extends Application {
 		System.out.println("It's working...(Just for testing)");
 		RatManager.updateRats(gameBoardCanvasController.getCanvas());
 		
-		gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose()); // # Is gameboard going to be static or will we create one for each playthrough?
+		gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 	}
 
 	private Pane buildGUI() {
