@@ -123,7 +123,7 @@ import javafx.stage.Stage;
 
 		@FXML
 		void onSubmitBtnClick(ActionEvent event) throws IOException {
-			Gameboard level1 = new Gameboard("levels/level1.txt");
+			Gameboard.generateBoard("levels/level1.txt");
 
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/gameBoard.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();

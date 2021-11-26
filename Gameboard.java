@@ -3,25 +3,25 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Gameboard {
-    private int boardHeight;
-    private int boardWidth;
-    private int ratPopulationToLose;
-    private int levelCompletionTime;
-    private int numLivingRats;
-    private int tileSize;           //I assumed each tile is a square
-    private Tile[][] board;
-    private PlayerProfile currentPlayer;
+    private static int boardHeight;
+    private static int boardWidth;
+    private static int ratPopulationToLose;
+    private static int levelCompletionTime;
+    private static int numLivingRats;
+    private static int tileSize;           //I assumed each tile is a square
+    private static Tile[][] board;
+    private static PlayerProfile currentPlayer;
 
-    public Gameboard(String filename){
+/*    public Gameboard(String filename){ //I am gonna leave the constructor for now just in case
         try {
             board = generateBoard(filename);
         } catch (FileNotFoundException e) {
             System.out.println("Could not find " + filename);
             System.exit(0);
         }
-    }
+    }*/
     //load tiles from the file describing the level ()
-    private Tile[][] generateBoard(String filename) throws FileNotFoundException {
+    public static void generateBoard(String filename) throws FileNotFoundException {
         File inputfile = new File(filename);
         Scanner in = null;
         try {
@@ -34,16 +34,16 @@ public class Gameboard {
         //read first line
         if (in.hasNext()) {
             line = new Scanner(in.nextLine());
-            this.boardWidth = line.nextInt();
-            this.boardHeight = line.nextInt();
+            boardWidth = line.nextInt();
+            boardHeight = line.nextInt();
             board = new Tile[boardHeight][boardWidth];
             line.close();
         }
         //read second line
         if (in.hasNext()) {
             line = new Scanner(in.nextLine());
-            this.ratPopulationToLose = in.nextInt();
-            this.levelCompletionTime = in.nextInt();
+            ratPopulationToLose = in.nextInt();
+            levelCompletionTime = in.nextInt();
         }
         //third line is skipped because it is irrelevant for Gameboard.
         if (in.hasNext()) {
@@ -75,7 +75,6 @@ public class Gameboard {
         line.close();
         in.close();
         System.out.println("Gameboard created");
-        return board;
     }
     private Tile createTile(String tileType, int rat){
         if (tileType.equalsIgnoreCase("G")) {
@@ -107,13 +106,13 @@ public class Gameboard {
     	return (double) numLivingRats / (double) ratPopulationToLose;
     }
     public int getHeight() {
-        return this.boardHeight;
+        return boardHeight;
     }
     public int getWidth() {
-        return this.boardWidth;
+        return boardWidth;
     }
     public Tile[][] getBoard() {
-        return this.board;
+        return board;
     }
     
 }
