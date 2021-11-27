@@ -21,8 +21,6 @@ import javafx.util.Duration;
 
 public class Main extends Application {
 
-	private static final int WINDOW_WIDTH = 1000;
-	private static final int WINDOW_HEIGHT = 1000;
 	GameBoardCanvasController gameBoardCanvasController;
 	
 	private Timeline tickTimeline; 
@@ -50,10 +48,6 @@ public class Main extends Application {
 		RatManager.updateRats(gameBoardCanvasController.getCanvas());
 		
 		gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
-	}
-
-	private Pane buildGUI() {
-		return new BorderPane();
 	}
 	
 	public static void main(String[] args) {
