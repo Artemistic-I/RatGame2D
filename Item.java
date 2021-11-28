@@ -134,17 +134,71 @@ public abstract class Item{
         int oX = (origin.getTileCoordinates())[0];
         int oY = (origin.getTileCoordinates())[1];
 
+        Tile[][] board = Gameboard.getBoard();
+
         //for bomb
         if (area == 0) {
 
-            //bomberman style
+            //goes right
+            for (int i = oX; i < Gameboard.getWidth(); i++) {
+
+                Tile currentTile = board[i][oY];
+
+                while (currentTile.getInteractable()) {
+
+                    if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                        //Rat r = rat on tile
+                        ratsFound.add(r);
+                }
+
+            }
+
+            //goes left
+            for (int j = oX; j < Gameboard.getWidth(); j--) {
+
+                Tile currentTile = board[j][oY];
+
+                while (currentTile.getInteractable()) {
+
+                    if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                        //Rat r = rat on tile
+                        ratsFound.add(r);
+                }
+
+            }
+
+            //goes up
+            for (int k = oY; k < Gameboard.getWidth(); k++) {
+
+                Tile currentTile = board[oX][k];
+
+                while (currentTile.getInteractable()) {
+
+                    if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                        //Rat r = rat on tile
+                        ratsFound.add(r);
+                }
+
+            }
+
+            //goes down
+            for (int m = oY; m < Gameboard.getWidth(); m--) {
+
+                Tile currentTile = board[oX][m];
+
+                while (currentTile.getInteractable()) {
+
+                    if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
+                        //Rat r = rat on tile
+                        ratsFound.add(r);
+                }
+
+            }
 
         } else {    //for other items
 
             int xBounds[] = {oX - Math.round(area/2), oX + Math.round(area/2)};
             int yBounds[] = {oY - Math.round(area/2), oY + Math.round(area/2)};
-
-            Tile[][] board = Gameboard.getBoard();
 
             //for each column in range of item
             for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
