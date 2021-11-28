@@ -57,7 +57,6 @@
        //countdown in here
     }
 
-    //THIS SHOULD BE IN BOMBERMAN STYLE!!!
     /**
     * method to find items placed on map to destroy
      * @param origin Location of item
@@ -72,34 +71,73 @@
 
        Tile[][] board = Gameboard.getBoard();
 
+       //goes right
        for (int i = oX; i < Gameboard.getWidth(); i++) {
 
-          Tile currentTile = board[][];
+          Tile currentTile = board[i][oY];
 
-          while () {
+          while (currentTile.getInteractable()) {
 
-          }
+             if (currentTile.conatinsItem()) { //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
 
-       }
-
-       /**
-       int xBounds[] = {oX - area/2, oX + Math.round(area/2)};
-       int yBounds[] = {oY - area/2, oY + Math.round(area/2)};
-
-       Tile[][] board = Gameboard.getGameboard();
-
-       //for each column in range of item
-       for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
-          //for each tile in column
-          for (int j = yBounds[0]; i < (yBounds[1] + 1); i++) {
-             Tile currentTile = board[i][j];
-             if (currentTile.containsItem) {  //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
                 //Item item = item on tile
                 itemsFound.add(item);
+
              }
           }
+
        }
-        */
+
+       //goes left
+       for (int j = oX; j < Gameboard.getWidth(); j--) {
+
+          Tile currentTile = board[j][oY];
+
+          while (currentTile.getInteractable()) {
+
+             if (currentTile.conatinsItem()) { //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
+
+                //Item item = item on tile
+                itemsFound.add(item);
+
+             }
+          }
+
+       }
+
+       //goes up
+       for (int k = oY; k < Gameboard.getWidth(); k++) {
+
+          Tile currentTile = board[oX][k];
+
+          while (currentTile.getInteractable()) {
+
+             if (currentTile.conatinsItem()) { //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
+
+                //Item item = item on tile
+                itemsFound.add(item);
+
+             }
+          }
+
+       }
+
+       //goes down
+       for (int m = oY; m < Gameboard.getWidth(); m--) {
+
+          Tile currentTile = board[oX][m];
+
+          while (currentTile.getInteractable()) {
+
+             if (currentTile.conatinsItem()) { //obviously this has to be changed but couldn't see how to identify whether an item is on a tile
+
+                //Item item = item on tile
+                itemsFound.add(item);
+
+             }
+          }
+
+       }
 
        return itemsFound;
     }
