@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 
-public class Tile {
+public abstract class Tile {
+	
+	private Image tileGraphic;
     
     private int width, height;
     // co-ordinate of tile position on gameboard
@@ -14,9 +17,8 @@ public class Tile {
     // index 0 = North, index 3 = West
     Tile[] adjacentTiles = new Tile[4];
 
-    public Tile(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public Tile(Image tileGraphic) {
+    	this.tileGraphic = tileGraphic;
     }
 
     public int[] getSizeOfTile() {
@@ -113,5 +115,9 @@ public class Tile {
 
     public void setTileCoordinates(int[] tileCoordinates) {
         this.tileCoordinates = tileCoordinates;
+    }
+    
+    public Image getTileGraphic() {
+    	return this.tileGraphic;
     }
 }

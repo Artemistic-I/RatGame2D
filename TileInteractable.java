@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import javafx.scene.image.Image;
+
 public class TileInteractable extends Tile {
 
     private boolean isHidden;
@@ -10,12 +12,12 @@ public class TileInteractable extends Tile {
     // // stores a list of items currently on tile
     // private ArrayList<Item> itemOnTile;
 
-    public TileInteractable(int width, int height) {
-        super(width, height);
-        setInteractable(true);
-    }
+    public TileInteractable(Image tileGraphic) {
+    	super(tileGraphic);
+    	setInteractable(true);
+	}
 
-    public void setIsHidden(boolean isHidden) {
+	public void setIsHidden(boolean isHidden) {
         this.isHidden = isHidden;
     }
 
