@@ -37,7 +37,7 @@ public class Main extends Application {
 		tickTimeline.play();
 		
 		gameBoardCanvasController.drawGame();
-		Gameboard.generateBoard("src/levels/level1.txt"); // # testing
+		Gameboard.generateBoard("levels/level1.txt"); // # testing
 		Gameboard.drawGameboard(gameBoardCanvasController.getCanvas()); // # testing
 		
 		//primaryStage.setScene(new Scene(root));
