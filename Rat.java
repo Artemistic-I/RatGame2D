@@ -9,11 +9,10 @@ public class Rat {
     private RatMaturity ratMaturity;
     private Boolean isPregnant;
     private Boolean isSterile;
-    private int colour;
     private TileInteractable tileTheRatIsOn;
     private String direction;
 
-    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, int colour, TileInteractable tileTheRatIsOn, String direction) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
