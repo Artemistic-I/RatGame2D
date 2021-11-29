@@ -24,21 +24,21 @@ public class ItemMain {
     int deathRatAmount = 0;
     int sterilisationAmount = 0;
 
-    private item getBomb() {return Bomb();}
+    private Item getBomb() {return Bomb();}
 
-    private item getGas(){return Gas();}
+    private Item getGas(){return Gas();}
 
-    private item getPoison(){return Poison();}
+    private Item getPoison(){return Poison();}
 
-    private item getSexChangeFemale(){return SexChangeFemale();}
+    private Item getSexChangeFemale(){return SexChangeFemale();}
 
-    private item getSexChangeMale(){return SexChangeMale();}
+    private Item getSexChangeMale(){return SexChangeMale();}
 
-    private item getNoEntry(){return NoEntry();}
+    private Item getNoEntry(){return NoEntry();}
 
-    private item getDeathRat(){return DeathRat();}
+    private Item getDeathRat(){return DeathRat();}
 
-    private item getSterilisation(){return Sterilisation();}
+    private Item getSterilisation(){return Sterilisation();}
 
 
     public void setBomb(Item bomb){Bomb()= bomb;}
@@ -57,14 +57,14 @@ public class ItemMain {
 
     public void setSterilise(Item sterilise){Sterilisation()= sterilise;}
 
-    inventory[0][0]= Item Bomb();
-    inventory[1][0]= Item Gas();
-    inventory[2][0]= Item Poison();
-    inventory[3][0]= Item SexChangeFemale();
-    inventory[4][0]= Item SexChangeMale();
-    inventory[5][0]= Item NoEntry();
-    inventory[6][0]= Item DeathRat();
-    inventory[7][0]= Item Sterilisation();
+    inventory[0][0] = Item Bomb();      //could you explain what this is doing please
+    inventory[1][0] = Item Gas();
+    inventory[2][0] = Item Poison();
+    inventory[3][0] = Item SexChangeFemale();
+    inventory[4][0] = Item SexChangeMale();
+    inventory[5][0] = Item NoEntry();
+    inventory[6][0] = Item DeathRat();
+    inventory[7][0] = Item Sterilisation();
 
 
 
@@ -143,8 +143,9 @@ public class ItemMain {
 
 
     }
+    /**
     //loop to remove items from inventory
-    for(gb.numLivingRats > 0){
+    for(gb.getNumLivingRats() > 0){
         if (Bomb().****isUsed****){
             inventory[0][1] -= 1];
         }
@@ -171,6 +172,39 @@ public class ItemMain {
         }
 
     }
+     */
+
+    //public remove item method as there is no isUsed attribute in item class
+    public void removeItem(Item item) {
+
+        switch (shortcutKey) {
+            case 112://bomb
+                inventory[0][1] -= 1;
+                break;
+            case 114://gas
+                inventory[1][1] -= 1;
+                break;
+            case 115://no entry
+                inventory[5][1] -= 1;
+                break;
+            case 116://poison
+                inventory[2][1] -= 1;
+                break;
+            case 117://f to m
+                inventory[3][1] -= 1;
+                break;
+            case 118://m to f
+                inventory[4][1] -= 1;
+                break;
+            case 119://sterilize
+                inventory[7][1] -= 1;
+                break;
+            case 113://death rat
+                inventory[6][1] -= 1;
+                break;
+        }
+
+    }
 
     //loop to see how much time to add to the item counter
     public int findTimer(int Timer) {
@@ -190,4 +224,51 @@ public class ItemMain {
             itemTimer = 5;
         }
     }
+
+    /**
+     * method for rat making contact with item
+     * @param rat Rat for which actions are to be performed upon
+     */
+    public void ratContact(Rat rat) {
+
+        setAffectedRat(rat);
+        setTouchStatus(true);
+
+        //triggers correct method depending on type of item denoted by shortcut key
+        switch (shortcutKey) {
+            case 112://bomb
+                detonate();
+                break;
+            case 114://gas
+                expand();
+                break;
+            case 115://no entry
+                changeDirection(getAffectedRat());
+                degradeHealth();
+                setTouchStatus(false);
+                break;
+            case 116://poison
+                killRat(getAffectedRat());
+                removeItem();
+                break;
+            case 117://f to m
+                changeSex(getAffectedRat());
+                removeItem();
+                break;
+            case 118://m to f
+                changeSex(getAffectedRat());
+                removeItem();
+                break;
+            case 119://sterilize
+                sterilize();
+                removeItem();
+                break;
+            case 113://death rat
+                killRat(getAffectedRat());
+                ratCounter();
+                break;
+        }
+
+    }
+
 }

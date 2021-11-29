@@ -76,52 +76,6 @@ public class Item{
     }
 
     /**
-     * method for rat making contact with item
-     * @param rat Rat for which actions are to be performed upon
-     */
-    public void ratContact(Rat rat) {
-
-        setAffectedRat(rat);
-        setTouchStatus(true);
-
-        //triggers correct method depending on type of item denoted by shortcut key
-        switch (shortcutKey) {
-            case 112://bomb
-                detonate();
-                break;
-            case 114://gas
-                expand();
-                break;
-            case 115://no entry
-                changeDirection(getAffectedRat());
-                degradeHealth();
-                setTouchStatus(false);
-                break;
-            case 116://poison
-                killRat(getAffectedRat());
-                removeItem();
-                break;
-            case 117://f to m
-                changeSex(getAffectedRat());
-                removeItem();
-                break;
-            case 118://m to f
-                changeSex(getAffectedRat());
-                removeItem();
-                break;
-            case 119://sterilize
-                sterilize();
-                removeItem();
-                break;
-            case 113://death rat
-                killRat(getAffectedRat());
-                ratCounter();
-                break;
-        }
-
-    }
-
-    /**
      * method to find rats to kill/affect
      * @param origin Tile to start looking for rats from (where item is placed)
      * @param area Area in which rats should be found
@@ -216,12 +170,4 @@ public class Item{
         return ratsFound;
     }
 
-    /**
-     * method to remove item once used
-     */
-    public void removeItem() {
-        //remove this item
-        //look in item main
-        itemMain.removeItem();
-    }
 }
