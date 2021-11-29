@@ -61,7 +61,7 @@ public class Rat {
         } else {
         	babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, 7, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex(RatSex targetSex) {
@@ -93,10 +93,6 @@ public class Rat {
 
     public Boolean getIsSterile() {
         return this.isSterile;
-    }
-
-    public int getColour() {
-        return this.colour;
     }
 
     public String getDirection() {
