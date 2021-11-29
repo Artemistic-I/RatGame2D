@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+import java.util.Random;
+import javafx.scene.canvas.Canvas;
+
 public class DeathRat extends LethalItem {
 
  static final int SHORTCUT_KEY = 113; //bound to F2
  private int ratsKilled = 0;
+ private String direction;
 
  /**
-  * constructor method
+  * constructor
   */
  public DeathRat() {
 
-  super(this.SHORTCUT_KEY);
+  super(SHORTCUT_KEY);
 
  }
 
@@ -22,7 +27,32 @@ public class DeathRat extends LethalItem {
   if (this.ratsKilled == 5) {
    this.removeItem();
   }
-
  }
+
+ //copied from rat class
+ public void update(Canvas canvas) {
+  this.move();
+  this.draw(canvas);
+ }
+
+ private void move() {
+
+  Tile currentTile = getItemLoc();
+
+  ArrayList<String> possibleMoves = currentTile.possibleMoves();
+  if (possibleMoves.contains(direction)) {
+   currentTile = (TileInteractable) currentTile.getAdjacentTile(direction);
+  } else {
+   Random rand = new Random();
+   this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
+   currentTile = (TileInteractable) currentTile.getAdjacentTile(direction);
+  }
+ }
+
+ private void draw(Canvas canvas) {
+// # TODO Auto-generated method stub
+ }
+
+
 
 }
