@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,7 +15,8 @@ public class Rat {
     private Boolean isSterile;
     private TileInteractable tileTheRatIsOn;
     private String direction;
-    private Image ratGraphic = new Image("images/uglyBabyRat.png"); // # just for testing
+    private Image ratGraphic;
+    private Timer maturityTimer;
 
     public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
@@ -22,7 +25,24 @@ public class Rat {
         this.isSterile = false;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
-    } // # When the rat is created it needs to be added to the arraylist in RatManager
+        if (ratMaturity == RatMaturity.ADULT) {
+        		ratGraphic = ratSex.getGraphic();
+        } else {
+        	ratGraphic = ratMaturity.getGraphic();
+        	maturityTimer = new Timer(); 
+        	maturityTimer.schedule(new TimerTask() {
+        		  @Override
+        		  public void run() {
+        		    mature();
+        		  }
+        		}, 20*1000); // @aes remember to remove magic number
+        }
+    }
+    
+    private void mature() {
+    	ratMaturity = RatMaturity.ADULT;
+    	ratGraphic = ratSex.getGraphic();
+    }
 
     public void update(Canvas canvas) {
     	this.move();
@@ -61,7 +81,7 @@ public class Rat {
         } else {
         	babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, 7, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex(RatSex targetSex) {
@@ -93,10 +113,6 @@ public class Rat {
 
     public Boolean getIsSterile() {
         return this.isSterile;
-    }
-
-    public int getColour() {
-        return this.colour;
     }
 
     public String getDirection() {
