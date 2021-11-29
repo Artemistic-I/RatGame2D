@@ -13,7 +13,7 @@ public class Rat {
     private Boolean isSterile;
     private TileInteractable tileTheRatIsOn;
     private String direction;
-    private Image ratGraphic = new Image("images/uglyBabyRat.png"); // # just for testing
+    private Image ratGraphic;
 
     public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
@@ -22,7 +22,16 @@ public class Rat {
         this.isSterile = false;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
-    } // # When the rat is created it needs to be added to the arraylist in RatManager
+        if (ratMaturity == RatMaturity.ADULT) {
+        	if (ratSex == RatSex.MALE) {
+        		ratGraphic = new Image("images/MaleRat.png");
+        	} else {
+        		ratGraphic = new Image("images/FemaleRat.png");
+        	}
+        } else {
+        	ratGraphic = new Image("images/uglyBabyRat.png");
+        }
+    }
 
     public void update(Canvas canvas) {
     	this.move();
