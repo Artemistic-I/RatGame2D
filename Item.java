@@ -6,7 +6,7 @@ import java.Math;
  * @author Josh & Mike
  * @version 1.0
  */
-public abstract class Item{
+public class Item{
 
     //key to select item from menu
     protected int shortcutKey;

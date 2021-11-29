@@ -8,14 +8,23 @@ import java.util.Random;
  */
 public class ItemMain {
 
-    Item inventory[][] = new Item[8][2];
+    Object[][] inv = new Object[8][2];
+    Item i = new Item();
     Random rand = new Random();
     private final int MAX_ITEM = 4;
     GameFileManager g = new GameFileManager();
     Gameboard gb = new Gameboard();
     int itemTimer = 0;
+    int bombAmount = 0;
+    int gasAmount = 0;
+    int poisonAmount = 0;
+    int sexChFeAmount = 0;
+    int sexChMaAmount = 0;
+    int noEntryAmount = 0;
+    int deathRatAmount = 0;
+    int sterilisationAmount = 0;
 
-    private item getBomb() { return Bomb();}
+    private item getBomb() {return Bomb();}
 
     private item getGas(){return Gas();}
 
@@ -65,58 +74,66 @@ public class ItemMain {
             int randomItem = nextInt(8);
             switch (randomItem) {
                 case 0:
-                    if(inventory[0][1] < MAX_ITEM){
-                        inventory[0][1] += 1];
-                        findTimer;
+                    if(bombAmount < MAX_ITEM){
+                        bombAmount +=1;
+                        inv[0][1] = bombAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 1:
-                    if(inventory[1][1]< MAX_ITEM){
-                        inventory[1][1] += 1];
-                        findTimer;
+                    if(gasAmount< MAX_ITEM){
+                        gasAmount +=1;
+                        inv[1][1] = gasAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 2:
-                    if(inventory[2][1]< MAX_ITEM){
-                        inventory[2][1] += 1];
-                        findTimer;
+                    if(poisonAmount< MAX_ITEM){
+                        poisonAmount +=1;
+                        inv[2][1] = poisonAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 3:
-                    if(inventory[3][1]< MAX_ITEM){
-                        inventory[3][1] += 1];
-                        findTimer;
+                    if(sexChFeAmount< MAX_ITEM){
+                        sexChFeAmount +=1;
+                        inv[3][1] = sexChFeAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 4:
-                    if(inventory[4][1]< MAX_ITEM){
-                        inventory[4][1] += 1];
-                        findTimer;
+                    if(sexChMaAmount< MAX_ITEM){
+                        sexChMaAmount +=1;
+                        inv[4][1] = sexChMaAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 5:
-                    if(inventory[5][1]< MAX_ITEM){
-                        inventory[5][1] += 1];
-                        findTimer;
+                    if(noEntryAmount< MAX_ITEM){
+                        noEntryAmount +=1;
+                        inv[5][1] = noEntryAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 6:
-                    if(inventory[6][1]< MAX_ITEM){
-                        inventory[6][1] += 1];
-                        findTimer;
+                    if(deathRatAmount< MAX_ITEM){
+                        deathRatAmount +=1;
+                        inv[6][1] = deathRatAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 7:
-                    if(inventory[7][1]< MAX_ITEM){
-                        inventory[7][1] += 1];
-                        findTimer;
+                    if(sterilisationAmount< MAX_ITEM){
+                        sterilisationAmount +=1;
+                        inv[7][1] = sterilisationAmount;
+                        findTimer(itemTimer);
                     } else {
                         break;
                     }
