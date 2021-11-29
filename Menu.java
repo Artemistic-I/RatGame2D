@@ -24,6 +24,8 @@ import javafx.stage.Stage;
 	 */
 	@SuppressWarnings("unused")
 	public class Menu implements Initializable {
+		
+		private GameBoardCanvasController gameBoardCanvasController;
 
 		private Parent root;
 		private Scene scene;
@@ -123,9 +125,13 @@ import javafx.stage.Stage;
 
 		@FXML
 		void onSubmitBtnClick(ActionEvent event) throws IOException {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
+			Parent root = (Parent)fxmlLoader.load();          
+			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.generateBoard("levels/level1.txt");
+			Gameboard.drawGameboard(gameBoardCanvasController.getCanvas());
 
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/gameBoard.fxml"));
+			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);

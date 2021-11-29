@@ -28,29 +28,22 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));	
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
-		Parent gameBoard = (Parent)fxmlLoader.load();          
-		gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
+		//tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
+		//tickTimeline.setCycleCount(Animation.INDEFINITE);
+		//tickTimeline.play();
 		
-		tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
-		tickTimeline.setCycleCount(Animation.INDEFINITE);
-		tickTimeline.play();
+
 		
-		gameBoardCanvasController.drawGame();
-		Gameboard.generateBoard("levels/level1.txt"); // # testing
-		Gameboard.drawGameboard(gameBoardCanvasController.getCanvas()); // # testing
-		
-		//primaryStage.setScene(new Scene(root));
-		primaryStage.setScene(new Scene(gameBoard)); // # testing
+		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 	}
 	
-	private void tick() {
-		System.out.println("It's working...(Just for testing)");
-		RatManager.updateRats(gameBoardCanvasController.getCanvas());
-		
-		gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
-	}
+	//private void tick() {
+	//	System.out.println("It's working...(Just for testing)");
+	//	RatManager.updateRats(gameBoardCanvasController.getCanvas());
+	//	
+	//	gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
+	//}
 	
 	public static void main(String[] args) {
 		launch(args);
