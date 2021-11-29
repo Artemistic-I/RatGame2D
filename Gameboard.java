@@ -78,9 +78,39 @@ public class Gameboard {
         }
         line.close();
         in.close();
+        
+        addAdjacentTiles();
+        
         System.out.println("Gameboard created");
     }
-    private static Tile createTile(String tileType, int ratIndex){
+    private static void addAdjacentTiles() {
+    	for (int i=0; i<board.length; i++) {
+    		for (int j=0; j<board[i].length; j++) {
+    			if (j+1 < board.length) {
+    				board[j][i].setNorthTile(board[j+1][i]);
+    			} else {
+    				board[j][i].setNorthTile(null);
+    			}
+    			if (0 <= j-1) {
+    				board[j][i].setSouthTile(board[j-1][i]);
+    			} else {
+    				board[j][i].setSouthTile(null);
+    			}
+    			if (i+1 < board[j].length) {
+    				board[j][i].setEastTile(board[j][i+1]);
+    			} else {
+    				board[j][i].setEastTile(null);
+    			}
+    			if (0 <= i-1) {
+    				board[j][i].setWestTile(board[j][i-1]);
+    			} else {
+    				board[j][i].setWestTile(null);
+    			}
+    		}
+    	}
+	
+    }
+	private static Tile createTile(String tileType, int ratIndex){
         final int femaleBabyRat = 1;
         final int maleBabyRat = 2;
         if (tileType.equalsIgnoreCase("G")) {

@@ -4,6 +4,11 @@ import javafx.scene.image.Image;
 public abstract class Tile {
 	
 	private Image tileGraphic;
+	
+	private Tile northTile;
+	private Tile southTile;
+	private Tile eastTile;
+	private Tile westTile;
     
     private int width, height;
     // co-ordinate of tile position on gameboard
@@ -44,57 +49,28 @@ public abstract class Tile {
     public Tile getAdjacentTile(String direction) {
         switch (direction.toLowerCase()) {
             case "north":
-                return this.adjacentTiles[0];
+                return this.northTile;
             case "east":
-                return this.adjacentTiles[1];
+                return this.eastTile;
             case "south":
-                return this.adjacentTiles[2];
+                return this.southTile;
             case "west":
-                return this.adjacentTiles[3];
+                return this.westTile;
         }
         return null;
     }
 
-    private void setAdjacentTiles() {
-        Tile tile;
-        for (int i = 0; i < Gameboard.getHeight(); i++) {
-            for (int j = 0; j < Gameboard.getWidth(); j++) {
-                Tile[][] gameboard = Gameboard.getBoard();
-                tile = gameboard[i][j];
-                for (int x = 0; x < this.adjacentTiles.length; x++) {
-                    switch (x) {
-                        // North
-                        case 0:
-                            try {
-                                this.adjacentTiles[0] = gameboard[i+1][j];
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                return;
-                            }
-                        // East
-                        case 1:
-                            try {
-                                this.adjacentTiles[1] = gameboard[i][j+1];
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                return;
-                            }
-                        // South
-                        case 2:
-                            try {
-                                this.adjacentTiles[2] = gameboard[i-1][j];
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                return;
-                            }
-                        // West
-                        case 3:
-                            try {
-                                this.adjacentTiles[3] = gameboard[i][j-1];
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                return;
-                            }
-                    }
-                }
-            }
-        }
+    public void setNorthTile (Tile northTile) {
+    	this.northTile = northTile;
+    }
+    public void setSouthTile (Tile southTile) {
+    	this.southTile = southTile;
+    }
+    public void setEastTile (Tile eastTile) {
+    	this.eastTile = eastTile;
+    }
+    public void setWestTile (Tile westTile) {
+    	this.westTile = westTile;
     }
 
     public int[] getColour() {
