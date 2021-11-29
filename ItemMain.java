@@ -13,7 +13,7 @@ public class ItemMain {
     private final int MAX_ITEM = 4;
     GameFileManager g = new GameFileManager();
     Gameboard gb = new Gameboard();
-    int itemTimer;
+    int itemTimer = 0;
 
     private item getBomb() { return Bomb();}
 
@@ -32,30 +32,30 @@ public class ItemMain {
     private item getSterilisation(){return Sterilisation();}
 
 
-    public void setBomb(Item bomb){Item Bomb= bomb;}
+    public void setBomb(Item bomb){Bomb()= bomb;}
 
-    public void setGas(Item gas){Item Gas= gas;}
+    public void setGas(Item gas){Gas()= gas;}
 
-    public void setPoison(Item poison){Item Poison= poison;}
+    public void setPoison(Item poison){Poison()= poison;}
 
-    public void setSexChangeFemale(Item SexChF){Item SexChangeFemale= SexChF;}
+    public void setSexChangeFemale(Item SexChF){SexChangeFemale()= SexChF;}
 
-    public void setSexChangeMale(Item SexChM){Item SexChangeMale= SexChM;}
+    public void setSexChangeMale(Item SexChM){SexChangeMale()= SexChM;}
 
-    public void setNoEntry(Item noEntry){Item NoEntry= noEntry;}
+    public void setNoEntry(Item noEntry){NoEntry()= noEntry;}
 
-    public void setDeathRat(Item deathRat){Item DeathRat= deathRat;}
+    public void setDeathRat(Item deathRat){DeathRat()= deathRat;}
 
-    public void setSterilise(Item sterilise){Item Sterilisation= sterilise;}
+    public void setSterilise(Item sterilise){Sterilisation()= sterilise;}
 
-    inventory[0][0]= Item Bomb;
-    inventory[1][0]= Item Gas;
-    inventory[2][0]= Item Poison;
-    inventory[3][0]= Item SexChangeFemale;
-    inventory[4][0]= Item SexChangeMale;
-    inventory[5][0]= Item NoEntry;
-    inventory[6][0]= Item DeathRat;
-    inventory[7][0]= Item Sterilisation;
+    inventory[0][0]= Item Bomb();
+    inventory[1][0]= Item Gas();
+    inventory[2][0]= Item Poison();
+    inventory[3][0]= Item SexChangeFemale();
+    inventory[4][0]= Item SexChangeMale();
+    inventory[5][0]= Item NoEntry();
+    inventory[6][0]= Item DeathRat();
+    inventory[7][0]= Item Sterilisation();
 
 
 
@@ -126,6 +126,36 @@ public class ItemMain {
 
 
     }
+    //loop to remove items from inventory
+    for(gb.numLivingRats > 0){
+        if (Bomb().****isUsed****){
+            inventory[0][1] -= 1];
+        }
+        if (Gas().****isUsed****){
+            inventory[1][1] -= 1];
+        }
+        if (Poison().****isUsed****){
+            inventory[2][1] -= 1];
+        }
+        if (SexChangeFemale().****isUsed****){
+            inventory[3][1] -= 1];
+        }
+        if (SexChangeMale().****isUsed****){
+            inventory[4][1] -= 1];
+        }
+        if (NoEntry().****isUsed****){
+            inventory[5][1] -= 1];
+        }
+        if (DeathRat().****isUsed****){
+            inventory[6][1] -= 1];
+        }
+        if (Sterilisation().****isUsed****){
+            inventory[7][1] -= 1];
+        }
+
+    }
+
+    //loop to see how much time to add to the item counter
     public int findTimer(int Timer) {
         if (g.levelNumber == 1) {
             itemTimer = 10;
