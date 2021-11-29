@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -124,7 +127,7 @@ import javafx.stage.Stage;
 		}
 
 		@FXML
-		void onSubmitBtnClick(ActionEvent event) throws IOException {
+		void onSubmitBtnClick(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
@@ -137,6 +140,10 @@ import javafx.stage.Stage;
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+
+			SoundManager.stopSound();
+			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
+			
 		}
 
 		@FXML
