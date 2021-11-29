@@ -19,7 +19,7 @@ public class TimelineMangaer {
 	private void tick() {
 		System.out.println("It's working...(Just for testing)");
 		Gameboard.drawGameboard(this.canvas);
-	  	//RatManager.updateRats(this.canvas);
+	  	RatManager.updateRats(this.canvas);
 		//gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 	}
 }

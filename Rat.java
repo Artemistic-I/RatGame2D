@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class Rat {
 	
@@ -11,6 +13,7 @@ public class Rat {
     private Boolean isSterile;
     private TileInteractable tileTheRatIsOn;
     private String direction;
+    private Image ratGraphic = new Image("images/uglyBabyRat.png"); // # just for testing
 
     public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
@@ -32,13 +35,14 @@ public class Rat {
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         } else {
             Random rand = new Random();
-            this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size() - 1));
+            this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size()));
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
         }
     }
 
     private void draw(Canvas canvas) {
-        // # TODO Auto-generated method stub
+    	GraphicsContext gc = canvas.getGraphicsContext2D();
+    	gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25);
     }
 
     public Boolean canBreed() {

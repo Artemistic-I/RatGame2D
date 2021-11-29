@@ -72,7 +72,7 @@ public class Gameboard {
         while (in.hasNext() && row < boardHeight) {
             line = new Scanner(in.nextLine());
             for (int column = 0; column < boardWidth; column++) {
-                board[row][column] = createTile(line.next(), ratPositions[row][column]);
+                board[row][column] = createTile(line.next(), ratPositions[row][column], row, column);
             }
             row++;
         }
@@ -110,14 +110,14 @@ public class Gameboard {
     	}
 	
     }
-	private static Tile createTile(String tileType, int ratIndex){
+	private static Tile createTile(String tileType, int ratIndex, int row, int column){
         final int femaleBabyRat = 1;
         final int maleBabyRat = 2;
         if (tileType.equalsIgnoreCase("G")) {
-            Tile grass = new TileGrass();
+            Tile grass = new TileGrass(row, column);
             return grass;
         } else if (tileType.equalsIgnoreCase("T")) {
-            TileInteractable tunnel = new TileTunnel();
+            TileInteractable tunnel = new TileTunnel(row, column);
             if (ratIndex == femaleBabyRat){
                 RatManager.addRat(new Rat(RatSex.FEMALE, RatMaturity.BABY, false, tunnel, "North"));
             } else if (ratIndex == maleBabyRat) {
@@ -125,7 +125,7 @@ public class Gameboard {
             }
             return tunnel;
         } else if (tileType.equalsIgnoreCase("P")) {
-            TileInteractable path = new TilePath();
+            TileInteractable path = new TilePath(row, column);
             if (ratIndex == femaleBabyRat){
                 RatManager.addRat(new Rat(RatSex.FEMALE, RatMaturity.BABY, false, path, "North"));
             } else if (ratIndex == maleBabyRat) {

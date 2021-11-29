@@ -12,8 +12,8 @@ public class TileInteractable extends Tile {
     // // stores a list of items currently on tile
     // private ArrayList<Item> itemOnTile;
 
-    public TileInteractable(Image tileGraphic) {
-    	super(tileGraphic);
+    public TileInteractable(Image tileGraphic, int row, int column) {
+    	super(tileGraphic, row, column);
     	setInteractable(true);
 	}
 

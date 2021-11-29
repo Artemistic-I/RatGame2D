@@ -9,6 +9,9 @@ public abstract class Tile {
 	private Tile southTile;
 	private Tile eastTile;
 	private Tile westTile;
+	
+	private int xCoordinate;
+	private int yCoordinate;
     
     private int width, height;
     // co-ordinate of tile position on gameboard
@@ -22,8 +25,10 @@ public abstract class Tile {
     // index 0 = North, index 3 = West
     Tile[] adjacentTiles = new Tile[4];
 
-    public Tile(Image tileGraphic) {
+    public Tile(Image tileGraphic, int row, int column) {
     	this.tileGraphic = tileGraphic;
+    	this.xCoordinate = row;
+    	this.yCoordinate = column;
     }
 
     public int[] getSizeOfTile() {
@@ -96,4 +101,12 @@ public abstract class Tile {
     public Image getTileGraphic() {
     	return this.tileGraphic;
     }
+
+	public int getxCoordinate() {
+		return xCoordinate;
+	}
+
+	public int getyCoordinate() {
+		return yCoordinate;
+	}
 }
