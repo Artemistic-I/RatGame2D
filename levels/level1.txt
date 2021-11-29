@@ -2,6 +2,7 @@
 13 300
 30 10 5 20
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -18,8 +19,7 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
 G G G G G G G G G G G G G G G G G G G G
@@ -38,7 +38,7 @@ G T G G G P G P T T T T T P G G G G G G
 G T G P P P G G G G T G G P G G G G G G
 G T G P G G G G G G T G G P P P P G G G
 G P P P P G G P P P P G G P G G P P G G
-G G G G P G G P G G G G G P G P G P G G
+G G G G P G G P G G G G G P G G G P G G
 G G G G P P P P G G G G G P G P G P G G
 G G G G G G G P P P P P P P G P P P G G
 G G G G G G G G G G G G G G G G G G G G

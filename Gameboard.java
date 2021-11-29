@@ -80,17 +80,27 @@ public class Gameboard {
         in.close();
         System.out.println("Gameboard created");
     }
-    private static Tile createTile(String tileType, int rat){
+    private static Tile createTile(String tileType, int ratIndex){
+        final int femaleBabyRat = 1;
+        final int maleBabyRat = 2;
         if (tileType.equalsIgnoreCase("G")) {
             Tile grass = new TileGrass();
             return grass;
         } else if (tileType.equalsIgnoreCase("T")) {
-            Tile tunnel = new TileTunnel();
-            //code to insert rats
+            TileInteractable tunnel = new TileTunnel();
+            if (ratIndex == femaleBabyRat){
+                RatManager.addRat(new Rat(RatSex.FEMALE, RatMaturity.BABY, false, tunnel, "North"));
+            } else if (ratIndex == maleBabyRat) {
+                RatManager.addRat(new Rat(RatSex.MALE, RatMaturity.BABY, false, tunnel, "North"));
+            }
             return tunnel;
         } else if (tileType.equalsIgnoreCase("P")) {
-            Tile path = new TilePath();
-            //code to insert rats
+            TileInteractable path = new TilePath();
+            if (ratIndex == femaleBabyRat){
+                RatManager.addRat(new Rat(RatSex.FEMALE, RatMaturity.BABY, false, path, "North"));
+            } else if (ratIndex == maleBabyRat) {
+                RatManager.addRat(new Rat(RatSex.MALE, RatMaturity.BABY, false, path, "North"));
+            }
             return path;
         } else {
             return null;

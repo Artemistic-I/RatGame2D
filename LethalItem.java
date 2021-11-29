@@ -18,7 +18,7 @@ public class LethalItem extends Item{
      * @param rat Rat to be removed
      */
     protected void killRat(Rat rat) {
-        //kill rat in rat manager
+        boolean removed = RatManager.removeRat(rat);
     }
 
 }
