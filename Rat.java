@@ -17,7 +17,6 @@ public class Rat {
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
         this.isSterile = false;
-        this.colour = colour;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
     } // # When the rat is created it needs to be added to the arraylist in RatManager
