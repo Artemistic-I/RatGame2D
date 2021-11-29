@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,6 +16,7 @@ public class Rat {
     private TileInteractable tileTheRatIsOn;
     private String direction;
     private Image ratGraphic;
+    private Timer maturityTimer;
 
     public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
@@ -23,14 +26,22 @@ public class Rat {
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
         if (ratMaturity == RatMaturity.ADULT) {
-        	if (ratSex == RatSex.MALE) {
-        		ratGraphic = new Image("images/MaleRat.png");
-        	} else {
-        		ratGraphic = new Image("images/FemaleRat.png");
-        	}
+        		ratGraphic = ratSex.getGraphic();
         } else {
-        	ratGraphic = new Image("images/uglyBabyRat.png");
+        	ratGraphic = ratMaturity.getGraphic();
+        	maturityTimer = new Timer(); 
+        	maturityTimer.schedule(new TimerTask() {
+        		  @Override
+        		  public void run() {
+        		    mature();
+        		  }
+        		}, 20*1000); // @aes remember to remove magic number
         }
+    }
+    
+    private void mature() {
+    	ratMaturity = RatMaturity.ADULT;
+    	ratGraphic = ratSex.getGraphic();
     }
 
     public void update(Canvas canvas) {
