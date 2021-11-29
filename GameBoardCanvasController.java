@@ -11,6 +11,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
 	Canvas canvas;
+	@FXML
 	ProgressBar winLoseIndicator;
 	
 	public void drawGame() {

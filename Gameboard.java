@@ -2,6 +2,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+
 public class Gameboard {
     private static int boardHeight;
     private static int boardWidth;
@@ -27,6 +30,7 @@ public class Gameboard {
         try {
             in = new Scanner(inputfile);
         } catch (FileNotFoundException e){
+        	System.out.println(inputfile.getAbsolutePath());
             System.out.println("Could not find " + filename);
             System.exit(0);
         }
@@ -78,14 +82,14 @@ public class Gameboard {
     }
     private static Tile createTile(String tileType, int rat){
         if (tileType.equalsIgnoreCase("G")) {
-            Tile grass = new TileGrass(tileSize, tileSize);
+            Tile grass = new TileGrass();
             return grass;
         } else if (tileType.equalsIgnoreCase("T")) {
-            Tile tunnel = new TileTunnel(tileSize, tileSize);
+            Tile tunnel = new TileTunnel();
             //code to insert rats
             return tunnel;
         } else if (tileType.equalsIgnoreCase("P")) {
-            Tile path = new TilePath(tileSize, tileSize);
+            Tile path = new TilePath();
             //code to insert rats
             return path;
         } else {
@@ -110,6 +114,15 @@ public class Gameboard {
     }
     public static Tile[][] getBoard() {
         return board;
+    }
+    
+    public static void drawGameboard(Canvas canvas) {
+    	GraphicsContext gc = canvas.getGraphicsContext2D();
+    	for (int i=0; i<board.length; i++) {
+    		for (int j=0; j<board[i].length; j++) {
+    			gc.drawImage(board[i][j].getTileGraphic(), i*50, j*50);
+    		}
+    	}
     }
     
 }
