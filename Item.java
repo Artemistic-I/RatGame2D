@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 import java.Math;
 
 /**
@@ -39,13 +39,13 @@ public class Item{
      * set status for whether item is touching a rat
      * @param status Whether rat is touching the item
      */
-    private void setTouchStatus(boolean status) { isTouchingRat = status; }
+    public void setTouchStatus(boolean status) { isTouchingRat = status; }
 
     /**
      * method to set rat affected by item
      * @param rat Rat which has contacted item
      */
-    private void setAffectedRat(Rat rat) {
+    public void setAffectedRat(Rat rat) {
         affectedRat = rat;
     }
 
@@ -89,6 +89,7 @@ public class Item{
         int oY = (origin.getTileCoordinates())[1];
 
         Tile[][] board = Gameboard.getBoard();
+        Tile currentTile;
 
         //for bomb
         if (area == 0) {
@@ -96,13 +97,15 @@ public class Item{
             //goes right
             for (int i = oX; i < Gameboard.getWidth(); i++) {
 
-                Tile currentTile = board[i][oY];
+                currentTile = board[i][oY];
 
                 while (currentTile.getInteractable()) {
 
                     if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                         //Rat r = rat on tile
                         ratsFound.add(r);
+                    }
+
                 }
 
             }
@@ -110,13 +113,15 @@ public class Item{
             //goes left
             for (int j = oX; j < Gameboard.getWidth(); j--) {
 
-                Tile currentTile = board[j][oY];
+                currentTile = board[j][oY];
 
                 while (currentTile.getInteractable()) {
 
                     if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                         //Rat r = rat on tile
                         ratsFound.add(r);
+                    }
+
                 }
 
             }
@@ -124,13 +129,15 @@ public class Item{
             //goes up
             for (int k = oY; k < Gameboard.getWidth(); k++) {
 
-                Tile currentTile = board[oX][k];
+                currentTile = board[oX][k];
 
                 while (currentTile.getInteractable()) {
 
                     if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                         //Rat r = rat on tile
                         ratsFound.add(r);
+                    }
+
                 }
 
             }
@@ -138,13 +145,15 @@ public class Item{
             //goes down
             for (int m = oY; m < Gameboard.getWidth(); m--) {
 
-                Tile currentTile = board[oX][m];
+                currentTile = board[oX][m];
 
                 while (currentTile.getInteractable()) {
 
                     if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                         //Rat r = rat on tile
                         ratsFound.add(r);
+                    }
+
                 }
 
             }
@@ -158,7 +167,7 @@ public class Item{
             for (int i = xBounds[0]; i < (xBounds[1] + 1); i++) {
                 //for each tile in column
                 for (int j = yBounds[0]; i < (yBounds[1] + 1); i++) {
-                    Tile currentTile = board[i][j];
+                    currentTile = board[i][j];
                     if (currentTile.containsRat) {  //obviously this has to be changed but couldn't see how to identify whether a rat is on a tile
                         //Rat r = rat on tile
                         ratsFound.add(r);

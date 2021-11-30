@@ -1,5 +1,5 @@
 
-import java.util.Random;
+import java.lang.Math;
 
 /**
  * place in order to keep track of the items and the amount
@@ -8,7 +8,12 @@ import java.util.Random;
  */
 public class ItemMain {
 
-    Object[][] inv = new Object[8][2];
+    /**
+     * item storage
+     */
+    Item[][] inv = new Item[8][4];
+
+    //initialising objects of each class
     Bomb b = new Bomb();
     Gas g = new Gas();
     Poison p = new Poison();
@@ -17,11 +22,12 @@ public class ItemMain {
     NoEntry ne = new NoEntry();
     DeathRat dr = new DeathRat();
     Sterilisation s = new Sterilisation();
-    Random rand = new Random();
+
+    //constant for max of each item
     private final int MAX_ITEM = 4;
-    GameFileManager gfm = new GameFileManager();
-    Gameboard gb = new Gameboard();
+
     int itemTimer = 0;
+
     int bombAmount = 0;
     int gasAmount = 0;
     int poisonAmount = 0;
@@ -31,189 +37,153 @@ public class ItemMain {
     int deathRatAmount = 0;
     int sterilisationAmount = 0;
 
-    inv[0][0] = b.Bomb();
-    inv[1][0] = g.Gas();
-    inv[2][0] = p.Poison();
-    inv[3][0] = scf.SexChangeFemale();
-    inv[4][0] = scm.SexChangeMale();
-    inv[5][0] = ne.NoEntry();
-    inv[6][0] = dr.DeathRat();
-    inv[7][0] = s.Sterilisation();
-
-    private Item getDeathRat(){
-        return dr.DeathRat();
-    }
-
-    private Item getSterilisation(){
-        return s.Sterilisation();
-    }
-
-
-    public void setBomb(Item bomb){
-        b.Bomb()= bomb;
-    }
-
-    public void setGas(Item gas){
-        g.Gas()= gas;
-    }
-
-    public void setPoison(Item poison){
-        p.Poison()= poison;
-    }
-
-    public void setSexChangeFemale(Item SexChF){
-        scf.SexChangeFemale()= SexChF;
-    }
-
-    public void setSexChangeMale(Item SexChM){
-        scm.SexChangeMale()= SexChM;
-    }
-
-    public void setNoEntry(Item noEntry){
-        ne.NoEntry()= noEntry;
-    }
-
-    public void setDeathRat(Item deathRat){
-        dr.DeathRat()= deathRat;
-    }
-
-    public void setSterilise(Item sterilise){
-        s.Sterilisation()= sterilise;
-    }
-
-    //loop to add a Random item to inventory
-    public void addItem(Item item){
+    /**
+     * add a random item to inventory
+     */
+    public void addItem(){
         if (itemTimer == 0) {
-            int randomItem = nextRandom(8);
+            int randomItem = (int) (Math.random() * (8 - 1 + 1) + 1);
             switch (randomItem) {
-                case 0:
-                    if(bombAmount < MAX_ITEM){
-                        bombAmount +=1;
-                        inv[0][1] = bombAmount;
-                        findTimer(itemTimer);
-                    } else {
-                        break;
-                    }
                 case 1:
-                    if(gasAmount< MAX_ITEM){
-                        gasAmount +=1;
-                        inv[1][1] = gasAmount;
+                    if (bombAmount < MAX_ITEM) {
+                        inv[0][bombAmount] = b;
+                        bombAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 2:
-                    if(poisonAmount< MAX_ITEM){
-                        poisonAmount +=1;
-                        inv[2][1] = poisonAmount;
+                    if (gasAmount < MAX_ITEM) {
+                        inv[1][gasAmount] = g;
+                        gasAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 3:
-                    if(sexChFeAmount< MAX_ITEM){
-                        sexChFeAmount +=1;
-                        inv[3][1] = sexChFeAmount;
+                    if (poisonAmount < MAX_ITEM) {
+                        inv[2][gasAmount] = p;
+                        poisonAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 4:
-                    if(sexChMaAmount< MAX_ITEM){
-                        sexChMaAmount +=1;
-                        inv[4][1] = sexChMaAmount;
+                    if (sexChFeAmount < MAX_ITEM) {
+                        inv[3][sexChFeAmount - 1] = scf;
+                        sexChFeAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 5:
-                    if(noEntryAmount< MAX_ITEM){
-                        noEntryAmount +=1;
-                        inv[5][1] = noEntryAmount;
+                    if (sexChMaAmount < MAX_ITEM) {
+                        inv[4][sexChMaAmount] = scm;
+                        sexChMaAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 6:
-                    if(deathRatAmount< MAX_ITEM){
-                        deathRatAmount +=1;
-                        inv[6][1] = deathRatAmount;
+                    if (noEntryAmount < MAX_ITEM) {
+                        inv[5][noEntryAmount] = ne;
+                        noEntryAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
                 case 7:
-                    if(sterilisationAmount< MAX_ITEM){
-                        sterilisationAmount +=1;
-                        inv[7][1] = sterilisationAmount;
+                    if (deathRatAmount < MAX_ITEM) {
+                        inv[6][deathRatAmount] = dr;
+                        deathRatAmount += 1;
                         findTimer(itemTimer);
                     } else {
                         break;
                     }
-
+                case 8:
+                    if (sterilisationAmount < MAX_ITEM) {
+                        inv[7][sterilisationAmount] = s;
+                        sterilisationAmount += 1;
+                        findTimer(itemTimer);
+                    } else {
+                        break;
+                    }
             }
         }
-
-
     }
 
-    //public remove item method as there is no isUsed attribute in item class
+    /**
+     * remove an item from inventory
+     * @param item Item to be removed
+     */
     public void removeItem(Item item) {
+
+        int shortcutKey = item.getSCKey();
 
         switch (shortcutKey) {
             case 112://bomb
                 bombAmount -=1;
-                inv[0][1] = bombAmount;
+                inv[0][bombAmount] = null;
                 break;
             case 114://gas
                 gasAmount -=1;
-                inv[0][1] = gasAmount;
+                inv[1][gasAmount] = null;
                 break;
             case 115://no entry
                 noEntryAmount -=1;
-                inv[0][1] = noEntryAmount;
+                inv[2][noEntryAmount] = null;
                 break;
             case 116://poison
                 poisonAmount -=1;
-                inv[0][1] = poisonAmount;
+                inv[3][poisonAmount] = null;
                 break;
             case 117://f to m
                 sexChMaAmount -=1;
-                inv[0][1] = sexChMaAmount;
+                inv[4][sexChMaAmount] = null;
                 break;
             case 118://m to f
                 sexChFeAmount -=1;
-                inv[0][1] = sexChFeAmount;
+                inv[5][sexChFeAmount] = null;
                 break;
             case 119://sterilize
                 sterilisationAmount -=1;
-                inv[0][1] = sterilisationAmount;
+                inv[6][sterilisationAmount] = null;
                 break;
             case 113://death rat
                 deathRatAmount -=1;
-                inv[0][1] =deathRatAmount;
+                inv[7][deathRatAmount] = null;
+                break;
+        }
+    }
+
+    /**
+     * determine timer for items to arrive depending on level
+     * @param levelNo Level number of current level
+     * @return timer
+     */
+    public int findTimer(int levelNo) {
+
+        //int levelNo = gfm.getLevelNum();
+        int timer = 0;
+
+        switch (levelNo) {
+            case 1:
+                timer = 10;
+                break;
+            case 2:
+                timer = 9;
+                break;
+            case 3:
+                timer = 8;
+                break;
+            case 4:
+                timer = 7;
+                break;
+            case 5:
+                timer = 5;
                 break;
         }
 
-    }
-
-    //loop to see how much time to add to the item counter
-    public int findTimer(int timer) {
-        if (g.levelNumber == 1) {
-            timer = 10;
-        }
-        if (g.levelNumber == 2) {
-            timer = 9;
-        }
-        if (g.levelNumber == 3) {
-            timer = 8;
-        }
-        if (g.levelNumber == 4) {
-            timer = 7;
-        }
-        if (g.levelNumber == 5) {
-            timer = 5;
-        }
         return timer;
     }
 
@@ -221,43 +191,45 @@ public class ItemMain {
      * method for rat making contact with item
      * @param rat Rat for which actions are to be performed upon
      */
-    public void ratContact(Rat rat) {
+    public void ratContact(Rat rat, Item itemInUse) {
 
-        setAffectedRat(rat);
-        setTouchStatus(true);
+        itemInUse.setAffectedRat(rat);
+        itemInUse.setTouchStatus(true);
+
+        int shortcutKey = itemInUse.getSCKey();
 
         //triggers correct method depending on type of item denoted by shortcut key
         switch (shortcutKey) {
             case 112://bomb
-                detonate();
+                itemInUse.detonate();
                 break;
             case 114://gas
-                expand();
+                itemInUse.expand();
                 break;
             case 115://no entry
-                changeDirection(getAffectedRat());
-                degradeHealth();
-                setTouchStatus(false);
+                itemInUse.changeDirection(getAffectedRat());
+                itemInUse.degradeHealth();
+                itemInUse.setTouchStatus(false);
                 break;
             case 116://poison
-                killRat(getAffectedRat());
-                removeItem();
+                itemInUse.killRat(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 117://f to m
-                changeSex(getAffectedRat());
-                removeItem();
+                itemInUse.changeSex(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 118://m to f
-                changeSex(getAffectedRat());
-                removeItem();
+                itemInUse.changeSex(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 119://sterilize
-                sterilize();
-                removeItem();
+                itemInUse.sterilize();
+                removeItem(itemInUse);
                 break;
             case 113://death rat
-                killRat(getAffectedRat());
-                ratCounter();
+                itemInUse.killRat(itemInUse.getAffectedRat());
+                itemInUse.ratCounter();
                 break;
         }
 

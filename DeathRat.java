@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Random;
-import javafx.scene.canvas.Canvas;
 
 public class DeathRat extends LethalItem {
 
