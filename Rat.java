@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -16,7 +13,7 @@ public class Rat {
     private TileInteractable tileTheRatIsOn;
     private String direction;
     private Image ratGraphic;
-    private Timer maturityTimer;
+
     private final int ageWhenMature = 40;
     private int ratAge;
 
@@ -27,7 +24,7 @@ public class Rat {
         this.isSterile = false;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
-        this.ratGraphic = ratMaturity.getGraphic();
+        this.ratGraphic = new Image("images/uglyBabyRat.png");
         this.ratAge = 0;
     }
     
@@ -39,20 +36,16 @@ public class Rat {
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
         this.ratAge = ratAge;
-        if (ratMaturity == RatMaturity.ADULT) {
-            ratGraphic = ratSex.getGraphic();
-        } else {
-            ratGraphic = ratMaturity.getGraphic();
-        }
+        this.updateGraphic();
     }
 
     private void mature() {
         ratMaturity = RatMaturity.ADULT;
-        ratGraphic = ratSex.getGraphic();
+        this.updateGraphic();
     }
 
     public void update(Canvas canvas) {
-    	if (ratMaturity == RatMaturity.BABY && ratAge >= 40) {
+    	if (ratMaturity == RatMaturity.BABY && ratAge >= ageWhenMature) {
     		this.mature();
     	}
     	this.ratAge++;
@@ -101,8 +94,8 @@ public class Rat {
     }
 
     public void Breed() {
-        this.ratGraphic = new Image("images/PregnantRat.png"); // # @aes rethink the images - is putting them in enum really a good idea?
         this.isPregnant = true;
+        this.updateGraphic();
     }
 
     public void giveBirth() {
@@ -119,8 +112,25 @@ public class Rat {
     public void changeSex(RatSex targetSex) {
         if  (this.ratSex != targetSex) {
             this.ratSex = targetSex;
+            this.updateGraphic();
         }
 
+    }
+    
+    private void updateGraphic() {
+    	if (ratMaturity == RatMaturity.ADULT) {
+            if (ratSex == RatSex.FEMALE) {
+            	if (isPregnant) {
+            		this.ratGraphic = new Image("images/PregnantRat.png");
+            	} else {
+            		this.ratGraphic = new Image("images/FemaleRat.png");
+            	}
+            } else {
+            	this.ratGraphic = new Image("images/MaleRat.png");
+            }
+        } else {
+        	this.ratGraphic = new Image("images/uglyBabyRat.png");
+        }
     }
 
     public Tile getLocation() {
