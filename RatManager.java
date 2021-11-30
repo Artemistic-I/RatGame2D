@@ -1,23 +1,20 @@
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javafx.scene.canvas.Canvas;
 
 public class RatManager {
 
-	private static ArrayList<Rat> liveRats = new ArrayList<>();
+	private static CopyOnWriteArrayList<Rat> liveRats = new CopyOnWriteArrayList<>();
+
 	private static int killedRatCount;
 	
 	public static void addRat(Rat ratToAdd) {
 		liveRats.add(ratToAdd);
 	}
 
-	public static Boolean removeRat(Rat ratToRemove) {
-		if (liveRats.remove(ratToRemove)) {
-			killedRatCount++;
-			return true;
-		} else {
-			return false;
-		}
+	public static void removeRat(Rat ratToRemove) {
+		liveRats.remove(ratToRemove);
 	}
 
 	public static int countMaleRats() {
