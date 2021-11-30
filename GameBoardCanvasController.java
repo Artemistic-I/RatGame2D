@@ -1,18 +1,28 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import javafx.scene.input.Dragboard;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.TransferMode;
+import javafx.event.EventHandler;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.image.Image;
 
 public class GameBoardCanvasController implements Initializable {
 
@@ -27,6 +37,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	private Button saveButton;
+	
+	@FXML
+	private ImageView noEntrySignDragable;
 
 	
 	@FXML
@@ -49,40 +62,35 @@ public class GameBoardCanvasController implements Initializable {
 			GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
 			System.exit(0);
 		}
-	public void drawGame() {
-		// Get the Graphic Context of the canvas. This is what we draw on.
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		
-		// Clear canvas
-		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		
-		// Set the background to gray.
-		gc.setFill(Color.RED);
-		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		
-		// Draw row of dirt images
-		// We multiply by the cell width and height to turn a coordinate in our grid into a pixel coordinate.
-		// We draw the row at y value 2.
-				
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-			saveButton.setDisable(true);
-		// Get the Graphic Context of the canvas. This is what we draw on.
-				GraphicsContext gc = canvas.getGraphicsContext2D();
-				
-				// Clear canvas
-				gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-				
-				// Set the background to gray.
-				gc.setFill(Color.GRAY);
-				gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-				// Draw row of dirt images
-				// We multiply by the cell width and height to turn a coordinate in our grid into a pixel coordinate.
-				// We draw the row at y value 2.
+		saveButton.setDisable(true);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		gc.setFill(Color.GRAY);
+		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());				
 		
 	}
+	
+	@FXML
+	void dragNoEntrySignDragable(MouseEvent event) throws IOException {
+		// Mark the drag as started.
+    	// We do not use the transfer mode (this can be used to indicate different forms
+    	// of drags operations, for example, moving files or copying files).
+    	Dragboard db = noEntrySignDragable.startDragAndDrop(TransferMode.ANY);
+    	System.out.println("-----drag event"); // # just for testing
+    	// We have to put some content in the clipboard of the drag event.
+    	// We do not use this, but we could use it to store extra data if we wished.
+        ClipboardContent content = new ClipboardContent();
+        content.putString("Hello");
+        db.setContent(content);
+        
+    	// Consume the event. This means we mark it as dealt with. 
+        event.consume();
+
+	}	
+	
 	
 	public Canvas getCanvas() {
 		return canvas;
