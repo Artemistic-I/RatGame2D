@@ -8,7 +8,11 @@ import java.util.Random;
  */
 public class ItemMain {
 
-    Object[][] inv = new Object[8][2];
+    //inventory - array of items
+    //inv didn't work for some reason
+    Item[][] inventory = new Item[8][2];
+
+    //initialising objects of each class
     Bomb b = new Bomb();
     Gas g = new Gas();
     Poison p = new Poison();
@@ -17,10 +21,13 @@ public class ItemMain {
     NoEntry ne = new NoEntry();
     DeathRat dr = new DeathRat();
     Sterilisation s = new Sterilisation();
+
+    //any limits on the random number??
     Random rand = new Random();
     private final int MAX_ITEM = 4;
     GameFileManager gfm = new GameFileManager();
     Gameboard gb = new Gameboard();
+
     int itemTimer = 0;
     int bombAmount = 0;
     int gasAmount = 0;
@@ -31,7 +38,8 @@ public class ItemMain {
     int deathRatAmount = 0;
     int sterilisationAmount = 0;
 
-    inv[0][0] = b.Bomb();
+    //methods being called dont exist??
+    //e.g. inventory[0][0] = b; - however i'm not certain this is how to add to an array
     inv[1][0] = g.Gas();
     inv[2][0] = p.Poison();
     inv[3][0] = scf.SexChangeFemale();
@@ -40,6 +48,7 @@ public class ItemMain {
     inv[6][0] = dr.DeathRat();
     inv[7][0] = s.Sterilisation();
 
+    //not too sure why we have getters and setters that aren't being used
     private Item getDeathRat(){
         return dr.DeathRat();
     }
@@ -89,7 +98,7 @@ public class ItemMain {
                 case 0:
                     if(bombAmount < MAX_ITEM){
                         bombAmount +=1;
-                        inv[0][1] = bombAmount;
+                        inv[0][1] = bombAmount;//should be set to an item object, not an integer as the array holds items
                         findTimer(itemTimer);
                     } else {
                         break;
@@ -163,7 +172,7 @@ public class ItemMain {
         switch (shortcutKey) {
             case 112://bomb
                 bombAmount -=1;
-                inv[0][1] = bombAmount;
+                inv[0][1] = bombAmount;//see above
                 break;
             case 114://gas
                 gasAmount -=1;
@@ -221,43 +230,45 @@ public class ItemMain {
      * method for rat making contact with item
      * @param rat Rat for which actions are to be performed upon
      */
-    public void ratContact(Rat rat) {
+    public void ratContact(Rat rat, Item itemInUse) {
 
-        setAffectedRat(rat);
-        setTouchStatus(true);
+        itemInUse.setAffectedRat(rat);
+        itemInUse.setTouchStatus(true);
+
+        int shortcutKey = itemInUse.getSCKey();
 
         //triggers correct method depending on type of item denoted by shortcut key
         switch (shortcutKey) {
             case 112://bomb
-                detonate();
+                itemInUse.detonate();
                 break;
             case 114://gas
-                expand();
+                itemInUse.expand();
                 break;
             case 115://no entry
-                changeDirection(getAffectedRat());
-                degradeHealth();
-                setTouchStatus(false);
+                itemInUse.changeDirection(getAffectedRat());
+                itemInUse.degradeHealth();
+                itemInUse.setTouchStatus(false);
                 break;
             case 116://poison
-                killRat(getAffectedRat());
-                removeItem();
+                itemInUse.killRat(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 117://f to m
-                changeSex(getAffectedRat());
-                removeItem();
+                itemInUse.changeSex(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 118://m to f
-                changeSex(getAffectedRat());
-                removeItem();
+                itemInUse.changeSex(itemInUse.getAffectedRat());
+                removeItem(itemInUse);
                 break;
             case 119://sterilize
-                sterilize();
-                removeItem();
+                itemInUse.sterilize();
+                removeItem(itemInUse);
                 break;
             case 113://death rat
-                killRat(getAffectedRat());
-                ratCounter();
+                itemInUse.killRat(itemInUse.getAffectedRat());
+                itemInUse.ratCounter();
                 break;
         }
 
