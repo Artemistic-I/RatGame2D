@@ -35,7 +35,7 @@ public class Rat {
         		  public void run() {
         		    mature();
         		  }
-        		}, 20*1000); // @aes remember to remove magic number
+        		}, 20*1000); // # @aes remember to remove magic number
         }
     }
     
@@ -70,6 +70,7 @@ public class Rat {
     }
 
     public void Breed() {
+    	this.ratGraphic = new Image("images/PregnantRat.png"); // # @aes rethink the images - is putting them in enum really a good idea?
         this.isPregnant = true;
     }
 
