@@ -31,24 +31,18 @@ public class Rat {
         this.ratAge = 0;
     }
     
-    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile,  TileInteractable tileTheRatIsOn, String direction, int ratAge) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
-        this.isSterile = false;
+        this.isSterile = isSterile;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
+        this.ratAge = ratAge;
         if (ratMaturity == RatMaturity.ADULT) {
             ratGraphic = ratSex.getGraphic();
         } else {
             ratGraphic = ratMaturity.getGraphic();
-            maturityTimer = new Timer();
-            maturityTimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    mature();
-                }
-            }, 20*1000); // # @aes remember to remove magic number
         }
     }
 
@@ -119,7 +113,7 @@ public class Rat {
         } else {
             babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex(RatSex targetSex) {
