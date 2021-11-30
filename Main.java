@@ -36,6 +36,7 @@ public class Main extends Application {
 		
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
+		SoundManager.playSound("audio/Spring Field - Godmode.wav");
 	}
 	
 	//private void tick() {
