@@ -62,10 +62,7 @@ public class Rat {
     }
 
     private void move() {
-        ArrayList<String> possibleMoves = new ArrayList<String>();
-        for (int i = 0; i < tileTheRatIsOn.possibleMoves().size(); i++){
-            possibleMoves.add(tileTheRatIsOn.possibleMoves().get(i));
-        }
+        ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
         if (possibleMoves.size() == 1) {
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(turnAround(direction));
             this.direction = turnAround(direction);
