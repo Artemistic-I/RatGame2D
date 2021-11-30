@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Random;
 
 /**
@@ -9,10 +9,17 @@ import java.util.Random;
 public class ItemMain {
 
     Object[][] inv = new Object[8][2];
-    Item i = new Item();
+    Bomb b = new Bomb();
+    Gas g = new Gas();
+    Poison p = new Poison();
+    SexChangeFemale scf = new SexChangeFemale();
+    SexChangeMale scm = new SexChangeMale();
+    NoEntry ne = new NoEntry();
+    DeathRat dr = new DeathRat();
+    Sterilisation s = new Sterilisation();
     Random rand = new Random();
     private final int MAX_ITEM = 4;
-    GameFileManager g = new GameFileManager();
+    GameFileManager gfm = new GameFileManager();
     Gameboard gb = new Gameboard();
     int itemTimer = 0;
     int bombAmount = 0;
@@ -24,54 +31,60 @@ public class ItemMain {
     int deathRatAmount = 0;
     int sterilisationAmount = 0;
 
-    private Item getBomb() {return Bomb();}
+    inv[0][0] = b.Bomb();
+    inv[1][0] = g.Gas();
+    inv[2][0] = p.Poison();
+    inv[3][0] = scf.SexChangeFemale();
+    inv[4][0] = scm.SexChangeMale();
+    inv[5][0] = ne.NoEntry();
+    inv[6][0] = dr.DeathRat();
+    inv[7][0] = s.Sterilisation();
 
-    private Item getGas(){return Gas();}
+    private Item getDeathRat(){
+        return dr.DeathRat();
+    }
 
-    private Item getPoison(){return Poison();}
-
-    private Item getSexChangeFemale(){return SexChangeFemale();}
-
-    private Item getSexChangeMale(){return SexChangeMale();}
-
-    private Item getNoEntry(){return NoEntry();}
-
-    private Item getDeathRat(){return DeathRat();}
-
-    private Item getSterilisation(){return Sterilisation();}
-
-
-    public void setBomb(Item bomb){Bomb()= bomb;}
-
-    public void setGas(Item gas){Gas()= gas;}
-
-    public void setPoison(Item poison){Poison()= poison;}
-
-    public void setSexChangeFemale(Item SexChF){SexChangeFemale()= SexChF;}
-
-    public void setSexChangeMale(Item SexChM){SexChangeMale()= SexChM;}
-
-    public void setNoEntry(Item noEntry){NoEntry()= noEntry;}
-
-    public void setDeathRat(Item deathRat){DeathRat()= deathRat;}
-
-    public void setSterilise(Item sterilise){Sterilisation()= sterilise;}
-
-    inventory[0][0] = Item Bomb();      //could you explain what this is doing please
-    inventory[1][0] = Item Gas();
-    inventory[2][0] = Item Poison();
-    inventory[3][0] = Item SexChangeFemale();
-    inventory[4][0] = Item SexChangeMale();
-    inventory[5][0] = Item NoEntry();
-    inventory[6][0] = Item DeathRat();
-    inventory[7][0] = Item Sterilisation();
+    private Item getSterilisation(){
+        return s.Sterilisation();
+    }
 
 
+    public void setBomb(Item bomb){
+        b.Bomb()= bomb;
+    }
+
+    public void setGas(Item gas){
+        g.Gas()= gas;
+    }
+
+    public void setPoison(Item poison){
+        p.Poison()= poison;
+    }
+
+    public void setSexChangeFemale(Item SexChF){
+        scf.SexChangeFemale()= SexChF;
+    }
+
+    public void setSexChangeMale(Item SexChM){
+        scm.SexChangeMale()= SexChM;
+    }
+
+    public void setNoEntry(Item noEntry){
+        ne.NoEntry()= noEntry;
+    }
+
+    public void setDeathRat(Item deathRat){
+        dr.DeathRat()= deathRat;
+    }
+
+    public void setSterilise(Item sterilise){
+        s.Sterilisation()= sterilise;
+    }
 
     //loop to add a Random item to inventory
-    for(gb.numLivingRats > 0){
+    public void addItem(Item item){
         if (itemTimer == 0) {
-            int randomItem = nextInt(8);
+            int randomItem = nextRandom(8);
             switch (randomItem) {
                 case 0:
                     if(bombAmount < MAX_ITEM){
@@ -143,86 +156,65 @@ public class ItemMain {
 
 
     }
-    /**
-    //loop to remove items from inventory
-    for(gb.getNumLivingRats() > 0){
-        if (Bomb().****isUsed****){
-            inventory[0][1] -= 1];
-        }
-        if (Gas().****isUsed****){
-            inventory[1][1] -= 1];
-        }
-        if (Poison().****isUsed****){
-            inventory[2][1] -= 1];
-        }
-        if (SexChangeFemale().****isUsed****){
-            inventory[3][1] -= 1];
-        }
-        if (SexChangeMale().****isUsed****){
-            inventory[4][1] -= 1];
-        }
-        if (NoEntry().****isUsed****){
-            inventory[5][1] -= 1];
-        }
-        if (DeathRat().****isUsed****){
-            inventory[6][1] -= 1];
-        }
-        if (Sterilisation().****isUsed****){
-            inventory[7][1] -= 1];
-        }
-
-    }
-     */
 
     //public remove item method as there is no isUsed attribute in item class
     public void removeItem(Item item) {
 
         switch (shortcutKey) {
             case 112://bomb
-                inventory[0][1] -= 1;
+                bombAmount -=1;
+                inv[0][1] = bombAmount;
                 break;
             case 114://gas
-                inventory[1][1] -= 1;
+                gasAmount -=1;
+                inv[0][1] = gasAmount;
                 break;
             case 115://no entry
-                inventory[5][1] -= 1;
+                noEntryAmount -=1;
+                inv[0][1] = noEntryAmount;
                 break;
             case 116://poison
-                inventory[2][1] -= 1;
+                poisonAmount -=1;
+                inv[0][1] = poisonAmount;
                 break;
             case 117://f to m
-                inventory[3][1] -= 1;
+                sexChMaAmount -=1;
+                inv[0][1] = sexChMaAmount;
                 break;
             case 118://m to f
-                inventory[4][1] -= 1;
+                sexChFeAmount -=1;
+                inv[0][1] = sexChFeAmount;
                 break;
             case 119://sterilize
-                inventory[7][1] -= 1;
+                sterilisationAmount -=1;
+                inv[0][1] = sterilisationAmount;
                 break;
             case 113://death rat
-                inventory[6][1] -= 1;
+                deathRatAmount -=1;
+                inv[0][1] =deathRatAmount;
                 break;
         }
 
     }
 
     //loop to see how much time to add to the item counter
-    public int findTimer(int Timer) {
+    public int findTimer(int timer) {
         if (g.levelNumber == 1) {
-            itemTimer = 10;
+            timer = 10;
         }
         if (g.levelNumber == 2) {
-            itemTimer = 9;
+            timer = 9;
         }
         if (g.levelNumber == 3) {
-            itemTimer = 8;
+            timer = 8;
         }
         if (g.levelNumber == 4) {
-            itemTimer = 7;
+            timer = 7;
         }
         if (g.levelNumber == 5) {
-            itemTimer = 5;
+            timer = 5;
         }
+        return timer;
     }
 
     /**

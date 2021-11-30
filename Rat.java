@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Rat {
-	
+
     private RatSex ratSex;
     private RatMaturity ratMaturity;
     private Boolean isPregnant;
@@ -26,29 +26,29 @@ public class Rat {
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
         if (ratMaturity == RatMaturity.ADULT) {
-        		ratGraphic = ratSex.getGraphic();
+            ratGraphic = ratSex.getGraphic();
         } else {
-        	ratGraphic = ratMaturity.getGraphic();
-        	maturityTimer = new Timer(); 
-        	maturityTimer.schedule(new TimerTask() {
-        		  @Override
-        		  public void run() {
-        		    mature();
-        		  }
-        		}, 20*1000); // # @aes remember to remove magic number
+            ratGraphic = ratMaturity.getGraphic();
+            maturityTimer = new Timer();
+            maturityTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    mature();
+                }
+            }, 20*1000); // # @aes remember to remove magic number
         }
     }
-    
+
     private void mature() {
-    	ratMaturity = RatMaturity.ADULT;
-    	ratGraphic = ratSex.getGraphic();
+        ratMaturity = RatMaturity.ADULT;
+        ratGraphic = ratSex.getGraphic();
     }
 
     public void update(Canvas canvas) {
-    	this.move();
-    	this.draw(canvas);
+        this.move();
+        this.draw(canvas);
     }
-    
+
     private void move() {
         ArrayList<String> possibleMoves = new ArrayList<String>();
         for (int i = 0; i < tileTheRatIsOn.possibleMoves().size(); i++){
@@ -81,8 +81,8 @@ public class Rat {
     }
 
     private void draw(Canvas canvas) {
-    	GraphicsContext gc = canvas.getGraphicsContext2D();
-    	gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25);
     }
 
     public Boolean canBreed() {
@@ -90,7 +90,7 @@ public class Rat {
     }
 
     public void Breed() {
-    	this.ratGraphic = new Image("images/PregnantRat.png"); // # @aes rethink the images - is putting them in enum really a good idea?
+        this.ratGraphic = new Image("images/PregnantRat.png"); // # @aes rethink the images - is putting them in enum really a good idea?
         this.isPregnant = true;
     }
 
@@ -100,7 +100,7 @@ public class Rat {
         if (rand.nextInt(1) == 0) {
             babyRatSex = RatSex.MALE;
         } else {
-        	babyRatSex = RatSex.FEMALE;
+            babyRatSex = RatSex.FEMALE;
         }
         RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, this.tileTheRatIsOn, this.direction));
     }
@@ -119,9 +119,9 @@ public class Rat {
     public RatSex getSex() {
         return ratSex;
     }
-    
+
     public void sterilise() {
-    	this.isSterile = true;
+        this.isSterile = true;
     }
 
     public RatMaturity getRatMaturity() {
