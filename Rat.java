@@ -30,13 +30,33 @@ public class Rat {
     }
     
     private void move() {
-        ArrayList<String> possibleMoves = tileTheRatIsOn.possibleMoves();
-        if (possibleMoves.contains(direction)) {
-            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
+        ArrayList<String> possibleMoves = new ArrayList<String>();
+        for (int i = 0; i < tileTheRatIsOn.possibleMoves().size(); i++){
+            possibleMoves.add(tileTheRatIsOn.possibleMoves().get(i));
+        }
+        if (possibleMoves.size() == 1) {
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(turnAround(direction));
+            this.direction = turnAround(direction);
         } else {
+            possibleMoves.remove(turnAround(direction));
             Random rand = new Random();
-            this.direction = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(direction);
+            String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
+            this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
+            this.direction = randomDirection;
+        }
+    }
+    private String turnAround(String direction) {
+        switch(direction){
+            case "North":
+                return "South";
+            case "South":
+                return "North";
+            case "West":
+                return "East";
+            case "East":
+                return "West";
+            default:
+                return "";
         }
     }
 
@@ -61,7 +81,7 @@ public class Rat {
         } else {
         	babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, 7, this.tileTheRatIsOn, this.direction));
+        RatManager.addRat(new Rat(babyRatSex, RatMaturity.BABY, false, this.tileTheRatIsOn, this.direction));
     }
 
     public void changeSex(RatSex targetSex) {
