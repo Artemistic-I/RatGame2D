@@ -5,7 +5,7 @@ public class Sterilisation extends Item{
 
     static final int SHORTCUT_KEY = 119; //bound to F8
     static final int AREA = 5;
-    //static final int TIME = ; GET FROM ITEM MAIN
+    static final int TIME = 3;
 
     /**
      * constructor
