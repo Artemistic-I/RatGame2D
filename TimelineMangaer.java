@@ -23,4 +23,10 @@ public class TimelineMangaer {
 	  	RatManager.breedRats();
 		//gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 	}
+	public void stopTime() {
+		tickTimeline.stop();
+	}
+	public void resumeTime() {
+		tickTimeline.play();
+	}
 }

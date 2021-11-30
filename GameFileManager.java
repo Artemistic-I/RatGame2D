@@ -17,7 +17,7 @@ public class GameFileManager {
             for (Rat rat : ratPopulation) {
                 myWriter.append(String.format("%s, %o, %s, %s, %o, %o, %s\n", 
                 rat.getSex(), rat.getRatMaturity(), rat.getIsPregnant(), rat.getIsSterile(), 
-                rat.getColour(), rat.getLocation().getTileCoordinates(), rat.getDirection()));
+                rat.getLocation().getTileCoordinates(), rat.getDirection()));
             }
             myWriter.close();
             // changes file to be read only so it can't be accidentally edited

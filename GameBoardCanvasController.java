@@ -1,19 +1,54 @@
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 
 public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
 	Canvas canvas;
+
 	@FXML
 	ProgressBar winLoseIndicator;
+
+	@FXML
+	private Button pauseButton;
+
+	@FXML
+	private Button saveButton;
+
 	
+	@FXML
+		void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+			if (pauseButton.getText().equals("Pause")) {
+				pauseButton.setText("Resume");
+				Menu.getTimelineManager().stopTime();
+				SoundManager.stopSound();
+				saveButton.setDisable(false);
+			} else {
+				pauseButton.setText("Pause");
+				saveButton.setDisable(true);
+				Menu.getTimelineManager().resumeTime();
+				SoundManager.playSound("audio/Soft Knives - SefChol.wav");
+			}
+		}
+
+		@FXML
+		void saveButtonClicked(ActionEvent event) {
+			GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
+			System.exit(0);
+		}
 	public void drawGame() {
 		// Get the Graphic Context of the canvas. This is what we draw on.
 		GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -33,6 +68,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+			saveButton.setDisable(true);
 		// Get the Graphic Context of the canvas. This is what we draw on.
 				GraphicsContext gc = canvas.getGraphicsContext2D();
 				

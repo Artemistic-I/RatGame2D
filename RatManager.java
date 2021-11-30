@@ -75,4 +75,12 @@ public class RatManager {
 			}
 		}
 	}
+	// A method to connect RatManager to GameFileManager
+	public static Rat[] getRatPopulation() {
+		Rat[] rats = new Rat[liveRats.size()];
+		for (int i = 0; i < liveRats.size(); i++) {
+			rats[i] = liveRats.get(i);
+		}
+		return rats;
+	}
 }

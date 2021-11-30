@@ -34,6 +34,7 @@ import javafx.stage.Stage;
 		private Scene scene;
 		private Stage stage;
 		private Canvas canvas;
+		private static TimelineMangaer timelineManager;
 
 		@FXML
 		private Button loadBtn;
@@ -133,7 +134,7 @@ import javafx.stage.Stage;
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.generateBoard("levels/level1.txt");
 
-			TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController.getCanvas());
+			timelineManager = new TimelineMangaer(gameBoardCanvasController.getCanvas());
 
 			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -207,5 +208,8 @@ import javafx.stage.Stage;
 		public void initialize(URL location, ResourceBundle resources) {
 			// TODO Auto-generated method stub
 			
+		}
+		public static TimelineMangaer getTimelineManager() {
+			return timelineManager;
 		}
 	}
