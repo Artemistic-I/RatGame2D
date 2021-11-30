@@ -17,7 +17,20 @@ public class Rat {
     private String direction;
     private Image ratGraphic;
     private Timer maturityTimer;
+    private final int ageWhenMature = 40;
+    private int ratAge;
 
+    public Rat(RatSex ratSex, TileInteractable tileTheRatIsOn, String direction) {
+        this.ratSex = ratSex;
+        this.ratMaturity = RatMaturity.BABY;
+        this.isPregnant = false;
+        this.isSterile = false;
+        this.tileTheRatIsOn = tileTheRatIsOn;
+        this.direction = direction;
+        this.ratGraphic = ratMaturity.getGraphic();
+        this.ratAge = 0;
+    }
+    
     public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
@@ -45,6 +58,10 @@ public class Rat {
     }
 
     public void update(Canvas canvas) {
+    	if (ratMaturity == RatMaturity.BABY && ratAge >= 40) {
+    		this.mature();
+    	}
+    	this.ratAge++;
         this.move();
         this.draw(canvas);
     }
