@@ -89,7 +89,7 @@ public class Rat {
         }
     }
 
-    private void draw(Canvas canvas) {
+    private void draw(Canvas canvas) { //
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
     }
