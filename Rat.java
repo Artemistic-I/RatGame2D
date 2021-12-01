@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,10 +15,10 @@ public class Rat {
     private TileInteractable tileTheRatIsOn;
     private String direction;
     private Image ratGraphic;
-
     private final int ageWhenMature = 40;
     private int ratAge;
-
+    private int unbornRatsCount;
+    
     public Rat(RatSex ratSex, TileInteractable tileTheRatIsOn, String direction) {
         this.ratSex = ratSex;
         this.ratMaturity = RatMaturity.BABY;
@@ -48,16 +50,19 @@ public class Rat {
     	if (ratMaturity == RatMaturity.BABY && ratAge >= ageWhenMature) {
     		this.mature();
     	}
+    	if (isPregnant && unbornRatsCount != 0) {
+    		this.giveBirth();
+    	} else if (isPregnant && unbornRatsCount == 0) {
+    		this.isPregnant = false;
+            this.updateGraphic();
+    	}
     	this.ratAge++;
         this.move();
         this.draw(canvas);
     }
 
     private void move() {
-        ArrayList<String> possibleMoves = new ArrayList<String>();
-        for (int i = 0; i < tileTheRatIsOn.possibleMoves().size(); i++){
-            possibleMoves.add(tileTheRatIsOn.possibleMoves().get(i));
-        }
+        ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
         if (possibleMoves.size() == 1) {
             this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(turnAround(direction));
             this.direction = turnAround(direction);
@@ -84,9 +89,9 @@ public class Rat {
         }
     }
 
-    private void draw(Canvas canvas) {
+    private void draw(Canvas canvas) { // # @aes why not just pass the graphics context rather that the canvas? Then you don't need to create a new one all the time
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25);
+        gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
     }
 
     public Boolean canBreed() {
@@ -96,17 +101,23 @@ public class Rat {
     public void Breed() {
         this.isPregnant = true;
         this.updateGraphic();
+        this.unbornRatsCount = 3;
     }
-
-    public void giveBirth() {
-        Random rand = new Random();
+    
+    private RatSex randomBabyRatSex() {
+    	Random rand = new Random();
         RatSex babyRatSex;
-        if (rand.nextInt(1) == 0) {
+        if (rand.nextInt(2) == 0) {
             babyRatSex = RatSex.MALE;
         } else {
             babyRatSex = RatSex.FEMALE;
         }
-        RatManager.addRat(new Rat(babyRatSex, this.tileTheRatIsOn, this.direction));
+        return babyRatSex;
+    }
+
+    public void giveBirth() {
+    	RatManager.addRat(new Rat(randomBabyRatSex(), this.tileTheRatIsOn, this.direction));
+    	this.unbornRatsCount--;
     }
 
     public void changeSex(RatSex targetSex) {
@@ -135,6 +146,10 @@ public class Rat {
 
     public Tile getLocation() {
         return this.tileTheRatIsOn;
+    }
+    
+    public void setLocation(TileInteractable tileTheRatIsOn) {
+    	this.tileTheRatIsOn = tileTheRatIsOn;
     }
 
     public RatSex getSex() {

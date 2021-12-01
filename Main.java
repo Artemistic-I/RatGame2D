@@ -27,13 +27,8 @@ public class Main extends Application {
 	
 	//private Timeline tickTimeline; 
 
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws Exception { // # what exception?
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));	
-		
-		//tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
-		//tickTimeline.setCycleCount(Animation.INDEFINITE);
-		//tickTimeline.play();
-		
 
 		Level.getLevels().add(new Level(1, "levels/level1.txt", false));
 		Level.getLevels().add(new Level(2, "levels/level2.txt", false));
@@ -44,12 +39,6 @@ public class Main extends Application {
 		SoundManager.playSound("audio/Spring Field - Godmode.wav");
 	}
 	
-	//private void tick() {
-	//	System.out.println("It's working...(Just for testing)");
-	//	RatManager.updateRats(gameBoardCanvasController.getCanvas());
-	//	
-	//	gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
-	//}
 	
 	public static void main(String[] args) {
 		launch(args);

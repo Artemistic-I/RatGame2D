@@ -4,6 +4,8 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,11 +13,20 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameBoardCanvasController">
    <center>
-      <Canvas fx:id="canvas" height="500.0" width="500.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="500.0" onDragDropped="#canvasDragDropOccured" onDragOver="#canvasDragOver" width="500.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <ProgressBar fx:id="winLoseIndicator" prefWidth="200.0" progress="0.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="72.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="65.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+   </right>
    <left>
       <AnchorPane prefHeight="382.0" prefWidth="89.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,16 +39,55 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </VBox>
+            <ImageView fx:id="bombDragable" fitHeight="56.0" fitWidth="55.0" layoutX="27.0" layoutY="95.0" onDragDetected="#dragBombDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bomb.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="gasDragable" fitHeight="56.0" fitWidth="55.0" layoutX="27.0" layoutY="151.0" onDragDetected="#dragGasDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Gas.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="poisonDragable" fitHeight="56.0" fitWidth="55.0" layoutX="28.0" layoutY="211.0" onDragDetected="#dragPoisonDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Poison.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sexChFeDragable" fitHeight="56.0" fitWidth="55.0" layoutX="39.0" layoutY="279.0" onDragDetected="#dragSexChFeDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/FemaleSexChange.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sexChMaDragable" fitHeight="56.0" fitWidth="55.0" layoutX="28.0" layoutY="348.0" onDragDetected="#dragSexChMaDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/MaleSexChange.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="noEntrySignDragable" fitHeight="40.0" fitWidth="40.0" layoutX="35.0" layoutY="416.0" onDragDetected="#dragNoEntrySignDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/NoEntry.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="deathRatDragable" fitHeight="40.0" fitWidth="40.0" layoutX="35.0" layoutY="469.0" onDragDetected="#dragDeathRatDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/DeathRat.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sterilisationDragable" fitHeight="40.0" fitWidth="40.0" layoutX="35.0" layoutY="522.0" onDragDetected="#dragSterilisationDragable" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Sterillisation.png" />
+               </image>
+            </ImageView>
+            <TextField layoutX="63.0" layoutY="126.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="186.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="254.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="323.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="391.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="444.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="63.0" layoutY="497.0" prefHeight="25.0" prefWidth="25.0" text="1" />
+            <TextField layoutX="60.0" layoutY="550.0" prefHeight="25.0" prefWidth="25.0" text="1" />
          </children>
       </AnchorPane>
    </left>
-   <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="72.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="65.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </VBox>
-   </right>
 </BorderPane>

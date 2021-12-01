@@ -9,11 +9,15 @@ import java.lang.Math;
 public class ItemMain {
 
     /**
-     * item storage
+     * inventory to store items
+     * columns are for amount of different items
+     * rows are for the amount of different items
      */
     Item[][] inv = new Item[8][4];
 
-    //initialising objects of each class
+    /**
+     * import each of the items
+     */
     Bomb b = new Bomb();
     Gas g = new Gas();
     Poison p = new Poison();
@@ -23,11 +27,20 @@ public class ItemMain {
     DeathRat dr = new DeathRat();
     Sterilisation s = new Sterilisation();
 
-    //constant for max of each item
+    /**
+     * constant for the max amount of items
+     */
     private final int MAX_ITEM = 4;
 
+    /**
+     * timer class for adding items
+     * start at 0 to add random item at the start
+     */
     int itemTimer = 0;
 
+    /**
+     * variables to show how many of each item is stored
+     */
     int bombAmount = 0;
     int gasAmount = 0;
     int poisonAmount = 0;
@@ -159,11 +172,11 @@ public class ItemMain {
     /**
      * determine timer for items to arrive depending on level
      * @param levelNo Level number of current level
-     * @return timer
+     * @return timer Timer for items to regenerate
      */
     public int findTimer(int levelNo) {
 
-        //int levelNo = gfm.getLevelNum();
+        //int levelNo = getLevelNum();
         int timer = 0;
 
         switch (levelNo) {
