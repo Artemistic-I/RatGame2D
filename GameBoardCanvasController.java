@@ -180,7 +180,14 @@ public class GameBoardCanvasController implements Initializable {
 	@FXML
 	void canvasDragOver(DragEvent event) {
 		System.out.println("------drag_over"); // # just for testing
-		if (event.getGestureSource() == noEntrySignDragable) {
+		if (event.getGestureSource() == bombDragable || 
+					event.getGestureSource() == gasDragable || 
+					event.getGestureSource() == poisonDragable || 
+					event.getGestureSource() == sexChFeDragable || 
+					event.getGestureSource() == sexChMaDragable || 
+					event.getGestureSource() == noEntrySignDragable || 
+					event.getGestureSource() == deathRatDragable || 
+					event.getGestureSource() == sterilisationDragable) {
 	    	// Mark the drag event as acceptable by the canvas.
     		event.acceptTransferModes(TransferMode.ANY);
 	    	// Consume the event. This means we mark it as dealt with.
