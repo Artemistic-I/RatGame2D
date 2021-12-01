@@ -2,11 +2,10 @@ import javafx.scene.image.Image;
 
 public class TileTunnel extends TileInteractable {
 
+	public static final Image TUNNEL_GRAPHIC = new Image("images/path_v2.png");
+	
     public TileTunnel(int row, int column) {
-    	super(new Image("images/tunnel_v2.png"), row, column);
-        // Dark Brown
-        setColour(158, 107, 30);
-        setIsHidden(true);
+    	super(TUNNEL_GRAPHIC, row, column);
     }
     
 }

@@ -19,8 +19,6 @@ public abstract class Tile {
     // RGB
     // Value between 0 - 255
     private int[] colour = {0,0,0};
-    // determines if a rat/item can interact with the tile
-    private boolean interactable;
     // stores tiles adjecent to itself
     // index 0 = North, index 3 = West
     Tile[] adjacentTiles = new Tile[4];
@@ -78,24 +76,9 @@ public abstract class Tile {
     	this.westTile = westTile;
     }
 
-    public int[] getColour() {
-        return this.colour;
-    }
-
-    public void setInteractable(boolean isInteractable) {
-        this.interactable = isInteractable;
-    }
-
-    public boolean getInteractable() {
-        return this.interactable;
-    }
 
     public int[] getTileCoordinates() {
         return this.tileCoordinates;
-    }
-
-    public void setTileCoordinates(int[] tileCoordinates) {
-        this.tileCoordinates = tileCoordinates;
     }
     
     public Image getTileGraphic() {

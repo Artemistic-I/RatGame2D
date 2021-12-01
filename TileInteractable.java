@@ -4,9 +4,6 @@ import java.util.Random;
 import javafx.scene.image.Image;
 
 public class TileInteractable extends Tile {
-
-    private boolean isHidden;
-    private boolean isMating;
     // stores a list of rats currently on tile
     // private ArrayList<Rat> ratsOnTile;
     // // stores a list of items currently on tile
@@ -16,14 +13,6 @@ public class TileInteractable extends Tile {
     	super(tileGraphic, row, column);
     	setInteractable(true);
 	}
-
-	public void setIsHidden(boolean isHidden) {
-        this.isHidden = isHidden;
-    }
-
-    public boolean getIsHidden() {
-        return this.isHidden;
-    }
 
     public ArrayList<String> possibleMoves() {
         ArrayList <String> moves = new ArrayList<>();
