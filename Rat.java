@@ -89,7 +89,7 @@ public class Rat {
         }
     }
 
-    private void draw(Canvas canvas) { //
+    private void draw(Canvas canvas) { // # @aes why not just pass the graphics context rather that the canvas? Then you don't need to create a new one all the time
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
     }
