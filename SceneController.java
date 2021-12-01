@@ -8,10 +8,10 @@ public class SceneController {
     private Button exitBtn;
 
     @FXML
-    private Button submitBtn;
+    private Button startBtn;
 
     @FXML
-    void onSubmitBtnClick(ActionEvent event) {
+    void onStartBtnClick(ActionEvent event) {
 
     }
 

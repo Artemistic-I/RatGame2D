@@ -3,6 +3,7 @@ import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 	/**
@@ -35,6 +37,8 @@ import javafx.stage.Stage;
 		private Stage stage;
 		private Canvas canvas;
 		private static TimelineMangaer timelineManager;
+		public static Boolean startButtonSwitch = true;
+		
 
 		@FXML
 		private Button loadBtn;
@@ -55,14 +59,15 @@ import javafx.stage.Stage;
 		private Button exitBtn;
 	
 		@FXML
-		private Button submitBtn;
+		private Button startBtn;
 
 		@FXML
-   		private Button backToMenuBtn;
+		private Button backToMenuBtn;
 
 		@FXML
 		private Button addProfBtn;
 
+		
 	    /**
 	     * Handles the Quit button click event
 	     *
@@ -124,15 +129,14 @@ import javafx.stage.Stage;
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-
 		}
 
 		@FXML
-		void onSubmitBtnClick(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+		void onStartBtnClick(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
-			Gameboard.generateBoard("levels/level1.txt");
+			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
 
 			timelineManager = new TimelineMangaer(gameBoardCanvasController.getCanvas());
 
@@ -187,10 +191,13 @@ import javafx.stage.Stage;
 
    		}
 		
+		
 		@FXML
 		void addProfBtnClicked(ActionEvent event) {
 	   
 		}
+
+
 
 	    /**
 	     * Called to initialise a controller after its root element has been completely processed.
@@ -206,8 +213,7 @@ import javafx.stage.Stage;
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			// TODO Auto-generated method stub
-			
+			//startBtn.setDisable(startButtonSwitch);  half baked feature
 		}
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;

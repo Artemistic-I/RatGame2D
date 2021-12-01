@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,7 +25,7 @@ public class Main extends Application {
 
 	GameBoardCanvasController gameBoardCanvasController;
 	
-	private Timeline tickTimeline; 
+	//private Timeline tickTimeline; 
 
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));	
@@ -33,9 +35,12 @@ public class Main extends Application {
 		//tickTimeline.play();
 		
 
-		
+		Level.getLevels().add(new Level(1, "levels/level1.txt", false));
+		Level.getLevels().add(new Level(2, "levels/level2.txt", false));
+		Level.setSelectedLevel(Level.getLevels().get(0));
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
+
 		SoundManager.playSound("audio/Spring Field - Godmode.wav");
 	}
 	
