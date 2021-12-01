@@ -40,28 +40,28 @@ public class GameBoardCanvasController implements Initializable {
 	private Button saveButton;
 	
 	@FXML
-	private ImageView dragBombDragable;
+	private ImageView bombDragable;
 
 	@FXML
-	private ImageView dragGasDragable;
+	private ImageView gasDragable;
 
 	@FXML
-	private ImageView dragPoisonDragable;
+	private ImageView poisonDragable;
 
 	@FXML
-	private ImageView dragSexChFeDragable;
+	private ImageView sexChFeDragable;
 
 	@FXML
-	private ImageView dragSexChMaDragable;
+	private ImageView sexChMaDragable;
 
 	@FXML
 	private ImageView noEntrySignDragable;
 
 	@FXML
-	private ImageView dragDeathRatDragable;
+	private ImageView deathRatDragable;
 
 	@FXML
-	private ImageView dragsterilisationDragable;
+	private ImageView sterilisationDragable;
 
 	@FXML
 		void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -98,55 +98,81 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	void dragBombDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = bombDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("bombDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
 	void dragGasDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = gasDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("gasDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
 	void dragPoisonDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = poisonDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("poisonDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
 	void dragSexChFeDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = sexChFeDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("sexChFeDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
 	void dragSexChMaDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = sexChMaDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("sexChMaDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
 	void dragNoEntrySignDragable(MouseEvent event) throws IOException {
-		// Mark the drag as started.
-		// We do not use the transfer mode (this can be used to indicate different forms
-		// of drags operations, for example, moving files or copying files).
 		Dragboard db = noEntrySignDragable.startDragAndDrop(TransferMode.ANY);
-		System.out.println("-----drag event"); // # just for testing
-		// We have to put some content in the clipboard of the drag event.
-		// We do not use this, but we could use it to store extra data if we wished.
 		ClipboardContent content = new ClipboardContent();
-		content.putString("Hello");
+		content.putString("noEntrySignDragable");
 		db.setContent(content);
-
-		// Consume the event. This means we mark it as dealt with.
 		event.consume();
-
 	}
 
 	@FXML
 	void dragDeathRatDragable(MouseEvent event) throws IOException{
-		im.removeItem
+		//im.removeItem
+		Dragboard db = deathRatDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("deathRatDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
-	void dragsterilisationDragable(MouseEvent event) throws IOException{
-		im.removeItem
+	void dragSterilisationDragable(MouseEvent event) throws IOException{
+		//im.removeItem
+		Dragboard db = sterilisationDragable.startDragAndDrop(TransferMode.ANY);
+		ClipboardContent content = new ClipboardContent();
+		content.putString("sterilisationDragable");
+		db.setContent(content);
+		event.consume();
 	}
 
 	@FXML
