@@ -197,7 +197,13 @@ public class GameBoardCanvasController implements Initializable {
 	@FXML
 	void canvasDragDropOccured(DragEvent event) {
 		System.out.println("------drop"); // # just for testing
-
+		
+		double xCoordinate = event.getX();
+        double yCoordinate = event.getY(); 
+        int xGridRef = (int) xCoordinate / 25;
+        int yGridRef = (int) yCoordinate / 25;
+        Tile droppedOnTile = Gameboard.getBoard()[yGridRef][xGridRef];
+        System.out.println(droppedOnTile);
 		if (event.getGestureSource() == bombDragable) {
 			// # create bomb
 		} else if (event.getGestureSource() == gasDragable) {
