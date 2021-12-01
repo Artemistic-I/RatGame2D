@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
 import javafx.event.EventHandler;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
 import javafx.scene.image.Image;
 
 public class GameBoardCanvasController implements Initializable {
@@ -144,11 +145,26 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragSterilisationDragable(MouseEvent event) throws IOException{
+	void dragsterilisationDragable(MouseEvent event) throws IOException{
 		im.removeItem
 	}
 
-
+	@FXML
+	void canvasDragOver(DragEvent event) {
+		System.out.println("------drag_over"); // # just for testing
+		if (event.getGestureSource() == noEntrySignDragable) {
+	    	// Mark the drag event as acceptable by the canvas.
+    		event.acceptTransferModes(TransferMode.ANY);
+	    	// Consume the event. This means we mark it as dealt with.
+    		event.consume();
+		}
+	}
+	
+	@FXML
+	void canvasDragDropOccured(DragEvent event) {
+		System.out.println("------drop"); // # just for testing
+		event.consume();
+	}
 
 
 	public Canvas getCanvas() {
