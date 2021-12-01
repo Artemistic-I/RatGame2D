@@ -219,35 +219,56 @@ public class ItemMain {
         //triggers correct method depending on type of item denoted by shortcut key
         switch (shortcutKey) {
             case 112://bomb
-                itemInUse.detonate();
+                Bomb bombItem = (Bomb) itemInUse;
+                bombItem.detonate();
+                ArrayList<Item> itemsToBomb = bombItem.getItemsToBomb();
+                for (int i = 0; i < itemsToBomb.size(); i++) {
+                    removeItem(itemsToBomb.get(i));
+                }
+                removeItem(itemInUse);
                 break;
             case 114://gas
-                itemInUse.expand();
+                Gas gasItem = (Gas) itemInUse;
+                gasItem.expand();
                 break;
             case 115://no entry
-                itemInUse.changeDirection(getAffectedRat());
-                itemInUse.degradeHealth();
-                itemInUse.setTouchStatus(false);
+                NoEntry noEntItem = (NoEntry) itemInUse;
+                while (noEntItem.getHealth() != 0) {//while sign is still active
+                    noEntItem.getAffectedRat().changeDirection();//change direction of rat - need a public change direction method
+                    noEntItem.degradeHealth(noEntItem.getHealth());//degrade health
+                    itemInUse.setTouchStatus(false);
+                }
+                removeItem(itemInUse);
                 break;
             case 116://poison
-                itemInUse.killRat(itemInUse.getAffectedRat());
+                Poison poisonItem = (Poison) itemInUse;
+                poisonItem.killRat(poisonItem.getAffectedRat());
                 removeItem(itemInUse);
                 break;
             case 117://f to m
-                itemInUse.changeSex(itemInUse.getAffectedRat());
+                SexChangeFemale fToMItem = (SexChangeFemale) itemInUse;
+                fToMItem.changeSex(fToMItem.getAffectedRat());
                 removeItem(itemInUse);
                 break;
             case 118://m to f
-                itemInUse.changeSex(itemInUse.getAffectedRat());
+                SexChangeMale mToFItem = (SexChangeMale) itemInUse;
+                mToFItem.changeSex(mToFItem.getAffectedRat());
                 removeItem(itemInUse);
                 break;
             case 119://sterilize
-                itemInUse.sterilize();
+                Sterilisation sterilizeItem = (Sterilisation) itemInUse;
+                sterilizeItem.sterilize();
                 removeItem(itemInUse);
                 break;
             case 113://death rat
-                itemInUse.killRat(itemInUse.getAffectedRat());
-                itemInUse.ratCounter();
+                DeathRat dRatItem = (DeathRat) itemInUse;
+                while (dRatItem.getRatsKilled() != 5) {
+                    dRatItem.killRat(itemInUse.getAffectedRat());
+                    dRatItem.incrementRatCounter();
+                }
+                removeItem(itemInUse);
+
+
                 break;
         }
 
