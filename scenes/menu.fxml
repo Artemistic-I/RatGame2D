@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu">
    <children>
-      <Button fx:id="startBtn" layoutX="40.0" layoutY="163.0" mnemonicParsing="false" onAction="#onStartBtnClick" prefHeight="33.0" prefWidth="109.0" text="START" />
+      <Button fx:id="startBtn" layoutX="40.0" layoutY="163.0" mnemonicParsing="false" onAction="#onStartBtnClicked" prefHeight="33.0" prefWidth="109.0" text="START" />
       <Button fx:id="settingsBtn" layoutX="40.0" layoutY="259.0" mnemonicParsing="false" onAction="#settingsBtnClicked" prefHeight="33.0" prefWidth="109.0" text="Settings" />
-      <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="210.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="33.0" prefWidth="109.0" text=" Select level first" />
+      <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="210.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="33.0" prefWidth="109.0" text=" Select level" />
       <Button fx:id="exitBtn" layoutX="40.0" layoutY="468.0" mnemonicParsing="false" onAction="#quitClicked" prefHeight="33.0" prefWidth="109.0" text="Exit" />
       <Button fx:id="profilesBtn" layoutX="40.0" layoutY="307.0" mnemonicParsing="false" onAction="#profilesBtnClicked" prefHeight="33.0" prefWidth="109.0" text="Profiles" />
       <Text layoutX="40.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RATS VS CURSOR: " wrappingWidth="405.46875">

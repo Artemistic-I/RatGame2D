@@ -118,18 +118,18 @@ import javafx.stage.Stage;
 	    public void cmdNewClick(MouseEvent mouseEvent) {
 	        changeScene(Window.SETUP);
 	    }
-
-	
-		public void selectLevelBtnClicked(ActionEvent event) throws IOException {
+		// Select level
+		@FXML
+		void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
 		}
-
+		// Start
 		@FXML
-		void onStartBtnClick(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
@@ -147,7 +147,7 @@ import javafx.stage.Stage;
 			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
 			
 		}
-
+		// Profiles
 		@FXML
 		void profilesBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));
@@ -157,7 +157,7 @@ import javafx.stage.Stage;
 			stage.show();
 
 		}
-
+		// Settings
 		@FXML
 		void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
@@ -168,6 +168,7 @@ import javafx.stage.Stage;
 
 		}	
 
+		// Back to menu
 		@FXML
    		void backToMenuBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
@@ -177,13 +178,11 @@ import javafx.stage.Stage;
 			stage.show();
    		}
 		
-		
+		// Add profile
 		@FXML
 		void addProfBtnClicked(ActionEvent event) {
 	   
 		}
-
-
 
 	    /**
 	     * Called to initialise a controller after its root element has been completely processed.
