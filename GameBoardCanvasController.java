@@ -28,10 +28,10 @@ import javafx.scene.image.Image;
 public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
-	Canvas canvas;
+	private Canvas canvas;
 
 	@FXML
-	ProgressBar winLoseIndicator;
+	private ProgressBar winLoseIndicator;
 
 	@FXML
 	private Button pauseButton;
