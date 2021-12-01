@@ -199,21 +199,21 @@ public class GameBoardCanvasController implements Initializable {
 		System.out.println("------drop"); // # just for testing
 
 		if (event.getGestureSource() == bombDragable) {
-			
+			// # create bomb
 		} else if (event.getGestureSource() == gasDragable) {
-			
+			// # create gas
 		} else if (event.getGestureSource() == poisonDragable) {
-			
+			// # create poison
 		} else if (event.getGestureSource() == sexChFeDragable) {
-	
+			// # create female sex change
 		} else if (event.getGestureSource() == sexChMaDragable) {
-	
+			// # create male sex change
 		} else if (event.getGestureSource() == noEntrySignDragable) {
-	
+			// # create no entry sign
 		} else if (event.getGestureSource() == deathRatDragable) {
-	
+			// # create death rat
 		} else if (event.getGestureSource() == sterilisationDragable) {
-	
+			// # create sterilisation
 		}
 		event.consume();
 	}
