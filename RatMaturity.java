@@ -1,14 +1,14 @@
 
 public enum RatMaturity {
-	ADULT(1), BABY(2);
+	ADULT("adult"), BABY("baby");
 	
-	private final int speed;
+	private final String textEquivalent;
 	
-	RatMaturity(int speed) {
-		this.speed = speed;
+	RatMaturity(String textEquivalent) {
+		this.textEquivalent = textEquivalent;
 	}
 	
-	public int getSpeed() {
-		return this.speed;
+	public String toString() {
+		return textEquivalent;
 	}
 }

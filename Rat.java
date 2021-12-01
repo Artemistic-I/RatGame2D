@@ -40,6 +40,11 @@ public class Rat {
         this.ratAge = ratAge;
         this.updateGraphic();
     }
+    
+    public String toString() {
+    	String textEquivalent = String.format("%s, %s, isPregnant:%s, isSterile:%s, xPosition:%d, yPosition:%d, direction:%s, age:%d" , ratSex, ratMaturity, isPregnant, isSterile, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction, ratAge);
+		return textEquivalent;
+    }
 
     private void mature() {
         ratMaturity = RatMaturity.ADULT;
