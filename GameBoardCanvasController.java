@@ -70,13 +70,13 @@ public class GameBoardCanvasController implements Initializable {
 		if (pauseButton.getText().equals("Pause")) {
 			pauseButton.setText("Resume");
 			Menu.getTimelineManager().stopTime();
-			SoundManager.stopSound();
+			SoundManager.pauseSound();
 			saveButton.setDisable(false);
 		} else {
 			pauseButton.setText("Pause");
 			saveButton.setDisable(true);
 			Menu.getTimelineManager().resumeTime();
-			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
+			SoundManager.resumeSound();
 		}
 	}
 

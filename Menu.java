@@ -86,33 +86,6 @@ import javafx.stage.Stage;
 	        PlayerProfile.showCreate();
 	    }
 
-	    /**
-	     * Handles the Scoreboard button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdScoreboardClick(MouseEvent mouseEvent) {
-	        changeScene(Window.SCOREBOARD);
-	    }
-
-	    /**
-	     * Handles the Load button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdLoadClick(MouseEvent mouseEvent) {
-	        changeScene(Window.LOAD);
-	    }
-
-	    /**
-	     * Handles the new game button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdNewClick(MouseEvent mouseEvent) {
-	        changeScene(Window.SETUP);
-	    }
-
 		// Start
 		@FXML
 		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
