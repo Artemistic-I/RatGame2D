@@ -9,8 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class LevelsController implements Initializable {
@@ -51,6 +53,16 @@ public class LevelsController implements Initializable {
 
     @FXML
     void showScoreBoardBtnClicked(ActionEvent event) throws IOException {
+        int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
+        if (selectedIndex < 0) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Cannot show scoreboard");
+            alert.setHeaderText(null);
+            alert.setContentText("Cannot show scoreboard. No level selected. Please select a level first.");
+            alert.showAndWait();
+            return;
+        }
+        Level.setSelectedLevel(Level.getLevels().get(selectedIndex));
         Parent root = FXMLLoader.load(getClass().getResource("scenes/scoreboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
