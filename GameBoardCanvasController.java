@@ -179,7 +179,6 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	void canvasDragOver(DragEvent event) {
-		System.out.println("------drag_over"); // # just for testing
 		if (event.getGestureSource() == bombDragable || 
 					event.getGestureSource() == gasDragable || 
 					event.getGestureSource() == poisonDragable || 
@@ -198,6 +197,24 @@ public class GameBoardCanvasController implements Initializable {
 	@FXML
 	void canvasDragDropOccured(DragEvent event) {
 		System.out.println("------drop"); // # just for testing
+
+		if (event.getGestureSource() == bombDragable) {
+			
+		} else if (event.getGestureSource() == gasDragable) {
+			
+		} else if (event.getGestureSource() == poisonDragable) {
+			
+		} else if (event.getGestureSource() == sexChFeDragable) {
+	
+		} else if (event.getGestureSource() == sexChMaDragable) {
+	
+		} else if (event.getGestureSource() == noEntrySignDragable) {
+	
+		} else if (event.getGestureSource() == deathRatDragable) {
+	
+		} else if (event.getGestureSource() == sterilisationDragable) {
+	
+		}
 		event.consume();
 	}
 
