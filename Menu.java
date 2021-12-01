@@ -41,13 +41,10 @@ import javafx.stage.Stage;
 		
 
 		@FXML
-		private Button loadBtn;
+		private Button selectLevelBtn;
 	
 		@FXML
 		private Button profilesBtn;
-	
-		@FXML
-		private Button scoreboardBtn;
 	
 		@FXML
 		private Button settingsBtn;
@@ -123,7 +120,7 @@ import javafx.stage.Stage;
 	    }
 
 	
-		public void loadBtnClckd(ActionEvent event) throws IOException {
+		public void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -162,16 +159,6 @@ import javafx.stage.Stage;
 		}
 
 		@FXML
-		void scoreboardBtnClicked(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/scoreboard.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-
-		}
-
-		@FXML
 		void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -188,7 +175,6 @@ import javafx.stage.Stage;
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-
    		}
 		
 		
