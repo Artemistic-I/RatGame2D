@@ -31,7 +31,6 @@ import javafx.stage.Stage;
 	public class Menu implements Initializable {
 		
 		private GameBoardCanvasController gameBoardCanvasController;
-
 		private Parent root;
 		private Scene scene;
 		private Stage stage;
@@ -41,28 +40,23 @@ import javafx.stage.Stage;
 		
 
 		@FXML
-		private Button selectLevelBtn;
-	
+		private Button startBtn;
+
 		@FXML
-		private Button profilesBtn;
+		private Button selectLevelBtn;
 	
 		@FXML
 		private Button settingsBtn;
 
-	    @FXML
-	    private Label msgDayMessage;
+		@FXML
+		private Button profilesBtn;
 
 		@FXML
 		private Button exitBtn;
 	
 		@FXML
-		private Button startBtn;
-
-		@FXML
-		private Button backToMenuBtn;
-
-		@FXML
-		private Button addProfBtn;
+	    private Label msgDayMessage;
+		
 
 		
 	    /**
@@ -118,15 +112,7 @@ import javafx.stage.Stage;
 	    public void cmdNewClick(MouseEvent mouseEvent) {
 	        changeScene(Window.SETUP);
 	    }
-		// Select level
-		@FXML
-		void selectLevelBtnClicked(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-		}
+
 		// Start
 		@FXML
 		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -147,6 +133,28 @@ import javafx.stage.Stage;
 			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
 			
 		}
+
+		// Select level
+		@FXML
+		void selectLevelBtnClicked(ActionEvent event) throws IOException {
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		}
+
+		// Settings
+		@FXML
+		void settingsBtnClicked(ActionEvent event) throws IOException {
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+
+		}
+		
 		// Profiles
 		@FXML
 		void profilesBtnClicked(ActionEvent event) throws IOException {
@@ -157,33 +165,7 @@ import javafx.stage.Stage;
 			stage.show();
 
 		}
-		// Settings
-		@FXML
-		void settingsBtnClicked(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-
-		}	
-
-		// Back to menu
-		@FXML
-   		void backToMenuBtnClicked(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-   		}
-		
-		// Add profile
-		@FXML
-		void addProfBtnClicked(ActionEvent event) {
-	   
-		}
-
+			
 	    /**
 	     * Called to initialise a controller after its root element has been completely processed.
 	     *
@@ -198,7 +180,7 @@ import javafx.stage.Stage;
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			//startBtn.setDisable(startButtonSwitch);  half baked feature
+			startBtn.setDisable(startButtonSwitch);
 		}
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;

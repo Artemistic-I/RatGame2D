@@ -42,7 +42,7 @@ public class LevelsController implements Initializable {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Level.setSelectedLevel(Level.getLevels().get(selectedIndex));
-            //Menu.startButtonSwitch = false;  half baked feature
+            Menu.startButtonSwitch = false;
         }
         Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
