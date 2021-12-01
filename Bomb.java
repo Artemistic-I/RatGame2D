@@ -11,6 +11,8 @@ public class Bomb extends LethalItem {
 
    static final int SHORTCUT_KEY = 112;  //bound to F1
    static final int COUNTDOWN = 4;
+   ArrayList<Item> items = new ArrayList<Item>();
+   ArrayList<Rat> rats = new ArrayList<Rat>();
 
    /**
     * constructor
@@ -19,6 +21,22 @@ public class Bomb extends LethalItem {
 
       super(SHORTCUT_KEY);
 
+   }
+
+   /**
+    *
+    * @return
+    */
+   public ArrayList<Item> getItemsToBomb() {
+      return items;
+   }
+
+   /**
+    *
+    * @return
+    */
+   public ArrayList<Rat> getRatsToBomb() {
+      return rats;
    }
 
    /**
@@ -35,19 +53,14 @@ public class Bomb extends LethalItem {
 
          createExplosion();
 
-         ArrayList<Item> items = findItems(getItemLoc());
+         items = findItems(getItemLoc());
 
-         for (int i = 0; i < items.size(); i++) {
-            destroyItem(items.get(i));
-         }
-
-         ArrayList<Rat> rats = findRats(getItemLoc(), 0);
+         rats = findRats(getItemLoc(), 0);
 
          for (int i = 0; i < rats.size(); i++) {
             killRat(rats.get(i));
          }
 
-         itemMain.removeItem();
       }
 
    }
@@ -143,15 +156,4 @@ public class Bomb extends LethalItem {
 
       return itemsFound;
    }
-
-   /**
-    * method to destroy items in range of explosion
-    * @param item Item to destroy
-    */
-   private void destroyItem(Item item) {
-      //may be similar to remove item method
-      //look in item main
-   }
-
-
 }

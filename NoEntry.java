@@ -2,7 +2,7 @@
 public class NoEntry extends Item{
 
     static final int SHORTCUT_KEY = 115; //bound to F4
-    static final int HEALTH = 5;
+    private int health;
 
     /**
      * constructor method
@@ -10,24 +10,32 @@ public class NoEntry extends Item{
     public NoEntry() {
 
         super(this.SHORTCUT_KEY);
+        setHealth();
 
     }
 
-    //change rat direction method here
+    /**
+     * health of no entry sign begins at 5
+     */
+    private void setHealth() {
+        health = 5;
+    }
 
     /**
-     * method to degrade health of sign or remove once health has gone
-     * @param this.Health Current health of sign
+     * get health
+     * @return health How many more touches the sign can take from a rat
      */
-    public void degradeHealth(this.HEALTH) {
+    public int getHealth() {
+        return health;
+    }
 
-        private int health = this.HEALTH;
+    /**
+     * method to degrade health of sign
+     * @param hp Current health of sign
+     */
+    public void degradeHealth(int hp) {
 
-        health -= 1;
-
-        if (health == 0) {
-            this.removeItem();
-        }
+        this.health = hp - 1;
 
     }
 
