@@ -15,7 +15,7 @@ public class Rat {
     private TileInteractable tileTheRatIsOn;
     private String direction;
     private Image ratGraphic;
-    private final int ageWhenMature = 40;
+    private final static int AGE_WHEN_MATURE = 40;
     private int ratAge;
     private int unbornRatsCount;
     
@@ -47,7 +47,7 @@ public class Rat {
     }
 
     public void update(GraphicsContext graphicsContext) {
-    	if (ratMaturity == RatMaturity.BABY && ratAge >= ageWhenMature) {
+    	if (ratMaturity == RatMaturity.BABY && ratAge >= AGE_WHEN_MATURE) {
     		this.mature();
     	}
     	if (isPregnant && unbornRatsCount != 0) {
@@ -91,7 +91,7 @@ public class Rat {
 
     private void draw(GraphicsContext graphicsContext) {
         if (!(tileTheRatIsOn instanceof TileTunnel)) {
-        	graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
+        	graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheRatIsOn.getxCoordinate()*Gameboard.getTileSize()); 
         }
     }
 

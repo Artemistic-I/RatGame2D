@@ -89,11 +89,7 @@ public class GameBoardCanvasController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saveButton.setDisable(true);
-		graphicsContext = canvas.getGraphicsContext2D();
-		graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		graphicsContext.setFill(Color.GRAY); // # @aes do we need to do this now?
-		graphicsContext.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());				
-		
+		graphicsContext = canvas.getGraphicsContext2D();			
 	}
 
 
@@ -200,8 +196,8 @@ public class GameBoardCanvasController implements Initializable {
 		
 		double xCoordinate = event.getX();
         double yCoordinate = event.getY(); 
-        int xGridRef = (int) xCoordinate / 25;
-        int yGridRef = (int) yCoordinate / 25;
+        int xGridRef = (int) xCoordinate / Gameboard.getTileSize();
+        int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
         Tile droppedOnTile = Gameboard.getBoard()[yGridRef][xGridRef];
         System.out.println(droppedOnTile);
 		if (event.getGestureSource() == bombDragable) {

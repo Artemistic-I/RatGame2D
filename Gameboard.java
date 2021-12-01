@@ -11,7 +11,7 @@ public class Gameboard {
     private static int ratPopulationToLose;
     private static int levelCompletionTime;
     private static int numLivingRats;
-    private static int tileSize;           //I assumed each tile is a square
+    private static final int TILE_SIZE = 25;           //I assumed each tile is a square
     private static Tile[][] board;
     private static PlayerProfile currentPlayer;
 
@@ -159,9 +159,12 @@ public class Gameboard {
     public static void drawGameboard(GraphicsContext graphicsContext) {
     	for (int i=0; i<board.length; i++) {
     		for (int j=0; j<board[i].length; j++) {
-    			graphicsContext.drawImage(board[j][i].getTileGraphic(), i*25, j*25);
+    			graphicsContext.drawImage(board[j][i].getTileGraphic(), i*getTileSize(), j*getTileSize());
     		}
     	}
     }
+	public static int getTileSize() {
+		return TILE_SIZE;
+	}
     
 }
