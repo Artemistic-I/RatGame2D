@@ -1,8 +1,10 @@
+import javafx.scene.image.Image;
 
 public class Sterilisation extends Item{
     //works within small radius
     //rats cannot reproduce
 
+	private static final Image STERILISATION_GRAPHIC = new Image("images/ItemGraphics/SterilisationGraphic.png");
     static final int SHORTCUT_KEY = 119; //bound to F8
     static final int AREA = 5;
     static final int TIME = 3;
@@ -10,9 +12,9 @@ public class Sterilisation extends Item{
     /**
      * constructor
      */
-    public Sterilisation() {
+    public Sterilisation(Tile tileTheItemIsOn) {
 
-        super(SHORTCUT_KEY);
+        super(SHORTCUT_KEY, STERILISATION_GRAPHIC, tileTheItemIsOn);
 
     }
 
@@ -21,7 +23,7 @@ public class Sterilisation extends Item{
      */
     public void sterilize() {
 
-        Arraylist<Rat> rats = findRats(itemLocation, AREA);
+        Arraylist<Rat> rats = findRats(tileTheItemIsOn, AREA);
 
         for (int i = 0; i < rats.size(); i++) {
             Rat rat = rats.get(i);

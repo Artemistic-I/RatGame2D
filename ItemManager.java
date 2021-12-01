@@ -25,7 +25,7 @@ public class ItemManager {
 	public static ArrayList<Item> itemsOnTiles(ArrayList<Tile> setOfTiles) {
 		ArrayList<Item> itemsThatArePresent = new ArrayList<>();
 		for(Item item: currentlyPlacedItems) {
-			 if (setOfTiles.contains(item.getLocation())) {
+			 if (setOfTiles.contains(item.getItemLoc())) {
 				 itemsThatArePresent.add(item);
 			 }
 		 }

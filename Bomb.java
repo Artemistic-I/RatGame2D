@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
 /**
  * subclass of LethalItem and therefore Item to describe a Bomb object
  * @author Mike & Josh
@@ -9,6 +11,7 @@ public class Bomb extends LethalItem {
     * shows countdown to explosrion 4s - 1s
     */
 
+	private static final Image BOMB_GRAPHIC = new Image("images/ItemGraphics/BombGraphic.png");
    static final int SHORTCUT_KEY = 112;  //bound to F1
    static final int COUNTDOWN = 4;
    ArrayList<Item> items = new ArrayList<Item>();
@@ -17,9 +20,9 @@ public class Bomb extends LethalItem {
    /**
     * constructor
     */
-   public Bomb() {
+   public Bomb(Tile tileTheItemIsOn) {
 
-      super(SHORTCUT_KEY);
+      super(SHORTCUT_KEY, BOMB_GRAPHIC, tileTheItemIsOn);
 
    }
 

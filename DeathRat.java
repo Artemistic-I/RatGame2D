@@ -1,16 +1,17 @@
+import javafx.scene.image.Image;
 
 public class DeathRat extends LethalItem {
 
  static final int SHORTCUT_KEY = 113; //bound to F2
  private int ratsKilled = 0;
  private String direction;
-
+ private static final Image DEATH_RAT_GRAPHIC = new Image("images/ItemGraphics/DeathRatGraphic.png");
  /**
   * constructor
   */
- public DeathRat() {
+ public DeathRat(Tile tileTheItemIsOn) {
 
-  super(SHORTCUT_KEY);
+  super(SHORTCUT_KEY, DEATH_RAT_GRAPHIC, tileTheItemIsOn);
   setRatsKilled();
 
  }

@@ -1,15 +1,17 @@
+import javafx.scene.image.Image;
 
 public class NoEntry extends Item{
 
     static final int SHORTCUT_KEY = 115; //bound to F4
     private int health;
+    private static final Image NO_ENTRY_GRAPHIC = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
     /**
      * constructor method
      */
-    public NoEntry() {
+    public NoEntry(Tile tileTheItemIsOn) {
 
-        super(this.SHORTCUT_KEY);
+        super(SHORTCUT_KEY, NO_ENTRY_GRAPHIC, tileTheItemIsOn);
         setHealth();
 
     }

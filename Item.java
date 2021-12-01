@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 /**
  * This is the super class to define an item object
@@ -10,16 +11,18 @@ public class Item{
 
     //key to select item from menu
     protected int shortcutKey;
-    protected Tile itemLocation;
+    protected Tile tileTheItemIsOn;
     protected boolean isTouchingRat = false;
     protected Rat affectedRat;
+    private Image itemGraphic;
 
     /**
      * constructor to create a new item
      * @param scKey Keycode for key related with specific item
      */
-    public Item(int scKey){
-
+    public Item(int scKey, Image itemGraphic, Tile tileTheItemIsOn){
+    	this.itemGraphic = itemGraphic;
+    	this.tileTheItemIsOn = tileTheItemIsOn;
         setSCKey(scKey);
     }
 
@@ -28,7 +31,7 @@ public class Item{
     }
     
     public void draw(GraphicsContext graphicsContext) {
-    	// # drawing here
+    	graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate()*Gameboard.getTileSize());
     }
     
     /**
@@ -41,7 +44,7 @@ public class Item{
      * set item location by tile
      * @return loc Tile that item occupies
      */
-    private void setItemLoc(Tile loc) { itemLocation = loc; }
+    private void setItemLoc(Tile loc) { tileTheItemIsOn = loc; }
 
     /**
      * set status for whether item is touching a rat
@@ -67,7 +70,7 @@ public class Item{
      * get tile where item is located
      * @return itemLocation Tile that item occupies
      */
-    public Tile getItemLoc() { return itemLocation; }
+    public Tile getItemLoc() { return tileTheItemIsOn; }
 
     /**
      * get boolean telling whether a rat is touching the item

@@ -201,21 +201,21 @@ public class GameBoardCanvasController implements Initializable {
         Tile droppedOnTile = Gameboard.getBoard()[yGridRef][xGridRef];
         System.out.println(droppedOnTile);
 		if (event.getGestureSource() == bombDragable) {
-			// # create bomb
+			ItemManager.addItem(new Bomb(droppedOnTile));
 		} else if (event.getGestureSource() == gasDragable) {
-			// # create gas
+			ItemManager.addItem(new Gas(droppedOnTile));
 		} else if (event.getGestureSource() == poisonDragable) {
-			// # create poison
+			ItemManager.addItem(new Poison(droppedOnTile));
 		} else if (event.getGestureSource() == sexChFeDragable) {
-			// # create female sex change
+			ItemManager.addItem(new SexChangeFemale(droppedOnTile));
 		} else if (event.getGestureSource() == sexChMaDragable) {
-			// # create male sex change
+			ItemManager.addItem(new SexChangeMale(droppedOnTile));
 		} else if (event.getGestureSource() == noEntrySignDragable) {
-			// # create no entry sign
+			ItemManager.addItem(new NoEntry(droppedOnTile));
 		} else if (event.getGestureSource() == deathRatDragable) {
-			// # create death rat
+			ItemManager.addItem(new DeathRat(droppedOnTile));
 		} else if (event.getGestureSource() == sterilisationDragable) {
-			// # create sterilisation
+			ItemManager.addItem(new Sterilisation(droppedOnTile));
 		}
 		event.consume();
 	}

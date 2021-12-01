@@ -1,6 +1,8 @@
+import javafx.scene.image.Image;
 
 public class Gas extends LethalItem{
 
+	private static final Image GAS_GRAPHIC = new Image("images/ItemGraphics/GasGraphic.png");
     static final int SHORTCUT_KEY = 114; //bound to F3
     static final int AREA = 2;
     //static final int TIME = ; GET FROM ITEM MAIN
@@ -9,9 +11,9 @@ public class Gas extends LethalItem{
     /**
      * constructor method
      */
-    public Gas() {
+    public Gas(Tile tileTheItemIsOn) {
 
-        super(SHORTCUT_KEY);
+        super(SHORTCUT_KEY, GAS_GRAPHIC, tileTheItemIsOn);
 
     }
 

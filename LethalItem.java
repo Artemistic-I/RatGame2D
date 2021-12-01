@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 
 //lethal items - kills rats
 // findRats method here as it appears in bomb and gas
@@ -7,10 +8,8 @@ public class LethalItem extends Item{
     /**
      * constructor method
      */
-    public LethalItem(int scKey){
-
-        super(scKey);
-
+    public LethalItem(int scKey, Image itemGraphic, Tile tileTheItemIsOn){
+        super(scKey, itemGraphic, tileTheItemIsOn);
     }
 
     /**
