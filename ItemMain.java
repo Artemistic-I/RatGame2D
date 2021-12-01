@@ -176,7 +176,7 @@ public class ItemMain {
      */
     public int findTimer(int levelNo) {
 
-        //int levelNo = gfm.getLevelNum();
+        //int levelNo = getLevelNum();
         int timer = 0;
 
         switch (levelNo) {
