@@ -16,6 +16,11 @@ public class ItemMain {
     Item[][] inv = new Item[8][4];
 
     /**
+     * import info from the level class
+     */
+    Level l = new Level();
+
+    /**
      * import each of the items
      */
     Bomb b = new Bomb();
@@ -176,7 +181,7 @@ public class ItemMain {
      */
     public int findTimer(int levelNo) {
 
-        //int levelNo = getLevelNum();
+        levelNo = l.getLevelNum();
         int timer = 0;
 
         switch (levelNo) {
