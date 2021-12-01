@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.Math;
+import javafx.scene.canvas.GraphicsContext;
 
 /**
  * This is the super class to define an item object
@@ -23,6 +23,14 @@ public class Item{
         setSCKey(scKey);
     }
 
+    public void update(GraphicsContext graphicsContext) {
+    	this.draw(graphicsContext);
+    }
+    
+    public void draw(GraphicsContext graphicsContext) {
+    	// # drawing here
+    }
+    
     /**
      * set shortcut key
      * @param key Keycode for key related with specific item

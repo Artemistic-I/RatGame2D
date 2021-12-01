@@ -20,6 +20,7 @@ public class TimelineMangaer {
 	private void tick() {
 		System.out.println("It's working...(Just for testing)");
 		Gameboard.drawGameboard(this.graphicsContext);
+		ItemManager.updateItems(graphicsContext);
 		RatManager.updateRats(this.graphicsContext);
 		RatManager.breedRats();
 		//gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
