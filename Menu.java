@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -34,7 +35,6 @@ import javafx.stage.Stage;
 		private Parent root;
 		private Scene scene;
 		private Stage stage;
-		private Canvas canvas;
 		private static TimelineMangaer timelineManager;
 		public static Boolean startButtonSwitch = true;
 		
@@ -121,7 +121,7 @@ import javafx.stage.Stage;
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
 
-			timelineManager = new TimelineMangaer(gameBoardCanvasController.getCanvas());
+			timelineManager = new TimelineMangaer(gameBoardCanvasController.getGraphicContext());
 
 			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();

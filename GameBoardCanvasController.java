@@ -29,6 +29,8 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
 	private Canvas canvas;
+	
+	private GraphicsContext graphicsContext;
 
 	@FXML
 	private ProgressBar winLoseIndicator;
@@ -64,33 +66,33 @@ public class GameBoardCanvasController implements Initializable {
 	private ImageView sterilisationDragable;
 
 	@FXML
-		void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-			if (pauseButton.getText().equals("Pause")) {
-				pauseButton.setText("Resume");
-				Menu.getTimelineManager().stopTime();
-				SoundManager.stopSound();
-				saveButton.setDisable(false);
-			} else {
-				pauseButton.setText("Pause");
-				saveButton.setDisable(true);
-				Menu.getTimelineManager().resumeTime();
-				SoundManager.playSound("audio/Soft Knives - SefChol.wav");
-			}
+	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		if (pauseButton.getText().equals("Pause")) {
+			pauseButton.setText("Resume");
+			Menu.getTimelineManager().stopTime();
+			SoundManager.stopSound();
+			saveButton.setDisable(false);
+		} else {
+			pauseButton.setText("Pause");
+			saveButton.setDisable(true);
+			Menu.getTimelineManager().resumeTime();
+			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
 		}
+	}
 
-		@FXML
-		void saveButtonClicked(ActionEvent event) {
-			GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
-			System.exit(0);
-		}
+	@FXML
+	void saveButtonClicked(ActionEvent event) {
+		GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
+		System.exit(0);
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saveButton.setDisable(true);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-		gc.setFill(Color.GRAY);
-		gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());				
+		graphicsContext = canvas.getGraphicsContext2D();
+		graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		graphicsContext.setFill(Color.GRAY); // # @aes do we need to do this now?
+		graphicsContext.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());				
 		
 	}
 
@@ -193,8 +195,8 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 
-	public Canvas getCanvas() {
-		return canvas;
+	public GraphicsContext getGraphicContext() {
+		return graphicsContext;
 	}
 	
 	public void drawWinLoseIndicator(double winLoseRatio) {

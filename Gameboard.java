@@ -156,11 +156,10 @@ public class Gameboard {
         return board;
     }
     
-    public static void drawGameboard(Canvas canvas) {
-    	GraphicsContext gc = canvas.getGraphicsContext2D();
+    public static void drawGameboard(GraphicsContext graphicsContext) {
     	for (int i=0; i<board.length; i++) {
     		for (int j=0; j<board[i].length; j++) {
-    			gc.drawImage(board[j][i].getTileGraphic(), i*25, j*25);
+    			graphicsContext.drawImage(board[j][i].getTileGraphic(), i*25, j*25);
     		}
     	}
     }

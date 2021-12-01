@@ -46,7 +46,7 @@ public class Rat {
         this.updateGraphic();
     }
 
-    public void update(Canvas canvas) {
+    public void update(GraphicsContext graphicsContext) {
     	if (ratMaturity == RatMaturity.BABY && ratAge >= ageWhenMature) {
     		this.mature();
     	}
@@ -58,7 +58,7 @@ public class Rat {
     	}
     	this.ratAge++;
         this.move();
-        this.draw(canvas);
+        this.draw(graphicsContext);
     }
 
     private void move() {
@@ -89,10 +89,9 @@ public class Rat {
         }
     }
 
-    private void draw(Canvas canvas) { // # @aes why not just pass the graphics context rather that the canvas? Then you don't need to create a new one all the time
+    private void draw(GraphicsContext graphicsContext) {
         if (!(tileTheRatIsOn instanceof TileTunnel)) {
-        	GraphicsContext gc = canvas.getGraphicsContext2D();
-        	gc.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
+        	graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*25, this.tileTheRatIsOn.getxCoordinate()*25); // # @aes remember to remove magic number
         }
     }
 

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class RatManager {
 
@@ -37,9 +38,9 @@ public class RatManager {
 		return femaleRats;
 	}
 	
-	public static void updateRats(Canvas canvas) {
+	public static void updateRats(GraphicsContext graphicsContext) {
 		for (Rat rat : liveRats) {
-			rat.update(canvas);
+			rat.update(graphicsContext);
 		}
 	}
 	

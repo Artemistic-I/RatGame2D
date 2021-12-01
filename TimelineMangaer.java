@@ -2,15 +2,16 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
 
 public class TimelineMangaer {
 
 	private Timeline tickTimeline;
-	private Canvas canvas;
+	private GraphicsContext graphicsContext;
 
-	public TimelineMangaer(Canvas canvas) {
-		this.canvas = canvas;
+	public TimelineMangaer(GraphicsContext graphicsContext) {
+		this.graphicsContext = graphicsContext;
 		tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
 		tickTimeline.play();
@@ -18,8 +19,8 @@ public class TimelineMangaer {
 
 	private void tick() {
 		System.out.println("It's working...(Just for testing)");
-		Gameboard.drawGameboard(this.canvas);
-		RatManager.updateRats(this.canvas);
+		Gameboard.drawGameboard(this.graphicsContext);
+		RatManager.updateRats(this.graphicsContext);
 		RatManager.breedRats();
 		//gameBoardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 	}
