@@ -11,7 +11,6 @@ public class TileInteractable extends Tile {
 
     public TileInteractable(Image tileGraphic, int row, int column) {
     	super(tileGraphic, row, column);
-    	setInteractable(true);
 	}
 
     public ArrayList<String> possibleMoves() {
