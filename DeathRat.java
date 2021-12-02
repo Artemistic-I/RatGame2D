@@ -39,7 +39,8 @@ public class DeathRat extends LethalItem {
   ratsKilled += 1;
  }
 
- //copied from rat class
+ //copied from rat class - still not sure how it works
+ /**
  private void move() {
   ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
   if (possibleMoves.size() == 1) {
@@ -73,6 +74,6 @@ public class DeathRat extends LethalItem {
    graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheRatIsOn.getxCoordinate()*Gameboard.getTileSize());
   }
  }
-
+*/
 
 }
