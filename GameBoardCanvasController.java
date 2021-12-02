@@ -198,7 +198,7 @@ public class GameBoardCanvasController implements Initializable {
         double yCoordinate = event.getY(); 
         int xGridRef = (int) xCoordinate / Gameboard.getTileSize();
         int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
-        Tile droppedOnTile = Gameboard.getBoard()[yGridRef][xGridRef];
+        TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
         System.out.println(droppedOnTile);
 		if (event.getGestureSource() == bombDragable) {
 			ItemManager.addItem(new Bomb(droppedOnTile));
@@ -213,7 +213,7 @@ public class GameBoardCanvasController implements Initializable {
 		} else if (event.getGestureSource() == noEntrySignDragable) {
 			ItemManager.addItem(new NoEntry(droppedOnTile));
 		} else if (event.getGestureSource() == deathRatDragable) {
-			ItemManager.addItem(new DeathRat(droppedOnTile));
+			ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
 		} else if (event.getGestureSource() == sterilisationDragable) {
 			ItemManager.addItem(new Sterilisation(droppedOnTile));
 		}

@@ -11,16 +11,16 @@ public class Item{
 
     //key to select item from menu
     protected int shortcutKey;
-    protected Tile tileTheItemIsOn;
+    protected TileInteractable tileTheItemIsOn;
     protected boolean isTouchingRat = false;
     protected Rat affectedRat;
-    private Image itemGraphic;
+    protected Image itemGraphic;
 
     /**
      * constructor to create a new item
      * @param scKey Keycode for key related with specific item
      */
-    public Item(int scKey, Image itemGraphic, Tile tileTheItemIsOn){
+    public Item(int scKey, Image itemGraphic, TileInteractable tileTheItemIsOn){
     	this.itemGraphic = itemGraphic;
     	this.tileTheItemIsOn = tileTheItemIsOn;
         setSCKey(scKey);
@@ -44,7 +44,7 @@ public class Item{
      * set item location by tile
      * @return loc Tile that item occupies
      */
-    private void setItemLoc(Tile loc) { tileTheItemIsOn = loc; }
+    private void setItemLoc(TileInteractable loc) { tileTheItemIsOn = loc; }
 
     /**
      * set status for whether item is touching a rat

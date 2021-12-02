@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class DeathRat extends LethalItem {
@@ -9,9 +13,10 @@ public class DeathRat extends LethalItem {
  /**
   * constructor
   */
- public DeathRat(Tile tileTheItemIsOn) {
+ public DeathRat(TileInteractable tileTheItemIsOn, String direction) {
 
   super(SHORTCUT_KEY, DEATH_RAT_GRAPHIC, tileTheItemIsOn);
+  this.direction = direction;
   setRatsKilled();
 
  }
@@ -40,17 +45,22 @@ public class DeathRat extends LethalItem {
  }
 
  //copied from rat class - still not sure how it works
- /**
+ 
+ public void update(GraphicsContext graphicsContext) {
+	 this.move();
+	 this.draw(graphicsContext);
+ }
+ 
  private void move() {
-  ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
+  ArrayList<String> possibleMoves = new ArrayList<String>(this.tileTheItemIsOn.possibleMoves());
   if (possibleMoves.size() == 1) {
-   this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(turnAround(direction));
+   this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(turnAround(direction));
    this.direction = turnAround(direction);
   } else {
    possibleMoves.remove(turnAround(direction));
    Random rand = new Random();
    String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-   this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
+   this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(randomDirection);
    this.direction = randomDirection;
   }
  }
@@ -69,11 +79,11 @@ public class DeathRat extends LethalItem {
   }
  }
 
- private void draw(GraphicsContext graphicsContext) {
-  if (!(tileTheRatIsOn instanceof TileTunnel)) {
-   graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheRatIsOn.getxCoordinate()*Gameboard.getTileSize());
+ public void draw(GraphicsContext graphicsContext) {
+  if (!(this.tileTheItemIsOn instanceof TileTunnel)) {
+   graphicsContext.drawImage(this.itemGraphic, this.tileTheItemIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate()*Gameboard.getTileSize());
   }
  }
-*/
+
 
 }

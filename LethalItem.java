@@ -8,7 +8,7 @@ public class LethalItem extends Item{
     /**
      * constructor method
      */
-    public LethalItem(int scKey, Image itemGraphic, Tile tileTheItemIsOn){
+    public LethalItem(int scKey, Image itemGraphic, TileInteractable tileTheItemIsOn){
         super(scKey, itemGraphic, tileTheItemIsOn);
     }
 
