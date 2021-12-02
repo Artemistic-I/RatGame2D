@@ -5,25 +5,26 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu">
    <children>
-      <Button fx:id="startBtn" layoutX="40.0" layoutY="163.0" mnemonicParsing="false" onAction="#onStartBtnClicked" prefHeight="33.0" prefWidth="109.0" text="START" />
-      <Button fx:id="settingsBtn" layoutX="40.0" layoutY="259.0" mnemonicParsing="false" onAction="#settingsBtnClicked" prefHeight="33.0" prefWidth="109.0" text="Settings" />
-      <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="210.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="33.0" prefWidth="109.0" text=" Select level first" />
-      <Button fx:id="exitBtn" layoutX="40.0" layoutY="468.0" mnemonicParsing="false" onAction="#quitClicked" prefHeight="33.0" prefWidth="109.0" text="Exit" />
-      <Button fx:id="profilesBtn" layoutX="40.0" layoutY="307.0" mnemonicParsing="false" onAction="#profilesBtnClicked" prefHeight="33.0" prefWidth="109.0" text="Profiles" />
-      <Text layoutX="40.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RATS VS CURSOR: " wrappingWidth="405.46875">
+      <Button fx:id="startBtn" layoutX="40.0" layoutY="179.0" mnemonicParsing="false" onAction="#onStartBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="START" textFill="#4400ff" textOverrun="CLIP">
          <font>
-            <Font size="45.0" />
-         </font>
-      </Text>
-      <Text layoutX="40.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE GAME" wrappingWidth="157.982421875">
+            <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
+         </font></Button>
+      <Button fx:id="settingsBtn" layoutX="40.0" layoutY="300.0" mnemonicParsing="false" onAction="#settingsBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="SETTINGS">
          <font>
             <Font size="20.0" />
-         </font>
-      </Text>
+         </font></Button>
+      <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="240.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="49.0" prefWidth="150.0" style="-fx-font-size: 15;" styleClass="button-red" stylesheets="@style.css" text=" Select level first" />
+      <Button fx:id="exitBtn" layoutX="40.0" layoutY="512.0" mnemonicParsing="false" onAction="#quitClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="EXIT">
+         <font>
+            <Font size="22.0" />
+         </font></Button>
+      <Button fx:id="profilesBtn" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" onAction="#profilesBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="PROFILES">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="268.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/bomb.png" />
@@ -37,6 +38,11 @@
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="243.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/CursorIconTransparent.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="91.0" fitWidth="559.0" layoutX="39.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Title.png" />
          </image>
       </ImageView>
    </children>
