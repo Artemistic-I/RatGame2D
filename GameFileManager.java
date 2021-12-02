@@ -1,29 +1,37 @@
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class GameFileManager {
 
     // first line stores level number
-    // next lines store each individual rats attributes seperated by ","
-    // each rats attributes are seperated by a new line "\n"
-    public static void saveGame(String filename, int levelNumber, Rat[] ratPopulation) {
+    // next lines store each individual rats attributes seperated by white space.
+    // each rats attributes are seperated by a new line "\n
+    
+    public static void saveGame(String outputFile, long duration) {
+        
+        File myFile = new File(outputFile);
+        PrintWriter myWriter = null;
         try {
-            File myFile = new File(filename);
-            // makes sure file can be written to
-            myFile.setWritable(true);
-            FileWriter myWriter = new FileWriter(filename);
-            myWriter.write(levelNumber + "\n");
-            for (Rat rat : ratPopulation) {
-                myWriter.append(String.format("%s, %o, %s, %s, %o, %o, %s\n", 
-                rat.getSex(), rat.getRatMaturity(), rat.getIsPregnant(), rat.getIsSterile(), 
-                rat.getLocation().getTileCoordinates(), rat.getDirection()));
-            }
-            myWriter.close();
-            // changes file to be read only so it can't be accidentally edited
-            myFile.setReadOnly();
-        } catch (IOException e) {
-            e.printStackTrace();
+            myWriter = new PrintWriter(outputFile);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot open " + outputFile);
+            System.exit(0);
         }
+        int levelNumber = Level.getSelectedLevel().getLevelNumber();
+        Rat[] ratPopulation = RatManager.getRatPopulation();
+        // level number;
+        myWriter.println(levelNumber);
+        // rats
+        for (Rat rat : ratPopulation) {
+            String ratDetails = rat.toString();
+            myWriter.println(ratDetails);
+        }
+        // number of killed rats
+        myWriter.println(RatManager.getKilledRatCount());
+        // length of time since the start of the level in milliseconds
+        myWriter.println(duration);
+        myWriter.close();
     }
 }

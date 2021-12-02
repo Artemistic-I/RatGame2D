@@ -10,12 +10,15 @@ public class TimelineMangaer {
 	private Timeline tickTimeline;
 	private GraphicsContext graphicsContext;
 	private GameBoardCanvasController gameboardCanvasController;
+	private long totalDuration;
+	private static final int DELAY = 500; //milliseconds
 
 	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController) {
 		this.gameboardCanvasController = gameboardCanvasController;
 		this.graphicsContext = gameboardCanvasController.getGraphicContext();
-		tickTimeline = new Timeline(new KeyFrame(Duration.millis(500), event -> tick()));
+		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> tick()));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
+		totalDuration = 0;
 		tickTimeline.play();
 	}
 
@@ -26,12 +29,15 @@ public class TimelineMangaer {
 		RatManager.breedRats();
 		gameboardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 		gameboardCanvasController.updateRatCounts(RatManager.countMaleRats(), RatManager.countFemaleRats(), Gameboard.getRatPopulationToLose());
-		
+		totalDuration += DELAY;
 	}
 	public void stopTime() {
 		tickTimeline.stop();
 	}
 	public void resumeTime() {
 		tickTimeline.play();
+	}
+	public long getDuration() {
+		return totalDuration;
 	}
 }

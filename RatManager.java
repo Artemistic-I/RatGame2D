@@ -8,7 +8,7 @@ public class RatManager {
 
 	private static CopyOnWriteArrayList<Rat> liveRats = new CopyOnWriteArrayList<>();
 
-	private static int killedRatCount;
+	private static int killedRatCount = 0;
 	
 	public static void addRat(Rat ratToAdd) {
 		liveRats.add(ratToAdd);
@@ -16,6 +16,7 @@ public class RatManager {
 
 	public static void removeRat(Rat ratToRemove) {
 		liveRats.remove(ratToRemove);
+		killedRatCount++;
 	}
 
 	public static int countMaleRats() {

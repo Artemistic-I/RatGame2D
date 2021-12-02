@@ -32,6 +32,8 @@ public class GameBoardCanvasController implements Initializable {
 	private Canvas canvas;
 	
 	private GraphicsContext graphicsContext;
+	private Stage stage;
+	private Scene scene;
 
 	@FXML
 	private ProgressBar winLoseIndicator;
@@ -91,9 +93,13 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void saveButtonClicked(ActionEvent event) {
-		GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
-		System.exit(0);
+	void saveButtonClicked(ActionEvent event) throws IOException {
+		GameFileManager.saveGame("SavedGame.txt", Menu.getTimelineManager().getDuration());
+		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 
 	@Override
