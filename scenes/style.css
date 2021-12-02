@@ -1,0 +1,18 @@
+@import url('http://fonts.cdnfonts.com/css/karma-future');
+
+.button-red {
+ -fx-border-color: red;
+ -fx-border-radius: 180;
+ -fx-background-radius:180;
+ -fx-font-size: 20px;
+ -fx-background-color: white;
+ -fx-border-width: 5px;
+ -fx-font-family: 'Gill Sans Ultra Bold Condensed';
+ -fx-text-fill: #0423F7;
+}
+
+.button-red:hover{
+    -fx-background-color: #0423F7;
+    -fx-text-fill: white;
+    -fx-background-radius:180;
+   }
