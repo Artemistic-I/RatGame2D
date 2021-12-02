@@ -3,12 +3,17 @@ import java.awt.Window;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +25,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 	/**
 	 * Controls the Main Menu {@link javafx.scene.Scene}
@@ -38,7 +45,9 @@ import javafx.stage.Stage;
 		private static TimelineMangaer timelineManager;
 		public static Boolean startButtonSwitch = true;
 		
-
+		@FXML
+    	private StackPane container;
+		
 		@FXML
 		private Button startBtn;
 
@@ -56,6 +65,9 @@ import javafx.stage.Stage;
 	
 		@FXML
 	    private Label msgDayMessage;
+		
+		@FXML
+		private Button credsBtn;
 		
 
 		
@@ -138,6 +150,22 @@ import javafx.stage.Stage;
 			stage.show();
 
 		}
+
+		@FXML
+    	void credsClicked(ActionEvent event) throws IOException {
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/credits.fxml"));
+			Scene scene = credsBtn.getScene();
+
+			root.translateYProperty().set(scene.getHeight());
+			container.getChildren().add(root);
+
+			Timeline time = new Timeline();
+			KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+			KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+			time.getKeyFrames().add(kf);
+			time.play();
+
+    	}
 			
 	    /**
 	     * Called to initialise a controller after its root element has been completely processed.
