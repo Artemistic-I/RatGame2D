@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -63,8 +66,27 @@ public class Rat {
     	}
     	this.ratAge++;
         this.move();
+        if (this.canBreed()) {
+        	this.attemptBreeding();
+        }
         this.draw(graphicsContext);
+        
     }
+    
+    private void attemptBreeding() {
+    	Boolean hasBred = false;
+    	Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheRatIsOn)));
+    	while (!ratsOnTile.isEmpty() && !hasBred) {
+    		Rat rat = ratsOnTile.pop();
+    		if (rat.canBreed() && rat.getSex() != this.ratSex) {
+    			if (this.ratSex == RatSex.FEMALE) {
+					this.Breed();
+				} else {
+					rat.Breed();
+				}
+    		}
+    	}
+    }	
 
     private void move() {
         ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());

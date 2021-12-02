@@ -23,10 +23,8 @@ public class TimelineMangaer {
 		Gameboard.drawGameboard(this.graphicsContext);
 		ItemManager.updateItems(graphicsContext);
 		RatManager.updateRats(this.graphicsContext);
-		RatManager.breedRats();
 		gameboardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 		gameboardCanvasController.updateRatCounts(RatManager.countMaleRats(), RatManager.countFemaleRats(), Gameboard.getRatPopulationToLose());
-		
 	}
 	public void stopTime() {
 		tickTimeline.stop();
