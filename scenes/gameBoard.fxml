@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -24,6 +25,16 @@
             <ImageView fitHeight="72.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="65.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane prefHeight="589.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="5.0" text="Male Rat Count" />
+                  <Label fx:id="maleRatCount" layoutX="36.0" layoutY="22.0" text="Label" />
+                  <Label layoutX="3.0" layoutY="66.0" text="Female Rat Count" />
+                  <Label fx:id="femaleRatCount" layoutX="36.0" layoutY="84.0" text="Label" />
+                  <Label layoutX="26.0" layoutY="122.0" text="Rat Limit" />
+                  <Label fx:id="ratLimit" layoutX="35.0" layoutY="140.0" text="Label" />
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </right>

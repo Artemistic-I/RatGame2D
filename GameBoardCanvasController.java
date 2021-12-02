@@ -17,6 +17,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
@@ -64,7 +65,16 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	private ImageView sterilisationDragable;
-
+	
+	@FXML
+	private Label maleRatCount;
+	
+	@FXML
+	private Label femaleRatCount;
+	
+	@FXML
+	private Label ratLimit;
+	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (pauseButton.getText().equals("Pause")) {
@@ -227,5 +237,11 @@ public class GameBoardCanvasController implements Initializable {
 	
 	public void drawWinLoseIndicator(double winLoseRatio) {
 		this.winLoseIndicator.setProgress(winLoseRatio);
+	}
+	
+	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) {
+		this.maleRatCount.setText(String.valueOf(maleRatCount));
+		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
+		this.ratLimit.setText(String.valueOf(ratLimit));
 	}
 }

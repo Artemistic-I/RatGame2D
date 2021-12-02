@@ -94,7 +94,7 @@ import javafx.stage.Stage;
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
 
-			timelineManager = new TimelineMangaer(gameBoardCanvasController.getGraphicContext());
+			timelineManager = new TimelineMangaer(gameBoardCanvasController);
 
 			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
