@@ -42,7 +42,7 @@ public class Rat {
     }
     
     public String toString() {
-    	String textEquivalent = String.format("%s, %s, isPregnant:%s, isSterile:%s, xPosition:%d, yPosition:%d, direction:%s, age:%d" , ratSex, ratMaturity, isPregnant, isSterile, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction, ratAge);
+    	String textEquivalent = String.format("%s %s isPregnant:%s isSterile:%s xPosition:%d yPosition:%d direction:%s age:%d" , ratSex, ratMaturity, isPregnant, isSterile, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction, ratAge);
 		return textEquivalent;
     }
 

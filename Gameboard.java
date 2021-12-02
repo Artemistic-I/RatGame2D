@@ -10,7 +10,6 @@ public class Gameboard {
     private static int boardWidth;
     private static int ratPopulationToLose;
     private static int levelCompletionTime;
-    private static int numLivingRats;
     private static final int TILE_SIZE = 25;           //I assumed each tile is a square
     private static Tile[][] board;
     private static PlayerProfile currentPlayer;
@@ -144,7 +143,7 @@ public class Gameboard {
     }
     
     public static double calculateWinLose() {
-    	return (double) numLivingRats / (double) ratPopulationToLose;
+    	return (double) (RatManager.countMaleRats() + RatManager.countFemaleRats()) / (double) ratPopulationToLose;
     }
     public static int getHeight() {
         return boardHeight;
@@ -165,6 +164,10 @@ public class Gameboard {
     }
 	public static int getTileSize() {
 		return TILE_SIZE;
+	}
+	
+	public static int getRatPopulationToLose() {
+		return ratPopulationToLose;
 	}
     
 }

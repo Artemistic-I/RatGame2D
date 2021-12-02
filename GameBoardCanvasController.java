@@ -17,6 +17,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
@@ -31,6 +32,8 @@ public class GameBoardCanvasController implements Initializable {
 	private Canvas canvas;
 	
 	private GraphicsContext graphicsContext;
+	private Stage stage;
+	private Scene scene;
 
 	@FXML
 	private ProgressBar winLoseIndicator;
@@ -64,7 +67,16 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	private ImageView sterilisationDragable;
-
+	
+	@FXML
+	private Label maleRatCount;
+	
+	@FXML
+	private Label femaleRatCount;
+	
+	@FXML
+	private Label ratLimit;
+	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (pauseButton.getText().equals("Pause")) {
@@ -81,9 +93,13 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void saveButtonClicked(ActionEvent event) {
-		GameFileManager.saveGame("SavedGame.txt", 1, RatManager.getRatPopulation());
-		System.exit(0);
+	void saveButtonClicked(ActionEvent event) throws IOException {
+		GameFileManager.saveGame("SavedGame.txt", Menu.getTimelineManager().getDuration());
+		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 
 	@Override
@@ -227,5 +243,11 @@ public class GameBoardCanvasController implements Initializable {
 	
 	public void drawWinLoseIndicator(double winLoseRatio) {
 		this.winLoseIndicator.setProgress(winLoseRatio);
+	}
+	
+	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) {
+		this.maleRatCount.setText(String.valueOf(maleRatCount));
+		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
+		this.ratLimit.setText(String.valueOf(ratLimit));
 	}
 }
