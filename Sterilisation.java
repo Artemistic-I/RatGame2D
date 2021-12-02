@@ -12,7 +12,7 @@ public class Sterilisation extends Item{
     /**
      * constructor
      */
-    public Sterilisation(Tile tileTheItemIsOn) {
+    public Sterilisation(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, STERILISATION_GRAPHIC, tileTheItemIsOn);
 

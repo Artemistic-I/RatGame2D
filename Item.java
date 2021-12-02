@@ -41,12 +41,6 @@ public class Item{
     private void setSCKey(int key) { shortcutKey = key; }
 
     /**
-     * set item location by tile
-     * @return loc Tile that item occupies
-     */
-    private void setItemLoc(TileInteractable loc) { tileTheItemIsOn = loc; }
-
-    /**
      * set status for whether item is touching a rat
      * @param status Whether rat is touching the item
      */

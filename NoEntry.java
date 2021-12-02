@@ -9,7 +9,7 @@ public class NoEntry extends Item{
     /**
      * constructor method
      */
-    public NoEntry(Tile tileTheItemIsOn) {
+    public NoEntry(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, NO_ENTRY_GRAPHIC, tileTheItemIsOn);
         setHealth();

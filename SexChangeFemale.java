@@ -5,7 +5,7 @@ public class SexChangeFemale extends Item{
     static final int SHORTCUT_KEY = 117; //bound to F6
     private static final Image FEMALE_SEX_CHANGE_GRAPHIC = new Image("images/ItemGraphics/FemaleSexChangeGraphic.png");
 
-    public SexChangeFemale(Tile tileTheItemIsOn) {
+    public SexChangeFemale(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, FEMALE_SEX_CHANGE_GRAPHIC, tileTheItemIsOn);
 

@@ -8,7 +8,7 @@ public class Poison extends LethalItem{
     /**
      * constructor
      */
-    public Poison(Tile tileTheItemIsOn) {
+    public Poison(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, POISON_GRAPHIC, tileTheItemIsOn);
 

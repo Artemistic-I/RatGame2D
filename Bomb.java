@@ -20,7 +20,7 @@ public class Bomb extends LethalItem {
    /**
     * constructor
     */
-   public Bomb(Tile tileTheItemIsOn) {
+   public Bomb(TileInteractable tileTheItemIsOn) {
 
       super(SHORTCUT_KEY, BOMB_GRAPHIC, tileTheItemIsOn);
 

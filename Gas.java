@@ -11,7 +11,7 @@ public class Gas extends LethalItem{
     /**
      * constructor method
      */
-    public Gas(Tile tileTheItemIsOn) {
+    public Gas(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, GAS_GRAPHIC, tileTheItemIsOn);
 
