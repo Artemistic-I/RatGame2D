@@ -16,9 +16,6 @@
    <center>
       <Canvas fx:id="canvas" height="500.0" onDragDropped="#canvasDragDropOccured" onDragOver="#canvasDragOver" width="500.0" BorderPane.alignment="CENTER" />
    </center>
-   <bottom>
-      <ProgressBar fx:id="winLoseIndicator" prefWidth="200.0" progress="0.0" BorderPane.alignment="CENTER" />
-   </bottom>
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,6 +30,8 @@
                   <Label fx:id="femaleRatCount" layoutX="36.0" layoutY="84.0" text="Label" />
                   <Label layoutX="26.0" layoutY="122.0" text="Rat Limit" />
                   <Label fx:id="ratLimit" layoutX="35.0" layoutY="140.0" text="Label" />
+                  <ProgressBar fx:id="winLoseIndicator" layoutX="-74.0" layoutY="276.0" prefWidth="200.0" progress="0.0" rotate="-90.0" />
+                  <Label layoutX="62.0" layoutY="227.0" prefHeight="76.0" prefWidth="109.0" text="The rat's progress.Careful, when the bar is full you lose!" wrapText="true" />
                </children>
             </AnchorPane>
          </children>
