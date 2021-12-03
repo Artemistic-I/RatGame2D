@@ -4,35 +4,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: gray; grey: ;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="grey: ;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings">
    <children>
-      <Text fill="WHITE" layoutX="40.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="405.46875">
+      <Pane layoutX="66.0" layoutY="108.0" prefHeight="341.0" prefWidth="568.0" style="-fx-background-color: gray; -fx-opacity: 50%;" />
+      <Button fx:id="backToMenuBtn" layoutX="66.0" layoutY="487.0" mnemonicParsing="false" onAction="#backToMenuBtnClicked" prefHeight="39.0" prefWidth="115.0" styleClass="button-red" stylesheets="@style.css" text="Back">
          <font>
-            <Font size="45.0" />
-         </font>
-      </Text>
-      <Button fx:id="backToMenuBtn" layoutX="48.0" layoutY="487.0" mnemonicParsing="false" onAction="#backToMenuBtnClicked" prefHeight="39.0" prefWidth="115.0" text="Back" />
-      <Text fill="WHITE" layoutX="76.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume">
+            <Font name="Kristen ITC" size="20.0" />
+         </font></Button>
+      <Button layoutX="190.0" layoutY="487.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="170.0" styleClass="button-red" stylesheets="@style.css" text="Save settings">
          <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
+            <Font size="20.0" />
+         </font></Button>
       <Slider fx:id="volumeSlider" layoutX="210.0" layoutY="142.0" max="200.0" prefHeight="14.0" prefWidth="388.0" value="100.0" />
-      <Button fx:id="editUsernameBtn" layoutX="292.0" layoutY="314.0" mnemonicParsing="false" onAction="#editUsernameBtnClicked" prefHeight="39.0" prefWidth="200.0" text="save changes" />
-      <Label fx:id="currentUsername" layoutX="110.0" layoutY="190.0" prefHeight="32.0" prefWidth="312.0" textFill="WHITE">
+      <ImageView fitHeight="56.0" fitWidth="223.0" layoutX="52.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/t_settings.png" />
+         </image>
+      </ImageView>
+      <Text fill="#3034ff" layoutX="99.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" wrappingWidth="86.0068359375">
          <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="deleteProfileBtn" layoutX="385.0" layoutY="487.0" mnemonicParsing="false" onAction="#deleteProfileBtnClicked" prefHeight="39.0" prefWidth="230.0" text="Delete profile" />
-      <TextField fx:id="editUsernameBox" layoutX="270.0" layoutY="261.0" prefHeight="25.0" prefWidth="230.0" />
-      <Text fill="WHITE" layoutX="94.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change username:" wrappingWidth="155.3332977294922">
-         <font>
-            <Font size="17.0" />
+            <Font name="Gill Sans Ultra Bold Condensed" size="22.0" />
          </font>
       </Text>
    </children>
