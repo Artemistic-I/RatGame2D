@@ -205,7 +205,26 @@ public class ItemMain {
         return timer;
     }
 
+    /**
+     *
+     */
+    public static void checkTiles(){
+        ArrayList itemsOnTiles = ItemManager.itemsOnTiles();
+        ArrayList ratsOnTiles = ArrayList(RatManager.ratsOnTiles());
 
+        for (i = 0;i < itemsOnTiles.size() ;i++) {
+            for (j = 0;j < ratsOnTiles.size();j++) {
+                Item currentItem = itemsOnTiles.get(i);
+                Rat currentRat = ratsOnTiles.get(j);
+                if (currentItem.getItemLoc() == currentRat.getLocation()) {
+                    currentItem.setTouchStatus(true);
+                    currentItem.setAffectedRat(currentRat);
+                    currentItem.itemAction();
+                }
+            }
+
+        }
+    }
 
     public static Item[][] getInv() {
         return inv;
