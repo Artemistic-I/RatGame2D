@@ -1,5 +1,5 @@
-
 import java.lang.Math;
+import java.util.ArrayList;
 
 /**
  * place in order to keep track of the items and the amount
@@ -13,52 +13,52 @@ public class ItemMain {
      * columns are for amount of different items
      * rows are for the amount of different items
      */
-    Item[][] inv = new Item[8][4];
+    static Item[][] inv = new Item[8][4];
 
     /**
      * import info from the level class
      */
-    Level l = new Level();
+    Level l = new Level(); // needs level number, level file
 
     /**
      * import each of the items
      */
-    Bomb b = new Bomb();
-    Gas g = new Gas();
-    Poison p = new Poison();
-    SexChangeFemale scf = new SexChangeFemale();
-    SexChangeMale scm = new SexChangeMale();
-    NoEntry ne = new NoEntry();
-    DeathRat dr = new DeathRat();
-    Sterilisation s = new Sterilisation();
+    static Bomb b = new Bomb();
+    static Gas g = new Gas();
+    static Poison p = new Poison();
+    static SexChangeFemale scf = new SexChangeFemale();
+    static SexChangeMale scm = new SexChangeMale();
+    static NoEntry ne = new NoEntry();
+    static DeathRat dr = new DeathRat();
+    static Sterilisation s = new Sterilisation();
 
     /**
      * constant for the max amount of items
      */
-    private final int MAX_ITEM = 4;
+    private final static int MAX_ITEM = 4;
 
     /**
      * timer class for adding items
      * start at 0 to add random item at the start
      */
-    int itemTimer = 0;
+    static int itemTimer = 0;
 
     /**
      * variables to show how many of each item is stored
      */
-    int bombAmount = 0;
-    int gasAmount = 0;
-    int poisonAmount = 0;
-    int sexChFeAmount = 0;
-    int sexChMaAmount = 0;
-    int noEntryAmount = 0;
-    int deathRatAmount = 0;
-    int sterilisationAmount = 0;
+    static int bombAmount = 0;
+    static int gasAmount = 0;
+    static int poisonAmount = 0;
+    static int sexChFeAmount = 0;
+    static int sexChMaAmount = 0;
+    static int noEntryAmount = 0;
+    static int deathRatAmount = 0;
+    static int sterilisationAmount = 0;
 
     /**
      * add a random item to inventory
      */
-    public void addItem(){
+    public static void addItem(){
         if (itemTimer == 0) {
             int randomItem = (int) (Math.random() * (8 - 1 + 1) + 1);
             switch (randomItem) {
@@ -179,7 +179,7 @@ public class ItemMain {
      * @param levelNo Level number of current level
      * @return timer Timer for items to regenerate
      */
-    public int findTimer(int levelNo) {
+    public static int findTimer(int levelNo) {
 
         levelNo = l.getLevelNum();
         int timer = 0;
@@ -274,7 +274,7 @@ public class ItemMain {
 
     }
 
-    public Item[][] getInv() {
+    public static Item[][] getInv() {
         return inv;
     }
 

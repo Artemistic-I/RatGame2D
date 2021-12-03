@@ -51,7 +51,7 @@ public class GameFileManager {
             myWriter.println(item.toString());
         }
         // player inventory
-        Item[][] inv = ItemMain.getInv; // ItemMain needs to be changed to static if possible
+        Item[][] inv = ItemMain.getInv(); // ItemMain needs to be changed to static if possible
         for (Item[] itemRow : inv) {
             for (Item item : itemRow) {
                 // prints item details to file
