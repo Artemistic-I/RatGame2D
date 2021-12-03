@@ -1,10 +1,9 @@
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
-
+s
 public class TimelineMangaer {
 
 	private Timeline tickTimeline;
