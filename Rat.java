@@ -16,14 +16,15 @@ public class Rat {
     private RatMaturity ratMaturity;
     private Boolean isPregnant;
     private Boolean isSterile;
+    private Boolean isHavingSex;
     private TileInteractable tileTheRatIsOn;
     private String direction;
     private Image ratGraphic;
-    private final static int AGE_WHEN_MATURE = 40;
-    private final static int PREGNANCY_LENGTH = 10;
     private int ageToGiveBirth;
     private int ratAge;
     private int unbornRatsCount;
+    private final static int AGE_WHEN_MATURE = 40;
+    private final static int PREGNANCY_LENGTH = 10;
     private final static String BABY_RAT_IMAGE_URL = "images/uglyBabyRat.png";
     private final static String MALE_RAT_IMAGE_URL = "images/MaleRat.png";
     private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleRat.png";
@@ -40,10 +41,11 @@ public class Rat {
         this.ratMaturity = RatMaturity.BABY;
         this.isPregnant = false;
         this.isSterile = false;
+        this.isHavingSex = false;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
-        this.ratAge = 0;
         this.updateGraphic();
+        this.ratAge = 0;
     }
     
     /**
