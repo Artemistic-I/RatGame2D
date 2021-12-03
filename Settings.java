@@ -25,7 +25,7 @@ public class Settings implements Initializable {
     private Slider volumeSlider;
 
     @FXML
-    private Button editUsernameBtn;
+    private Button saveChangesBtn;
 
     @FXML
     private Button deleteProfileBtn;
@@ -47,7 +47,7 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void editUsernameBtnClicked(ActionEvent event) {
+    void saveChangesBtnClicked(ActionEvent event) {
         
     }
 

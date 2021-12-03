@@ -13,7 +13,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="grey: ;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings">
    <children>
-      <Pane layoutX="66.0" layoutY="108.0" prefHeight="341.0" prefWidth="568.0" style="-fx-background-color: gray; -fx-opacity: 50%;" />
+      <Pane layoutX="66.0" layoutY="108.0" prefHeight="341.0" prefWidth="568.0" style="-fx-background-color: gray; -fx-opacity: 50%;">
+         <children>
+            <Text fill="WHITE" layoutX="89.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change username:" wrappingWidth="170.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="editUsernameBox" layoutX="245.0" layoutY="122.0" prefHeight="25.0" prefWidth="195.0" />
+            <Button fx:id="saveChangesBtn" layoutX="284.0" layoutY="171.0" mnemonicParsing="false" onAction="#saveChangesBtnClicked" prefHeight="36.0" prefWidth="141.0" text="Save changes" />
+            <Button fx:id="deleteProfileBtn" layoutX="284.0" layoutY="247.0" mnemonicParsing="false" onAction="#deleteProfileBtnClicked" prefHeight="36.0" prefWidth="141.0" text="Delete profile" />
+            <Label layoutX="169.0" layoutY="89.0" prefHeight="14.0" prefWidth="243.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children></Pane>
       <Button fx:id="backToMenuBtn" layoutX="66.0" layoutY="487.0" mnemonicParsing="false" onAction="#backToMenuBtnClicked" prefHeight="39.0" prefWidth="115.0" styleClass="button-red" stylesheets="@style.css" text="Back">
          <font>
             <Font name="Kristen ITC" size="20.0" />
