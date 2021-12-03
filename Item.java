@@ -29,7 +29,10 @@ public class Item{
     }
 
     public void update(GraphicsContext graphicsContext) {
-    	this.draw(graphicsContext);
+
+        this.draw(graphicsContext);
+        //check rat/item locations
+        //for each match, rat contact
     }
     
     public void draw(GraphicsContext graphicsContext) {
@@ -184,6 +187,77 @@ public class Item{
         }
 
         return ratsFound;
+    }
+
+    /**
+     * method for rat making contact with item
+     * @param rat Rat for which actions are to be performed upon
+     */
+    public void ratContact(Rat rat, Item itemInUse) {
+
+        itemInUse.setAffectedRat(rat);
+        itemInUse.setTouchStatus(true);
+
+        int shortcutKey = itemInUse.getSCKey();
+
+        //triggers correct method depending on type of item denoted by shortcut key
+        switch (shortcutKey) {
+            /**
+            case 112://bomb
+                Bomb bombItem = (Bomb) itemInUse;
+                bombItem.detonate();
+                ArrayList<Item> itemsToBomb = bombItem.getItemsToBomb();
+                for (int i = 0; i < itemsToBomb.size(); i++) {
+                    ItemMain.removeItem(itemsToBomb.get(i));
+                }
+                ItemMain.removeItem(itemInUse);
+                break;
+             */
+            case 114://gas
+                Gas gasItem = (Gas) itemInUse;
+                gasItem.expand();
+                break;
+            case 115://no entry
+                NoEntry noEntItem = (NoEntry) itemInUse;
+                while (noEntItem.getHealth() != 0) {//while sign is still active
+                    noEntItem.getAffectedRat().changeDirection();//make tile non-interactable
+                    noEntItem.degradeHealth(noEntItem.getHealth());//degrade health
+                    itemInUse.setTouchStatus(false);
+                }
+                ItemMain.removeItem(itemInUse);
+                break;
+            case 116://poison
+                Poison poisonItem = (Poison) itemInUse;
+                poisonItem.killRat(poisonItem.getAffectedRat());
+                ItemMain.removeItem(itemInUse);
+                break;
+            case 117://f to m
+                SexChangeFemale fToMItem = (SexChangeFemale) itemInUse;
+                fToMItem.changeSex(fToMItem.getAffectedRat());
+                ItemMain.removeItem(itemInUse);
+                break;
+            case 118://m to f
+                SexChangeMale mToFItem = (SexChangeMale) itemInUse;
+                mToFItem.changeSex(mToFItem.getAffectedRat());
+                ItemMain.removeItem(itemInUse);
+                break;
+            case 119://sterilize
+                Sterilisation sterilizeItem = (Sterilisation) itemInUse;
+                sterilizeItem.sterilize();
+                ItemMain.removeItem(itemInUse);
+                break;
+            case 113://death rat
+                DeathRat dRatItem = (DeathRat) itemInUse;
+                while (dRatItem.getRatsKilled() != 5) {
+                    dRatItem.killRat(itemInUse.getAffectedRat());
+                    dRatItem.incrementRatCounter();
+                }
+                ItemMain.removeItem(itemInUse);
+
+
+                break;
+        }
+
     }
 
 }
