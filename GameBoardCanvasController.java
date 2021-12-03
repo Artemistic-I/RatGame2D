@@ -102,7 +102,7 @@ public class GameBoardCanvasController implements Initializable {
 	private Label sterilisationAmount;
 
 
-	ItemMain im = new ItemMain();
+	//ItemMain im = new ItemMain(); //caused an error
 	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {

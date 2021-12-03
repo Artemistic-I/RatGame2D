@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  * @author Josh & Mike
  * @version 1.0
  */
-public class Item{
+public abstract class Item{
     // TODO
     // Create toString() method that returns all information needed for saving that item to a file
 
@@ -30,7 +30,10 @@ public class Item{
 
     public void update(GraphicsContext graphicsContext) {
     	this.draw(graphicsContext);
+    	this.itemAction();
     }
+    
+    abstract void itemAction();
     
     public void draw(GraphicsContext graphicsContext) {
     	graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate()*Gameboard.getTileSize());

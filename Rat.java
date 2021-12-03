@@ -24,8 +24,8 @@ public class Rat {
     private int unbornRatsCount;
     private final static String BABY_RAT_IMAGE_URL = "images/uglyBabyRat.png";
     private final static String MALE_RAT_IMAGE_URL = "images/MaleRat.png";
-    private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleBabyRat.png";
-    private final static String PREGNANT_RAT_IMAGE_URL = "images/PregnantBabyRat.png";
+    private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleRat.png";
+    private final static String PREGNANT_RAT_IMAGE_URL = "images/PregnantRat.png";
     
     /**
      * 
