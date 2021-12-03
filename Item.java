@@ -202,7 +202,6 @@ public abstract class Item{
 
         //triggers correct method depending on type of item denoted by shortcut key
         switch (shortcutKey) {
-            /**
             case 112://bomb
                 Bomb bombItem = (Bomb) itemInUse;
                 bombItem.detonate();
@@ -212,7 +211,6 @@ public abstract class Item{
                 }
                 ItemMain.removeItem(itemInUse);
                 break;
-             */
             case 114://gas
                 Gas gasItem = (Gas) itemInUse;
                 gasItem.expand();
@@ -227,10 +225,12 @@ public abstract class Item{
                 ItemMain.removeItem(itemInUse);
                 break;
             case 116://poison
+                /**
                 Poison poisonItem = (Poison) itemInUse;
                 poisonItem.killRat(poisonItem.getAffectedRat());
                 ItemMain.removeItem(itemInUse);
                 break;
+                 */
             case 117://f to m
                 SexChangeFemale fToMItem = (SexChangeFemale) itemInUse;
                 fToMItem.changeSex(fToMItem.getAffectedRat());

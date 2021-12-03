@@ -20,6 +20,7 @@ public class Poison extends LethalItem{
 
 	@Override
 	void itemAction() {
+		/**
 		Boolean hasPoisoned = false;
     	Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
     	while (!ratsOnTile.isEmpty() && !hasPoisoned) {
@@ -27,9 +28,16 @@ public class Poison extends LethalItem{
     		RatManager.removeRat(rat);
     		hasPoisoned = true;
     	}
+		 */
+		Rat ratToKill = getAffectedRat();
+		RatManager.removeRat(ratToKill);
+		ItemManager.removeItem(this);
+
+		/**
     	if (hasPoisoned) {
     		ItemManager.removeItem(this);
     	}
+		 */
 		
 	}
 
