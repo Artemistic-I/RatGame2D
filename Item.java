@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
  * @version 1.0
  */
 public class Item{
+    // TODO
+    // Create toString() method that returns all information needed for saving that item to a file
 
     //key to select item from menu
     protected int shortcutKey;

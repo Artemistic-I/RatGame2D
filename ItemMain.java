@@ -274,4 +274,8 @@ public class ItemMain {
 
     }
 
+    public Item[][] getInv() {
+        return inv;
+    }
+
 }
