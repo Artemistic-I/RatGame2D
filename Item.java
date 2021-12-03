@@ -30,12 +30,9 @@ public abstract class Item{
 
     public void update(GraphicsContext graphicsContext) {
     	this.draw(graphicsContext);
-    	this.itemAction();
-
-        //check rat/item locations
-        //for each match, rat contact
+        ItemMain.checkTiles();
     }
-    
+
     abstract void itemAction();
     
     public void draw(GraphicsContext graphicsContext) {
