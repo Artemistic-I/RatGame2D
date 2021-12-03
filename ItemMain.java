@@ -16,23 +16,6 @@ public class ItemMain {
     static Item[][] inv = new Item[8][4];
 
     /**
-     * import info from the level class
-     */
-    Level l = new Level(); // needs level number, level file
-
-    /**
-     * import each of the items
-     */
-    static Bomb b = new Bomb();
-    static Gas g = new Gas();
-    static Poison p = new Poison();
-    static SexChangeFemale scf = new SexChangeFemale();
-    static SexChangeMale scm = new SexChangeMale();
-    static NoEntry ne = new NoEntry();
-    static DeathRat dr = new DeathRat();
-    static Sterilisation s = new Sterilisation();
-
-    /**
      * constant for the max amount of items
      */
     private final static int MAX_ITEM = 4;
@@ -203,27 +186,6 @@ public class ItemMain {
         }
 
         return timer;
-    }
-
-    /**
-     *
-     */
-    public static void checkTiles(){
-        ArrayList itemsOnTiles = ItemManager.itemsOnTiles();
-        ArrayList ratsOnTiles = ArrayList(RatManager.ratsOnTiles());
-
-        for (i = 0;i < itemsOnTiles.size() ;i++) {
-            for (j = 0;j < ratsOnTiles.size();j++) {
-                Item currentItem = itemsOnTiles.get(i);
-                Rat currentRat = ratsOnTiles.get(j);
-                if (currentItem.getItemLoc() == currentRat.getLocation()) {
-                    currentItem.setTouchStatus(true);
-                    currentItem.setAffectedRat(currentRat);
-                    currentItem.itemAction();
-                }
-            }
-
-        }
     }
 
     public static Item[][] getInv() {
