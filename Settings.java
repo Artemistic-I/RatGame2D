@@ -11,9 +11,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class Settings implements Initializable {
@@ -33,6 +36,9 @@ public class Settings implements Initializable {
     @FXML
     private TextField editUsernameBox;
 
+    @FXML
+    private Label currentUsernameLabel;
+
     private Stage stage;
     private Scene scene;
 
@@ -47,18 +53,43 @@ public class Settings implements Initializable {
     }
 
     @FXML
-    void saveChangesBtnClicked(ActionEvent event) {
-        
+    void saveChangesBtnClicked(ActionEvent event) throws IOException {
+        String userInput = editUsernameBox.getText();
+        if (PlayerProfile.isUniqueUsername(userInput)) {
+            Gameboard.getCurrentPlayer().setPlayerUsername(userInput);
+            updateLabel();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Cannot change username");
+            alert.setHeaderText(null);
+            alert.setContentText("A profile with this username already exists./n Please try another username.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    void deleteProfileBtnClicked(ActionEvent event) {
-        
+    void deleteProfileBtnClicked(ActionEvent event) throws IOException {
+        Gameboard.getCurrentPlayer().removePlayer();
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("");
+        alert.setHeaderText(null);
+        alert.setContentText("Your profile was successfully deleted.");
+        alert.showAndWait();
+        Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void updateLabel() {
+        currentUsernameLabel.setText("Your current username: " + Gameboard.getCurrentPlayer().getPlayerUsername());
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        updateLabel();
         volumeSlider.valueProperty().addListener((ChangeListener<? super Number>) new ChangeListener<Number>() {
 
             @Override

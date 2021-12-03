@@ -15,7 +15,7 @@
    <children>
       <Pane layoutX="66.0" layoutY="108.0" prefHeight="341.0" prefWidth="568.0" style="-fx-background-color: gray; -fx-opacity: 50%;">
          <children>
-            <Text fill="WHITE" layoutX="89.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change username:" wrappingWidth="170.0">
+            <Text fill="#2411fb" layoutX="89.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change username:" wrappingWidth="170.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -23,7 +23,7 @@
             <TextField fx:id="editUsernameBox" layoutX="245.0" layoutY="122.0" prefHeight="25.0" prefWidth="195.0" />
             <Button fx:id="saveChangesBtn" layoutX="284.0" layoutY="171.0" mnemonicParsing="false" onAction="#saveChangesBtnClicked" prefHeight="36.0" prefWidth="141.0" text="Save changes" />
             <Button fx:id="deleteProfileBtn" layoutX="284.0" layoutY="247.0" mnemonicParsing="false" onAction="#deleteProfileBtnClicked" prefHeight="36.0" prefWidth="141.0" text="Delete profile" />
-            <Label layoutX="169.0" layoutY="89.0" prefHeight="14.0" prefWidth="243.0" textFill="WHITE">
+            <Label fx:id="currentUsernameLabel" layoutX="169.0" layoutY="89.0" prefHeight="14.0" prefWidth="243.0" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

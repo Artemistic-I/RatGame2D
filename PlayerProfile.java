@@ -22,7 +22,8 @@ public class PlayerProfile {
 		
 	}
 	public void removePlayer() {
-		this.savedDetails.delete(); // possible IO Exception
+		this.savedDetails.delete(); // IO Exception ?
+		profiles.remove(this);
 	}
 
 	public String getPlayerUsername() {
