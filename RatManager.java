@@ -26,8 +26,8 @@ public class RatManager {
 	 * @param ratToRemove
 	 */
 	public static void removeRat(Rat ratToRemove) {
+		killedRatCount += 1 + ratToRemove.getUnbornRatCount();
 		liveRats.remove(ratToRemove);
-		killedRatCount++;
 	}
 
 	/**

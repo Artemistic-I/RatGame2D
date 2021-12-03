@@ -3,7 +3,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Duration;
-s
+
 public class TimelineMangaer {
 
 	private Timeline tickTimeline;
