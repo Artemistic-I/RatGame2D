@@ -51,7 +51,9 @@ public class PlayerProfile {
 		if (!isUniqueUsername(username)) {
 			throw new InvalidParameterException();
 		} else {
+			savedDetails.delete();
 			this.username = username;
+			savedDetails = new File("players/player_" + username + ".txt");
 			savePlayerDetails();
 		}
 	}
