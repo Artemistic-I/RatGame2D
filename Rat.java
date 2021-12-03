@@ -118,6 +118,7 @@ public class Rat {
 				} else {
 					rat.Breed();
 				}
+    			hasBred = true;
     		}
     	}
     }	

@@ -4,6 +4,8 @@ import java.util.Collection;
 import javafx.scene.image.Image;
 
 public abstract class Tile {
+
+    private boolean isInteractable;
 	
 	private Image tileGraphic;
 	
@@ -29,6 +31,7 @@ public abstract class Tile {
     	this.tileGraphic = tileGraphic;
     	this.xCoordinate = row;
     	this.yCoordinate = column;
+        this.isInteractable = false;
     }
 
     public int[] getSizeOfTile() {
@@ -95,5 +98,12 @@ public abstract class Tile {
 		return yCoordinate;
 	}
 
+    public void setIsInteractable(boolean interactable) {
+		this.isInteractable = interactable;
+	}
+
+	public boolean isInteractable() {
+		return this.isInteractable;
+	}
 
 }

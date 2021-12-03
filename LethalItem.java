@@ -8,8 +8,8 @@ public abstract class LethalItem extends Item{
     /**
      * constructor method
      */
-    public LethalItem(int scKey, Image itemGraphic, TileInteractable tileTheItemIsOn){
-        super(scKey, itemGraphic, tileTheItemIsOn);
+    public LethalItem(Image itemGraphic, TileInteractable tileTheItemIsOn){
+        super(itemGraphic, tileTheItemIsOn);
     }
 
     /**

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class ItemManager {
@@ -22,11 +21,11 @@ public class ItemManager {
 		}
 	}
 	
-	public static ArrayList<Item> itemsOnTiles(ArrayList<Tile> setOfTiles) {
-		ArrayList<Item> itemsThatArePresent = new ArrayList<>();
+	public static Stack<Item> itemsOnTiles(ArrayList<TileInteractable> setOfTiles) {
+		Stack<Item> itemsThatArePresent = new Stack<>();
 		for(Item item: currentlyPlacedItems) {
 			 if (setOfTiles.contains(item.getItemLoc())) {
-				 itemsThatArePresent.add(item);
+				 itemsThatArePresent.push(item);
 			 }
 		 }
 		return itemsThatArePresent;

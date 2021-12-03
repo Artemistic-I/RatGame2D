@@ -35,6 +35,11 @@ public class NoEntry extends Item{
      * method to degrade health of sign
      * @param hp Current health of sign
      */
+    /*
+    also needs to change image to reflect how damaged it is
+    suggest using an array the length of it's health and 
+    changing image to the new one stored at the index of the new health
+    */
     public void degradeHealth(int hp) {
 
         this.health = hp - 1;
