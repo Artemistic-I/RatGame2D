@@ -280,13 +280,13 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	public void updateItemCounts(){
-		this.bombAmount.setText(String.ValueOf(im.bombAmount));
-		this.gasAmount.setText(String.ValueOf(im.gasAmount));
-		this.poisonAmount.setText(String.ValueOf(im.poisonAmount));
-		this.sexChFeAmount.setText(String.ValueOf(sexChFeAmount));
-		this.sexChMaAmount.setText(String.ValueOf(sexChMaAmount));
-		this.noEntryAmount.setText(String.ValueOf(im.noEntryAmount));
-		this.deathRatAmount.setText(String.ValueOf(im.deathRatAmount));
-		this.sterilisationAmount.setText(String.ValueOf(im.sterilisationAmount));
+		this.bombAmount.setText(String.valueOf(im.bombAmount));
+		this.gasAmount.setText(String.valueOf(im.gasAmount));
+		this.poisonAmount.setText(String.valueOf(im.poisonAmount));
+		this.sexChFeAmount.setText(String.valueOf(sexChFeAmount));
+		this.sexChMaAmount.setText(String.valueOf(sexChMaAmount));
+		this.noEntryAmount.setText(String.valueOf(im.noEntryAmount));
+		this.deathRatAmount.setText(String.valueOf(im.deathRatAmount));
+		this.sterilisationAmount.setText(String.valueOf(im.sterilisationAmount));
 }
 }

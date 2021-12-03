@@ -4,7 +4,10 @@ public class SexChangeMale extends Item{
 
     static final int SHORTCUT_KEY = 118; //bound to F7
     private static final Image MALE_SEX_CHANGE_GRAPHIC = new Image("images/ItemGraphics/MaleSexChangeGraphic.png");
-    
+
+    /**
+     * Constructor Method
+     */
     public SexChangeMale(TileInteractable tileTheItemIsOn) {
 
         super(SHORTCUT_KEY, MALE_SEX_CHANGE_GRAPHIC, tileTheItemIsOn);
@@ -13,11 +16,11 @@ public class SexChangeMale extends Item{
 
     /**
      * method to change rats gender from male to female
-     * @param r Rat to change gender
+     * @param rat.getSex() to change gender
      */
     public void changeSex(Rat rat) {
-        if (rat.getSex() == MALE) {
-        	rat.changeSex(FEMALE);
+        if (rat.getSex() == RatSex.MALE) {
+        	rat.changeSex(RatSex.FEMALE);
         }
     }
 
