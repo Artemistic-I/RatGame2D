@@ -24,8 +24,8 @@ public class TimelineMangaer {
 
 	private void tick() {
 		Gameboard.drawGameboard(this.graphicsContext);
-		ItemManager.updateItems(graphicsContext);
 		RatManager.updateRats(this.graphicsContext);
+		ItemManager.updateItems(graphicsContext);
 		gameboardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 		gameboardCanvasController.updateRatCounts(RatManager.countMaleRats(), RatManager.countFemaleRats(), Gameboard.getRatPopulationToLose());
 		totalDuration += DELAY;
