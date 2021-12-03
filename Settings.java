@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,9 +55,14 @@ public class Settings implements Initializable {
 
     @FXML
     void saveChangesBtnClicked(ActionEvent event) throws IOException {
-        String userInput = editUsernameBox.getText();
-        if (PlayerProfile.isUniqueUsername(userInput)) {
-            Gameboard.getCurrentPlayer().setPlayerUsername(userInput);
+        String newUsername = editUsernameBox.getText();
+        String oldUsername =  Gameboard.getCurrentPlayer().getPlayerUsername();
+        if (PlayerProfile.isUniqueUsername(newUsername)) {
+            Gameboard.getCurrentPlayer().setPlayerUsername(newUsername);
+            if (Gameboard.getCurrentPlayer().hasSavedGame()) {
+                File file = new File("gamesaves/" + oldUsername + ".txt");
+                file.renameTo(new File("gamesaves/" + newUsername + ".txt"));
+            }
             updateLabel();
         } else {
             Alert alert = new Alert(AlertType.ERROR);

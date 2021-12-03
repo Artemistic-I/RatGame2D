@@ -1,6 +1,8 @@
 import java.awt.Label;
 import java.awt.Window;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -176,6 +178,13 @@ import javafx.util.Duration;
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			startBtn.setDisable(startButtonSwitch);
+			String username = Gameboard.getCurrentPlayer().getPlayerUsername();
+			File savedGame = new File("gamesaves/" + username + ".txt");
+			if (savedGame.exists() && savedGame.isFile()) {
+				Gameboard.getCurrentPlayer().setHasSavedGame(true);
+			} else {
+				loadBtn.setDisable(true);
+			}
 		}
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;

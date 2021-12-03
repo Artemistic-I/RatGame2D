@@ -45,7 +45,6 @@ public class ProfilesController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        //stage.show();
         refreshProfileList();
     }
 

@@ -1,0 +1,13 @@
+2
+
+female baby isPregnant:false isSterile:false xPosition:1 yPosition:17 direction:East age:14
+male baby isPregnant:false isSterile:false xPosition:6 yPosition:9 direction:West age:14
+male baby isPregnant:false isSterile:false xPosition:15 yPosition:12 direction:North age:14
+female baby isPregnant:false isSterile:false xPosition:13 yPosition:15 direction:West age:14
+female baby isPregnant:false isSterile:false xPosition:18 yPosition:13 direction:East age:14
+male baby isPregnant:false isSterile:false xPosition:15 yPosition:2 direction:East age:14
+
+0
+
+
+7000

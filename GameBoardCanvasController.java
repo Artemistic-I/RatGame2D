@@ -121,7 +121,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-		GameFileManager.saveGame("SavedGame.txt", Menu.getTimelineManager().getDuration());
+		String username = Gameboard.getCurrentPlayer().getPlayerUsername();
+		long totalDuration = Menu.getTimelineManager().getDuration();
+		GameFileManager.saveGame(username, totalDuration);
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

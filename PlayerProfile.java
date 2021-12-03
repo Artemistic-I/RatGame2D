@@ -9,21 +9,31 @@ public class PlayerProfile {
 
 	private String username;
 	private File savedDetails;
+	private Boolean hasSavedGame;
 	private static ArrayList<PlayerProfile> profiles = new ArrayList<>();
 
 	public PlayerProfile(String username, Boolean isNew) {
 		this.savedDetails = new File("players/player_" + username + ".txt");
+		hasSavedGame = false;
 		if (isNew) {
-			setPlayerUsername(username); // this updates the details
+			setPlayerUsername(username);
 		} else {
 			this.username = username;
 		}
-		
-		
+	}
+	public Boolean hasSavedGame() {
+		return hasSavedGame;
+	}
+	public void setHasSavedGame(Boolean value) {
+		hasSavedGame = value;
 	}
 	public void removePlayer() {
-		this.savedDetails.delete(); // IO Exception ?
+		this.savedDetails.delete();
 		profiles.remove(this);
+		if (hasSavedGame) {
+			File file = new File("gamesaves/" + username + ".txt");
+			file.delete();
+		}
 	}
 
 	public String getPlayerUsername() {
@@ -58,29 +68,17 @@ public class PlayerProfile {
 		}
 	}
 
-	/* public void addToUnlocked(Level lvl) {
-		unlockedLevels.add(lvl);
-		savePlayerDetails();
-	}
-
-	public Boolean isLocked(Level lvl) {
-		return !unlockedLevels.contains(lvl);
-	} */
-
 	public static void loadProfiles() {
 		File playersFolder = new File("players/");
 		File levelsFolder = new File("levels/");
 
 		File[] playerFiles = playersFolder.listFiles();
 		File[] levelFiles = levelsFolder.listFiles();
-		//Level.getLevels().add(new Level(1, "levels/level1.txt"));
-		//Level.getLevels().add(new Level(2, "levels/level2.txt"));
 		
 		int i = 1;
 		for (File file : levelFiles) {
 			Level.getLevels().add(new Level(i, "levels/" + file.getName()));
 			i++;
-			System.out.println("level loaded");//
 		}
 		Level.setSelectedLevel(Level.getLevels().get(0)); // initialisation is required
 		Scanner in = null;

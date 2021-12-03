@@ -10,15 +10,16 @@ public class GameFileManager {
     
     public static void saveGame(String username, long duration) {
         // saves file to a directory with the name of the players username
-        String outputFile = username + "/SaveGame.txt";
+        String outputFile = "gamesaves/" + username + ".txt";
+        Gameboard.getCurrentPlayer().setHasSavedGame(true);
         File myFile = new File(outputFile);
         PrintWriter myWriter = null;
         try {
-            myWriter = new PrintWriter(outputFile);
+            myWriter = new PrintWriter(myFile);
 
         } catch (FileNotFoundException e) {
             System.out.println("Cannot open " + outputFile);
-            myWriter.close();
+            //myWriter.close(); No need to close beacuse exception means we haven't opened it
             System.exit(0);
         }
 
@@ -43,7 +44,8 @@ public class GameFileManager {
         // letting load file know this section is finished
         myWriter.println();
 
-        // items
+        // Something in here causes errors
+       /*  // items
         // array of items on the board
         Item[] items = ItemManager.getCurrentlyPlacedItems();
         for (Item item : items) {
@@ -57,7 +59,7 @@ public class GameFileManager {
                 // prints item details to file
                 myWriter.println(item.toString());
             }
-        }
+        } */
         // letting load file know this section is finished
         myWriter.println();
 
