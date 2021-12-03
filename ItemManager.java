@@ -31,4 +31,8 @@ public class ItemManager {
 		 }
 		return itemsThatArePresent;
 	}
+
+	public static Item[] getCurrentlyPlacedItems() {
+		return (Item[]) currentlyPlacedItems.toArray();
+	}
 }

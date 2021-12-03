@@ -1,7 +1,0 @@
-1
-female baby isPregnant:false isSterile:false xPosition:2 yPosition:9 direction:North age:15
-male baby isPregnant:false isSterile:false xPosition:12 yPosition:7 direction:North age:15
-male baby isPregnant:false isSterile:false xPosition:15 yPosition:17 direction:East age:15
-female baby isPregnant:false isSterile:false xPosition:13 yPosition:13 direction:South age:15
-0
-7500

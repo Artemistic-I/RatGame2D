@@ -3,7 +3,7 @@ import javafx.scene.image.Image;
 //lethal items - kills rats
 // findRats method here as it appears in bomb and gas
 
-public class LethalItem extends Item{
+public abstract class LethalItem extends Item{
 
     /**
      * constructor method

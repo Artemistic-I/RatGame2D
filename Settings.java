@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Settings implements Initializable {
@@ -22,6 +23,15 @@ public class Settings implements Initializable {
 
     @FXML
     private Slider volumeSlider;
+
+    @FXML
+    private Button saveChangesBtn;
+
+    @FXML
+    private Button deleteProfileBtn;
+
+    @FXML
+    private TextField editUsernameBox;
 
     private Stage stage;
     private Scene scene;
@@ -35,6 +45,17 @@ public class Settings implements Initializable {
 		stage.setScene(scene);
 		stage.show();
     }
+
+    @FXML
+    void saveChangesBtnClicked(ActionEvent event) {
+        
+    }
+
+    @FXML
+    void deleteProfileBtnClicked(ActionEvent event) {
+        
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -14,11 +14,9 @@ import javafx.stage.Stage;
 public class Main extends Application { 
 
 	public void start(Stage primaryStage) throws Exception { // # what exception?
-		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));	
+		PlayerProfile.loadProfiles();
+		Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));	
 
-		Level.getLevels().add(new Level(1, "levels/level1.txt", false));
-		Level.getLevels().add(new Level(2, "levels/level2.txt", false));
-		Level.setSelectedLevel(Level.getLevels().get(0));
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 

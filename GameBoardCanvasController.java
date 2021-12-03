@@ -76,6 +76,33 @@ public class GameBoardCanvasController implements Initializable {
 	
 	@FXML
 	private Label ratLimit;
+
+	@FXML
+	private Label bombAmount;
+
+	@FXML
+	private Label gasAmount;
+
+	@FXML
+	private Label poisonAmount;
+
+	@FXML
+	private Label sexChFeAmount;
+
+	@FXML
+	private Label sexChMaAmount;
+
+	@FXML
+	private Label noEntryAmount;
+
+	@FXML
+	private Label deathRatAmount;
+
+	@FXML
+	private Label sterilisationAmount;
+
+
+	//ItemMain im = new ItemMain(); //caused an error
 	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -93,19 +120,20 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void saveButtonClicked(ActionEvent event) throws IOException {
+	void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		GameFileManager.saveGame("SavedGame.txt", Menu.getTimelineManager().getDuration());
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+		SoundManager.playSound("audio/Spring Field - Godmode.wav");
         stage.show();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saveButton.setDisable(true);
-		graphicsContext = canvas.getGraphicsContext2D();			
+		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
 
@@ -250,4 +278,15 @@ public class GameBoardCanvasController implements Initializable {
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
 	}
+
+	public void updateItemCounts(){
+		this.bombAmount.setText(String.valueOf(im.bombAmount));
+		this.gasAmount.setText(String.valueOf(im.gasAmount));
+		this.poisonAmount.setText(String.valueOf(im.poisonAmount));
+		this.sexChFeAmount.setText(String.valueOf(sexChFeAmount));
+		this.sexChMaAmount.setText(String.valueOf(sexChMaAmount));
+		this.noEntryAmount.setText(String.valueOf(im.noEntryAmount));
+		this.deathRatAmount.setText(String.valueOf(im.deathRatAmount));
+		this.sterilisationAmount.setText(String.valueOf(im.sterilisationAmount));
+}
 }

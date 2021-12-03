@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: white;">
@@ -17,18 +16,18 @@
                   <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="settingsBtn" layoutX="40.0" layoutY="300.0" mnemonicParsing="false" onAction="#settingsBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="SETTINGS">
+            <Button fx:id="settingsBtn" layoutX="40.0" layoutY="361.0" mnemonicParsing="false" onAction="#settingsBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="SETTINGS">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="240.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="49.0" prefWidth="150.0" style="-fx-font-size: 15;" styleClass="button-red" stylesheets="@style.css" text=" Select level first" />
+            <Button fx:id="selectLevelBtn" layoutX="40.0" layoutY="240.0" mnemonicParsing="false" onAction="#selectLevelBtnClicked" prefHeight="49.0" prefWidth="150.0" style="-fx-font-size: 15;" styleClass="button-red" stylesheets="@style.css" text=" Select level" />
             <Button fx:id="exitBtn" layoutX="40.0" layoutY="512.0" mnemonicParsing="false" onAction="#quitClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="EXIT">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="profilesBtn" layoutX="40.0" layoutY="362.0" mnemonicParsing="false" onAction="#profilesBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="PROFILES">
+            <Button fx:id="loadBtn" layoutX="40.0" layoutY="299.0" mnemonicParsing="false" onAction="#loadBtnClicked" prefHeight="49.0" prefWidth="150.0" styleClass="button-red" stylesheets="@style.css" text="Load game">
                <font>
                   <Font size="20.0" />
                </font>
