@@ -76,6 +76,33 @@ public class GameBoardCanvasController implements Initializable {
 	
 	@FXML
 	private Label ratLimit;
+
+	@FXML
+	private Label bombAmount;
+
+	@FXML
+	private Label gasAmount;
+
+	@FXML
+	private Label poisonAmount;
+
+	@FXML
+	private Label sexChFeAmount;
+
+	@FXML
+	private Label sexChMaAmount;
+
+	@FXML
+	private Label noEntryAmount;
+
+	@FXML
+	private Label deathRatAmount;
+
+	@FXML
+	private Label sterilisationAmount;
+
+
+	ItemMain im = new ItemMain();
 	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -106,7 +133,7 @@ public class GameBoardCanvasController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saveButton.setDisable(true);
-		graphicsContext = canvas.getGraphicsContext2D();			
+		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
 
@@ -251,4 +278,15 @@ public class GameBoardCanvasController implements Initializable {
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
 	}
+
+	public void updateItemCounts(){
+		this.bombAmount.setText(String.ValueOf(im.bombAmount));
+		this.gasAmount.setText(String.ValueOf(im.gasAmount));
+		this.poisonAmount.setText(String.ValueOf(im.poisonAmount));
+		this.sexChFeAmount.setText(String.ValueOf(sexChFeAmount));
+		this.sexChMaAmount.setText(String.ValueOf(sexChMaAmount));
+		this.noEntryAmount.setText(String.ValueOf(im.noEntryAmount));
+		this.deathRatAmount.setText(String.ValueOf(im.deathRatAmount));
+		this.sterilisationAmount.setText(String.ValueOf(im.sterilisationAmount));
+}
 }
