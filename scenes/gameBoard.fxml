@@ -65,12 +65,12 @@
             </ImageView>
             <ImageView fx:id="sexChMaDragable" fitHeight="56.0" fitWidth="55.0" layoutX="39.0" layoutY="279.0" onDragDetected="#dragSexChMaDragable" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/FemaleSexChange.png" />
+                  <Image url="@../images/MaleSexChange.png" />
                </image>
             </ImageView>
             <ImageView fx:id="sexChFeDragable" fitHeight="56.0" fitWidth="55.0" layoutX="28.0" layoutY="348.0" onDragDetected="#dragSexChFeDragable" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/MaleSexChange.png" />
+                  <Image url="@../images/FemaleSexChange.png" />
                </image>
             </ImageView>
             <ImageView fx:id="noEntrySignDragable" fitHeight="40.0" fitWidth="40.0" layoutX="35.0" layoutY="416.0" onDragDetected="#dragNoEntrySignDragable" pickOnBounds="true" preserveRatio="true">

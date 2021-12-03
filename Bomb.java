@@ -12,7 +12,6 @@ public class Bomb extends LethalItem {
     */
 
 	private static final Image BOMB_GRAPHIC = new Image("images/ItemGraphics/BombGraphic.png");
-   static final int SHORTCUT_KEY = 112;  //bound to F1
    static final int COUNTDOWN = 4;
    ArrayList<Item> items = new ArrayList<Item>();
    ArrayList<Rat> rats = new ArrayList<Rat>();
@@ -22,7 +21,7 @@ public class Bomb extends LethalItem {
     */
    public Bomb(TileInteractable tileTheItemIsOn) {
 
-      super(SHORTCUT_KEY, BOMB_GRAPHIC, tileTheItemIsOn);
+      super(BOMB_GRAPHIC, tileTheItemIsOn);
 
    }
 

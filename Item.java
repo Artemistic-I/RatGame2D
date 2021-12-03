@@ -11,26 +11,20 @@ public abstract class Item{
     // TODO
     // Create toString() method that returns all information needed for saving that item to a file
 
-    //key to select item from menu
-    protected int shortcutKey;
     protected TileInteractable tileTheItemIsOn;
-    protected boolean isTouchingRat = false;
-    protected Rat affectedRat;
     protected Image itemGraphic;
 
     /**
      * constructor to create a new item
-     * @param scKey Keycode for key related with specific item
      */
-    public Item(int scKey, Image itemGraphic, TileInteractable tileTheItemIsOn){
+    public Item(Image itemGraphic, TileInteractable tileTheItemIsOn){
     	this.itemGraphic = itemGraphic;
     	this.tileTheItemIsOn = tileTheItemIsOn;
-        setSCKey(scKey);
     }
 
     public void update(GraphicsContext graphicsContext) {
     	this.draw(graphicsContext);
-        ItemMain.checkTiles();
+    	this.itemAction();
     }
 
     abstract void itemAction();
@@ -38,52 +32,13 @@ public abstract class Item{
     public void draw(GraphicsContext graphicsContext) {
     	graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate()*Gameboard.getTileSize());
     }
-    
-    /**
-     * set shortcut key
-     * @param key Keycode for key related with specific item
-     */
-    private void setSCKey(int key) { shortcutKey = key; }
 
-    /**
-     * set status for whether item is touching a rat
-     * @param status Whether rat is touching the item
-     */
-    public void setTouchStatus(boolean status) { isTouchingRat = status; }
-
-    /**
-     * method to set rat affected by item
-     * @param rat Rat which has contacted item
-     */
-    public void setAffectedRat(Rat rat) {
-        affectedRat = rat;
-    }
-
-    /**
-     * get shortcut key assigned to item
-     * @return shortcutKey Shortcut key assigned to item
-     */
-    public int getSCKey() { return shortcutKey; }
 
     /**
      * get tile where item is located
      * @return itemLocation Tile that item occupies
      */
     public Tile getItemLoc() { return tileTheItemIsOn; }
-
-    /**
-     * get boolean telling whether a rat is touching the item
-     * @return isTouchingRat Whether rat is touching item
-     */
-    public boolean getTouchingStatus() { return isTouchingRat; }
-
-    /**
-     * method to get rat affected by item
-     * @return rat Rat that will be affected by item
-     */
-    public Rat getAffectedRat() {
-        return affectedRat;
-    }
 
     /**
      * method to find rats to kill/affect
