@@ -29,8 +29,5 @@ public class Poison extends LethalItem{
     	if (hasPoisoned) {
     		ItemManager.removeItem(this);
     	}
-		
 	}
-
-
 }

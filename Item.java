@@ -43,5 +43,10 @@ public abstract class Item {
 	public Tile getItemLoc() {
 		return tileTheItemIsOn;
 	}
+	
+	public String toString() {
+		String textEquivalent = String.format("%s, xPosition:%d yPosition:%d" , this.getClass(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate());
+		return textEquivalent;
+	}
 
 }
