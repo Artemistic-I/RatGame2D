@@ -44,8 +44,7 @@ public class DeathRat extends LethalItem {
   ratsKilled += 1;
  }
 
- //copied from rat class - still not sure how it works
- 
+ //
  public void update(GraphicsContext graphicsContext) {
 	 this.move();
 	 this.draw(graphicsContext);
@@ -83,6 +82,16 @@ public class DeathRat extends LethalItem {
   if (!(this.tileTheItemIsOn instanceof TileTunnel)) {
    graphicsContext.drawImage(this.itemGraphic, this.tileTheItemIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate()*Gameboard.getTileSize());
   }
+ }
+
+ @Override
+ void itemAction() {
+   killRat(getAffectedRat());
+   incrementRatCounter();
+   if (getRatsKilled() == 5) {
+    ItemManager.removeItem(this);
+   }
+
  }
 
 

@@ -232,16 +232,7 @@ public abstract class Item{
                 sterilizeItem.sterilize();
                 ItemMain.removeItem(itemInUse);
                 break;
-            case 113://death rat
-                DeathRat dRatItem = (DeathRat) itemInUse;
-                while (dRatItem.getRatsKilled() != 5) {
-                    dRatItem.killRat(itemInUse.getAffectedRat());
-                    dRatItem.incrementRatCounter();
-                }
-                ItemMain.removeItem(itemInUse);
 
-
-                break;
         }
 
     }
