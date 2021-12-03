@@ -18,6 +18,12 @@ public class Sterilisation extends Item{
 
     }
 
+    @Override
+    void itemAction() {
+        sterilize();
+        ItemManager.removeItem(this);
+    }
+
     /**
      * method to sterilize rats
      */

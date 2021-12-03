@@ -217,21 +217,7 @@ public abstract class Item{
                 ItemMain.removeItem(itemInUse);
                 break;
 
-            case 117://f to m
-                SexChangeFemale fToMItem = (SexChangeFemale) itemInUse;
-                fToMItem.changeSex(fToMItem.getAffectedRat());
-                ItemMain.removeItem(itemInUse);
-                break;
-            case 118://m to f
-                SexChangeMale mToFItem = (SexChangeMale) itemInUse;
-                mToFItem.changeSex(mToFItem.getAffectedRat());
-                ItemMain.removeItem(itemInUse);
-                break;
-            case 119://sterilize
-                Sterilisation sterilizeItem = (Sterilisation) itemInUse;
-                sterilizeItem.sterilize();
-                ItemMain.removeItem(itemInUse);
-                break;
+            
 
         }
 

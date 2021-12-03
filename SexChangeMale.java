@@ -14,6 +14,12 @@ public class SexChangeMale extends Item{
 
     }
 
+    @Override
+    void itemAction() {
+        changeSex(getAffectedRat());
+        ItemManager.removeItem(this);
+    }
+
     /**
      * method to change rats gender from male to female
      * @param rat.getSex() to change gender
