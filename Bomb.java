@@ -26,31 +26,8 @@ public class Bomb extends LethalItem {
 
    }
 
-   /**
-    *
-    * @return
-    */
-   public ArrayList<Item> getItemsToBomb() {
-      return items;
-   }
-
-   /**
-    *
-    * @return
-    */
-   public ArrayList<Rat> getRatsToBomb() {
-      return rats;
-   }
-
-   /**
-    * method to detonate bomb (bring all methods together)
-    */
-   public void detonate() {
-
-      //if contact with rat is true:
-      //   create explosion
-      //   find rats and items in range
-      //   kill rats and destroy items
+   @Override
+   void itemAction() {
 
       if (getTouchingStatus()) {
 
@@ -58,11 +35,17 @@ public class Bomb extends LethalItem {
 
          items = findItems(getItemLoc());
 
+         for (int i = 0; i < items.size(); i++) {
+            ItemMain.removeItem(items.get(i));
+         }
+
          rats = findRats(getItemLoc(), 0);
 
          for (int i = 0; i < rats.size(); i++) {
             killRat(rats.get(i));
          }
+
+         ItemManager.removeItem(this);
 
       }
 
