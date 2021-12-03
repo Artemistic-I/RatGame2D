@@ -93,12 +93,13 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void saveButtonClicked(ActionEvent event) throws IOException {
+	void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		GameFileManager.saveGame("SavedGame.txt", Menu.getTimelineManager().getDuration());
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+		SoundManager.playSound("audio/Spring Field - Godmode.wav");
         stage.show();
 	}
 

@@ -169,5 +169,13 @@ public class Gameboard {
 	public static int getRatPopulationToLose() {
 		return ratPopulationToLose;
 	}
+
+    public static void setCurrentPlayer(PlayerProfile player) {
+        currentPlayer = player;
+    }
+
+    public static PlayerProfile getCurrentPlayer() {
+        return currentPlayer;
+    }
     
 }

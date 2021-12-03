@@ -53,12 +53,12 @@ import javafx.util.Duration;
 
 		@FXML
 		private Button selectLevelBtn;
+
+		@FXML
+		private Button loadBtn;
 	
 		@FXML
 		private Button settingsBtn;
-
-		@FXML
-		private Button profilesBtn;
 
 		@FXML
 		private Button exitBtn;
@@ -86,7 +86,7 @@ import javafx.util.Duration;
 	     * @param mouseEvent Event
 	     */
 	    public void cmdDeleteProfileClick(MouseEvent mouseEvent) {
-	        PlayerProfile.showDelete();
+	        //PlayerProfile.showDelete();
 	    }
 
 	    /**
@@ -95,7 +95,7 @@ import javafx.util.Duration;
 	     * @param mouseEvent Event
 	     */
 	    public void cmdCreateProfileClick(MouseEvent mouseEvent) {
-	        PlayerProfile.showCreate();
+	        //PlayerProfile.showCreate();
 	    }
 
 		// Start
@@ -119,6 +119,11 @@ import javafx.util.Duration;
 			
 		}
 
+		@FXML
+		void loadBtnClicked(ActionEvent event)  {
+
+		}
+
 		// Select level
 		@FXML
 		void selectLevelBtnClicked(ActionEvent event) throws IOException {
@@ -133,17 +138,6 @@ import javafx.util.Duration;
 		@FXML
 		void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
-
-		}
-		
-		// Profiles
-		@FXML
-		void profilesBtnClicked(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
