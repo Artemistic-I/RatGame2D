@@ -61,11 +61,12 @@ public class Rat {
      * @param direction
      * @param ratAge
      */
-    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile,  TileInteractable tileTheRatIsOn, String direction, int ratAge) {
+    public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile, Boolean isHavingSex,  TileInteractable tileTheRatIsOn, String direction, int ratAge) {
         this.ratSex = ratSex;
         this.ratMaturity = ratMaturity;
         this.isPregnant = isPregnant;
         this.isSterile = isSterile;
+        this.isHavingSex = isHavingSex;
         this.tileTheRatIsOn = tileTheRatIsOn;
         this.direction = direction;
         this.ratAge = ratAge;
@@ -76,7 +77,7 @@ public class Rat {
      * 
      */
     public String toString() {
-    	String textEquivalent = String.format("%s %s %s %s %d %d %s %d" , ratSex, ratMaturity, isPregnant, isSterile, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction, ratAge);
+    	String textEquivalent = String.format("%s %s %s %s %s %d %d %s %d" , ratSex, ratMaturity, isPregnant, isSterile, isHavingSex, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction, ratAge);
 		return textEquivalent;
     }
 

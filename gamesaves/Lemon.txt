@@ -1,10 +1,10 @@
 2
-female adult false false 14 9 North 43
-male adult false false 1 9 South 43
-male adult false false 18 4 East 43
-female adult false false 18 11 East 43
-female adult false false 1 12 West 43
-male adult false false 1 12 East 43
+female baby false false false 8 12 North 34
+male baby false false false 4 15 North 34
+male baby false false false 6 11 East 34
+female baby false false false 6 16 West 34
+female baby false false false 7 4 North 34
+male baby false false false 12 9 North 34
 
-6
-21500
+0
+17000
