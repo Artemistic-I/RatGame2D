@@ -38,11 +38,13 @@ public class ItemMain {
     static int deathRatAmount = 0;
     static int sterilisationAmount = 0;
 
+    /**
+     * timeline manager import for the tick method
+     */
     TimelineMangaer tm = new TimelineMangaer();
 
-    public static void setItemTimer(){
+    public void ItemTimer(){
         for(ratManager.countFemaleRats() >0 | ratManager.countMaleRats() >0){
-            tm.
         }
     }
 
@@ -141,35 +143,35 @@ public class ItemMain {
         switch (shortcutKey) {
             case 112://bomb
                 bombAmount -=1;
-                inv[0][bombAmount] = null;
+                inv[0]= bombAmount;
                 break;
             case 114://gas
                 gasAmount -=1;
-                inv[1][gasAmount] = null;
+                inv[1] = gasAmount;
                 break;
             case 115://no entry
                 noEntryAmount -=1;
-                inv[2][noEntryAmount] = null;
+                inv[2] = noEntryAmount;
                 break;
             case 116://poison
                 poisonAmount -=1;
-                inv[3][poisonAmount] = null;
+                inv[3] = poisonAmount;
                 break;
             case 117://f to m
                 sexChMaAmount -=1;
-                inv[4][sexChMaAmount] = null;
+                inv[4] = sexChMaAmount;
                 break;
             case 118://m to f
                 sexChFeAmount -=1;
-                inv[5][sexChFeAmount] = null;
+                inv[5] = sexChFeAmount;
                 break;
             case 119://sterilize
                 sterilisationAmount -=1;
-                inv[6][sterilisationAmount] = null;
+                inv[6] = sterilisationAmount;
                 break;
             case 113://death rat
                 deathRatAmount -=1;
-                inv[7][deathRatAmount] = null;
+                inv[7] = deathRatAmount;
                 break;
         }
     }
@@ -205,7 +207,7 @@ public class ItemMain {
         return timer;
     }
 
-    public static Item[][] getInv() {
+    public static int[] getInv() {
         return inv;
     }
 
