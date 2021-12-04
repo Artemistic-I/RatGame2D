@@ -29,7 +29,7 @@ public class Gas extends LethalItem{
     	}
         this.gassedRats.addAll(RatManager.ratsOnTiles(new ArrayList<TileInteractable>(gassedTiles)));
         for (Rat rat: gassedRats) {
-        	if (Collections.frequency(gassedRats, rat) > 3) {
+        	if (Collections.frequency(gassedRats, rat) > RAT_EXPOSURE_LIMIT) {
         		RatManager.removeRat(rat);
         	}
         }
@@ -52,8 +52,9 @@ public class Gas extends LethalItem{
     
     public void draw(GraphicsContext graphicsContext) {
     	for (TileInteractable tile: gassedTiles) {
-    		graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(),
-    				tile.getxCoordinate() * Gameboard.getTileSize());
+    		if (!(tile instanceof TileTunnel)) {
+    			graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
+    		}
     	}
     }
 }
