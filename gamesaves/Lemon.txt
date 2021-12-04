@@ -1,8 +1,4 @@
 1
-female baby false false false 3 16 North 3
-male baby false false false 5 2 North 3
-male baby false false false 18 10 East 3
-female baby false false false 17 15 South 3
 
-0
-1500
+4
+53000
