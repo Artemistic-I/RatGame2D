@@ -16,11 +16,6 @@ public class NoEntry extends Item{
 
     }
 
-    public String toString(){
-        String textEquivalent = String.format("%s", tileTheItemIsOn);
-        return textEquivalent;
-    }
-
     /**
      * health of no entry sign begins at 5
      */

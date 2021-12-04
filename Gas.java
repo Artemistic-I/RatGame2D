@@ -19,10 +19,6 @@ public class Gas extends LethalItem{
 
     }
 
-    public String toString(){
-        String textEquivalent = String.format("%s", tileTheItemIsOn);
-        return textEquivalent;
-    }
     /**
      * finds rats to be killed by gas
      */

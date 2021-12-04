@@ -39,11 +39,6 @@ public class Bomb extends LethalItem {
 		this.itemAction();
 	}
 
-	public String toString(){
-		String textEquivalent = String.format("%s", tileTheItemIsOn);
-		return textEquivalent;
-	}
-
 	@Override
 	public void itemAction() {
 		remainingTime--;
