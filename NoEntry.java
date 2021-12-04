@@ -58,7 +58,7 @@ public class NoEntry extends Item{
     public void itemAction(){
         Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
         while (!ratsOnTile.isEmpty()){
-            degradeHealth(this.);
+            degradeHealth(this.health);
         }
     }
 }
