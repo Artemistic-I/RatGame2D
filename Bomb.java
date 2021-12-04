@@ -93,8 +93,9 @@ public class Bomb extends LethalItem {
 	 */
 	private void createExplosion(ArrayList<TileInteractable> explodedTiles) {
 		for (TileInteractable tile: explodedTiles) {
-			this.graphicsContext.drawImage(EXPLOSION_GRAPHIC, tile.getyCoordinate() * Gameboard.getTileSize(),
-					tile.getxCoordinate() * Gameboard.getTileSize());
+			if (!(tile instanceof TileTunnel)) {
+				this.graphicsContext.drawImage(EXPLOSION_GRAPHIC, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
+			}
 		}
 	}
 
