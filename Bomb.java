@@ -1,6 +1,11 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
@@ -16,6 +21,7 @@ public class Bomb extends LethalItem {
 	private static final Image BOMB_GRAPHIC = new Image("images/ItemGraphics/BombGraphic.png");
 	private static final int COUNTDOWN = 8;
 	private int remainingTime;
+	private GraphicsContext graphicsContext;
 
 	/**
 	 * constructor
@@ -39,6 +45,19 @@ public class Bomb extends LethalItem {
 			while (!itemsToDestroy.isEmpty()) {
 				ItemManager.removeItem(itemsToDestroy.pop());
 			}
+			try {
+				SoundManager.playSound("audio/explosion.wav");
+			} catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.createExplosion();
 			ItemManager.removeItem(this);
 		}
 	}
@@ -60,7 +79,7 @@ public class Bomb extends LethalItem {
 	 * method to create explosion using javaFX
 	 */
 	private void createExplosion() {
-		// countdown in here
+		draw(graphicsContext);
 	}
 
 }
