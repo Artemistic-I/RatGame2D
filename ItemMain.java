@@ -50,6 +50,7 @@ public class ItemMain {
                         inv[0][bombAmount] = b;
                         bombAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -58,6 +59,7 @@ public class ItemMain {
                         inv[1][gasAmount] = g;
                         gasAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -66,6 +68,7 @@ public class ItemMain {
                         inv[2][gasAmount] = p;
                         poisonAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -74,6 +77,7 @@ public class ItemMain {
                         inv[3][sexChFeAmount - 1] = scf;
                         sexChFeAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -82,6 +86,7 @@ public class ItemMain {
                         inv[4][sexChMaAmount] = scm;
                         sexChMaAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -90,6 +95,7 @@ public class ItemMain {
                         inv[5][noEntryAmount] = ne;
                         noEntryAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -98,6 +104,7 @@ public class ItemMain {
                         inv[6][deathRatAmount] = dr;
                         deathRatAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
@@ -106,6 +113,7 @@ public class ItemMain {
                         inv[7][sterilisationAmount] = s;
                         sterilisationAmount += 1;
                         findTimer(itemTimer);
+                        break;
                     } else {
                         break;
                     }
