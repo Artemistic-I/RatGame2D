@@ -21,14 +21,17 @@ public class Rat {
     private String direction;
     private Image ratGraphic;
     private int ageToGiveBirth;
+    private int ageToFinishHavingSex;
     private int ratAge;
     private int unbornRatsCount;
     private final static int AGE_WHEN_MATURE = 40;
     private final static int PREGNANCY_LENGTH = 10;
+    private final static int SEX_LENGTH = 5;
     private final static String BABY_RAT_IMAGE_URL = "images/uglyBabyRat.png";
     private final static String MALE_RAT_IMAGE_URL = "images/MaleRat.png";
     private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleRat.png";
     private final static String PREGNANT_RAT_IMAGE_URL = "images/PregnantRat.png";
+    private final static String RAT_SEX_IMAGE_URL = "images/RatSex.png";
     
     /**
      * 
@@ -99,12 +102,22 @@ public class Rat {
     		this.isPregnant = false;
             this.updateGraphic();
     	}
+    	if (isHavingSex) {
+    		this.draw(new Image(RAT_SEX_IMAGE_URL), graphicsContext);
+    		if (this.ratAge >= this.ageToFinishHavingSex) {
+    			this.isHavingSex = false;
+    			if (this.ratSex == RatSex.FEMALE) {
+    				this.Breed();
+    			}
+    		}
+    	} else {
+    		this.move();
+    	}
     	this.ratAge++;
-        this.move();
         if (this.canBreed()) {
         	this.attemptBreeding();
         }
-        this.draw(graphicsContext);
+        this.draw(ratGraphic, graphicsContext);
         
     }
     
@@ -117,17 +130,20 @@ public class Rat {
     	while (!ratsOnTile.isEmpty() && !hasBred) {
     		Rat rat = ratsOnTile.pop();
     		if (rat.canBreed() && rat.getSex() != this.ratSex) {
-    			if (this.ratSex == RatSex.FEMALE) {
-					this.Breed();
-				} else {
-					rat.Breed();
-				}
+    			this.isNowHavingSex();
+    			rat.isNowHavingSex();
     			hasBred = true;
     		}
     	}
     }	
 
-    /**
+    private void isNowHavingSex() {
+		this.isHavingSex = true;
+		this.ageToFinishHavingSex = this.ratAge + SEX_LENGTH;
+		
+	}
+
+	/**
      * 
      */
     private void move() {
@@ -168,9 +184,9 @@ public class Rat {
      * 
      * @param graphicsContext
      */
-    private void draw(GraphicsContext graphicsContext) {
+    private void draw(Image graphic, GraphicsContext graphicsContext) {
         if (!(tileTheRatIsOn instanceof TileTunnel)) {
-        	graphicsContext.drawImage(ratGraphic, this.tileTheRatIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheRatIsOn.getxCoordinate()*Gameboard.getTileSize()); 
+        	graphicsContext.drawImage(graphic, this.tileTheRatIsOn.getyCoordinate()*Gameboard.getTileSize(), this.tileTheRatIsOn.getxCoordinate()*Gameboard.getTileSize()); 
         }
     }
 
@@ -179,7 +195,7 @@ public class Rat {
      * @return
      */
     public Boolean canBreed() {
-        return ((ratMaturity == RatMaturity.ADULT) && !isPregnant && !isSterile);
+        return ((ratMaturity == RatMaturity.ADULT) && !isPregnant && !isSterile && !isHavingSex);
     }
 
     /**
