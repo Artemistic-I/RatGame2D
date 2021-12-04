@@ -38,94 +38,96 @@ public class ItemMain {
     static int deathRatAmount = 0;
     static int sterilisationAmount = 0;
 
+    /**
+     * timeline manager import for the tick method
+     */
     TimelineMangaer tm = new TimelineMangaer();
 
-    public static void setItemTimer(){
-        for(ratManager.countFemaleRats() >0 | ratManager.countMaleRats() >0){
-            tm.
-        }
-    }
+    RatManager rm = new RatManager();
+
 
     /**
      * add a random item to inventory
      */
     public static void addItem(){
-        if (itemTimer == 0) {
-            int randomItem = (int) (Math.random() * (8 - 1 + 1) + 1);
-            switch (randomItem) {
-                case 1:
-                    if (bombAmount < MAX_ITEM) {
-                        bombAmount += 1;
-                        inv[0] = bombAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 2:
-                    if (gasAmount < MAX_ITEM) {
-                        gasAmount += 1;
-                        inv[1] = gasAmount;
-                        gasAmount += 1;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 3:
-                    if (poisonAmount < MAX_ITEM) {
-                        poisonAmount += 1;
-                        inv[2] = poisonAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 4:
-                    if (sexChFeAmount < MAX_ITEM) {
-                        sexChFeAmount += 1;
-                        inv[3] = sexChFeAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 5:
-                    if (sexChMaAmount < MAX_ITEM) {
-                        sexChMaAmount += 1;
-                        inv[4] = sexChMaAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 6:
-                    if (noEntryAmount < MAX_ITEM) {
-                        noEntryAmount += 1;
-                        inv[5] =noEntryAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 7:
-                    if (deathRatAmount < MAX_ITEM) {
-                        deathRatAmount += 1;
-                        inv[6] = dr;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
-                case 8:
-                    if (sterilisationAmount < MAX_ITEM) {
-                        sterilisationAmount += 1;
-                        inv[7] = sterilisationAmount;
-                        findTimer(itemTimer);
-                        break;
-                    } else {
-                        break;
-                    }
+        for(rm.) {
+            if (itemTimer == 0) {
+                int randomItem = (int) (Math.random() * (8 - 1 + 1) + 1);
+                switch (randomItem) {
+                    case 1:
+                        if (bombAmount < MAX_ITEM) {
+                            bombAmount += 1;
+                            inv[0] = bombAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 2:
+                        if (gasAmount < MAX_ITEM) {
+                            gasAmount += 1;
+                            inv[1] = gasAmount;
+                            gasAmount += 1;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 3:
+                        if (poisonAmount < MAX_ITEM) {
+                            poisonAmount += 1;
+                            inv[2] = poisonAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 4:
+                        if (sexChFeAmount < MAX_ITEM) {
+                            sexChFeAmount += 1;
+                            inv[3] = sexChFeAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 5:
+                        if (sexChMaAmount < MAX_ITEM) {
+                            sexChMaAmount += 1;
+                            inv[4] = sexChMaAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 6:
+                        if (noEntryAmount < MAX_ITEM) {
+                            noEntryAmount += 1;
+                            inv[5] = noEntryAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 7:
+                        if (deathRatAmount < MAX_ITEM) {
+                            deathRatAmount += 1;
+                            inv[6] = dr;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                    case 8:
+                        if (sterilisationAmount < MAX_ITEM) {
+                            sterilisationAmount += 1;
+                            inv[7] = sterilisationAmount;
+                            findTimer(itemTimer);
+                            break;
+                        } else {
+                            break;
+                        }
+                }
             }
         }
     }
@@ -141,35 +143,35 @@ public class ItemMain {
         switch (shortcutKey) {
             case 112://bomb
                 bombAmount -=1;
-                inv[0][bombAmount] = null;
+                inv[0]= bombAmount;
                 break;
             case 114://gas
                 gasAmount -=1;
-                inv[1][gasAmount] = null;
+                inv[1] = gasAmount;
                 break;
             case 115://no entry
                 noEntryAmount -=1;
-                inv[2][noEntryAmount] = null;
+                inv[2] = noEntryAmount;
                 break;
             case 116://poison
                 poisonAmount -=1;
-                inv[3][poisonAmount] = null;
+                inv[3] = poisonAmount;
                 break;
             case 117://f to m
                 sexChMaAmount -=1;
-                inv[4][sexChMaAmount] = null;
+                inv[4] = sexChMaAmount;
                 break;
             case 118://m to f
                 sexChFeAmount -=1;
-                inv[5][sexChFeAmount] = null;
+                inv[5] = sexChFeAmount;
                 break;
             case 119://sterilize
                 sterilisationAmount -=1;
-                inv[6][sterilisationAmount] = null;
+                inv[6] = sterilisationAmount;
                 break;
             case 113://death rat
                 deathRatAmount -=1;
-                inv[7][deathRatAmount] = null;
+                inv[7] = deathRatAmount;
                 break;
         }
     }
@@ -205,7 +207,7 @@ public class ItemMain {
         return timer;
     }
 
-    public static Item[][] getInv() {
+    public static int[] getInv() {
         return inv;
     }
 

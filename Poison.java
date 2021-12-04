@@ -17,6 +17,11 @@ public class Poison extends LethalItem{
 
     }
 
+	public String toString(){
+		String textEquivalent = String.format("%s", tileTheItemIsOn);
+		return textEquivalent;
+	}
+
 	@Override
 	public void itemAction() {
 		Boolean hasPoisoned = false;

@@ -98,6 +98,9 @@ public class GameFileManager {
                 int yPosition = line.nextInt();
                 String direction = line.next();
                 int age = line.nextInt();
+                int ageToGiveBirth = line.nextInt();
+                int ageToFinishHavingSex = line.nextInt();
+                int unbornRatsCount = line.nextInt();
                 RatSex enumRatSex;
                 if (ratSex.equals("male")) {
                     enumRatSex = RatSex.MALE;
@@ -111,7 +114,7 @@ public class GameFileManager {
                     enumMaturity = RatMaturity.BABY;
                 }
                 TileInteractable tileTheRatIsOn = (TileInteractable)board[xPosition][yPosition];
-                RatManager.addRat(new Rat(enumRatSex, enumMaturity, isPregnant, isSterile, isHavingSex, tileTheRatIsOn, direction, age));
+                RatManager.addRat(new Rat(enumRatSex, enumMaturity, isPregnant, isSterile, isHavingSex, tileTheRatIsOn, direction, age, ageToGiveBirth, ageToFinishHavingSex, unbornRatsCount));
                 line = new Scanner(in.nextLine());
                 if (line.hasNext()) {
                     ratSex = line.next();

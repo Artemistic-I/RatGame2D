@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
@@ -14,8 +15,10 @@ public class Bomb extends LethalItem {
 	 */
 
 	private static final Image BOMB_GRAPHIC = new Image("images/ItemGraphics/BombGraphic.png");
+	private static final Image EXPLOSION_GRAPHIC = new Image("images/Explosion.png");
 	private static final int COUNTDOWN = 8;
 	private int remainingTime;
+	private GraphicsContext graphicsContext;
 
 	/**
 	 * constructor
@@ -24,13 +27,25 @@ public class Bomb extends LethalItem {
 		super(BOMB_GRAPHIC, tileTheItemIsOn);
 		this.remainingTime = COUNTDOWN;
 	}
+	
+	@Override
+	public void update(GraphicsContext graphicsContext) {
+		this.graphicsContext = graphicsContext;
+		super.draw(graphicsContext);
+		this.itemAction();
+	}
+
+	public String toString(){
+		String textEquivalent = String.format("%s", tileTheItemIsOn);
+		return textEquivalent;
+	}
 
 	@Override
 	public void itemAction() {
 		remainingTime--;
 		if (remainingTime == 0) {
-			createExplosion();
 			ArrayList<TileInteractable> explodedTiles = findExplodedTiles();
+			createExplosion(explodedTiles);
 			Stack<Rat> ratsToKill = RatManager.ratsOnTiles(explodedTiles);
 			while (!ratsToKill.isEmpty()) {
 				RatManager.removeRat(ratsToKill.pop());
@@ -44,7 +59,8 @@ public class Bomb extends LethalItem {
 	}
 
 	private ArrayList<TileInteractable> findExplodedTiles() {
-		ArrayList<TileInteractable> explodedTiles = new ArrayList<>();
+		ArrayList<TileInteractable> explodedTiles = new ArrayList<>();;
+		explodedTiles.add(tileTheItemIsOn);
 		ArrayList<String> possibleMoves = new ArrayList<String>(tileTheItemIsOn.possibleMoves());
 		for (String direction : possibleMoves) {
 			TileInteractable tile = tileTheItemIsOn;
@@ -59,8 +75,11 @@ public class Bomb extends LethalItem {
 	/**
 	 * method to create explosion using javaFX
 	 */
-	private void createExplosion() {
-		// countdown in here
+	private void createExplosion(ArrayList<TileInteractable> explodedTiles) {
+		for (TileInteractable tile: explodedTiles) {
+			this.graphicsContext.drawImage(EXPLOSION_GRAPHIC, tile.getyCoordinate() * Gameboard.getTileSize(),
+					tile.getxCoordinate() * Gameboard.getTileSize());
+		}
 	}
 
 }
