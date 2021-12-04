@@ -58,7 +58,10 @@
                   <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="messageOfTheDay" layoutX="428.0" layoutY="149.0" prefHeight="79.0" prefWidth="197.0" wrapText="true" />
+            <Label fx:id="messageOfTheDay" layoutX="437.0" layoutY="125.0" prefHeight="87.0" prefWidth="260.0" textFill="#2500ff" wrapText="true">
+               <font>
+                  <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>
