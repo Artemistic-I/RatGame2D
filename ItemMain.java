@@ -13,7 +13,7 @@ public class ItemMain {
      * columns are for amount of different items
      * rows are for the amount of different items
      */
-    static Item[][] inv = new Item[8][4];
+    static int[] inv = new int[8];
 
     /**
      * constant for the max amount of items
@@ -38,6 +38,14 @@ public class ItemMain {
     static int deathRatAmount = 0;
     static int sterilisationAmount = 0;
 
+    TimelineMangaer tm = new TimelineMangaer();
+
+    public static void setItemTimer(){
+        for(ratManager.countFemaleRats() >0 | ratManager.countMaleRats() >0){
+            tm.
+        }
+    }
+
     /**
      * add a random item to inventory
      */
@@ -47,8 +55,8 @@ public class ItemMain {
             switch (randomItem) {
                 case 1:
                     if (bombAmount < MAX_ITEM) {
-                        inv[0][bombAmount] = b;
                         bombAmount += 1;
+                        inv[0] = bombAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -56,7 +64,8 @@ public class ItemMain {
                     }
                 case 2:
                     if (gasAmount < MAX_ITEM) {
-                        inv[1][gasAmount] = g;
+                        gasAmount += 1;
+                        inv[1] = gasAmount;
                         gasAmount += 1;
                         findTimer(itemTimer);
                         break;
@@ -65,8 +74,8 @@ public class ItemMain {
                     }
                 case 3:
                     if (poisonAmount < MAX_ITEM) {
-                        inv[2][gasAmount] = p;
                         poisonAmount += 1;
+                        inv[2] = poisonAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -74,8 +83,8 @@ public class ItemMain {
                     }
                 case 4:
                     if (sexChFeAmount < MAX_ITEM) {
-                        inv[3][sexChFeAmount - 1] = scf;
                         sexChFeAmount += 1;
+                        inv[3] = sexChFeAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -83,8 +92,8 @@ public class ItemMain {
                     }
                 case 5:
                     if (sexChMaAmount < MAX_ITEM) {
-                        inv[4][sexChMaAmount] = scm;
                         sexChMaAmount += 1;
+                        inv[4] = sexChMaAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -92,8 +101,8 @@ public class ItemMain {
                     }
                 case 6:
                     if (noEntryAmount < MAX_ITEM) {
-                        inv[5][noEntryAmount] = ne;
                         noEntryAmount += 1;
+                        inv[5] =noEntryAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -101,8 +110,8 @@ public class ItemMain {
                     }
                 case 7:
                     if (deathRatAmount < MAX_ITEM) {
-                        inv[6][deathRatAmount] = dr;
                         deathRatAmount += 1;
+                        inv[6] = dr;
                         findTimer(itemTimer);
                         break;
                     } else {
@@ -110,8 +119,8 @@ public class ItemMain {
                     }
                 case 8:
                     if (sterilisationAmount < MAX_ITEM) {
-                        inv[7][sterilisationAmount] = s;
                         sterilisationAmount += 1;
+                        inv[7] = sterilisationAmount;
                         findTimer(itemTimer);
                         break;
                     } else {
