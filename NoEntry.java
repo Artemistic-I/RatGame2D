@@ -1,5 +1,9 @@
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class NoEntry extends Item{
 
     static final int SHORTCUT_KEY = 115; //bound to F4
@@ -51,6 +55,9 @@ public class NoEntry extends Item{
     }
 
     public void itemAction(){
-        
+        Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
+        while (!ratsOnTile.isEmpty()){
+            degradeHealth();
+        }
     }
 }
