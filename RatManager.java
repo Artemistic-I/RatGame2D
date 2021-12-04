@@ -75,6 +75,10 @@ public class RatManager {
 	public static int getKilledRatCount() {
 		return killedRatCount;
 	}
+
+	public static void setKilledRatCount(int savedCount) {
+		killedRatCount = savedCount;
+	}
 	
 	/**
 	 * 

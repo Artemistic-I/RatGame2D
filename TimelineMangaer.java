@@ -20,6 +20,14 @@ public class TimelineMangaer {
 		totalDuration = 0;
 		tickTimeline.play();
 	}
+	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController, long savedDuration) {
+		this.gameboardCanvasController = gameboardCanvasController;
+		this.graphicsContext = gameboardCanvasController.getGraphicContext();
+		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> tick()));
+		tickTimeline.setCycleCount(Animation.INDEFINITE);
+		totalDuration = savedDuration;
+		tickTimeline.play();
+	}
 
 	private void tick() {
 		Gameboard.drawGameboard(this.graphicsContext);

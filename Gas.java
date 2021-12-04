@@ -1,4 +1,6 @@
 import javafx.scene.image.Image;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class Gas extends LethalItem{
 
@@ -6,6 +8,9 @@ public class Gas extends LethalItem{
     static final int SHORTCUT_KEY = 114; //bound to F3
     static final int AREA = 2;
     static final int RAT_EXPOSURE_TIME = 3;
+    int gasTime = 5;
+
+    RatManager rm = new RatManager();
 
     /**
      * constructor method
@@ -16,8 +21,33 @@ public class Gas extends LethalItem{
 
     }
 
+    /**
+     * finds rats to be killed by gas
+     */
     @Override
     void itemAction() {
+        ArrayList<TileInteractable> gassedTiles = findGassedTiles();
+        Stack<Rat> ratsToKill = rm.ratsOnTiles(gassedTiles);
+        while (!ratsToKill.isEmpty()) {
+            rm.removeRat(ratsToKill.pop());
+        }
+        ItemManager.removeItem(this);
+    }
 
+    /**
+     * for the length that gas is on the board expands into different tiles
+     * @return
+     */
+    private ArrayList<TileInteractable> findGassedTiles(){
+        ArrayList<TileInteractable> gassedTiles = new ArrayList<>();
+        ArrayList<String> possibleMoves = new ArrayList<String>(tileTheItemIsOn.possibleMoves());
+        for (String direction : possibleMoves) {
+            TileInteractable tile = tileTheItemIsOn;
+            do {
+                gassedTiles.add((TileInteractable) tile.getAdjacentTile(direction));
+                tile = (TileInteractable) tile.getAdjacentTile(direction);
+            } while (gasTime > 0);
+        }
+        return gassedTiles;
     }
 }

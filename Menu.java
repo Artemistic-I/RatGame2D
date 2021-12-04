@@ -114,8 +114,22 @@ import javafx.util.Duration;
 		}
 
 		@FXML
-		void loadBtnClicked(ActionEvent event)  {
+		void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
+			Parent root = (Parent)fxmlLoader.load();          
+			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 
+			GameFileManager.loadGame();
+
+			timelineManager = new TimelineMangaer(gameBoardCanvasController, GameFileManager.getSavedDuration());
+			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+
+			SoundManager.stopSound();
+			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
+			
 		}
 
 		// Select level
