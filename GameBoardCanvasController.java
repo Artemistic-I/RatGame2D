@@ -252,22 +252,30 @@ public class GameBoardCanvasController implements Initializable {
         int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
         TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
         System.out.println(droppedOnTile);
-		if (event.getGestureSource() == bombDragable) {
+		if (event.getGestureSource() == bombDragable && Inventory.getInv(0) > 0) {
 			ItemManager.addItem(new Bomb(droppedOnTile));
-		} else if (event.getGestureSource() == gasDragable) {
+			Inventory.removeItem(0);
+		} else if (event.getGestureSource() == gasDragable && Inventory.getInv(1) > 0) {
 			ItemManager.addItem(new Gas(droppedOnTile));
-		} else if (event.getGestureSource() == poisonDragable) {
+			Inventory.removeItem(1);
+		} else if (event.getGestureSource() == poisonDragable && Inventory.getInv(3) > 0) {
 			ItemManager.addItem(new Poison(droppedOnTile));
-		} else if (event.getGestureSource() == sexChFeDragable) {
+			Inventory.removeItem(3);
+		} else if (event.getGestureSource() == sexChFeDragable && Inventory.getInv(5) > 0) {
 			ItemManager.addItem(new SexChangeFemale(droppedOnTile));
-		} else if (event.getGestureSource() == sexChMaDragable) {
+			Inventory.removeItem(5);
+		} else if (event.getGestureSource() == sexChMaDragable && Inventory.getInv(4) > 0) {
 			ItemManager.addItem(new SexChangeMale(droppedOnTile));
-		} else if (event.getGestureSource() == noEntrySignDragable) {
+			Inventory.removeItem(4);
+		} else if (event.getGestureSource() == noEntrySignDragable && Inventory.getInv(6) > 0) {
 			ItemManager.addItem(new NoEntry(droppedOnTile));
-		} else if (event.getGestureSource() == deathRatDragable) {
+			Inventory.removeItem(6);
+		} else if (event.getGestureSource() == deathRatDragable && Inventory.getInv(7) > 0) {
 			ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
-		} else if (event.getGestureSource() == sterilisationDragable) {
+			Inventory.removeItem(7);
+		} else if (event.getGestureSource() == sterilisationDragable && Inventory.getInv(2) > 0) {
 			ItemManager.addItem(new Sterilisation(droppedOnTile));
+			Inventory.removeItem(2);
 		}
 		event.consume();
 	}
