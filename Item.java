@@ -45,7 +45,7 @@ public abstract class Item {
 	}
 	
 	public String toString() {
-		String textEquivalent = String.format("%s, xPosition:%d yPosition:%d" , this.getClass(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate());
+		String textEquivalent = String.format("%s %d %d" , this.getClass().toString(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate());
 		return textEquivalent;
 	}
 

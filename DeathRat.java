@@ -79,4 +79,11 @@ public class DeathRat extends LethalItem {
 
 	}
 
+	@Override
+	public String toString() {
+		String textEquivalent = super.toString();
+		textEquivalent = String.format("%s, %d, %s", textEquivalent, this.ratsKilled, this.direction);
+		return textEquivalent;
+	}
+
 }

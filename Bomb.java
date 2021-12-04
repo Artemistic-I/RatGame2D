@@ -63,4 +63,11 @@ public class Bomb extends LethalItem {
 		// countdown in here
 	}
 
+	@Override
+	public String toString() {
+		String textEquivalent = super.toString();
+		textEquivalent = String.format("%s %d", textEquivalent, this.remainingTime);
+		return textEquivalent;
+	}
+
 }

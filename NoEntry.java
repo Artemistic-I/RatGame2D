@@ -46,4 +46,11 @@ public class NoEntry extends Item{
 
     }
 
+    @Override
+    public String toString() {
+        String textEquivalent = super.toString();
+        textEquivalent = String.format("%s %d", textEquivalent, this.health);
+        return textEquivalent;
+    }
+
 }
