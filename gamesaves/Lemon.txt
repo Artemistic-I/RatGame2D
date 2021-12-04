@@ -1,4 +1,10 @@
-1
+2
+female baby false false false 4 9 East 3 0 0 0
+male baby false false false 6 16 East 3 0 0 0
+male baby false false false 11 9 North 3 0 0 0
+female baby false false false 13 14 North 3 0 0 0
+female baby false false false 18 2 East 3 0 0 0
+male baby false false false 18 10 East 3 0 0 0
 
-4
-53000
+0
+1500
