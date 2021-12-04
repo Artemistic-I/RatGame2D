@@ -1,14 +1,5 @@
-/*
- * Menus.FindMessage.java
- */
-package controllers;
-
 import java.net.URL;
 import java.util.Scanner;
-
-import constants.ErrorMessage;
-import constants.Title;
-
 
 /**
  * Opens the cswebcat website, decodes and outputs the message.
@@ -16,7 +7,7 @@ import constants.Title;
  * @author Walid Mohamed
  * @version 1.0.0
  */
-public class RandomMessage{
+public class MessageOfTheDay{
 
     private static String message = null;
 
@@ -43,6 +34,7 @@ public class RandomMessage{
             in.close();
 
             String text = solve(temp);
+            System.out.println(text); // # testing
             URL uri =
                     new URL("http://cswebcat.swansea.ac.uk/message?solution=" +
                             text);
@@ -53,8 +45,7 @@ public class RandomMessage{
             }
             inurl.close();
         } catch (Exception e) {
-            StageController
-                    .showError(ErrorMessage.MESSAGE_FAIL, Title.ERROR, false);
+            message = "There was an error receiving the message of the day.";
         }
     }
 
@@ -66,8 +57,8 @@ public class RandomMessage{
      */
     private static String solve(String text) {
         text = decrypt(text.toUpperCase());
-        text = "CS-230" + text;
-        text += text.length();
+        text = text + "CS-230";
+        text = text.length() + text;
         return text;
     }
 

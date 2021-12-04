@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -57,6 +58,7 @@
                   <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
                </font>
             </Button>
+            <Label fx:id="messageOfTheDay" layoutX="428.0" layoutY="149.0" prefHeight="79.0" prefWidth="197.0" wrapText="true" />
          </children>
       </AnchorPane>
    </children>

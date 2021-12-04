@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javafx.scene.image.Image;
 
 public abstract class Tile {

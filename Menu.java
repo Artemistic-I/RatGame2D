@@ -1,17 +1,9 @@
-import java.awt.Label;
-import java.awt.Window;
-import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -23,10 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -37,7 +28,6 @@ import javafx.util.Duration;
 	 * @author Walid Mohamed and Alex Gingureanu
 	 * @version 1.0
 	 */
-	@SuppressWarnings("unused")
 	public class Menu implements Initializable {
 		
 		private GameBoardCanvasController gameBoardCanvasController;
@@ -71,6 +61,8 @@ import javafx.util.Duration;
 		@FXML
 		private Button credsBtn;
 		
+		@FXML
+		private Label messageOfTheDay;
 
 		
 	    /**
@@ -176,18 +168,6 @@ import javafx.util.Duration;
 			time.play();
 
     	}
-			
-	    /**
-	     * Called to initialise a controller after its root element has been completely processed.
-	     *
-	     * @param location  The location used to resolve relative paths for the root object, or
-	     *                  <tt>null</tt> if the location is not known.
-	     * @param resources The resources used to localise the root object, or
-	     *                  <tt>null</tt> if
-	     */
-	    public void initialise(URL location, ResourceBundle resources) {
-	        //this.msgDayMessage.setText((String) FindMessage.getMessage());
-	    }
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
@@ -199,6 +179,7 @@ import javafx.util.Duration;
 			} else {
 				loadBtn.setDisable(true);
 			}
+			this.messageOfTheDay.setText(MessageOfTheDay.getMessage());
 		}
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;
