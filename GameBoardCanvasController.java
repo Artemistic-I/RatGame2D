@@ -124,11 +124,20 @@ public class GameBoardCanvasController implements Initializable {
 		String username = Gameboard.getCurrentPlayer().getPlayerUsername();
 		long totalDuration = Menu.getTimelineManager().getDuration();
 		GameFileManager.saveGame(username, totalDuration);
-		Menu.startButtonSwitch = true;
-		RatManager.setKilledRatCount(0);
+
+		//removing all rats and items from memory
+
+		//this code causes errors, but why???
+		/* Item[] currentlyPlacedItems = ItemManager.getCurrentlyPlacedItems();
+		for (Item item : currentlyPlacedItems) {
+			ItemManager.removeItem(item);
+		} */
+		
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
 		}
+		Menu.startButtonSwitch = true;
+		RatManager.setKilledRatCount(0);
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
