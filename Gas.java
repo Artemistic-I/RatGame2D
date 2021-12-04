@@ -21,12 +21,17 @@ public class Gas extends LethalItem{
 
     }
 
+    public String toString(){
+        String textEquivalent = String.format("%s", tileTheItemIsOn);
+        return textEquivalent;
+    }
+
     /**
      * finds rats to be killed by gas
      */
     @Override
     void itemAction() {
-        ArrayList<TileInteractable> gassedTiles = findGassedTiles();
+        ArrayList<TileInteractable> gassedTiles = expand();
         Stack<Rat> ratsToKill = rm.ratsOnTiles(gassedTiles);
         while (!ratsToKill.isEmpty()) {
             rm.removeRat(ratsToKill.pop());
@@ -38,7 +43,7 @@ public class Gas extends LethalItem{
      * for the length that gas is on the board expands into different tiles
      * @return
      */
-    private ArrayList<TileInteractable> findGassedTiles(){
+    private ArrayList<TileInteractable> expand(){
         ArrayList<TileInteractable> gassedTiles = new ArrayList<>();
         ArrayList<String> possibleMoves = new ArrayList<String>(tileTheItemIsOn.possibleMoves());
         for (String direction : possibleMoves) {

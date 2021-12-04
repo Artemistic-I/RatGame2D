@@ -42,7 +42,6 @@ public class Gameboard {
             ratPopulationToLose = in.nextInt();
             levelCompletionTime = in.nextInt();
         }
-        //third line should read items level parameters
         if (in.hasNext()) {
             in.nextLine();
         }

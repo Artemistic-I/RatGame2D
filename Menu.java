@@ -98,6 +98,7 @@ import javafx.util.Duration;
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
+			Gameboard.setIsLoadingGame(false);
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
 
 			timelineManager = new TimelineMangaer(gameBoardCanvasController);

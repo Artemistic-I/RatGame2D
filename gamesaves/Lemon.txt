@@ -1,12 +1,10 @@
 2
-female adult false false 4 15 South 71
-male adult false false 11 17 South 71
-male adult false false 6 8 East 71
-female adult false false 2 9 South 71
-male adult false false 8 8 West 71
-female baby false false 1 7 West 21
-female baby false false 3 9 North 20
-male baby false false 1 7 West 19
+female baby false false false 4 9 East 3 0 0 0
+male baby false false false 6 16 East 3 0 0 0
+male baby false false false 11 9 North 3 0 0 0
+female baby false false false 13 14 North 3 0 0 0
+female baby false false false 18 2 East 3 0 0 0
+male baby false false false 18 10 East 3 0 0 0
 
-4
-35500
+0
+1500

@@ -32,7 +32,7 @@ public abstract class Item {
 
 	public void draw(GraphicsContext graphicsContext) {
 		graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(),
-				this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize());
+		this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize());
 	}
 
 	/**
