@@ -1,0 +1,44 @@
+20 20
+13 300
+30 10 5 20
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+G G G G G G G G G G G G G G G G G G G G
+G P P P P P P P G P P P P P P P P P P G
+G P G G G G G P G P G T G G G G G G P G
+G P G P P P P P G P G T G G P P P G P G
+G P G P G P G P G P G P P P P G P G P G
+G P P P G P G P G P G G G G G G P G P G
+G P G G G P G P G P P P P P P P P G P G
+G P G P G P G P G P G G G G G G G G P G
+G P G P P P P P G P P P P P P P P P P G
+G P G G G G G P G G P G G G G G G G G G
+G P P P P P P P P P P P T T T T T P P G
+G G G G G G G G P G G P G G G G G P G G
+G G P P P P P P P P G P G P P P G P G G
+G G T G P G G P G P G P G P G P G P G G
+G T T G P G P P G P G P G P G P G P G G
+G T G G P G P G G P G P G P G P G P G G
+G T T T P G P P P P G P G P G P P P G G
+G G G G P G G G G P G P G P G G G G G G
+G P P P P P P P P P G P P P P P P P P G
+G G G G G G G G G G G G G G G G G G G G

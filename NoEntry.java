@@ -1,17 +1,20 @@
 import javafx.scene.image.Image;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
 
 public class NoEntry extends Item{
 
     static final int SHORTCUT_KEY = 115; //bound to F4
     private int health;
-    private static final Image NO_ENTRY_GRAPHIC = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
+    private static Image noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
     /**
      * constructor method
      */
     public NoEntry(TileInteractable tileTheItemIsOn) {
 
-        super(SHORTCUT_KEY, NO_ENTRY_GRAPHIC, tileTheItemIsOn);
+        super(SHORTCUT_KEY, noEntryGraphic, tileTheItemIsOn);
         setHealth();
 
     }
@@ -46,9 +49,14 @@ public class NoEntry extends Item{
     changing image to the new one stored at the index of the new health
     */
     public void degradeHealth(int hp) {
-
         this.health = hp - 1;
-
+        noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
     }
 
+    public void itemAction(){
+        Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
+        while (!ratsOnTile.isEmpty()){
+            degradeHealth(this.);
+        }
+    }
 }
