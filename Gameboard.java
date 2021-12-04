@@ -42,6 +42,9 @@ public class Gameboard {
             ratPopulationToLose = in.nextInt();
             levelCompletionTime = in.nextInt();
         }
+        if (in.hasNext()) {
+            in.nextLine();
+        }
         int[][] ratPositions = new int[boardHeight][boardWidth];
         int row = 0;
         //reading the rats positions
