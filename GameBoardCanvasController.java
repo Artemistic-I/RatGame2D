@@ -127,12 +127,7 @@ public class GameBoardCanvasController implements Initializable {
 
 		//removing all rats and items from memory
 
-		//this code causes errors, but why???
-		/* Item[] currentlyPlacedItems = ItemManager.getCurrentlyPlacedItems();
-		for (Item item : currentlyPlacedItems) {
-			ItemManager.removeItem(item);
-		} */
-		
+		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
 		}
