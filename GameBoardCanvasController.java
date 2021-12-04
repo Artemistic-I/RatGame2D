@@ -144,8 +144,6 @@ public class GameBoardCanvasController implements Initializable {
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
-
-
 	@FXML
 	void dragBombDragable(MouseEvent event) throws IOException{
 		//im.removeItem
@@ -156,7 +154,7 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
-	@FXML
+	@FXML 
 	void dragGasDragable(MouseEvent event) throws IOException{
 		//im.removeItem
 		Dragboard db = gasDragable.startDragAndDrop(TransferMode.ANY);
@@ -235,9 +233,7 @@ public class GameBoardCanvasController implements Initializable {
 					event.getGestureSource() == noEntrySignDragable || 
 					event.getGestureSource() == deathRatDragable || 
 					event.getGestureSource() == sterilisationDragable) {
-	    	// Mark the drag event as acceptable by the canvas.
     		event.acceptTransferModes(TransferMode.ANY);
-	    	// Consume the event. This means we mark it as dealt with.
     		event.consume();
 		}
 	}
