@@ -15,7 +15,7 @@ public class Main extends Application {
 
 	public void start(Stage primaryStage) throws Exception { // # what exception?
 		PlayerProfile.loadProfiles();
-		Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));	
+		Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));
 
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();

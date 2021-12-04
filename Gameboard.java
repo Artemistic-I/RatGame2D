@@ -10,19 +10,15 @@ public class Gameboard {
     private static int boardWidth;
     private static int ratPopulationToLose;
     private static int levelCompletionTime;
-    private static final int TILE_SIZE = 25;           //I assumed each tile is a square
+    private static final int TILE_SIZE = 25;
     private static Tile[][] board;
     private static PlayerProfile currentPlayer;
+    private static Boolean isLoadingGame = false;
 
-/*    public Gameboard(String filename){ //I am gonna leave the constructor for now just in case
-        try {
-            board = generateBoard(filename);
-        } catch (FileNotFoundException e) {
-            System.out.println("Could not find " + filename);
-            System.exit(0);
-        }
-    }*/
-    //load tiles from the file describing the level ()
+    public static void setIsLoadingGame(Boolean value) {
+        isLoadingGame = value;
+    }
+    //load tiles from the file describing the level
     public static void generateBoard(String filename) throws FileNotFoundException {
         File inputfile = new File(filename);
         Scanner in = null;
@@ -48,7 +44,7 @@ public class Gameboard {
             ratPopulationToLose = in.nextInt();
             levelCompletionTime = in.nextInt();
         }
-        //third line is skipped because it is irrelevant for Gameboard.
+        //third line should read items level parameters
         if (in.hasNext()) {
             in.nextLine();
         }
@@ -71,7 +67,12 @@ public class Gameboard {
         while (in.hasNext() && row < boardHeight) {
             line = new Scanner(in.nextLine());
             for (int column = 0; column < boardWidth; column++) {
-                board[row][column] = createTile(line.next(), ratPositions[row][column], row, column);
+                if (!isLoadingGame) {
+                    board[row][column] = createTile(line.next(), ratPositions[row][column], row, column);
+                } else {
+                    board[row][column] = createTileOnly(line.next(), row, column);
+                }
+                
             }
             row++;
         }
@@ -135,8 +136,23 @@ public class Gameboard {
             return null;
         }
     }
+
+    public static Tile createTileOnly(String tileType, int row, int column) {
+        if (tileType.equalsIgnoreCase("G")) {
+            Tile grass = new TileGrass(row, column);
+            return grass;
+        } else if (tileType.equalsIgnoreCase("T")) {
+            TileInteractable tunnel = new TileTunnel(row, column);
+            return tunnel;
+        } else if (tileType.equalsIgnoreCase("P")) {
+            TileInteractable path = new TilePath(row, column);
+            return path;
+        } else {
+            return null;
+        }
+    }
     
-    public int calculateScore() {
+    public static int calculateScore() {
     	int ratKillPoints = RatManager.getKilledRatCount() * 10;
     	int timePoints = levelCompletionTime;// - levelEndTime;
     	return ratKillPoints + timePoints;
