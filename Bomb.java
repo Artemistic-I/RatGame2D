@@ -1,5 +1,9 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Stack;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -53,6 +57,18 @@ public class Bomb extends LethalItem {
 			Stack<Item> itemsToDestroy = ItemManager.itemsOnTiles(explodedTiles);
 			while (!itemsToDestroy.isEmpty()) {
 				ItemManager.removeItem(itemsToDestroy.pop());
+			}
+			try {
+				SoundManager.playSound("audio/explosion.wav");
+			} catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			ItemManager.removeItem(this);
 		}

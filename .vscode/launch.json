@@ -6,9 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Current File",
+            "name": "Launch Main",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "Main",
+            "projectName": "Rats_7a57e82d"
         },
         {
             "type": "java",

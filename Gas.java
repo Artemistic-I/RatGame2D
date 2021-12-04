@@ -10,8 +10,6 @@ public class Gas extends LethalItem{
     static final int RAT_EXPOSURE_TIME = 3;
     int gasTime = 5;
 
-    RatManager rm = new RatManager();
-
     /**
      * constructor method
      */
@@ -25,16 +23,15 @@ public class Gas extends LethalItem{
         String textEquivalent = String.format("%s", tileTheItemIsOn);
         return textEquivalent;
     }
-
     /**
      * finds rats to be killed by gas
      */
     @Override
     void itemAction() {
         ArrayList<TileInteractable> gassedTiles = expand();
-        Stack<Rat> ratsToKill = rm.ratsOnTiles(gassedTiles);
+        Stack<Rat> ratsToKill = RatManager.ratsOnTiles(gassedTiles);;
         while (!ratsToKill.isEmpty()) {
-            rm.removeRat(ratsToKill.pop());
+            RatManager.removeRat(ratsToKill.pop());
         }
         ItemManager.removeItem(this);
     }
