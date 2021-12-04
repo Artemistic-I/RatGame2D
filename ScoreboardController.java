@@ -36,4 +36,7 @@ public class ScoreboardController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void addScore(){
+        
+    }
 }

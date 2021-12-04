@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
- * 
+ *
  * @author Aidan English Stephen
  *
  */
@@ -34,7 +34,7 @@ public class Rat {
 	private final static String RAT_SEX_IMAGE_URL = "images/RatSex.png";
 
 	/**
-	 * 
+	 *
 	 * @param ratSex
 	 * @param tileTheRatIsOn
 	 * @param direction
@@ -52,7 +52,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ratSex
 	 * @param ratMaturity
 	 * @param isPregnant
@@ -66,8 +66,8 @@ public class Rat {
 	 * @param unbornRatsCount
 	 */
 	public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile, Boolean isHavingSex,
-			TileInteractable tileTheRatIsOn, String direction, int ratAge, int ageToGiveBirth, int ageToFinishHavingSex,
-			int unbornRatsCount) {
+			   TileInteractable tileTheRatIsOn, String direction, int ratAge, int ageToGiveBirth, int ageToFinishHavingSex,
+			   int unbornRatsCount) {
 		this.ratSex = ratSex;
 		this.ratMaturity = ratMaturity;
 		this.isPregnant = isPregnant;
@@ -83,7 +83,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public String toString() {
 		String textEquivalent = String.format("%s %s %s %s %s %d %d %s %d %d %d %d", ratSex, ratMaturity, isPregnant,
@@ -93,7 +93,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void mature() {
 		ratMaturity = RatMaturity.ADULT;
@@ -101,7 +101,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param graphicsContext
 	 */
 	public void update(GraphicsContext graphicsContext) {
@@ -134,7 +134,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void attemptBreeding() {
 		Boolean hasBred = false;
@@ -156,7 +156,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void move() {
 		ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
@@ -173,27 +173,27 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param direction
 	 * @return
 	 */
 	private String turnAround(String direction) {
 		switch (direction) {
-		case "North":
-			return "South";
-		case "South":
-			return "North";
-		case "West":
-			return "East";
-		case "East":
-			return "West";
-		default:
-			return "";
+			case "North":
+				return "South";
+			case "South":
+				return "North";
+			case "West":
+				return "East";
+			case "East":
+				return "West";
+			default:
+				return "";
 		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @param graphicsContext
 	 */
 	private void draw(Image graphic, GraphicsContext graphicsContext) {
@@ -204,7 +204,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Boolean canBreed() {
@@ -212,7 +212,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void Breed() {
 		this.isPregnant = true;
@@ -222,7 +222,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private RatSex generateRandomBabyRatSex() {
@@ -237,7 +237,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void giveBirth() {
 		RatManager.addRat(new Rat(generateRandomBabyRatSex(), this.tileTheRatIsOn, this.direction));
@@ -245,7 +245,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param targetSex
 	 */
 	public void changeSex(RatSex targetSex) {
@@ -257,7 +257,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void updateGraphic() {
 		if (ratMaturity == RatMaturity.ADULT) {
@@ -276,7 +276,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Tile getLocation() {
@@ -284,7 +284,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public RatSex getSex() {
@@ -292,14 +292,14 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public void sterilise() {
 		this.isSterile = true;
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public RatMaturity getRatMaturity() {
@@ -307,7 +307,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Boolean getIsPregnant() {
@@ -315,7 +315,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public Boolean getIsSterile() {
@@ -323,7 +323,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String getDirection() {
@@ -331,7 +331,7 @@ public class Rat {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public int getUnbornRatCount() {

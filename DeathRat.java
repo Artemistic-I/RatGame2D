@@ -23,6 +23,11 @@ public class DeathRat extends LethalItem {
 
 	}
 
+	public String toString(){
+		String textEquivalent = String.format("%s %s", tileTheItemIsOn, direction);
+		return  textEquivalent;
+	}
+
 	@Override
 	public void update(GraphicsContext graphicsContext) {
 		this.move();

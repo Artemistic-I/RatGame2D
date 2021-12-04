@@ -100,9 +100,6 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML
 	private Label sterilisationAmount;
-
-
-	//ItemMain im = new ItemMain(); //caused an error
 	
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -127,12 +124,7 @@ public class GameBoardCanvasController implements Initializable {
 
 		//removing all rats and items from memory
 
-		//this code causes errors, but why???
-		/* Item[] currentlyPlacedItems = ItemManager.getCurrentlyPlacedItems();
-		for (Item item : currentlyPlacedItems) {
-			ItemManager.removeItem(item);
-		} */
-		
+		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
 		}
