@@ -75,6 +75,8 @@ public class GameFileManager {
             Scanner line = new Scanner(in.nextLine());
             // line 1 is level number
             int levelNumber = line.nextInt();
+            System.out.println("level number = " + levelNumber);
+            Level.setSelectedLevel(levelNumber);
             Gameboard.setIsLoadingGame(true); //loading mode ignores initialisation of baby rats
             try{
                 Gameboard.generateBoard("levels/level" + levelNumber + ".txt");

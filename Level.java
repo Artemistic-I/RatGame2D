@@ -54,6 +54,13 @@ public class Level {
     public static void setSelectedLevel(Level lvl) {
         selectedLevel = lvl;
     }
+    public static void setSelectedLevel(int lvlNum) {
+        for (Level lvl : levels) {
+            if (lvl.getLevelNumber() == lvlNum) {
+                setSelectedLevel(lvl);
+            }
+        }
+    }
     public static ArrayList<Level> getLevels() {
         return levels;
     }
