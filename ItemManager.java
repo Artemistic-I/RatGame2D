@@ -15,9 +15,9 @@ public class ItemManager {
 		currentlyPlacedItems.remove(itemToRemove);
 	}
 	
-	public static void updateItems(GraphicsContext graphicsContext) {
+	public static void updateItems(GraphicsContext graphicsContext, long gameDuration) {
 		for (Item item : currentlyPlacedItems) {
-			item.update(graphicsContext);
+			item.update(graphicsContext, gameDuration);
 		}
 	}
 	

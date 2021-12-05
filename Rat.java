@@ -117,7 +117,7 @@ public class Rat {
 	 *
 	 * @param graphicsContext
 	 */
-	public void update(GraphicsContext graphicsContext) {
+	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		if (ratMaturity == RatMaturity.BABY && ratAge >= AGE_WHEN_MATURE) {
 			this.mature();
 		}
@@ -136,7 +136,11 @@ public class Rat {
 				}
 			}
 		} else {
-			this.move();
+			if (this.ratMaturity == RatMaturity.BABY) {
+				this.move();
+			} else if ((gameDuration % 500) == 0) {
+				this.move();
+			}
 		}
 		this.ratAge++;
 		if (this.canBreed()) {
