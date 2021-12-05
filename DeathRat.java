@@ -29,9 +29,11 @@ public class DeathRat extends LethalItem {
 	}
 
 	@Override
-	public void update(GraphicsContext graphicsContext) {
+	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		itemAction();
-		this.move();
+		if ((gameDuration % 500) == 0) {
+			this.move();
+		}
 		this.draw(graphicsContext);
 		itemAction();
 	}
