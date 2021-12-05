@@ -12,16 +12,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ProfilesController implements Initializable {
 
     private Stage stage;
     private Scene scene;
-
-    //public Stage secondaryStage;
-    //public Scene secondaryScene;
 
     @FXML
     private Button addProfileBtn;
@@ -43,8 +39,6 @@ public class ProfilesController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        //stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
         refreshProfileList();
     }
 
