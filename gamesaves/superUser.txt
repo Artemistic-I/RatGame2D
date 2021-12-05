@@ -1,16 +1,16 @@
-2
-female adult false false false 18 14 West 44 0 0 0 186
-male adult false false false 9 16 West 44 0 0 0 187
-male adult false false false 6 1 South 44 0 0 0 188
-female adult false false false 18 17 East 44 0 0 0 190
+1
+female adult false false false 16 13 North 101 0 0 0 68
+male adult false false false 10 11 South 101 0 0 0 69
+male adult false false false 4 10 North 101 0 0 0 70
+female adult false false false 18 8 West 101 0 0 0 71
 
-16
-22000
+0
+107500
 0
 0
 0
 0
-2
-4
-1
-1
+0
+0
+0
+0
