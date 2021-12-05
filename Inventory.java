@@ -1,4 +1,3 @@
-import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,9 +28,31 @@ public class Inventory {
 
     public static void update() {
         // adds item every 5 seconds (5000 milliseconds)
-        if (Menu.getTimelineManager().getDuration() % 5000 == 0) {
+        if (Menu.getTimelineManager().getDuration() % getTimer(itemTimer) == 0) {
             addItem();
         }
+    }
+
+    public static int getTimer(int timer) {
+        int levelNumber = Level.getSelectedLevel().getLevelNumber();
+        switch (levelNumber){
+            case 1:
+                timer = 5000;
+                break;
+            case 2:
+                timer = 4000;
+                break;
+            case 3:
+                timer = 3000;
+                break;
+            case 4:
+                timer = 2000;
+                break;
+            case 5:
+                timer = 1000;
+                break;
+        }
+        return timer;
     }
 
     /**
