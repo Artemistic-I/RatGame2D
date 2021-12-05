@@ -12,6 +12,26 @@ import javafx.scene.image.Image;
  */
 public class Rat {
 
+	private final static String RAT_SEX_IMAGE_URL = "images/RatSex.png";
+	private final static String BABY_RAT_NORTH_IMAGE_URL = "images/babyRatNorth.png";
+	private final static String BABY_RAT_EAST_IMAGE_URL = "images/babyRatEast.png";
+	private final static String BABY_RAT_SOUTH_IMAGE_URL = "images/babyRatSouth.png";
+	private final static String BABY_RAT_WEST_IMAGE_URL = "images/babyRatWest.png";
+	private final static String MALE_RAT_NORTH_IMAGE_URL = "images/MaleRatNorth.png";
+	private final static String MALE_RAT_EAST_IMAGE_URL = "images/MaleRatEast.png";
+	private final static String MALE_RAT_SOUTH_IMAGE_URL = "images/MaleRatSouth.png";
+	private final static String MALE_RAT_WEST_IMAGE_URL = "images/MaleRatWest.png";
+	private final static String FEMALE_RAT_NORTH_IMAGE_URL = "images/FemaleRatNorth.png";
+	private final static String FEMALE_RAT_EAST_IMAGE_URL = "images/FemaleRatEast.png";
+	private final static String FEMALE_RAT_SOUTH_IMAGE_URL = "images/FemaleRatSouth.png";
+	private final static String FEMALE_RAT_WEST_IMAGE_URL = "images/FemaleRatWest.png";
+	private final static String PREGNANT_RAT_NORTH_IMAGE_URL = "images/PregnantRatNorth.png";
+	private final static String PREGNANT_RAT_EAST_IMAGE_URL = "images/PregnantRatEast.png";
+	private final static String PREGNANT_RAT_SOUTH_IMAGE_URL = "images/PregnantRatSouth.png";
+	private final static String PREGNANT_RAT_WEST_IMAGE_URL = "images/PregnantRatWest.png";
+	private final static int AGE_WHEN_MATURE = 80;
+	private final static int PREGNANCY_LENGTH = 20;
+	private final static int SEX_LENGTH = 10;
 	private int uniqueIdentifier;
 	private RatSex ratSex;
 	private RatMaturity ratMaturity;
@@ -25,34 +45,6 @@ public class Rat {
 	private int ageToGiveBirth;
 	private int ageToFinishHavingSex;
 	private int unbornRatsCount;
-	private final static int AGE_WHEN_MATURE = 80;
-	private final static int PREGNANCY_LENGTH = 20;
-	private final static int SEX_LENGTH = 10;
-	//private final static String BABY_RAT_IMAGE_URL = "images/uglyBabyRat.png";
-	//private final static String MALE_RAT_IMAGE_URL = "images/MaleRat.png";
-	//private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleRat.png";
-	//private final static String PREGNANT_RAT_IMAGE_URL = "images/PregnantRat.png";
-	private final static String RAT_SEX_IMAGE_URL = "images/RatSex.png";
-
-	private final static String BABY_RAT_NORTH_IMAGE_URL = "images/babyRatNorth.png";
-	private final static String BABY_RAT_EAST_IMAGE_URL = "images/babyRatEast.png";
-	private final static String BABY_RAT_SOUTH_IMAGE_URL = "images/babyRatSouth.png";
-	private final static String BABY_RAT_WEST_IMAGE_URL = "images/babyRatWest.png";
-
-	private final static String MALE_RAT_NORTH_IMAGE_URL = "images/MaleRatNorth.png";
-	private final static String MALE_RAT_EAST_IMAGE_URL = "images/MaleRatEast.png";
-	private final static String MALE_RAT_SOUTH_IMAGE_URL = "images/MaleRatSouth.png";
-	private final static String MALE_RAT_WEST_IMAGE_URL = "images/MaleRatWest.png";
-
-	private final static String FEMALE_RAT_NORTH_IMAGE_URL = "images/FemaleRatNorth.png";
-	private final static String FEMALE_RAT_EAST_IMAGE_URL = "images/FemaleRatEast.png";
-	private final static String FEMALE_RAT_SOUTH_IMAGE_URL = "images/FemaleRatSouth.png";
-	private final static String FEMALE_RAT_WEST_IMAGE_URL = "images/FemaleRatWest.png";
-
-	private final static String PREGNANT_RAT_NORTH_IMAGE_URL = "images/PregnantRatNorth.png";
-	private final static String PREGNANT_RAT_EAST_IMAGE_URL = "images/PregnantRatEast.png";
-	private final static String PREGNANT_RAT_SOUTH_IMAGE_URL = "images/PregnantRatSouth.png";
-	private final static String PREGNANT_RAT_WEST_IMAGE_URL = "images/PregnantRatWest.png";
 
 	/**
 	 *
@@ -88,8 +80,8 @@ public class Rat {
 	 * @param unbornRatsCount
 	 */
 	public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile, Boolean isHavingSex,
-			   TileInteractable tileTheRatIsOn, String direction, int ratAge, int ageToGiveBirth, int ageToFinishHavingSex,
-			   int unbornRatsCount, int uniqueIdentifier) {
+			TileInteractable tileTheRatIsOn, String direction, int ratAge, int ageToGiveBirth, int ageToFinishHavingSex,
+			int unbornRatsCount, int uniqueIdentifier) {
 		this.ratSex = ratSex;
 		this.ratMaturity = ratMaturity;
 		this.isPregnant = isPregnant;
@@ -132,13 +124,13 @@ public class Rat {
 			if (this.ratAge >= this.ageToFinishHavingSex) {
 				this.isHavingSex = false;
 				if (this.ratSex == RatSex.FEMALE) {
-					this.Breed();
+					this.breed();
 				}
 			}
 		} else {
 			if (this.ratMaturity == RatMaturity.BABY) {
 				this.move();
-			} else if ((gameDuration % 500) == 0) {
+			} else if ((gameDuration % TimelineMangaer.DELAY) == 0) {
 				this.move();
 			}
 		}
@@ -197,16 +189,16 @@ public class Rat {
 	 */
 	private String turnAround(String direction) {
 		switch (direction) {
-			case "North":
-				return "South";
-			case "South":
-				return "North";
-			case "West":
-				return "East";
-			case "East":
-				return "West";
-			default:
-				return "";
+		case "North":
+			return "South";
+		case "South":
+			return "North";
+		case "West":
+			return "East";
+		case "East":
+			return "West";
+		default:
+			return "";
 		}
 	}
 
@@ -232,7 +224,7 @@ public class Rat {
 	/**
 	 *
 	 */
-	public void Breed() {
+	public void breed() {
 		this.isPregnant = true;
 		this.updateGraphic();
 		this.unbornRatsCount = 3;
@@ -258,7 +250,8 @@ public class Rat {
 	 *
 	 */
 	public void giveBirth() {
-		RatManager.addRat(new Rat(generateRandomBabyRatSex(), this.tileTheRatIsOn, this.direction, RatManager.incrimentRatsAdded()));
+		RatManager.addRat(new Rat(generateRandomBabyRatSex(), this.tileTheRatIsOn, this.direction,
+				RatManager.incrimentRatsAdded()));
 		this.unbornRatsCount--;
 	}
 

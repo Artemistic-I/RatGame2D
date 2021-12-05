@@ -12,7 +12,7 @@ public class TimelineMangaer {
 	private GraphicsContext graphicsContext;
 	private GameBoardCanvasController gameboardCanvasController;
 	private long totalDuration;
-	private static final int DELAY = 250; //milliseconds
+	public static final int DELAY = 250; //milliseconds
 
 	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController) {
 		this.gameboardCanvasController = gameboardCanvasController;
