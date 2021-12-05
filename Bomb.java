@@ -61,6 +61,7 @@ public class Bomb extends LethalItem {
 			}
 			try {
 				SoundManager.playSound("audio/explosion.wav");
+				SoundManager.setVolume(Settings.volume);
 			} catch (UnsupportedAudioFileException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
