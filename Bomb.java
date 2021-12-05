@@ -60,7 +60,7 @@ public class Bomb extends LethalItem {
 				ItemManager.removeItem(itemsToDestroy.pop());
 			}
 			try {
-				SoundManager.playSound("audio/explosion.wav");
+				SoundManager.playSound("audio/0_explosion.wav");
 				SoundManager.setVolume(Settings.volume);
 			} catch (UnsupportedAudioFileException e) {
 				// TODO Auto-generated catch block

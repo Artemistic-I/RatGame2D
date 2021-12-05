@@ -1,8 +1,13 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Gas extends LethalItem{
 
@@ -33,6 +38,19 @@ public class Gas extends LethalItem{
     
     @Override
     void itemAction() { 
+        try {
+            SoundManager.playSound("audio/Lit Fus.wav");
+            SoundManager.setVolume(Settings.volume);
+        } catch (UnsupportedAudioFileException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     	if (gasTimeElapsed <= GAS_EXPAND_TIME) {
             expand();    		
     	}
