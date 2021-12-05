@@ -30,6 +30,7 @@ public class DeathRat extends LethalItem {
 
 	@Override
 	public void update(GraphicsContext graphicsContext) {
+		itemAction();
 		this.move();
 		this.draw(graphicsContext);
 		itemAction();
