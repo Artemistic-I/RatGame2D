@@ -145,8 +145,6 @@ public class GameBoardCanvasController implements Initializable {
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
-
-
 	@FXML
 	void dragBombDragable(MouseEvent event) throws IOException{
 		//im.removeItem
@@ -157,7 +155,7 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
-	@FXML
+	@FXML 
 	void dragGasDragable(MouseEvent event) throws IOException{
 		//im.removeItem
 		Dragboard db = gasDragable.startDragAndDrop(TransferMode.ANY);
@@ -236,9 +234,7 @@ public class GameBoardCanvasController implements Initializable {
 					event.getGestureSource() == noEntrySignDragable || 
 					event.getGestureSource() == deathRatDragable || 
 					event.getGestureSource() == sterilisationDragable) {
-	    	// Mark the drag event as acceptable by the canvas.
     		event.acceptTransferModes(TransferMode.ANY);
-	    	// Consume the event. This means we mark it as dealt with.
     		event.consume();
 		}
 	}
@@ -253,22 +249,30 @@ public class GameBoardCanvasController implements Initializable {
         int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
         TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
         System.out.println(droppedOnTile);
-		if (event.getGestureSource() == bombDragable) {
+		if (event.getGestureSource() == bombDragable && Inventory.getInv(0) > 0) {
 			ItemManager.addItem(new Bomb(droppedOnTile));
-		} else if (event.getGestureSource() == gasDragable) {
+			Inventory.removeItem(0);
+		} else if (event.getGestureSource() == gasDragable && Inventory.getInv(1) > 0) {
 			ItemManager.addItem(new Gas(droppedOnTile));
-		} else if (event.getGestureSource() == poisonDragable) {
+			Inventory.removeItem(1);
+		} else if (event.getGestureSource() == poisonDragable && Inventory.getInv(3) > 0) {
 			ItemManager.addItem(new Poison(droppedOnTile));
-		} else if (event.getGestureSource() == sexChFeDragable) {
+			Inventory.removeItem(3);
+		} else if (event.getGestureSource() == sexChFeDragable && Inventory.getInv(5) > 0) {
 			ItemManager.addItem(new SexChangeFemale(droppedOnTile));
-		} else if (event.getGestureSource() == sexChMaDragable) {
+			Inventory.removeItem(5);
+		} else if (event.getGestureSource() == sexChMaDragable && Inventory.getInv(4) > 0) {
 			ItemManager.addItem(new SexChangeMale(droppedOnTile));
-		} else if (event.getGestureSource() == noEntrySignDragable) {
+			Inventory.removeItem(4);
+		} else if (event.getGestureSource() == noEntrySignDragable && Inventory.getInv(6) > 0) {
 			ItemManager.addItem(new NoEntry(droppedOnTile));
-		} else if (event.getGestureSource() == deathRatDragable) {
+			Inventory.removeItem(6);
+		} else if (event.getGestureSource() == deathRatDragable && Inventory.getInv(7) > 0) {
 			ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
-		} else if (event.getGestureSource() == sterilisationDragable) {
+			Inventory.removeItem(7);
+		} else if (event.getGestureSource() == sterilisationDragable && Inventory.getInv(2) > 0) {
 			ItemManager.addItem(new Sterilisation(droppedOnTile));
+			Inventory.removeItem(2);
 		}
 		event.consume();
 	}
@@ -296,14 +300,14 @@ public class GameBoardCanvasController implements Initializable {
 		}
 	}
 
-	public void updateItemCounts(){
-		this.bombAmount.setText(String.valueOf(im.bombAmount));
-		this.gasAmount.setText(String.valueOf(im.gasAmount));
-		this.poisonAmount.setText(String.valueOf(im.poisonAmount));
-		this.sexChFeAmount.setText(String.valueOf(sexChFeAmount));
-		this.sexChMaAmount.setText(String.valueOf(sexChMaAmount));
-		this.noEntryAmount.setText(String.valueOf(im.noEntryAmount));
-		this.deathRatAmount.setText(String.valueOf(im.deathRatAmount));
-		this.sterilisationAmount.setText(String.valueOf(im.sterilisationAmount));
+	public static void updateItemCounts(){
+		this.bombAmount.setText(String.valueOf(Inventory.getInv(0)));
+		this.gasAmount.setText(String.valueOf(Inventory.getInv(1)));
+		this.poisonAmount.setText(String.valueOf(Inventory.getInv(3)));
+		this.sexChFeAmount.setText(String.valueOf(Inventory.getInv(5)));
+		this.sexChMaAmount.setText(String.valueOf(Inventory.getInv(4)));
+		this.noEntryAmount.setText(String.valueOf(Inventory.getInv(6)));
+		this.deathRatAmount.setText(String.valueOf(Inventory.getInv(7)));
+		this.sterilisationAmount.setText(String.valueOf(Inventory.getInv(2)));
 }
 }

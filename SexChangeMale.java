@@ -17,11 +17,6 @@ public class SexChangeMale extends Item{
 
     }
 
-	public String toString(){
-		String textEquivalent = String.format("%s", tileTheItemIsOn);
-		return textEquivalent;
-	}
-
     @Override
     public void itemAction() {
 		Boolean hasBeenUsed = false;
