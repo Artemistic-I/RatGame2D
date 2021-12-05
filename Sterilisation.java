@@ -14,7 +14,7 @@ public class Sterilisation extends Item{
      */
     public Sterilisation(TileInteractable tileTheItemIsOn) {
 
-        super(SHORTCUT_KEY, STERILISATION_GRAPHIC, tileTheItemIsOn);
+        super(STERILISATION_GRAPHIC, tileTheItemIsOn);
 
     }
 

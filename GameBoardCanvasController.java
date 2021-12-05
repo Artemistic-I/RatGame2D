@@ -250,30 +250,62 @@ public class GameBoardCanvasController implements Initializable {
         int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
         if (Gameboard.getBoard()[yGridRef][xGridRef] instanceof TilePath) {
 	        TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
-			if (event.getGestureSource() == bombDragable && Inventory.getInv(0) > 0) {
-				ItemManager.addItem(new Bomb(droppedOnTile));
-				Inventory.removeItem(0);
+			if (event.getGestureSource() == bombDragable) {
+				if (Inventory.getInv(0) > 0) {
+					ItemManager.addItem(new Bomb(droppedOnTile));
+					Inventory.removeItem(0);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == gasDragable && Inventory.getInv(1) > 0) {
-				ItemManager.addItem(new Gas(droppedOnTile));
-				Inventory.removeItem(1);
+				if (Inventory.getInv(1) > 0) {
+					ItemManager.addItem(new Gas(droppedOnTile));
+					Inventory.removeItem(1);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == poisonDragable && Inventory.getInv(3) > 0) {
-				ItemManager.addItem(new Poison(droppedOnTile));
-				Inventory.removeItem(3);
+				if (Inventory.getInv(3) > 0) {
+					ItemManager.addItem(new Poison(droppedOnTile));
+					Inventory.removeItem(3);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == sexChFeDragable && Inventory.getInv(5) > 0) {
-				ItemManager.addItem(new SexChangeFemale(droppedOnTile));
-				Inventory.removeItem(5);
+				if (Inventory.getInv(5) > 0) {
+					ItemManager.addItem(new SexChangeFemale(droppedOnTile));
+					Inventory.removeItem(5);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == sexChMaDragable && Inventory.getInv(4) > 0) {
-				ItemManager.addItem(new SexChangeMale(droppedOnTile));
-				Inventory.removeItem(4);
+				if (Inventory.getInv(4) > 0) {
+					ItemManager.addItem(new SexChangeMale(droppedOnTile));
+					Inventory.removeItem(4);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == noEntrySignDragable && Inventory.getInv(6) > 0) {
-				ItemManager.addItem(new NoEntry(droppedOnTile));
-				Inventory.removeItem(6);
+				if (Inventory.getInv(6) > 0) {
+					ItemManager.addItem(new NoEntry(droppedOnTile));
+					Inventory.removeItem(6);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == deathRatDragable && Inventory.getInv(7) > 0) {
-				ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
-				Inventory.removeItem(7);
+				if (Inventory.getInv(7) > 0) {
+					ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
+					Inventory.removeItem(7);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			} else if (event.getGestureSource() == sterilisationDragable && Inventory.getInv(2) > 0) {
-				ItemManager.addItem(new Sterilisation(droppedOnTile));
-				Inventory.removeItem(2);
+				if (Inventory.getInv(2) > 0) {
+					ItemManager.addItem(new Sterilisation(droppedOnTile));
+					Inventory.removeItem(2);
+				} else {
+					displayMissingInventoryMessage();
+				}
 			}
         } else {
         	Alert alert = new Alert(AlertType.ERROR);
@@ -285,6 +317,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	private void displayMissingInventoryMessage() {
+		Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Insufficient Inventory Stock");
+        alert.setHeaderText(null);
+        alert.setContentText("Please choose a different item or wait until inventory increases.");
+        alert.showAndWait();
+	}
 
 	public GraphicsContext getGraphicContext() {
 		return graphicsContext;
