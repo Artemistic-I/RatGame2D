@@ -27,6 +27,7 @@ public class LoseScreenController {
     void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playMenuMusic();
 		Inventory.reset();
+		AudioManager.setVol(Settings.getVolume());
 		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
@@ -45,6 +46,7 @@ public class LoseScreenController {
     void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playGameMusic();
 		Inventory.reset();
+		AudioManager.setVol(Settings.getVolume());
 		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);

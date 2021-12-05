@@ -22,6 +22,7 @@ public class Main extends Application {
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 
+		Settings.setVolume(0.5);
 		AudioManager.createPlaylist();
 		AudioManager.playMenuMusic();
 

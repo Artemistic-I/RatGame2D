@@ -71,6 +71,16 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
+    public static void playBombSound(){
+        mediaPlayer.stop();
+        musicNumber = 0;
+        
+        media = new Media(music.get(musicNumber).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+
+        mediaPlayer.play();
+    }
+
     public static void playLoseMusic(){
         mediaPlayer.stop();
         musicNumber = 1;
