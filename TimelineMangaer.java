@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,7 +17,14 @@ public class TimelineMangaer {
 	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController) {
 		this.gameboardCanvasController = gameboardCanvasController;
 		this.graphicsContext = gameboardCanvasController.getGraphicContext();
-		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> tick()));
+		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> {
+			try {
+				tick();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
 		totalDuration = 0;
 		tickTimeline.play();
@@ -23,13 +32,20 @@ public class TimelineMangaer {
 	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController, long savedDuration) {
 		this.gameboardCanvasController = gameboardCanvasController;
 		this.graphicsContext = gameboardCanvasController.getGraphicContext();
-		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> tick()));
+		tickTimeline = new Timeline(new KeyFrame(Duration.millis(DELAY), event -> {
+			try {
+				tick();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}));
 		tickTimeline.setCycleCount(Animation.INDEFINITE);
 		totalDuration = savedDuration;
 		tickTimeline.play();
 	}
 
-	private void tick() {
+	private void tick() throws IOException {
 		Inventory.update();
 		Gameboard.drawGameboard(this.graphicsContext);
 		RatManager.updateRats(this.graphicsContext);
