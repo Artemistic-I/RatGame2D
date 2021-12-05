@@ -20,7 +20,12 @@ public class DeathRat extends LethalItem {
 		super(DEATH_RAT_GRAPHIC, tileTheItemIsOn);
 		this.direction = direction;
 		this.ratsKilled = 0;
-
+	}
+	// constructor for loading
+	public DeathRat(TileInteractable tileTheItemIsOn, String direction, int ratsKilled) {
+		super(DEATH_RAT_GRAPHIC, tileTheItemIsOn);
+		this.direction = direction;
+		this.ratsKilled = ratsKilled;
 	}
 
 	@Override
@@ -82,7 +87,7 @@ public class DeathRat extends LethalItem {
 	@Override
 	public String toString() {
 		String textEquivalent = super.toString();
-		textEquivalent = String.format("%s, %d, %s", textEquivalent, this.ratsKilled, this.direction);
+		textEquivalent = String.format("%s %d %s", textEquivalent, this.ratsKilled, this.direction);
 		return textEquivalent;
 	}
 

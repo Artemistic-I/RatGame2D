@@ -18,6 +18,13 @@ public class NoEntry extends Item{
         setHealth();
 
     }
+    // constructor for loading
+    public NoEntry(TileInteractable tileTheItemIsOn, int health) {
+
+        super(noEntryGraphic, tileTheItemIsOn);
+        this.health = health;
+
+    }
 
     /**
      * health of no entry sign begins at 5

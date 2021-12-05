@@ -44,18 +44,18 @@ public class GameFileManager {
         // length of time since the start of the level in milliseconds
         myWriter.println(duration);
 
+        // player inventory
+        int[] inv = Inventory.getInv();
+        for (int item : inv) {
+            // prints item details to file
+            myWriter.println(item);
+        }
         // items
         // array of items on the board
         Item[] items = ItemManager.getCurrentlyPlacedItems();
         for (Item item : items) {
             // prints item details to file
             myWriter.println(item.toString());
-        }
-        // player inventory
-        int[] inv = Inventory.getInv();
-        for (int item : inv) {
-            // prints item details to file
-            myWriter.println(item);
         }
         myWriter.close();
     }
@@ -124,6 +124,56 @@ public class GameFileManager {
             in.nextLine();
             duration = in.nextLong();
             RatManager.setKilledRatCount(killedRatCount);
+            in.nextLine();
+            for (int i = 0; i < 8; i++) {
+                Inventory.setInv(i, in.nextInt());
+                in.nextLine(); // fucking new line character. I hate it
+            }
+            while (in.hasNext()) {
+                line = new Scanner(in.nextLine());
+                line.next(); // reads and ignores "class"
+                String itemType = line.next();
+                if (itemType.equals("Poison")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    ItemManager.addItem(new Poison((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                } else if (itemType.equals("Gas")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    ItemManager.addItem(new Gas((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                } else if (itemType.equals("Bomb")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    int remainingTime = line.nextInt();
+                    ItemManager.addItem(new Bomb((TileInteractable) Gameboard.getBoard()[xPosition][yPosition], remainingTime));
+                } else if (itemType.equals("Sterilisation")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    ItemManager.addItem(new Sterilisation((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                } else if (itemType.equals("NoEntry")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    int health = line.nextInt();
+                    ItemManager.addItem(new NoEntry((TileInteractable) Gameboard.getBoard()[xPosition][yPosition], health));
+                } else if (itemType.equals("DeathRat")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    int ratsKilled = line.nextInt();
+                    String direction = line.next();
+                    TileInteractable tile = (TileInteractable) Gameboard.getBoard()[xPosition][yPosition];
+                    ItemManager.addItem(new DeathRat(tile, direction, ratsKilled));
+                } else if (itemType.equals("SexChangeFemale")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    ItemManager.addItem(new SexChangeFemale((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                } else if (itemType.equals("SexChangeMale")) {
+                    int xPosition = line.nextInt();
+                    int yPosition = line.nextInt();
+                    ItemManager.addItem(new SexChangeMale((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                } else {
+                    System.out.println("Item name doesn't match any existing items. Failed to load item " + itemType);
+                }
+            }
             line.close();
             in.close();
         }

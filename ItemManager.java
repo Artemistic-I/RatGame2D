@@ -33,10 +33,6 @@ public class ItemManager {
 	public static void removeAllItems() {
 		currentlyPlacedItems.clear();
 	}
-	//this method throws cast exception
-	/* public static Item[] getCurrentlyPlacedItems() {
-		return (Item[]) currentlyPlacedItems.toArray();
-	} */
 	public static Item[] getCurrentlyPlacedItems() {
 		Item[] items = new Item[currentlyPlacedItems.size()];
 		for (int i = 0; i < currentlyPlacedItems.size(); i++) {
