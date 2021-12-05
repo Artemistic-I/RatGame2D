@@ -291,7 +291,7 @@ public class GameBoardCanvasController implements Initializable {
 		this.ratLimit.setText(String.valueOf(ratLimit));
 	}
 
-	public void updateItemCounts(){
+	public static void updateItemCounts(){
 		this.bombAmount.setText(String.valueOf(Inventory.getInv(0)));
 		this.gasAmount.setText(String.valueOf(Inventory.getInv(1)));
 		this.poisonAmount.setText(String.valueOf(Inventory.getInv(3)));
