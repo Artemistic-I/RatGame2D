@@ -127,8 +127,7 @@ import javafx.util.Duration;
 			stage.setScene(scene);
 			stage.show();
 
-			SoundManager.stopSound();
-			SoundManager.playSound("audio/Soft Knives - SefChol.wav");
+			AudioManager.playGameMusic();
 			
 		}
 

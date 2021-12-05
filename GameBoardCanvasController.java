@@ -338,7 +338,7 @@ public class GameBoardCanvasController implements Initializable {
 		this.maleRatCount.setText(String.valueOf(maleRatCount));
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
-		if(maleRatCount + femaleRatCount > 5){
+		if(maleRatCount + femaleRatCount > ratLimit){
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playLoseMusic();
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
