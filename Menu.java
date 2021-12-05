@@ -31,7 +31,6 @@ import javafx.util.Duration;
 	public class Menu implements Initializable {
 		
 		private GameBoardCanvasController gameBoardCanvasController;
-		private Parent root;
 		private Scene scene;
 		private Stage stage;
 		private static TimelineMangaer timelineManager;
@@ -83,16 +82,6 @@ import javafx.util.Duration;
 	        //PlayerProfile.showDelete();
 	    }
 
-	    /**
-	     * Handles the Create Profile button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdCreateProfileClick(MouseEvent mouseEvent) {
-	        //PlayerProfile.showCreate();
-	    }
-
-		// Start
 		@FXML
 		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -132,7 +121,6 @@ import javafx.util.Duration;
 			
 		}
 
-		// Select level
 		@FXML
 		void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
@@ -142,7 +130,6 @@ import javafx.util.Duration;
 			stage.show();
 		}
 
-		// Settings
 		@FXML
 		void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
