@@ -16,6 +16,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -30,7 +32,6 @@ public class GameBoardCanvasController implements Initializable {
 
 	@FXML 
 	private Canvas canvas;
-	
 	
 	private GraphicsContext graphicsContext;
 	private Stage stage;
@@ -247,33 +248,40 @@ public class GameBoardCanvasController implements Initializable {
         double yCoordinate = event.getY(); 
         int xGridRef = (int) xCoordinate / Gameboard.getTileSize();
         int yGridRef = (int) yCoordinate / Gameboard.getTileSize();
-        TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
-        System.out.println(droppedOnTile);
-		if (event.getGestureSource() == bombDragable && Inventory.getInv(0) > 0) {
-			ItemManager.addItem(new Bomb(droppedOnTile));
-			Inventory.removeItem(0);
-		} else if (event.getGestureSource() == gasDragable && Inventory.getInv(1) > 0) {
-			ItemManager.addItem(new Gas(droppedOnTile));
-			Inventory.removeItem(1);
-		} else if (event.getGestureSource() == poisonDragable && Inventory.getInv(3) > 0) {
-			ItemManager.addItem(new Poison(droppedOnTile));
-			Inventory.removeItem(3);
-		} else if (event.getGestureSource() == sexChFeDragable && Inventory.getInv(5) > 0) {
-			ItemManager.addItem(new SexChangeFemale(droppedOnTile));
-			Inventory.removeItem(5);
-		} else if (event.getGestureSource() == sexChMaDragable && Inventory.getInv(4) > 0) {
-			ItemManager.addItem(new SexChangeMale(droppedOnTile));
-			Inventory.removeItem(4);
-		} else if (event.getGestureSource() == noEntrySignDragable && Inventory.getInv(6) > 0) {
-			ItemManager.addItem(new NoEntry(droppedOnTile));
-			Inventory.removeItem(6);
-		} else if (event.getGestureSource() == deathRatDragable && Inventory.getInv(7) > 0) {
-			ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
-			Inventory.removeItem(7);
-		} else if (event.getGestureSource() == sterilisationDragable && Inventory.getInv(2) > 0) {
-			ItemManager.addItem(new Sterilisation(droppedOnTile));
-			Inventory.removeItem(2);
-		}
+        if (Gameboard.getBoard()[yGridRef][xGridRef] instanceof TilePath) {
+	        TileInteractable droppedOnTile = (TileInteractable) Gameboard.getBoard()[yGridRef][xGridRef];
+			if (event.getGestureSource() == bombDragable && Inventory.getInv(0) > 0) {
+				ItemManager.addItem(new Bomb(droppedOnTile));
+				Inventory.removeItem(0);
+			} else if (event.getGestureSource() == gasDragable && Inventory.getInv(1) > 0) {
+				ItemManager.addItem(new Gas(droppedOnTile));
+				Inventory.removeItem(1);
+			} else if (event.getGestureSource() == poisonDragable && Inventory.getInv(3) > 0) {
+				ItemManager.addItem(new Poison(droppedOnTile));
+				Inventory.removeItem(3);
+			} else if (event.getGestureSource() == sexChFeDragable && Inventory.getInv(5) > 0) {
+				ItemManager.addItem(new SexChangeFemale(droppedOnTile));
+				Inventory.removeItem(5);
+			} else if (event.getGestureSource() == sexChMaDragable && Inventory.getInv(4) > 0) {
+				ItemManager.addItem(new SexChangeMale(droppedOnTile));
+				Inventory.removeItem(4);
+			} else if (event.getGestureSource() == noEntrySignDragable && Inventory.getInv(6) > 0) {
+				ItemManager.addItem(new NoEntry(droppedOnTile));
+				Inventory.removeItem(6);
+			} else if (event.getGestureSource() == deathRatDragable && Inventory.getInv(7) > 0) {
+				ItemManager.addItem(new DeathRat(droppedOnTile, "North"));
+				Inventory.removeItem(7);
+			} else if (event.getGestureSource() == sterilisationDragable && Inventory.getInv(2) > 0) {
+				ItemManager.addItem(new Sterilisation(droppedOnTile));
+				Inventory.removeItem(2);
+			}
+        } else {
+        	Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Cannot Place Item Here");
+            alert.setHeaderText(null);
+            alert.setContentText("Sorry, items can only be placed on paths.");
+            alert.showAndWait();
+        }
 		event.consume();
 	}
 
@@ -286,18 +294,10 @@ public class GameBoardCanvasController implements Initializable {
 		this.winLoseIndicator.setProgress(winLoseRatio);
 	}
 	
-	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) throws IOException {
+	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) {
 		this.maleRatCount.setText(String.valueOf(maleRatCount));
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
-		if(maleRatCount + femaleRatCount > 30){
-			System.out.println("workS");
-			SoundManager.stopSound();
-			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
-        	Stage window = (Stage) pauseButton.getScene().getWindow();
-        	scene = new Scene(root);
-        	window.setScene(scene);
-		}
 	}
 
 	public void updateItemCounts(){
@@ -309,5 +309,5 @@ public class GameBoardCanvasController implements Initializable {
 		this.noEntryAmount.setText(String.valueOf(Inventory.getInv(6)));
 		this.deathRatAmount.setText(String.valueOf(Inventory.getInv(7)));
 		this.sterilisationAmount.setText(String.valueOf(Inventory.getInv(2)));
-}
+	}
 }
