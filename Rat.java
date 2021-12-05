@@ -25,9 +25,9 @@ public class Rat {
 	private int ageToGiveBirth;
 	private int ageToFinishHavingSex;
 	private int unbornRatsCount;
-	private final static int AGE_WHEN_MATURE = 40;
-	private final static int PREGNANCY_LENGTH = 10;
-	private final static int SEX_LENGTH = 5;
+	private final static int AGE_WHEN_MATURE = 80;
+	private final static int PREGNANCY_LENGTH = 20;
+	private final static int SEX_LENGTH = 10;
 	//private final static String BABY_RAT_IMAGE_URL = "images/uglyBabyRat.png";
 	//private final static String MALE_RAT_IMAGE_URL = "images/MaleRat.png";
 	//private final static String FEMALE_RAT_IMAGE_URL = "images/FemaleRat.png";
