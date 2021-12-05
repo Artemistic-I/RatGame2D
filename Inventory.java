@@ -27,12 +27,19 @@ public class Inventory {
     static int itemTimer = 0; // timer for when to add next item
 
     public static void update() {
-        // adds item every 5 seconds (5000 milliseconds)
+        /**
+         * adds items to inventory spaces in increments according to the level
+         */
         if (Menu.getTimelineManager().getDuration() % getTimer(itemTimer) == 0) {
             addItem();
         }
     }
 
+    /**
+     * looks at level numbers and returns a number to decide on how long an item should take to spawn
+     * @param timer
+     * @return
+     */
     public static int getTimer(int timer) {
         int levelNumber = Level.getSelectedLevel().getLevelNumber();
         switch (levelNumber){
@@ -64,7 +71,7 @@ public class Inventory {
         ArrayList<Integer> inventoryIndexesNotFull = new ArrayList<>();
         // gets all inv spaces that can be added to
         for (int i = 0; i < inv.length; i++) {
-            if (inv[i] < 4) {
+            if (inv[i] < MAX_ITEM) {
                 inventoryIndexesNotFull.add(i);
             }
         }
