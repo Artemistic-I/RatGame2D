@@ -3,10 +3,9 @@ import java.util.Stack;
 import java.util.concurrent.CopyOnWriteArrayList;
 import javafx.scene.canvas.GraphicsContext;
 
-/**]
- * 
+/**
+ * Class to keep track of all rats in existence and provide associated operations.
  * @author Aidan English Stephen
- *
  */
 public class RatManager {
 
@@ -15,13 +14,18 @@ public class RatManager {
 	private static int totalRatsAdded = 0;
 	
 	/**
-	 * 
-	 * @param ratToAdd
+	 * Allow a new rat to be added.
+	 * @param ratToAdd The rat you want to add.
 	 */
 	public static void addRat(Rat ratToAdd) {
 		liveRats.add(ratToAdd);
 	}
 
+	/**
+	 * Return the rat with a given ID
+	 * @param ratID ID of the rat you want.
+	 * @return Rat corresponding to provided ID if it exists and null otherwise.
+	 */
 	public static Rat getRatByID(int ratID) {
 		for (Rat rat : liveRats) {
 			if (rat.getUniqueIdentifier() == ratID) {
@@ -32,8 +36,8 @@ public class RatManager {
 	}
 
 	/**
-	 * 
-	 * @param ratToRemove
+	 * Allow a rat to be removed.
+	 * @param ratToRemove The rat you want to remove.
 	 */
 	public static void removeRat(Rat ratToRemove) {
 		if (!(ratToRemove == null)){
@@ -43,8 +47,8 @@ public class RatManager {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Count the number of male rats amounts the rats that are alive.
+	 * @return Number of male rats.
 	 */
 	public static int countMaleRats() {
 		int maleRats = 0;
@@ -57,8 +61,8 @@ public class RatManager {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Count the number of female rats amounts the rats that are alive.
+	 * @return Number of female rats.
 	 */
 	public static int countFemaleRats() {
 		int femaleRats = 0;
@@ -71,8 +75,8 @@ public class RatManager {
 	}
 	
 	/**
-	 * 
-	 * @param graphicsContext
+	 * For each rat in existence, update it.
+	 * @param graphicsContext Where rats should be drawn.
 	 */
 	public static void updateRats(GraphicsContext graphicsContext, long gameDuration) {
 		for (Rat rat : liveRats) {
@@ -81,8 +85,8 @@ public class RatManager {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the number of rats that have been killed
+	 * @return Number of rats that have been killed.
 	 */
 	public static int getKilledRatCount() {
 		return killedRatCount;
@@ -93,9 +97,9 @@ public class RatManager {
 	}
 	
 	/**
-	 * 
-	 * @param setOfTiles
-	 * @return
+	 * Find out what rats are present on a particular set of tiles.
+	 * @param setOfTiles The tiles that you want to be checked.
+	 * @return All the rats that are present on the provided tiles.
 	 */
 	public static Stack<Rat> ratsOnTiles(ArrayList<TileInteractable> setOfTiles) {
 		Stack<Rat> ratsThatArePresent = new Stack<>();
@@ -108,8 +112,8 @@ public class RatManager {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Get all the rats that are currently alive.
+	 * @return All rats.
 	 */
 	public static Rat[] getRatPopulation() {
 		Rat[] rats = new Rat[liveRats.size()];
@@ -119,6 +123,10 @@ public class RatManager {
 		return rats;
 	}
 
+	/**
+	 * Increment the total number of rats.
+	 * @return new total number of rats.
+	 */
 	public static int incrimentRatsAdded() {
 		totalRatsAdded += 1;
 		return totalRatsAdded;
