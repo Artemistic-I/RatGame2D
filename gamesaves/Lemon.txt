@@ -1,20 +1,16 @@
 1
-female baby false false false 12 17 North 39 0 0 0
-male baby false false false 16 4 North 39 0 0 0
-male baby false false false 10 12 North 39 0 0 0
-female baby false false false 15 14 South 39 0 0 0
-female baby false false false 15 9 North 39 0 0 0
-male baby false false false 7 9 South 39 0 0 0
+female baby false false false 3 12 North 17 0 0 0
+male baby false false false 12 9 East 17 0 0 0
+male baby false false false 17 17 North 17 0 0 0
+female baby false false false 12 12 West 17 0 0 0
 
 0
-19500
-1
-0
-0
-0
-0
-0
+8500
 0
 1
-class Poison 11 1
-class DeathRat 13 3 0 West
+3
+3
+1
+1
+0
+1

@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,14 +15,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application { 
 
-	public void start(Stage primaryStage) throws Exception { // # what exception?
+	public void start(Stage primaryStage) throws IOException{ 
 		PlayerProfile.loadProfiles();
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/profiles.fxml"));
 
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 
-		SoundManager.playSound("audio/Spring Field - Godmode.wav");
+		AudioManager.createPlaylist();
+		AudioManager.playMenuMusic();
+
 	}
 	
 	
