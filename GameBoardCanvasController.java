@@ -126,7 +126,7 @@ public class GameBoardCanvasController implements Initializable {
 		GameFileManager.saveGame(username, totalDuration);
 
 		//removing all rats and items from memory
-
+		Inventory.reset();
 		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
@@ -138,6 +138,7 @@ public class GameBoardCanvasController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
 		AudioManager.playMenuMusic();
+		AudioManager.setVol(Settings.getVolume());
         stage.show();
 	}
 
@@ -341,6 +342,7 @@ public class GameBoardCanvasController implements Initializable {
 		if(maleRatCount + femaleRatCount > ratLimit){
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playLoseMusic();
+			AudioManager.setVol(Settings.getVolume());
 			ScoreboardController.addScore(Gameboard.calculateScore());
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
@@ -350,6 +352,7 @@ public class GameBoardCanvasController implements Initializable {
 		if(maleRatCount + femaleRatCount == 0){
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playWinMusic();
+			AudioManager.setVol(Settings.getVolume());
 			ScoreboardController.addScore(Gameboard.calculateScore());
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();

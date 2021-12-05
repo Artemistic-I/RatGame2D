@@ -110,6 +110,7 @@ import javafx.util.Duration;
 			stage.show();
 
 			AudioManager.playGameMusic();
+			AudioManager.setVol(Settings.getVolume());
 			
 		}
 

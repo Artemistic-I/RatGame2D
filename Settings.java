@@ -42,6 +42,7 @@ public class Settings implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    public static double volume;
 
     @FXML
     void backToMenuBtnClicked(ActionEvent event) throws IOException {
@@ -100,12 +101,22 @@ public class Settings implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-                
-                AudioManager.setVol(volumeSlider.getValue() * 0.01);
+                double vol = volumeSlider.getValue() * 0.01;
+                AudioManager.setVol(vol);
+                setVolume(vol);
+               
             }
             
         });
         
+    }
+
+    public static void setVolume(double volume){
+        Settings.volume = volume;
+    }
+
+    public static double getVolume(){
+        return volume;
     }
 
 
