@@ -9,7 +9,7 @@ public class Gas extends LethalItem{
 	private static final Image GAS_GRAPHIC = new Image("images/ItemGraphics/GasGraphic.png");
 	private static final int RAT_EXPOSURE_LIMIT = 3;
 	private static final int GAS_EXPAND_TIME = 5;
-	private static final int GAS_EXIST_TIME = 10;
+	private static final int GAS_EXIST_TIME = 15;
 	private int gasTimeElapsed;
     private CopyOnWriteArrayList<TileInteractable> gassedTiles;
     private ArrayList<Rat> gassedRats;

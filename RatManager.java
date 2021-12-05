@@ -74,9 +74,9 @@ public class RatManager {
 	 * 
 	 * @param graphicsContext
 	 */
-	public static void updateRats(GraphicsContext graphicsContext) {
+	public static void updateRats(GraphicsContext graphicsContext, long gameDuration) {
 		for (Rat rat : liveRats) {
-			rat.update(graphicsContext);
+			rat.update(graphicsContext, gameDuration);
 		}
 	}
 	

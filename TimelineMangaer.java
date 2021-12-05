@@ -12,7 +12,7 @@ public class TimelineMangaer {
 	private GraphicsContext graphicsContext;
 	private GameBoardCanvasController gameboardCanvasController;
 	private long totalDuration;
-	private static final int DELAY = 500; //milliseconds
+	public static final int DELAY = 250; //milliseconds
 
 	public TimelineMangaer(GameBoardCanvasController gameboardCanvasController) {
 		this.gameboardCanvasController = gameboardCanvasController;
@@ -48,8 +48,8 @@ public class TimelineMangaer {
 	private void tick() throws IOException {
 		Inventory.update();
 		Gameboard.drawGameboard(this.graphicsContext);
-		RatManager.updateRats(this.graphicsContext);
-		ItemManager.updateItems(graphicsContext);
+		RatManager.updateRats(this.graphicsContext, this.totalDuration);
+		ItemManager.updateItems(graphicsContext, this.totalDuration);
 		gameboardCanvasController.drawWinLoseIndicator(Gameboard.calculateWinLose());
 		gameboardCanvasController.updateRatCounts(RatManager.countMaleRats(), RatManager.countFemaleRats(), Gameboard.getRatPopulationToLose());
 		totalDuration += DELAY;

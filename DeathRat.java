@@ -29,8 +29,11 @@ public class DeathRat extends LethalItem {
 	}
 
 	@Override
-	public void update(GraphicsContext graphicsContext) {
-		this.move();
+	public void update(GraphicsContext graphicsContext, long gameDuration) {
+		itemAction();
+		if ((gameDuration % 500) == 0) {
+			this.move();
+		}
 		this.draw(graphicsContext);
 		itemAction();
 	}
@@ -40,7 +43,7 @@ public class DeathRat extends LethalItem {
 		if (possibleMoves.size() == 1) {
 			this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(turnAround(direction));
 			this.direction = turnAround(direction);
-		} else {
+		} else if (possibleMoves.size() > 1) {
 			possibleMoves.remove(turnAround(direction));
 			Random rand = new Random();
 			String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
