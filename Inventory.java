@@ -48,9 +48,11 @@ public class Inventory {
             }
         }
         Random rand = new Random();
-        int randomIndex = inventoryIndexesNotFull.get(rand.nextInt(inventoryIndexesNotFull.size()));
-        inv[randomIndex] += 1;
-        Menu.getTimelineManager().getGameboardCanvassController().updateItemCounts();
+        if (inventoryIndexesNotFull.size() > 0) {
+        	int randomIndex = inventoryIndexesNotFull.get(rand.nextInt(inventoryIndexesNotFull.size()));
+        	inv[randomIndex] += 1;
+        	Menu.getTimelineManager().getGameboardCanvassController().updateItemCounts();
+        }
     }
 
     /**
