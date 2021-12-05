@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ public class ScoreboardController implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    private static ArrayList<Integer> scores = new ArrayList<Integer>();
+
     @FXML
     private Button backToLevelsBtn;
 
@@ -25,7 +28,9 @@ public class ScoreboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        for (Integer score : scores) {
+			scoreList.getItems().add(score.toString());
+        }
     }
 
     @FXML
@@ -36,7 +41,8 @@ public class ScoreboardController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void addScore(){
-        
+    public static void addScore(int score){
+        scores.add(score);
+        System.out.println(scores);
     }
 }

@@ -341,6 +341,7 @@ public class GameBoardCanvasController implements Initializable {
 		if(maleRatCount + femaleRatCount > ratLimit){
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playLoseMusic();
+			ScoreboardController.addScore(Gameboard.calculateScore());
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
@@ -349,6 +350,7 @@ public class GameBoardCanvasController implements Initializable {
 		if(maleRatCount + femaleRatCount == 0){
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playWinMusic();
+			ScoreboardController.addScore(Gameboard.calculateScore());
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
