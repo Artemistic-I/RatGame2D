@@ -38,6 +38,10 @@ public class TimelineMangaer {
 		gameboardCanvasController.updateRatCounts(RatManager.countMaleRats(), RatManager.countFemaleRats(), Gameboard.getRatPopulationToLose());
 		totalDuration += DELAY;
 	}
+
+	public GameBoardCanvasController getGameboardCanvassController() {
+		return gameboardCanvasController;
+	}
 	
 	public void stopTime() {
 		tickTimeline.stop();

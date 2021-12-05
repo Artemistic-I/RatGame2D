@@ -50,7 +50,7 @@ public class Inventory {
         Random rand = new Random();
         int randomIndex = inventoryIndexesNotFull.get(rand.nextInt(inventoryIndexesNotFull.size()));
         inv[randomIndex] += 1;
-        GameBoardCanvasController.updateItemCounts();
+        Menu.getTimelineManager().getGameboardCanvassController().updateItemCounts();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Inventory {
                 inv[index] -= 1;
             }
         }
-        GameBoardCanvasController.updateItemCounts();
+        Menu.getTimelineManager().getGameboardCanvassController().updateItemCounts();
     }
 
     public static int[] getInv() {
