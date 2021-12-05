@@ -101,7 +101,7 @@ public class Settings implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
                 
-                SoundManager.setVolume(volumeSlider.getValue() * 0.01);
+                AudioManager.setVol(volumeSlider.getValue() * 0.01);
             }
             
         });
