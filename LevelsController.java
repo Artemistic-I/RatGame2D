@@ -40,14 +40,29 @@ public class LevelsController implements Initializable {
     void backToMenulvlSelectedClicked(ActionEvent event) throws IOException {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            Level.setSelectedLevel(Level.getLevels().get(selectedIndex));
-            Menu.startButtonSwitch = false;
+            if (Level.getLevels().get(selectedIndex).isLocked()) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("This level is locked");
+                alert.setHeaderText(null);
+                alert.setContentText("Nice try, but you haven't unlocked this level yet. Try harder.");
+                alert.showAndWait();
+            } else {
+                Level.setSelectedLevel(Level.getLevels().get(selectedIndex));
+                Menu.startButtonSwitch = false;
+                Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Please select a level");
+            alert.setHeaderText(null);
+            alert.setContentText("No level selected. Please select a level first.");
+            alert.showAndWait();
         }
-        Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       
     }
 
     @FXML
