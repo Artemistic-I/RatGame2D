@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 /**
  * subclass of LethalItem and therefore Item to describe a Bomb object
  * 
- * @author Mike & Josh
+ * @author Mike, Josh and Alex Gingureanu
  */
 public class Bomb extends LethalItem {
 	/**

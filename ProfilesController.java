@@ -14,6 +14,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Class of Profiles window
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class ProfilesController implements Initializable {
 
     private Stage stage;

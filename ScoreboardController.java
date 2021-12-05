@@ -13,6 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Class that shows the scoreboard
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class ScoreboardController implements Initializable {
 
     private Stage stage;

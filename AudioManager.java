@@ -7,6 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Class of Audio player
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class AudioManager{
 
     private static File directory;
@@ -99,6 +105,10 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
+    
+    /** 
+     * @param vol
+     */
     public static void setVol(double vol){
         mediaPlayer.setVolume(vol);
     }

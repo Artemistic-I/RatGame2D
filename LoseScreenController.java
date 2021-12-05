@@ -13,6 +13,12 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+/**
+ * Class of the losing window in game
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class LoseScreenController {
 	Stage stage;
 	Scene scene;

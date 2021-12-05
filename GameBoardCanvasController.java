@@ -24,6 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
+	/**
+ * Class of Gameboard control
+ * 
+ * @author Alex Gingureanu
+ */
 
 public class GameBoardCanvasController implements Initializable {
 

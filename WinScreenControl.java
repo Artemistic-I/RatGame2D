@@ -12,6 +12,12 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
+/**
+ * Class showing the winning screen
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class WinScreenControl {
 
     Stage stage;

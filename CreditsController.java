@@ -20,6 +20,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
+/**
+ * Class to create the Credits window
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class CreditsController implements Initializable {
 
     @FXML
