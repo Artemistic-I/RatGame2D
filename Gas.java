@@ -57,4 +57,19 @@ public class Gas extends LethalItem{
     		}
     	}
     }
+
+    // needs to be changed so time rats are exposed to gas is stored in rat class
+    // without this it can't be saved properly
+    @Override
+    public String toString() {
+        String textEquivalent = super.toString();
+        textEquivalent = String.format("%s %d", textEquivalent, gasTimeElapsed);
+        for (TileInteractable tile : gassedTiles) {
+            textEquivalent += String.format(" %d %d", tile.getTileCoordinates()[0], tile.getTileCoordinates()[1]);
+        }
+        for (Rat rat : gassedRats) {
+            textEquivalent += rat.toString();
+        }
+        return textEquivalent;
+    }
 }
