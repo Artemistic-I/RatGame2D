@@ -14,11 +14,20 @@ public class Gas extends LethalItem{
     private CopyOnWriteArrayList<TileInteractable> gassedTiles;
     private ArrayList<Rat> gassedRats;
 
+    // for new item
     public Gas(TileInteractable tileTheItemIsOn) {
         super(GAS_GRAPHIC, tileTheItemIsOn);
         gassedTiles = new CopyOnWriteArrayList<>();
         gassedTiles.add(tileTheItemIsOn);
         gassedRats = new ArrayList<Rat>();
+        this.gasTimeElapsed = 0;
+    }
+
+    // for loaded items
+    public Gas(TileInteractable tileTheItemIsOn, int gasTimeElapsed, CopyOnWriteArrayList<TileInteractable> gassedTiles, ArrayList<Rat> gassedRats) {
+        super(GAS_GRAPHIC, tileTheItemIsOn);
+        this.gassedTiles = gassedTiles;
+        this.gassedRats = gassedRats;
         this.gasTimeElapsed = 0;
     }
     
@@ -58,8 +67,6 @@ public class Gas extends LethalItem{
     	}
     }
 
-    // needs to be changed so time rats are exposed to gas is stored in rat class
-    // without this it can't be saved properly
     @Override
     public String toString() {
         String textEquivalent = super.toString();
@@ -68,7 +75,7 @@ public class Gas extends LethalItem{
             textEquivalent += String.format(" %d %d", tile.getTileCoordinates()[0], tile.getTileCoordinates()[1]);
         }
         for (Rat rat : gassedRats) {
-            textEquivalent += rat.toString();
+            textEquivalent += " " + rat.getUniqueIdentifier(); // only add rat ID so gas knows which rats had been exposed to gas
         }
         return textEquivalent;
     }
