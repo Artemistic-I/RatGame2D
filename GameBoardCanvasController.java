@@ -108,11 +108,12 @@ public class GameBoardCanvasController implements Initializable {
 		if (pauseButton.getText().equals("Pause")) {
 			pauseButton.setText("Resume");
 			Menu.getTimelineManager().stopTime();
-			SoundManager.pauseSound();
+			AudioManager.pauseMusic();
 			saveButton.setDisable(false);
 		} else {
 			pauseButton.setText("Pause");
 			saveButton.setDisable(true);
+			AudioManager.resumeMusic();
 			Menu.getTimelineManager().resumeTime();
 			SoundManager.resumeSound();
 		}
@@ -136,7 +137,7 @@ public class GameBoardCanvasController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-		SoundManager.playSound("audio/Spring Field - Godmode.wav");
+		AudioManager.playMenuMusic();
         stage.show();
 	}
 
@@ -333,10 +334,26 @@ public class GameBoardCanvasController implements Initializable {
 		this.winLoseIndicator.setProgress(winLoseRatio);
 	}
 	
-	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) {
+	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) throws IOException {
 		this.maleRatCount.setText(String.valueOf(maleRatCount));
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
+		if(maleRatCount + femaleRatCount > ratLimit){
+			Menu.getTimelineManager().stopTime();	
+			AudioManager.playLoseMusic();
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
+        	Stage window = (Stage) pauseButton.getScene().getWindow();
+        	scene = new Scene(root);
+        	window.setScene(scene);	
+		}
+		if(maleRatCount + femaleRatCount == 0){
+			Menu.getTimelineManager().stopTime();	
+			AudioManager.playWinMusic();
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
+        	Stage window = (Stage) pauseButton.getScene().getWindow();
+        	scene = new Scene(root);
+        	window.setScene(scene);	
+		}
 	}
 
 	public void updateItemCounts(){

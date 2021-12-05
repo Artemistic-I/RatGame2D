@@ -1,11 +1,17 @@
 1
-female adult false false false 8 3 West 75 61 51 0
-male adult false false false 4 1 North 75 0 68 0
-male adult false false false 1 9 South 75 0 0 0
-female adult true false false 2 6 North 75 77 67 3
-female baby false false false 2 10 East 13 0 0 0
-male baby false false false 4 2 East 12 0 0 0
-male baby false false false 2 4 East 11 0 0 0
+male adult false false false 3 10 North 177 0 0 0
 
+3
+71000
 0
-37500
+0
+0
+0
+0
+2
+0
+0
+class NoEntry 14 13 5
+class Sterilisation 9 13
+class Bomb 7 18 8
+class NoEntry 6 12 5

@@ -25,17 +25,30 @@ public class LoseScreenController {
 
     @FXML
     void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-
+		AudioManager.playMenuMusic();
+		ItemManager.removeAllItems();
+		for (Rat rat : RatManager.getRatPopulation()) {
+			RatManager.removeRat(rat);
+		}
+		Menu.startButtonSwitch = true;
+		RatManager.setKilledRatCount(0);
 		Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
     void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+		AudioManager.playGameMusic();
+		ItemManager.removeAllItems();
+		for (Rat rat : RatManager.getRatPopulation()) {
+			RatManager.removeRat(rat);
+		}
+		Menu.startButtonSwitch = true;
+		RatManager.setKilledRatCount(0);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 		Parent root = (Parent)fxmlLoader.load();          
 		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
@@ -50,8 +63,6 @@ public class LoseScreenController {
 		stage.setScene(scene);
 		stage.show();
 
-		SoundManager.stopSound();
-		SoundManager.playSound("audio/Soft Knives - SefChol.wav");
 
     }
 

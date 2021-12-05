@@ -34,20 +34,16 @@ public class Gameboard {
             boardWidth = line.nextInt();
             boardHeight = line.nextInt();
             board = new Tile[boardHeight][boardWidth];
-            line.close();
         }
         //read second line
         if (in.hasNext()) {
             line = new Scanner(in.nextLine());
-            ratPopulationToLose = in.nextInt();
-            levelCompletionTime = in.nextInt();
-        }
-        if (in.hasNext()) {
-            in.nextLine();
+            ratPopulationToLose = line.nextInt();
+            levelCompletionTime = line.nextInt();
         }
         int[][] ratPositions = new int[boardHeight][boardWidth];
         int row = 0;
-        //reading the rats positions
+        //reading rats positions
         while (in.hasNext() && row < boardHeight) {
             line = new Scanner(in.nextLine());
             for (int column = 0; column < boardWidth; column++) {
@@ -78,7 +74,7 @@ public class Gameboard {
         
         addAdjacentTiles();
         
-        System.out.println("Gameboard created");
+        System.out.println("Gameboard created levelComplTime = " + levelCompletionTime + " ratPopToLOse = " + ratPopulationToLose);
     }
     private static void addAdjacentTiles() {
     	for (int i=0; i<board.length; i++) {
