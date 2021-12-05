@@ -333,10 +333,27 @@ public class GameBoardCanvasController implements Initializable {
 		this.winLoseIndicator.setProgress(winLoseRatio);
 	}
 	
-	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) {
+	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) throws IOException {
 		this.maleRatCount.setText(String.valueOf(maleRatCount));
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
 		this.ratLimit.setText(String.valueOf(ratLimit));
+		if(maleRatCount + femaleRatCount > ratLimit){
+			Menu.getTimelineManager().stopTime();	
+			SoundManager.stopSound();
+			try {
+				SoundManager.playSound("audio/lost.wav");
+			} catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
+        	Stage window = (Stage) pauseButton.getScene().getWindow();
+        	scene = new Scene(root);
+        	window.setScene(scene);	
+		}
 	}
 
 	public void updateItemCounts(){
