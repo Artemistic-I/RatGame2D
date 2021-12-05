@@ -30,6 +30,7 @@ public class TimelineMangaer {
 	}
 
 	private void tick() {
+		Inventory.update();
 		Gameboard.drawGameboard(this.graphicsContext);
 		RatManager.updateRats(this.graphicsContext);
 		ItemManager.updateItems(graphicsContext);

@@ -44,8 +44,7 @@ public class GameFileManager {
         // length of time since the start of the level in milliseconds
         myWriter.println(duration);
 
-        // Something in here causes errors
-       /*  // items
+        // items
         // array of items on the board
         Item[] items = ItemManager.getCurrentlyPlacedItems();
         for (Item item : items) {
@@ -53,13 +52,11 @@ public class GameFileManager {
             myWriter.println(item.toString());
         }
         // player inventory
-        Item[][] inv = ItemMain.getInv(); // ItemMain needs to be changed to static if possible
-        for (Item[] itemRow : inv) {
-            for (Item item : itemRow) {
-                // prints item details to file
-                myWriter.println(item.toString());
-            }
-        } */
+        int[] inv = Inventory.getInv();
+        for (int item : inv) {
+            // prints item details to file
+            myWriter.println(item);
+        }
         myWriter.close();
     }
     public static void loadGame() {

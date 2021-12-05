@@ -1,4 +1,7 @@
 import javafx.scene.image.Image;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack;
 
 public class NoEntry extends Item{
 
@@ -14,11 +17,6 @@ public class NoEntry extends Item{
         super(SHORTCUT_KEY, noEntryGraphic, tileTheItemIsOn);
         setHealth();
 
-    }
-
-    public String toString(){
-        String textEquivalent = String.format("%s", tileTheItemIsOn);
-        return textEquivalent;
     }
 
     /**
@@ -50,7 +48,17 @@ public class NoEntry extends Item{
         noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
     }
 
+    @Override
+    public String toString() {
+        String textEquivalent = super.toString();
+        textEquivalent = String.format("%s %d", textEquivalent, this.health);
+        return textEquivalent;
+    }
+
     public void itemAction(){
-        
+        Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
+        while (!ratsOnTile.isEmpty()){
+            degradeHealth(this.health);
+        }
     }
 }

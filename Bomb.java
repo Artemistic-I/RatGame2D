@@ -35,13 +35,8 @@ public class Bomb extends LethalItem {
 	@Override
 	public void update(GraphicsContext graphicsContext) {
 		this.graphicsContext = graphicsContext;
-		super.draw(graphicsContext);
+		draw(graphicsContext);
 		this.itemAction();
-	}
-
-	public String toString(){
-		String textEquivalent = String.format("%s", tileTheItemIsOn);
-		return textEquivalent;
 	}
 
 	@Override
@@ -88,15 +83,26 @@ public class Bomb extends LethalItem {
 		return explodedTiles;
 	}
 
-	/**
-	 * method to create explosion using javaFX
-	 */
+	@Override
+	public void draw(GraphicsContext graphicsContext) {
+		graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(),
+		this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize());
+		graphicsContext.fillText(String.valueOf(this.remainingTime / 2), this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize(), Gameboard.getTileSize());
+	}
+	
 	private void createExplosion(ArrayList<TileInteractable> explodedTiles) {
 		for (TileInteractable tile: explodedTiles) {
 			if (!(tile instanceof TileTunnel)) {
 				this.graphicsContext.drawImage(EXPLOSION_GRAPHIC, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
 			}
 		}
+	}
+
+	@Override
+	public String toString() {
+		String textEquivalent = super.toString();
+		textEquivalent = String.format("%s %d", textEquivalent, this.remainingTime);
+		return textEquivalent;
 	}
 
 }

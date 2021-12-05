@@ -18,11 +18,6 @@ public class Sterilisation extends Item{
 
     }
 
-    public String toString(){
-        String textEquivalent = String.format("%s", tileTheItemIsOn);
-        return textEquivalent;
-    }
-
     @Override
     void itemAction() {
         sterilize();
