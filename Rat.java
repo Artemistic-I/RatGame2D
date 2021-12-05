@@ -269,6 +269,10 @@ public class Rat {
 	public void changeSex(RatSex targetSex) {
 		if (this.ratSex != targetSex) {
 			this.ratSex = targetSex;
+			if (this.ratSex == RatSex.MALE && isPregnant) {
+				this.isPregnant = false;
+				this.unbornRatsCount = 0;
+			}
 			this.updateGraphic();
 		}
 
@@ -290,7 +294,6 @@ public class Rat {
 					} else {
 						this.ratGraphic = new Image(PREGNANT_RAT_WEST_IMAGE_URL);
 					}
-					//this.ratGraphic = new Image(PREGNANT_RAT_IMAGE_URL);
 				} else {
 					if (direction.equals("North")) {
 						this.ratGraphic = new Image(FEMALE_RAT_SOUTH_IMAGE_URL);
@@ -301,7 +304,6 @@ public class Rat {
 					} else {
 						this.ratGraphic = new Image(FEMALE_RAT_WEST_IMAGE_URL);
 					}
-					//this.ratGraphic = new Image(FEMALE_RAT_IMAGE_URL);
 				}
 			} else {
 				if (direction.equals("North")) {
@@ -313,7 +315,6 @@ public class Rat {
 				} else {
 					this.ratGraphic = new Image(MALE_RAT_WEST_IMAGE_URL);
 				}
-				//this.ratGraphic = new Image(MALE_RAT_IMAGE_URL);
 			}
 		} else {
 			if (direction.equals("North")) {
@@ -325,7 +326,6 @@ public class Rat {
 			} else {
 				this.ratGraphic = new Image(BABY_RAT_WEST_IMAGE_URL);
 			}
-			//this.ratGraphic = new Image(BABY_RAT_IMAGE_URL);
 		}
 	}
 
