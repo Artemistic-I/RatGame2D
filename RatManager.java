@@ -22,13 +22,24 @@ public class RatManager {
 		liveRats.add(ratToAdd);
 	}
 
+	public static Rat getRatByID(int ratID) {
+		for (Rat rat : liveRats) {
+			if (rat.getUniqueIdentifier() == ratID) {
+				return rat;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * 
 	 * @param ratToRemove
 	 */
 	public static void removeRat(Rat ratToRemove) {
-		killedRatCount += 1 + ratToRemove.getUnbornRatCount();
-		liveRats.remove(ratToRemove);
+		if (!(ratToRemove == null)){
+			killedRatCount += 1 + ratToRemove.getUnbornRatCount();
+			liveRats.remove(ratToRemove);
+		}
 	}
 
 	/**

@@ -1,7 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameFileManager {
 
@@ -100,6 +102,7 @@ public class GameFileManager {
                 int ageToGiveBirth = line.nextInt();
                 int ageToFinishHavingSex = line.nextInt();
                 int unbornRatsCount = line.nextInt();
+                int ratID = line.nextInt();
                 RatSex enumRatSex;
                 if (ratSex.equals("male")) {
                     enumRatSex = RatSex.MALE;
@@ -113,7 +116,7 @@ public class GameFileManager {
                     enumMaturity = RatMaturity.BABY;
                 }
                 TileInteractable tileTheRatIsOn = (TileInteractable)board[xPosition][yPosition];
-                RatManager.addRat(new Rat(enumRatSex, enumMaturity, isPregnant, isSterile, isHavingSex, tileTheRatIsOn, direction, age, ageToGiveBirth, ageToFinishHavingSex, unbornRatsCount));
+                RatManager.addRat(new Rat(enumRatSex, enumMaturity, isPregnant, isSterile, isHavingSex, tileTheRatIsOn, direction, age, ageToGiveBirth, ageToFinishHavingSex, unbornRatsCount, ratID));
                 line = new Scanner(in.nextLine());
                 if (line.hasNext()) {
                     ratSex = line.next();
@@ -135,28 +138,83 @@ public class GameFileManager {
                 line = new Scanner(in.nextLine());
                 line.next(); // reads and ignores "class"
                 String itemType = line.next();
+                ///////////Poison//////////
                 if (itemType.equals("Poison")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
                     ItemManager.addItem(new Poison((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                ///////////Gas////////////
                 } else if (itemType.equals("Gas")) {
-                    int xPosition = line.nextInt();
-                    int yPosition = line.nextInt();
-                    ItemManager.addItem(new Gas((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                    int xPosition = line.nextInt(); // tileTheItemIsOn x position
+                    int yPosition = line.nextInt(); // tileTheItemIsOn y position
+                    int gasTimeElapsed = line.nextInt();
+                    int gassedxPosition = 0; // to avoid NullPointerException
+                    CopyOnWriteArrayList<TileInteractable> gassedTiles = new CopyOnWriteArrayList<>();
+                    ArrayList<Rat> gassedRats = new ArrayList<>();
+                    // Adding gassed tiles to the corresponding list
+                    if (line.hasNext()) {
+                        while (line.hasNext() && (gassedxPosition != -1)) {
+                            gassedxPosition = line.nextInt(); // gassed tile x position
+                            int gassedyPosition = line.nextInt(); // gassed tile y position
+                            if (gassedxPosition != -1) {  // this is not a redundant check. Don't remove it!
+                                TileInteractable gassedTile = (TileInteractable) Gameboard.getBoard()[gassedxPosition][gassedyPosition];
+                                gassedTiles.add(gassedTile);
+                            }
+                        }
+                    }
+
+                    // Adding gassed rats to the corresponding list
+                    int maxpossibleID = 300; // ASSUMPTION
+                    int[] exposureCounts; // stores counts for each ratID where ratID is index
+                    ArrayList<Integer> ratIDs; // stores unique ratIDs
+                    if ((gassedxPosition == -1) && line.hasNext()) {
+                        exposureCounts = new int[maxpossibleID];
+                        for (int j = 0; j < maxpossibleID; j++) {
+                            exposureCounts[j] = -1;
+                        }
+                        ratIDs = new ArrayList<>();
+                        int expCountTemp;
+                        // calculating exposure for each rat
+                        while (line.hasNext()) {
+                            int ratID = line.nextInt();
+                            if (exposureCounts[ratID] == -1) {
+                                exposureCounts[ratID] = 1;
+                                ratIDs.add(ratID);
+                            } else {
+                                expCountTemp = exposureCounts[ratID];
+                                expCountTemp++;
+                                exposureCounts[ratID] = expCountTemp;
+                            }
+                        }
+                        // adding each gassed rat exposureCount number of times to the list
+                        // e.g. ratID = 3 with exposureCount = 2 is added twice and so on.
+                        for (Integer ratID : ratIDs) {
+                            expCountTemp = exposureCounts[ratID];
+                            for (int i = 0; i < expCountTemp; i++) {
+                                gassedRats.add(RatManager.getRatByID(ratID));
+                            }
+                        }
+                    }
+                    TileInteractable tileTheItemIsOn = (TileInteractable) Gameboard.getBoard()[xPosition][yPosition];
+                    ItemManager.addItem(new Gas(tileTheItemIsOn, gasTimeElapsed, gassedTiles, gassedRats));
+                //////////////Bomb///////////////
                 } else if (itemType.equals("Bomb")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
                     int remainingTime = line.nextInt();
                     ItemManager.addItem(new Bomb((TileInteractable) Gameboard.getBoard()[xPosition][yPosition], remainingTime));
+                ////////////Sterilisation/////////
                 } else if (itemType.equals("Sterilisation")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
                     ItemManager.addItem(new Sterilisation((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                ///////////NoEntry///////////////
                 } else if (itemType.equals("NoEntry")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
                     int health = line.nextInt();
                     ItemManager.addItem(new NoEntry((TileInteractable) Gameboard.getBoard()[xPosition][yPosition], health));
+                ///////////DeathRat///////////////
                 } else if (itemType.equals("DeathRat")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
@@ -164,10 +222,12 @@ public class GameFileManager {
                     String direction = line.next();
                     TileInteractable tile = (TileInteractable) Gameboard.getBoard()[xPosition][yPosition];
                     ItemManager.addItem(new DeathRat(tile, direction, ratsKilled));
+                /////////SexChangeFemale////////////
                 } else if (itemType.equals("SexChangeFemale")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
                     ItemManager.addItem(new SexChangeFemale((TileInteractable) Gameboard.getBoard()[xPosition][yPosition]));
+                //////////SexChangeMale////////////
                 } else if (itemType.equals("SexChangeMale")) {
                     int xPosition = line.nextInt();
                     int yPosition = line.nextInt();
