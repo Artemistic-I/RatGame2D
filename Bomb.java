@@ -31,6 +31,12 @@ public class Bomb extends LethalItem {
 		super(BOMB_GRAPHIC, tileTheItemIsOn);
 		this.remainingTime = COUNTDOWN;
 	}
+	// constructor for loading
+	public Bomb(TileInteractable tileTheItemIsOn, int remainingTime) {
+		super(BOMB_GRAPHIC, tileTheItemIsOn);
+		this.remainingTime = remainingTime;
+	}
+
 	
 	@Override
 	public void update(GraphicsContext graphicsContext) {

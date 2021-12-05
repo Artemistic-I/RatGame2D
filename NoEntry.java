@@ -14,8 +14,15 @@ public class NoEntry extends Item{
      */
     public NoEntry(TileInteractable tileTheItemIsOn) {
 
-        super(SHORTCUT_KEY, noEntryGraphic, tileTheItemIsOn);
+        super(noEntryGraphic, tileTheItemIsOn);
         setHealth();
+
+    }
+    // constructor for loading
+    public NoEntry(TileInteractable tileTheItemIsOn, int health) {
+
+        super(noEntryGraphic, tileTheItemIsOn);
+        this.health = health;
 
     }
 
@@ -48,17 +55,20 @@ public class NoEntry extends Item{
         noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
     }
 
-    @Override
-    public String toString() {
-        String textEquivalent = super.toString();
-        textEquivalent = String.format("%s %d", textEquivalent, this.health);
-        return textEquivalent;
-    }
-
     public void itemAction(){
         Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
         while (!ratsOnTile.isEmpty()){
             degradeHealth(this.health);
         }
+        if (getItemLoc().isInteractable()) {
+            getItemLoc().setIsInteractable(false);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String textEquivalent = super.toString();
+        textEquivalent = String.format("%s %d", textEquivalent, this.health);
+        return textEquivalent;
     }
 }
