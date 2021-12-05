@@ -14,11 +14,20 @@ public class Gas extends LethalItem{
     private CopyOnWriteArrayList<TileInteractable> gassedTiles;
     private ArrayList<Rat> gassedRats;
 
+    // for new item
     public Gas(TileInteractable tileTheItemIsOn) {
         super(GAS_GRAPHIC, tileTheItemIsOn);
         gassedTiles = new CopyOnWriteArrayList<>();
         gassedTiles.add(tileTheItemIsOn);
         gassedRats = new ArrayList<Rat>();
+        this.gasTimeElapsed = 0;
+    }
+
+    // for loaded items
+    public Gas(TileInteractable tileTheItemIsOn, int gasTimeElapsed, CopyOnWriteArrayList<TileInteractable> gassedTiles, ArrayList<Rat> gassedRats) {
+        super(GAS_GRAPHIC, tileTheItemIsOn);
+        this.gassedTiles = gassedTiles;
+        this.gassedRats = gassedRats;
         this.gasTimeElapsed = 0;
     }
     
@@ -56,5 +65,18 @@ public class Gas extends LethalItem{
     			graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
     		}
     	}
+    }
+
+    @Override
+    public String toString() {
+        String textEquivalent = super.toString();
+        textEquivalent = String.format("%s %d", textEquivalent, gasTimeElapsed);
+        for (TileInteractable tile : gassedTiles) {
+            textEquivalent += String.format(" %d %d", tile.getTileCoordinates()[0], tile.getTileCoordinates()[1]);
+        }
+        for (Rat rat : gassedRats) {
+            textEquivalent += " " + rat.getUniqueIdentifier(); // only add rat ID so gas knows which rats had been exposed to gas
+        }
+        return textEquivalent;
     }
 }

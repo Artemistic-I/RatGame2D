@@ -12,6 +12,7 @@ public class RatManager {
 
 	private static CopyOnWriteArrayList<Rat> liveRats = new CopyOnWriteArrayList<>();
 	private static int killedRatCount = 0;
+	private static int totalRatsAdded = 0;
 	
 	/**
 	 * 
@@ -105,5 +106,10 @@ public class RatManager {
 			rats[i] = liveRats.get(i);
 		}
 		return rats;
+	}
+
+	public static int incrimentRatsAdded() {
+		totalRatsAdded += 1;
+		return totalRatsAdded;
 	}
 }
