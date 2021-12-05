@@ -66,4 +66,8 @@ public class Inventory {
     public static int[] getInv() {
         return inv;
     }
+
+    public static int getInv(int index) {
+        return inv[index];
+    }
 }
