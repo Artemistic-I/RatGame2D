@@ -116,17 +116,17 @@ public class Gameboard {
         } else if (tileType.equalsIgnoreCase("T")) {
             TileInteractable tunnel = new TileTunnel(row, column);
             if (ratIndex == femaleBabyRat){
-                RatManager.addRat(new Rat(RatSex.FEMALE, tunnel, "North"));
+                RatManager.addRat(new Rat(RatSex.FEMALE, tunnel, "North", RatManager.incrimentRatsAdded()));
             } else if (ratIndex == maleBabyRat) {
-                RatManager.addRat(new Rat(RatSex.MALE, tunnel, "North"));
+                RatManager.addRat(new Rat(RatSex.MALE, tunnel, "North", RatManager.incrimentRatsAdded()));
             }
             return tunnel;
         } else if (tileType.equalsIgnoreCase("P")) {
             TileInteractable path = new TilePath(row, column);
             if (ratIndex == femaleBabyRat){
-                RatManager.addRat(new Rat(RatSex.FEMALE, path, "North"));
+                RatManager.addRat(new Rat(RatSex.FEMALE, path, "North", RatManager.incrimentRatsAdded()));
             } else if (ratIndex == maleBabyRat) {
-                RatManager.addRat(new Rat(RatSex.MALE, path, "North"));
+                RatManager.addRat(new Rat(RatSex.MALE, path, "North", RatManager.incrimentRatsAdded()));
             }
             return path;
         } else {

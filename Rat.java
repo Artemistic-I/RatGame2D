@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
  */
 public class Rat {
 
+	private int uniqueIdentifier;
 	private RatSex ratSex;
 	private RatMaturity ratMaturity;
 	private Boolean isPregnant;
@@ -39,7 +40,7 @@ public class Rat {
 	 * @param tileTheRatIsOn
 	 * @param direction
 	 */
-	public Rat(RatSex ratSex, TileInteractable tileTheRatIsOn, String direction) {
+	public Rat(RatSex ratSex, TileInteractable tileTheRatIsOn, String direction, int uniqueIdentifier) {
 		this.ratSex = ratSex;
 		this.ratMaturity = RatMaturity.BABY;
 		this.isPregnant = false;
@@ -49,6 +50,7 @@ public class Rat {
 		this.direction = direction;
 		this.updateGraphic();
 		this.ratAge = 0;
+		this.uniqueIdentifier = uniqueIdentifier;
 	}
 
 	/**
@@ -67,7 +69,7 @@ public class Rat {
 	 */
 	public Rat(RatSex ratSex, RatMaturity ratMaturity, Boolean isPregnant, Boolean isSterile, Boolean isHavingSex,
 			   TileInteractable tileTheRatIsOn, String direction, int ratAge, int ageToGiveBirth, int ageToFinishHavingSex,
-			   int unbornRatsCount) {
+			   int unbornRatsCount, int uniqueIdentifier) {
 		this.ratSex = ratSex;
 		this.ratMaturity = ratMaturity;
 		this.isPregnant = isPregnant;
@@ -80,16 +82,7 @@ public class Rat {
 		this.ageToFinishHavingSex = ageToFinishHavingSex;
 		this.unbornRatsCount = unbornRatsCount;
 		this.updateGraphic();
-	}
-
-	/**
-	 *
-	 */
-	public String toString() {
-		String textEquivalent = String.format("%s %s %s %s %s %d %d %s %d %d %d %d", ratSex, ratMaturity, isPregnant,
-				isSterile, isHavingSex, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction,
-				ratAge, ageToGiveBirth, ageToFinishHavingSex, unbornRatsCount);
-		return textEquivalent;
+		this.uniqueIdentifier = uniqueIdentifier;
 	}
 
 	/**
@@ -240,7 +233,7 @@ public class Rat {
 	 *
 	 */
 	public void giveBirth() {
-		RatManager.addRat(new Rat(generateRandomBabyRatSex(), this.tileTheRatIsOn, this.direction));
+		RatManager.addRat(new Rat(generateRandomBabyRatSex(), this.tileTheRatIsOn, this.direction, RatManager.incrimentRatsAdded()));
 		this.unbornRatsCount--;
 	}
 
@@ -336,5 +329,19 @@ public class Rat {
 	 */
 	public int getUnbornRatCount() {
 		return this.unbornRatsCount;
+	}
+
+	public int getUniqueIdentifier() {
+		return this.uniqueIdentifier;
+	}
+
+	/**
+	 *
+	 */
+	public String toString() {
+		String textEquivalent = String.format("%s %s %s %s %s %d %d %s %d %d %d %d %d", ratSex, ratMaturity, isPregnant,
+				isSterile, isHavingSex, tileTheRatIsOn.getxCoordinate(), tileTheRatIsOn.getyCoordinate(), direction,
+				ratAge, ageToGiveBirth, ageToFinishHavingSex, unbornRatsCount, uniqueIdentifier);
+		return textEquivalent;
 	}
 }
