@@ -23,7 +23,7 @@ public abstract class Item {
 		this.tileTheItemIsOn = tileTheItemIsOn;
 	}
 
-	public void update(GraphicsContext graphicsContext) {
+	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		this.draw(graphicsContext);
 		this.itemAction();
 	}

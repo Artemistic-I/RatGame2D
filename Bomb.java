@@ -20,7 +20,7 @@ public class Bomb extends LethalItem {
 
 	private static final Image BOMB_GRAPHIC = new Image("images/ItemGraphics/BombGraphic.png");
 	private static final Image EXPLOSION_GRAPHIC = new Image("images/Explosion.png");
-	private static final int COUNTDOWN = 8;
+	private static final int COUNTDOWN = 16;
 	private int remainingTime;
 	private GraphicsContext graphicsContext;
 
@@ -39,7 +39,7 @@ public class Bomb extends LethalItem {
 
 	
 	@Override
-	public void update(GraphicsContext graphicsContext) {
+	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		this.graphicsContext = graphicsContext;
 		draw(graphicsContext);
 		this.itemAction();

@@ -9,7 +9,7 @@ public class Gas extends LethalItem{
 	private static final Image GAS_GRAPHIC = new Image("images/ItemGraphics/GasGraphic.png");
 	private static final int RAT_EXPOSURE_LIMIT = 3;
 	private static final int GAS_EXPAND_TIME = 5;
-	private static final int GAS_EXIST_TIME = 10;
+	private static final int GAS_EXIST_TIME = 15;
 	private int gasTimeElapsed;
     private CopyOnWriteArrayList<TileInteractable> gassedTiles;
     private ArrayList<Rat> gassedRats;
@@ -28,7 +28,7 @@ public class Gas extends LethalItem{
         super(GAS_GRAPHIC, tileTheItemIsOn);
         this.gassedTiles = gassedTiles;
         this.gassedRats = gassedRats;
-        this.gasTimeElapsed = 0;
+        this.gasTimeElapsed = gasTimeElapsed;
     }
     
     @Override
@@ -72,8 +72,9 @@ public class Gas extends LethalItem{
         String textEquivalent = super.toString();
         textEquivalent = String.format("%s %d", textEquivalent, gasTimeElapsed);
         for (TileInteractable tile : gassedTiles) {
-            textEquivalent += String.format(" %d %d", tile.getTileCoordinates()[0], tile.getTileCoordinates()[1]);
+            textEquivalent += String.format(" %d %d", tile.getxCoordinate(), tile.getyCoordinate());
         }
+        textEquivalent += " -1"; // this is to indicate the end of this section
         for (Rat rat : gassedRats) {
             textEquivalent += " " + rat.getUniqueIdentifier(); // only add rat ID so gas knows which rats had been exposed to gas
         }
