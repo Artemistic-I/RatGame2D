@@ -47,16 +47,16 @@ public class Inventory {
                 timer = 5000;
                 break;
             case 2:
-                timer = 4000;
+                timer = 4500;
                 break;
             case 3:
-                timer = 3000;
+                timer = 4000;
                 break;
             case 4:
-                timer = 2000;
+                timer = 3500;
                 break;
             case 5:
-                timer = 1000;
+                timer = 3000;
                 break;
         }
         return timer;
