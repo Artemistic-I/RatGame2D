@@ -88,5 +88,9 @@ public class AudioManager{
     public static void resumeMusic(){
         mediaPlayer.play();
     }
+
+    public static void setVol(double vol){
+        mediaPlayer.setVolume(vol);
+    }
     
 }
