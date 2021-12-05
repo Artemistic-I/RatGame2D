@@ -14,10 +14,13 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="920.0" styleClass="bodybg" stylesheets="@styleBackground.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameBoardCanvasController">
    <center>
-      <Canvas fx:id="canvas" height="500.0" onDragDropped="#canvasDragDropOccured" onDragOver="#canvasDragOver" width="500.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="500.0" onDragDropped="#canvasDragDropOccured" onDragOver="#canvasDragOver" width="500.0" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets top="100.0" />
+         </BorderPane.margin></Canvas>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, green, black);" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="72.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true" />
@@ -28,17 +31,17 @@
                      <font>
                         <Font name="Gill Sans Ultra Bold Condensed" size="14.0" />
                      </font></Label>
-                  <Label fx:id="maleRatCount" layoutX="36.0" layoutY="22.0" text="Label" />
+                  <Label fx:id="maleRatCount" layoutX="36.0" layoutY="22.0" text="Label" textFill="WHITE" />
                   <Label layoutX="3.0" layoutY="66.0" text="Female Rat Count" textFill="BLUE">
                      <font>
                         <Font name="Gill Sans Ultra Bold Condensed" size="13.0" />
                      </font></Label>
-                  <Label fx:id="femaleRatCount" layoutX="36.0" layoutY="84.0" text="Label" />
+                  <Label fx:id="femaleRatCount" layoutX="36.0" layoutY="84.0" text="Label" textFill="WHITE" />
                   <Label layoutX="26.0" layoutY="122.0" prefHeight="10.0" prefWidth="65.0" text="Rat Limit" textFill="RED">
                      <font>
                         <Font name="Gill Sans Ultra Bold Condensed" size="14.0" />
                      </font></Label>
-                  <Label fx:id="ratLimit" layoutX="35.0" layoutY="140.0" text="Label" />
+                  <Label fx:id="ratLimit" layoutX="35.0" layoutY="140.0" text="Label" textFill="WHITE" />
                   <ProgressBar fx:id="winLoseIndicator" layoutX="-74.0" layoutY="276.0" prefWidth="200.0" progress="0.0" rotate="-90.0" />
                   <Label layoutX="39.0" layoutY="205.0" prefHeight="154.0" prefWidth="150.0" text="The rat's progress. Careful, when the bar is full you lose!" textFill="#1e00ff" wrapText="true">
                      <font>
@@ -50,7 +53,7 @@
       </VBox>
    </right>
    <left>
-      <AnchorPane prefHeight="765.0" prefWidth="158.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="765.0" prefWidth="158.0" style="-fx-background-color: linear-gradient(to right, black, green);" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="128.0" prefWidth="173.0" spacing="10.0">
                <children>
@@ -101,14 +104,38 @@
                   <Image url="@../images/Sterillisation.png" />
                </image>
             </ImageView>
-            <Label fx:id="bombAmount" layoutX="99.0" layoutY="184.0" text="0" />
-            <Label fx:id="gasAmount" layoutX="99.0" layoutY="251.0" text="0" />
-            <Label fx:id="poisonAmount" layoutX="99.0" layoutY="311.0" text="0" />
-            <Label fx:id="sexChMaAmount" layoutX="99.0" layoutY="380.0" text="0" />
-            <Label fx:id="sexChFeAmount" layoutX="99.0" layoutY="448.0" text="0" />
-            <Label fx:id="noEntryAmount" layoutX="99.0" layoutY="510.0" text="0" />
-            <Label fx:id="deathRatAmount" layoutX="98.0" layoutY="559.0" text="0" />
-            <Label fx:id="sterilisationAmount" layoutX="98.0" layoutY="619.0" text="0" />
+            <Label fx:id="bombAmount" layoutX="99.0" layoutY="184.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="gasAmount" layoutX="99.0" layoutY="251.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="poisonAmount" layoutX="99.0" layoutY="311.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="sexChMaAmount" layoutX="99.0" layoutY="380.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="sexChFeAmount" layoutX="99.0" layoutY="448.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="noEntryAmount" layoutX="99.0" layoutY="510.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="deathRatAmount" layoutX="98.0" layoutY="559.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="sterilisationAmount" layoutX="98.0" layoutY="619.0" text="0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </left>
