@@ -83,6 +83,12 @@ public class Inventory {
         }
     }
 
+    public static void reset() {
+        for (int i = 0; i < inv.length; i++) {
+            inv[i] = 0;
+        }
+    }
+
     /**
      * remove an item from inventory
      */

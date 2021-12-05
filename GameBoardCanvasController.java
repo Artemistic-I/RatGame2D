@@ -126,7 +126,7 @@ public class GameBoardCanvasController implements Initializable {
 		GameFileManager.saveGame(username, totalDuration);
 
 		//removing all rats and items from memory
-
+		Inventory.reset();
 		ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
 			RatManager.removeRat(rat);
