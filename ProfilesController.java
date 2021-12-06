@@ -40,7 +40,7 @@ public class ProfilesController implements Initializable {
     }
     
     @FXML
-    void addProfileBtnClicked(ActionEvent event) throws IOException {
+    private void addProfileBtnClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scenes/addNewProfile.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -49,7 +49,7 @@ public class ProfilesController implements Initializable {
     }
 
     @FXML
-    void nextBtnClicked(ActionEvent event) throws IOException {
+    private void nextBtnClicked(ActionEvent event) throws IOException {
         int selectedIndex = profileList.getSelectionModel().getSelectedIndex();
         if (selectedIndex < 0) {
             Alert alert = new Alert(AlertType.ERROR);

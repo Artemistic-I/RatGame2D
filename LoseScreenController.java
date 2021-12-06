@@ -30,7 +30,7 @@ public class LoseScreenController {
     private Button retryBrn;
 
     @FXML
-    void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playMenuMusic();
 		Inventory.reset();
 		AudioManager.setVol(Settings.getVolume());
@@ -49,7 +49,7 @@ public class LoseScreenController {
     }
 
     @FXML
-    void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    private void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playGameMusic();
 		Inventory.reset();
 		AudioManager.setVol(Settings.getVolume());
@@ -64,10 +64,7 @@ public class LoseScreenController {
 		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 		Gameboard.setIsLoadingGame(false);
 		Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-
-		TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController);
-
-		//Parent root = (Parent)fxmlLoader.load();   
+		TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController);  
 	    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

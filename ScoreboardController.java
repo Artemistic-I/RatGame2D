@@ -40,7 +40,7 @@ public class ScoreboardController implements Initializable {
     }
 
     @FXML
-    void backToLevelsBtnClicked(ActionEvent event) throws IOException {
+    private void backToLevelsBtnClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

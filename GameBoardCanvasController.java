@@ -24,10 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
-	/**
+
+/**
  * Class of Gameboard control
  * 
- * @author Alex Gingureanu
+ * @author Alex Gingureanu and Aidan English Stephen
  */
 
 public class GameBoardCanvasController implements Initializable {
@@ -122,7 +123,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+	private void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		String username = Gameboard.getCurrentPlayer().getPlayerUsername();
 		long totalDuration = Menu.getTimelineManager().getDuration();
 		GameFileManager.saveGame(username, totalDuration);
@@ -151,8 +152,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragBombDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragBombDragable(MouseEvent event) throws IOException{
 		Dragboard db = bombDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("bombDragable");
@@ -161,8 +161,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML 
-	void dragGasDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragGasDragable(MouseEvent event) throws IOException{
 		Dragboard db = gasDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("gasDragable");
@@ -171,8 +170,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragPoisonDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragPoisonDragable(MouseEvent event) throws IOException{
 		Dragboard db = poisonDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("poisonDragable");
@@ -181,8 +179,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragSexChFeDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSexChFeDragable(MouseEvent event) throws IOException{
 		Dragboard db = sexChFeDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sexChFeDragable");
@@ -191,8 +188,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragSexChMaDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSexChMaDragable(MouseEvent event) throws IOException{
 		Dragboard db = sexChMaDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sexChMaDragable");
@@ -201,7 +197,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragNoEntrySignDragable(MouseEvent event) throws IOException {
+	private void dragNoEntrySignDragable(MouseEvent event) throws IOException {
 		Dragboard db = noEntrySignDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("noEntrySignDragable");
@@ -210,8 +206,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragDeathRatDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragDeathRatDragable(MouseEvent event) throws IOException{
 		Dragboard db = deathRatDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("deathRatDragable");
@@ -220,8 +215,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void dragSterilisationDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSterilisationDragable(MouseEvent event) throws IOException{
 		Dragboard db = sterilisationDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sterilisationDragable");
@@ -230,7 +224,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 
 	@FXML
-	void canvasDragOver(DragEvent event) {
+	private void canvasDragOver(DragEvent event) {
 		if (event.getGestureSource() == bombDragable || 
 					event.getGestureSource() == gasDragable || 
 					event.getGestureSource() == poisonDragable || 
@@ -245,9 +239,7 @@ public class GameBoardCanvasController implements Initializable {
 	}
 	
 	@FXML
-	void canvasDragDropOccured(DragEvent event) {
-		System.out.println("------drop"); // # just for testing
-		
+	private void canvasDragDropOccured(DragEvent event) {
 		double xCoordinate = event.getX();
         double yCoordinate = event.getY(); 
         int xGridRef = (int) xCoordinate / Gameboard.getTileSize();
@@ -362,9 +354,6 @@ public class GameBoardCanvasController implements Initializable {
         	window.setScene(scene);	
         	if (Level.getSelectedLevel().getLevelNumber() + 1 < Level.getLevels().size()) {
         		Level.getLevels().get(Level.getSelectedLevel().getLevelNumber()).unlock();;
-        		//for (PlayerProfile playerProfile: PlayerProfile.getProfiles()) {
-        		//	playerProfile.
-        		//}
         	}
 		}
 	}

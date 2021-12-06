@@ -38,7 +38,7 @@ public class CreditsController implements Initializable {
     private StackPane container;
 
     @FXML
-    void backToMenuBtnClicked(ActionEvent event) throws IOException {
+    private void backToMenuBtnClicked(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("scenes/menu.fxml"));
 		Scene scene = backToMenuBtn.getScene();
