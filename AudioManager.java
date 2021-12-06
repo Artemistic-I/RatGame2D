@@ -12,10 +12,6 @@ import javafx.scene.media.MediaPlayer;
 
 public class AudioManager{
 
-    /*
-    * Variables for creating the Audio Player
-    */
-
     private static File directory;
     private static File[] files;
 
@@ -27,7 +23,7 @@ public class AudioManager{
     private static MediaPlayer mediaPlayer;
 
 
-     /*
+    /**
     * Method to create the playlist with the music in the directory
     */
     public static void createPlaylist(){
@@ -50,7 +46,7 @@ public class AudioManager{
         
     }
 
-    /*
+    /**
     * Method to play the menu music
     */
     public static void playMenuMusic(){
@@ -63,7 +59,7 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
-    /*
+    /**
     * Method to play the game music
     */
     public static void playGameMusic(){
@@ -76,7 +72,7 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
-    /*
+    /**
     * Method to play the winning screen music
     */
     public static void playWinMusic(){
@@ -89,7 +85,7 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
-    /*
+    /**
     * Method to play the losing screen music
     */
     public static void playLoseMusic(){
@@ -102,14 +98,14 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
-    /*
+    /**
     * Pause the current music
     */
     public static void pauseMusic(){
         mediaPlayer.pause();
     }
 
-    /*
+    /**
     * Resume the current music
     */
     public static void resumeMusic(){
@@ -119,7 +115,7 @@ public class AudioManager{
     
     /** 
      * Set the volume of the media player
-     * @param vol
+     * @param vol the value from the settings slider
      */
     public static void setVol(double vol){
         mediaPlayer.setVolume(vol);

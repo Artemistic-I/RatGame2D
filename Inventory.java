@@ -9,22 +9,9 @@ import java.util.Random;
  */
 public class Inventory {
 
-    /**
-     * inventory to store items
-     * index 0: Bombs
-     * index 1: Gas
-     * index 2: Sterilisation
-     * index 3: Poison
-     * index 4: Male Sex Change
-     * index 5: Female Sex Change
-     * index 6: No Entry Sign
-     * index 7: Death Rats
-     */
-    static int[] inv = new int[8];
-
-    private final static int MAX_ITEM = 4; // constant for the max amount of items
-
-    static int itemTimer = 0; // timer for when to add next item
+	private final static int MAX_ITEM = 4; // constant for the max amount of items
+    private static int[] inv = new int[8];
+    private static int itemTimer = 0; // timer for when to add next item
 
     public static void update() {
         /**

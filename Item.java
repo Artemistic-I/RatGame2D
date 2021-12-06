@@ -2,32 +2,39 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
- * This is the super class to define an item object
+ * Models general items.
  * 
  * @author Josh & Mike
  * @version 1.0
  */
 public abstract class Item {
-	// TODO
-	// Create toString() method that returns all information needed for saving that
-	// item to a file
 
 	protected TileInteractable tileTheItemIsOn;
 	protected Image itemGraphic;
 
 	/**
-	 * constructor to create a new item
+	 * Constructor for a new item.
+	 * @param itemGraphic Image that should be used for the item.
+	 * @param tileTheItemIsOn Tile that the item is placed on.
 	 */
 	public Item(Image itemGraphic, TileInteractable tileTheItemIsOn) {
 		this.itemGraphic = itemGraphic;
 		this.tileTheItemIsOn = tileTheItemIsOn;
 	}
 
+	/**
+	 * Update the item and perform any functions the item has.
+	 * @param graphicsContext Where the item should be drawn.
+	 * @param gameDuration How long in milliseconds since the game started.
+	 */
 	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		this.draw(graphicsContext);
 		this.itemAction();
 	}
 
+	/**
+	 * Perform any functions that the item has
+	 */
 	abstract void itemAction();
 
 	public void draw(GraphicsContext graphicsContext) {
@@ -36,20 +43,19 @@ public abstract class Item {
 	}
 
 	/**
-	 * get tile where item is located
-	 * 
+	 * Get tile where item is located.
 	 * @return itemLocation Tile that item occupies
 	 */
 	public Tile getItemLoc() {
 		return tileTheItemIsOn;
 	}
 	
+	/**
+	 * Provide a text representation of the bomb.
+	 * @return text representation
+	 */
 	public String toString() {
 		String textEquivalent = String.format("%s %d %d" , this.getClass().toString(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate());
 		return textEquivalent;
-	}
-
-	public void setImage(Image image) {
-		itemGraphic = image;
 	}
 }

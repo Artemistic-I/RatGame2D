@@ -1,7 +1,11 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +25,12 @@ import javafx.stage.Stage;
 
 public class ScoreboardController implements Initializable {
 
+    //Variables and the scene's objects
     private Stage stage;
     private Scene scene;
 
-    private static ArrayList<Integer> scores = new ArrayList<Integer>();
+    private static ArrayList<Score> scores = new ArrayList<>();
+    private static final int MAX_NUMBER_OF_SCORES = 10; // only top 10 scores are saved
 
     @FXML
     private Button backToLevelsBtn;
@@ -32,13 +38,26 @@ public class ScoreboardController implements Initializable {
     @FXML
     private ListView<String> scoreList;
 
+    
+    /** Intialize the scoreboard scene
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (Integer score : scores) {
-			scoreList.getItems().add(score.toString());
+        loadScores(Level.getSelectedLevel().getLevelNumber());
+        scoreList.getItems().add("Place - Usermane - Score");
+        for (int i = 0; i < scores.size(); i++) {
+            int position = i + 1;
+            scoreList.getItems().add(position + " - " + scores.get(i).toString());
         }
     }
 
+    
+    /** 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void backToLevelsBtnClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
@@ -47,8 +66,101 @@ public class ScoreboardController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public static void addScore(int score){
-        scores.add(score);
-        System.out.println(scores);
+
+    public static void loadScores(int levelNumber) {
+        scores.clear();
+        File file = new File("scoreboards/scores_level" + levelNumber + ".txt");
+        if (file.exists() && file.isFile()) {
+            Scanner in = null;
+            try {
+                in = new Scanner(file);
+            } catch (FileNotFoundException e){
+                System.out.println("Could not find " + "scoreboards/scores_level" + levelNumber + ".txt");
+                System.exit(0);
+            }
+            Scanner line = null;
+            while (in.hasNext()) {
+                line = new Scanner(in.nextLine());
+                String username = line.next();
+                int scoreNum = line.nextInt();
+                scores.add(new Score(PlayerProfile.getPlayerByUsername(username), scoreNum));
+            }
+            in.close();
+            line.close();
+        }
+    }
+
+    public static void addScore(Score newScore) {
+        int existingScore = getScoreNumByPlayer(newScore);
+        Boolean isInScoreboard = getScoreNumByPlayer(newScore) != -1;
+        Boolean isFull = scores.size() > (MAX_NUMBER_OF_SCORES - 1);
+        if (scores.isEmpty()) {
+            scores.add(newScore);
+        } else {
+            if (isInScoreboard) {
+                if (existingScore < newScore.getScoreNum()) {
+                    removeScore(newScore.getPlayer());
+                    insertScore(newScore);
+                }
+            } else {
+                if (newScore.getScoreNum() > getSmallest().getScoreNum()) {
+                    if (isFull){
+                        removeScore(getSmallest().getPlayer());
+                        insertScore(newScore);
+                    } else {
+                        insertScore(newScore);
+                    }
+                } else {
+                    if (!isFull) {
+                        scores.add(newScore);
+                    }
+                }
+            }
+        }
+        saveScoreBoard();
+    }
+    // removes existing score
+    public static void removeScore(PlayerProfile player) {
+        for (Score score : scores) {
+            if (score.getPlayer().equals(player)) {
+                scores.remove(score);
+            }
+        }
+        saveScoreBoard();
+    }
+    private static Score getSmallest() {
+        return scores.get(scores.size() - 1);
+    }
+    // returns existing score of a player who achieved a new score
+    private static int getScoreNumByPlayer(Score scoreToCheck) {
+        for (Score score : scores) {
+            if (score.getPlayer().getPlayerUsername().equals(scoreToCheck.getPlayer().getPlayerUsername())) {
+                return score.getScoreNum();
+            }
+        }
+        return -1;
+    }
+    // insert preserving descending order
+    private static void insertScore(Score scoreToInsert) {
+        int i = scores.size() - 1;
+        while ((i > -1) && (scoreToInsert.getScoreNum() > scores.get(i).getScoreNum())) {
+            i--;
+        }
+        scores.add(i + 1, scoreToInsert);
+    }
+    
+    public static void saveScoreBoard() {
+        File scoreboard = new File("scoreboards/scoreslvl" + Level.getSelectedLevel() + ".txt");
+        PrintWriter myWriter = null;
+        try {
+            myWriter = new PrintWriter(scoreboard);
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot open " + "scoreboards/scores_level" + Level.getSelectedLevel() + ".txt");
+            System.exit(0);
+        }
+		for (Score scoreEntry : scores) {
+            myWriter.println(scoreEntry.getPlayer().getPlayerUsername() + " " + scoreEntry.getScoreNum());
+        }
+		myWriter.close();
     }
 }

@@ -175,9 +175,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the bomb item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragBombDragable(MouseEvent event) throws IOException{
@@ -190,8 +190,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the gas item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML 
 	private void dragGasDragable(MouseEvent event) throws IOException{
@@ -204,8 +205,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the poison item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragPoisonDragable(MouseEvent event) throws IOException{
@@ -218,8 +220,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sex change to female item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSexChFeDragable(MouseEvent event) throws IOException{
@@ -232,8 +235,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sex change to male item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSexChMaDragable(MouseEvent event) throws IOException{
@@ -246,8 +250,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the no entry sign item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragNoEntrySignDragable(MouseEvent event) throws IOException {
@@ -260,8 +265,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the death rat item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragDeathRatDragable(MouseEvent event) throws IOException{
@@ -274,8 +280,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sterilisation item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSterilisationDragable(MouseEvent event) throws IOException{
@@ -288,6 +295,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
+	 * Accept things being dragged over the gameboard if they are items.
 	 * @param event
 	 */
 	@FXML
@@ -307,6 +315,7 @@ public class GameBoardCanvasController implements Initializable {
 	
 	
 	/** 
+	 * Update the gameboard and inventory when items are dropped on provide warning messages if a user tries to use an item that they don't have or does not drag it to an appropriate space.
 	 * @param event
 	 */
 	@FXML
@@ -423,7 +432,7 @@ public class GameBoardCanvasController implements Initializable {
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playLoseMusic();
 			AudioManager.setVol(Settings.getVolume());
-			ScoreboardController.addScore(Gameboard.calculateScore());
+			ScoreboardController.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
@@ -433,7 +442,12 @@ public class GameBoardCanvasController implements Initializable {
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playWinMusic();
 			AudioManager.setVol(Settings.getVolume());
-			ScoreboardController.addScore(Gameboard.calculateScore());
+			//win
+			Level.unlock(Level.getSelectedLevel().getLevelNumber() + 1);
+			Gameboard.getCurrentPlayer().savePlayerDetails();
+
+			ScoreboardController.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
+
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
@@ -444,6 +458,9 @@ public class GameBoardCanvasController implements Initializable {
 		}
 	}
 
+	/**
+	 * Update the count of how many of each item is remaining.
+	 */
 	public void updateItemCounts(){
 		this.bombAmount.setText(String.valueOf(Inventory.getInv(0)));
 		this.gasAmount.setText(String.valueOf(Inventory.getInv(1)));

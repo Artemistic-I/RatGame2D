@@ -29,6 +29,7 @@ import javafx.util.Duration;
 	 */
 	public class Menu implements Initializable {
 		
+		//Variables and scene objects
 		private GameBoardCanvasController gameBoardCanvasController;
 		private Scene scene;
 		private Stage stage;
@@ -65,18 +66,17 @@ import javafx.util.Duration;
 		
 	    /**
 	     * Handles the Quit button click event
-	     *
 	     * @param mouseEvent Event
 	     */
 	    public void quitClicked(ActionEvent event) {
 			System.exit(0);
 		}
 		
-		/** 
-		 * @param event
-		 * @throws IOException
-		 * @throws UnsupportedAudioFileException
-		 * @throws LineUnavailableException
+		/** Starts the game and changes the scene to Gameboard
+		 * @param event --when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
+		 * @throws UnsupportedAudioFileException if incorrect audio file format
+		 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 		 */
 		@FXML
 		private void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -86,6 +86,7 @@ import javafx.util.Duration;
 			Gameboard.setIsLoadingGame(false);
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
 			timelineManager = new TimelineMangaer(gameBoardCanvasController);
+			ScoreboardController.loadScores(Level.getSelectedLevel().getLevelNumber());
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
@@ -96,20 +97,19 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
-		 * @throws UnsupportedAudioFileException
-		 * @throws LineUnavailableException
+		/** Loads the most recent saved game
+		 * @param event --when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
+		 * @throws UnsupportedAudioFileException if incorrect audio file format
+		 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 		 */
 		@FXML
 		private void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
-
 			GameFileManager.loadGame();
-
+			ScoreboardController.loadScores(Level.getSelectedLevel().getLevelNumber());
 			timelineManager = new TimelineMangaer(gameBoardCanvasController, GameFileManager.getSavedDuration());
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -121,9 +121,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the scene for choosing the levels
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
 		private void selectLevelBtnClicked(ActionEvent event) throws IOException {
@@ -135,9 +135,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the settings
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
 		private void settingsBtnClicked(ActionEvent event) throws IOException {
@@ -150,9 +150,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the credits
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
     	private void credsClicked(ActionEvent event) throws IOException {
@@ -171,7 +171,7 @@ import javafx.util.Duration;
     	}
 
 		
-		/** 
+		/** Intializes the scene
 		 * @param location
 		 * @param resources
 		 */
