@@ -18,8 +18,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Class that shows the scoreboard
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class ScoreboardController implements Initializable {
 
+    //Variables and the scene's objects
     private Stage stage;
     private Scene scene;
 
@@ -32,13 +39,23 @@ public class ScoreboardController implements Initializable {
     @FXML
     private ListView<String> scoreList;
 
+    
+    /** Intialize the scoreboard scene
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadScores(Level.getSelectedLevel().getLevelNumber());
     }
 
+    
+    /** 
+     * @param event
+     * @throws IOException
+     */
     @FXML
-    void backToLevelsBtnClicked(ActionEvent event) throws IOException {
+    private void backToLevelsBtnClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

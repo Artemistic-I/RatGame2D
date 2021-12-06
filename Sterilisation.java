@@ -7,20 +7,28 @@ public class Sterilisation extends Item{
 	
 	private static final Image STERILISATION_GRAPHIC = new Image("images/ItemGraphics/SterilisationGraphic.png");
     private static final int STERILISATION_RADIUS = 2;
-    private static final int STERILISATION_TIME = 3;
+    private static final int STERILISATION_TIME = 10;
     private int timeSpentSterilising;
     private CopyOnWriteArrayList<Tile> sterilisedTiles = new CopyOnWriteArrayList<>();;
 
-    /**
-     * constructor
-     */
     public Sterilisation(TileInteractable tileTheItemIsOn) {
         super(STERILISATION_GRAPHIC, tileTheItemIsOn);
         setSterilisationTiles();
     }
+    
+    public Sterilisation(TileInteractable tileTheItemIsOn, int timeSpentSterilising) {
+        super(STERILISATION_GRAPHIC, tileTheItemIsOn);
+        this.timeSpentSterilising = timeSpentSterilising;
+        setSterilisationTiles();
+    }
 
+    public String toString() {
+		String textEquivalent = String.format("%s %d %d %d" , this.getClass().toString(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate(), this.timeSpentSterilising);
+		return textEquivalent;
+	}
+    
     @Override
-    void itemAction() { 
+    public void itemAction() { 
     	timeSpentSterilising++;
     	ArrayList<TileInteractable> sterilisedRatTiles = new ArrayList<>();
     	for (Tile tile: sterilisedTiles) {

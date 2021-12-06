@@ -6,52 +6,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreditsController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: gray;">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: grey;">
          <children>
-            <Text fx:id="creds" layoutX="242.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREDITS" wrappingWidth="192.947265625">
+            <Text fx:id="creds" layoutX="240.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREDITS" wrappingWidth="192.947265625">
                <font>
-                  <Font size="47.0" />
+                  <Font name="System Bold" size="47.0" />
                </font>
             </Text>
-            <Text layoutX="51.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alexandru Gingureanu">
-               <font>
-                  <Font name="Franklin Gothic Medium Cond" size="26.0" />
-               </font>
-            </Text>
-            <Text layoutX="51.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Michael Failey">
+            <Text layoutX="61.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alexandru Gingureanu">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="51.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samuel Beard">
+            <Text layoutX="61.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Michael Failey">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="51.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joshua Hendy">
+            <Text layoutX="61.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samuel Beard">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="373.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artem Iakovlev">
+            <Text layoutX="61.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Joshua Hendy">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="373.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aidan English Stephen">
+            <Text layoutX="383.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artem Iakovlev">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="373.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Haitham Saeid">
+            <Text layoutX="383.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aidan English Stephen">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
             </Text>
-            <Text layoutX="373.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Walid Mohamed">
+            <Text layoutX="383.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Haitham Saeid">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="383.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Walid Mohamed">
                <font>
                   <Font name="Franklin Gothic Medium Cond" size="26.0" />
                </font>
@@ -61,6 +60,26 @@
                   <Font size="39.0" />
                </font>
             </Button>
+            <Text fx:id="creds1" layoutX="259.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Music by" wrappingWidth="192.947265625">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="259.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chris Zabriskie">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="59.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Twin Musicom">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="453.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kevin MacLeod" wrappingWidth="170.37109375">
+               <font>
+                  <Font name="Franklin Gothic Medium Cond" size="26.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

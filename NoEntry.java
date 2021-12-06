@@ -1,29 +1,24 @@
 import javafx.scene.image.Image;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
 
 public class NoEntry extends Item{
 
-    static final int SHORTCUT_KEY = 115; //bound to F4
     private int health;
-    private static Image noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
+    private static Image startingNoEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
     /**
      * constructor method
      */
     public NoEntry(TileInteractable tileTheItemIsOn) {
-
-        super(noEntryGraphic, tileTheItemIsOn);
+        super(startingNoEntryGraphic, tileTheItemIsOn);
         setHealth();
+        getItemLoc().setNoEntrySign(this);
 
     }
-    // constructor for loading
+
     public NoEntry(TileInteractable tileTheItemIsOn, int health) {
-
-        super(noEntryGraphic, tileTheItemIsOn);
+        super(startingNoEntryGraphic, tileTheItemIsOn);
         this.health = health;
-
+        getItemLoc().setNoEntrySign(this);
     }
 
     /**
@@ -50,18 +45,14 @@ public class NoEntry extends Item{
     suggest using an array the length of it's health and 
     changing image to the new one stored at the index of the new health
     */
-    public void degradeHealth(int hp) {
-        this.health = hp - 1;
-        noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
-    }
-
-    public void itemAction(){
-        Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
-        while (!ratsOnTile.isEmpty()){
-            degradeHealth(this.health);
-        }
-        if (getItemLoc().isInteractable()) {
-            getItemLoc().setIsInteractable(false);
+    public void degradeHealth() {
+        this.health = health - 1;
+        System.out.println(health);
+        if (health == 0) {
+            tileTheItemIsOn.setNoEntrySign(null);
+            ItemManager.removeItem(this);
+        } else {
+            itemGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
         }
     }
 
@@ -70,5 +61,10 @@ public class NoEntry extends Item{
         String textEquivalent = super.toString();
         textEquivalent = String.format("%s %d", textEquivalent, this.health);
         return textEquivalent;
+    }
+    @Override
+    void itemAction() {
+        // TODO Auto-generated method stub
+        
     }
 }

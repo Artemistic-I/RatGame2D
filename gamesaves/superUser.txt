@@ -1,16 +1,15 @@
-2
-female adult false false false 18 14 West 44 0 0 0 186
-male adult false false false 9 16 West 44 0 0 0 187
-male adult false false false 6 1 South 44 0 0 0 188
-female adult false false false 18 17 East 44 0 0 0 190
+1
+male adult false false false 12 10 South 212 0 0 0 2
 
-16
-22000
+113
+53000
 0
-0
+1
+2
 0
 0
 2
-4
-1
-1
+0
+0
+class NoEntry 17 4 5
+class DeathRat 2 17 0 East

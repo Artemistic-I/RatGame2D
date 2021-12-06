@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -13,7 +12,15 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+/**
+ * Class of the losing window in game
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class LoseScreenController {
+
+	//Variables and scene's view
 	Stage stage;
 	Scene scene;
 
@@ -23,8 +30,15 @@ public class LoseScreenController {
     @FXML
     private Button retryBrn;
 
-    @FXML
-    void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    
+	/** Method to return back to Menu
+	 * @param event --when the button is clicked
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
+	 */
+	@FXML
+    private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playMenuMusic();
 		Inventory.reset();
 		AudioManager.setVol(Settings.getVolume());
@@ -42,8 +56,15 @@ public class LoseScreenController {
 
     }
 
-    @FXML
-    void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    
+	/** Method to retry the level and restart
+	 * @param event --when the button is clicked
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
+	 */
+	@FXML
+    private void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playGameMusic();
 		Inventory.reset();
 		AudioManager.setVol(Settings.getVolume());
@@ -55,14 +76,9 @@ public class LoseScreenController {
 		RatManager.setKilledRatCount(0);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 		Parent root = (Parent)fxmlLoader.load();          
-		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 		Gameboard.setIsLoadingGame(false);
 		Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-
-		TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController);
-
-		//Parent root = (Parent)fxmlLoader.load();   
-	    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();

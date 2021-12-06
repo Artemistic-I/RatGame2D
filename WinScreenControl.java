@@ -12,6 +12,12 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
+/**
+ * Class showing the winning screen
+ * 
+ * @author Alex Gingureanu
+ */
+
 public class WinScreenControl {
 
     Stage stage;
@@ -20,8 +26,15 @@ public class WinScreenControl {
     @FXML
     private Button menuBtn;
 
+    
+    /** Method to return to the menu and reset the gameboard
+     * @param event when the button is clicked
+     * @throws IOException if stream to file cannot be written to or closed.
+ 	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
+     */
     @FXML
-    void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		Inventory.reset();
         ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {
