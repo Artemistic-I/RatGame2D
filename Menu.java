@@ -72,7 +72,13 @@ import javafx.util.Duration;
 	    public void quitClicked(ActionEvent event) {
 			System.exit(0);
 		}
-
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 * @throws UnsupportedAudioFileException
+		 * @throws LineUnavailableException
+		 */
 		@FXML
 		private void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -90,6 +96,13 @@ import javafx.util.Duration;
 			
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 * @throws UnsupportedAudioFileException
+		 * @throws LineUnavailableException
+		 */
 		@FXML
 		private void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -108,6 +121,11 @@ import javafx.util.Duration;
 			
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
 		private void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
@@ -117,6 +135,11 @@ import javafx.util.Duration;
 			stage.show();
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
 		private void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
@@ -127,6 +150,11 @@ import javafx.util.Duration;
 
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
     	private void credsClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/credits.fxml"));
@@ -143,6 +171,11 @@ import javafx.util.Duration;
 
     	}
 
+		
+		/** 
+		 * @param location
+		 * @param resources
+		 */
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			startBtn.setDisable(startButtonSwitch);
@@ -156,6 +189,9 @@ import javafx.util.Duration;
 			this.messageOfTheDay.setText(MessageOfTheDay.getMessage());
 		}
 		
+		/** 
+		 * @return TimelineMangaer
+		 */
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;
 		}

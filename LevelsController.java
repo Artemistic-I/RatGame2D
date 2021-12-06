@@ -14,6 +14,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Class of Level scene
+ * 
+ * @author Alex Gingureanu
+ * @version 1.0.0
+ */
+
 public class LevelsController implements Initializable {
 
     private Stage stage;

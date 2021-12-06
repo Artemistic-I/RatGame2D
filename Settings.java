@@ -20,7 +20,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Class of game settings
+ * 
+ * @author Alex Gingureanu
+ * @version 1.0.0
+ */
+
 public class Settings implements Initializable {
+    
+    //Variables for UI of the scene and other
 
     @FXML
     private Button backToMenuBtn;
@@ -44,6 +53,12 @@ public class Settings implements Initializable {
     private Scene scene;
     public static double volume;
 
+    
+    /** 
+     * Method to return back to menu when button is clicked
+     * @param event -- when button is clicked
+     * @throws IOException
+     */
     @FXML
     void backToMenuBtnClicked(ActionEvent event) throws IOException {
 
@@ -54,6 +69,12 @@ public class Settings implements Initializable {
 		stage.show();
     }
 
+    
+    /** 
+     * Method to save the changes
+     * @param event -- when the button is clicked
+     * @throws IOException
+     */
     @FXML
     void saveChangesBtnClicked(ActionEvent event) throws IOException {
         String newUsername = editUsernameBox.getText();
@@ -74,6 +95,12 @@ public class Settings implements Initializable {
         }
     }
 
+    
+    /** 
+     * Method to delete the profile from the system
+     * @param event --when the button is clicked
+     * @throws IOException
+     */
     @FXML
     void deleteProfileBtnClicked(ActionEvent event) throws IOException {
         Gameboard.getCurrentPlayer().removePlayer();
@@ -94,6 +121,12 @@ public class Settings implements Initializable {
     }
 
 
+    
+    /** 
+     * Method when the scene is initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateLabel();
@@ -111,10 +144,20 @@ public class Settings implements Initializable {
         
     }
 
+    
+    /** 
+     * Method to set the volume of the settings
+     * @param volume
+     */
     public static void setVolume(double volume){
         Settings.volume = volume;
     }
 
+    
+    /** 
+     * Return the volume from settings
+     * @return double
+     */
     public static double getVolume(){
         return volume;
     }
