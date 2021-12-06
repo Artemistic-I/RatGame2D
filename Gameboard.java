@@ -3,6 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javafx.scene.canvas.GraphicsContext;
 
+/**
+ * @author Artem
+ */
 public class Gameboard {
     private static int boardHeight;
     private static int boardWidth;
@@ -13,10 +16,18 @@ public class Gameboard {
     private static PlayerProfile currentPlayer;
     private static Boolean isLoadingGame = false;
 
+    /**
+     * 
+     * @param value boolean value true if game is loading
+     */
     public static void setIsLoadingGame(Boolean value) {
         isLoadingGame = value;
     }
-    //load tiles from the file describing the level
+    /**
+     * load tiles from the file describing the level
+     * @param filename name of file where tiles/level is stored
+     * @throws FileNotFoundException thrown if filename isn't a valid file
+     */
     public static void generateBoard(String filename) throws FileNotFoundException {
         File inputfile = new File(filename);
         Scanner in = null;
@@ -76,6 +87,10 @@ public class Gameboard {
         
         System.out.println("Gameboard created levelComplTime = " + levelCompletionTime + " ratPopToLOse = " + ratPopulationToLose);
     }
+
+    /**
+     * sets adjacent tiles for each tile in gamebaord array
+    */
     private static void addAdjacentTiles() {
     	for (int i=0; i<board.length; i++) {
     		for (int j=0; j<board[i].length; j++) {
@@ -103,6 +118,15 @@ public class Gameboard {
     	}
 	
     }
+
+    /**
+     * Only used when game is loading to add rats to tiles
+     * @param tileType determines what tile class to initilise
+     * @param ratIndex used to specify gender of rat 0 - no rat, 1 - female, 2 - male
+     * @param row what row the tile is at in the gameboard 2d array
+     * @param column what column the tile is at in the gameboard 2d array
+     * @return
+     */
 	private static Tile createTile(String tileType, int ratIndex, int row, int column){
         final int femaleBabyRat = 1;
         final int maleBabyRat = 2;
@@ -130,6 +154,13 @@ public class Gameboard {
         }
     }
 
+    /**
+     * Only creates tile without any rats on it
+     * @param tileType determines what tile class to initilise
+     * @param row what row the tile is at in the gameboard 2d array
+     * @param column what column the tile is at in the gameboard 2d array
+     * @return
+     */
     public static Tile createTileOnly(String tileType, int row, int column) {
         if (tileType.equalsIgnoreCase("G")) {
             Tile grass = new TileGrass(row, column);
@@ -145,25 +176,51 @@ public class Gameboard {
         }
     }
     
+    /**
+     * score uses how long it took to complete the level and the amount of rats killed to calculate score
+     * @return returns the score as int
+     */
     public static int calculateScore() {
     	int ratKillPoints = RatManager.getKilledRatCount() * 10;
-    	int timePoints = levelCompletionTime;// - levelEndTime;
+    	int timePoints = levelCompletionTime - (int) Menu.getTimelineManager().getDuration()/1000; // convert duration from milliseconds to seconds
     	return ratKillPoints + timePoints;
     }
     
+    /**
+     * 
+     * @return returns a fraction 1 means lose, 0 means win
+     */
     public static double calculateWinLose() {
     	return (double) (RatManager.countMaleRats() + RatManager.countFemaleRats()) / (double) ratPopulationToLose;
     }
+
+    /**
+     * getter for height
+     * @return returns height of gameboard
+     */
     public static int getHeight() {
         return boardHeight;
     }
+    /**
+     * getter for width
+     * @return returns width of gameboard
+     */
     public static int getWidth() {
         return boardWidth;
     }
+
+    /**
+     * 
+     * @return returns 2d array gameboard
+     */
     public static Tile[][] getBoard() {
         return board;
     }
     
+    /**
+     * 
+     * @param graphicsContext
+     */
     public static void drawGameboard(GraphicsContext graphicsContext) {
     	for (int i=0; i<board.length; i++) {
     		for (int j=0; j<board[i].length; j++) {
@@ -171,18 +228,35 @@ public class Gameboard {
     		}
     	}
     }
+
+    /**
+     * 
+     * @return returns size of tile in pixels
+     */
 	public static int getTileSize() {
 		return TILE_SIZE;
 	}
 	
+    /**
+     * 
+     * @return returns the mount of rats needed to lose game
+     */
 	public static int getRatPopulationToLose() {
 		return ratPopulationToLose;
 	}
 
+    /**
+     * setter for currentPlayer
+     * @param player sets which profile is currently playing
+     */
     public static void setCurrentPlayer(PlayerProfile player) {
         currentPlayer = player;
     }
 
+    /**
+     * getter for currentPlayer
+     * @return gets the current profile playing
+     */
     public static PlayerProfile getCurrentPlayer() {
         return currentPlayer;
     }

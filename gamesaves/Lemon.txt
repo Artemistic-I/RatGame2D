@@ -1,16 +1,14 @@
 1
-female adult true false false 1 6 South 118 136 116 3 1
-male adult false false false 3 6 North 118 0 116 0 2
-male adult false false false 10 11 North 118 0 0 0 3
-female adult false false false 11 16 North 118 0 0 0 4
+male adult false false false 18 9 East 367 0 0 0 2
 
-0
-29500
-0
-0
-0
+6
+91750
+4
+4
+1
+1
+1
+2
 3
 0
-0
-2
-0
+class DeathRat 14 14 1 East 239
