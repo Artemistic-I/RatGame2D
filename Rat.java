@@ -28,7 +28,7 @@ public class Rat {
 	private final static String PREGNANT_RAT_EAST_IMAGE_URL = "images/PregnantRatEast.png";
 	private final static String PREGNANT_RAT_SOUTH_IMAGE_URL = "images/PregnantRatSouth.png";
 	private final static String PREGNANT_RAT_WEST_IMAGE_URL = "images/PregnantRatWest.png";
-	private final static int AGE_WHEN_MATURE = 80;
+	private final static int AGE_WHEN_MATURE = 70;
 	private final static int PREGNANCY_LENGTH = 20;
 	private final static int SEX_LENGTH = 10;
 	private int uniqueIdentifier;

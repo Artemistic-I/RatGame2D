@@ -8,10 +8,12 @@ import javafx.scene.image.Image;
 
 public class DeathRat extends LethalItem {
 
-	private int ratsKilled;
-	private static final int KILL_LIMIT = 5;
-	private String direction;
 	private static final Image DEATH_RAT_GRAPHIC = new Image("images/ItemGraphics/DeathRatGraphic.png");
+	private static final int KILL_LIMIT = 5;
+	private static final int WAIT_TIME = 10;
+	private int timeWaited;
+	private int ratsKilled;
+	private String direction;
 
 	/**
 	 * constructor
@@ -31,11 +33,12 @@ public class DeathRat extends LethalItem {
 	@Override
 	public void update(GraphicsContext graphicsContext, long gameDuration) {
 		itemAction();
-		if ((gameDuration % 500) == 0) {
+		if ((gameDuration % 500) == 0 && timeWaited > WAIT_TIME) {
 			this.move();
 		}
 		this.draw(graphicsContext);
 		itemAction();
+		timeWaited++;
 	}
 
 	private void move() {
@@ -80,6 +83,7 @@ public class DeathRat extends LethalItem {
     	while (!ratsOnTile.isEmpty() && (ratsKilled < KILL_LIMIT)) {
     		Rat rat = ratsOnTile.pop();
 	    		RatManager.removeRat(rat);
+	    		ratsKilled++;
     	}
     	if (ratsKilled >= KILL_LIMIT) {
     		ItemManager.removeItem(this);
