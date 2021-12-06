@@ -432,7 +432,7 @@ public class GameBoardCanvasController implements Initializable {
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playLoseMusic();
 			AudioManager.setVol(Settings.getVolume());
-			ScoreboardController.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
+			Scoreboard.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/loseScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
@@ -446,7 +446,7 @@ public class GameBoardCanvasController implements Initializable {
 			Level.unlock(Level.getSelectedLevel().getLevelNumber() + 1);
 			Gameboard.getCurrentPlayer().savePlayerDetails();
 
-			ScoreboardController.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
+			Scoreboard.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
 
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
