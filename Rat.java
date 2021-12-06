@@ -404,7 +404,8 @@ public class Rat {
 	}
 
 	/**
-	 * Provide a string representation of the rat.
+	 * Provide a text representation of the rat.
+	 * @return text representation
 	 */
 	public String toString() {
 		String textEquivalent = String.format("%s %s %s %s %s %d %d %s %d %d %d %d %d", ratSex, ratMaturity, isPregnant,
