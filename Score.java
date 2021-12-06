@@ -17,6 +17,6 @@ public class Score {
     }
 
     public String toString() {
-        return player.getPlayerUsername() + " " + scoreNum;
+        return player.getPlayerUsername() + " - " + scoreNum;
     }
 }

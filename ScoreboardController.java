@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +46,11 @@ public class ScoreboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadScores(Level.getSelectedLevel().getLevelNumber());
+        scoreList.getItems().add("Place - Usermane - Score");
+        for (int i = 0; i < scores.size(); i++) {
+            int position = i + 1;
+            scoreList.getItems().add(position + " - " + scores.get(i).toString());
+        }
     }
 
     
@@ -87,7 +91,6 @@ public class ScoreboardController implements Initializable {
     }
 
     public static void addScore(Score newScore) {
-        int smallestScoreNum = scores.get(MAX_NUMBER_OF_SCORES - 1).getScoreNum();
         int existingScore = getScoreNumByPlayer(newScore);
         Boolean isInScoreboard = getScoreNumByPlayer(newScore) != -1;
         Boolean isFull = scores.size() > (MAX_NUMBER_OF_SCORES - 1);
@@ -112,9 +115,9 @@ public class ScoreboardController implements Initializable {
                         scores.add(newScore);
                     }
                 }
-
             }
         }
+        saveScoreBoard();
     }
     // removes existing score
     public static void removeScore(PlayerProfile player) {
@@ -123,13 +126,12 @@ public class ScoreboardController implements Initializable {
                 scores.remove(score);
             }
         }
+        saveScoreBoard();
     }
     private static Score getSmallest() {
         return scores.get(scores.size() - 1);
     }
     // returns existing score of a player who achieved a new score
-    //contains player
-    //existing score
     private static int getScoreNumByPlayer(Score scoreToCheck) {
         for (Score score : scores) {
             if (score.getPlayer().getPlayerUsername().equals(scoreToCheck.getPlayer().getPlayerUsername())) {
@@ -157,7 +159,7 @@ public class ScoreboardController implements Initializable {
             System.exit(0);
         }
 		for (Score scoreEntry : scores) {
-            myWriter.println(scoreEntry.getPlayer().getPlayerUsername() + scoreEntry.getScoreNum());
+            myWriter.println(scoreEntry.getPlayer().getPlayerUsername() + " " + scoreEntry.getScoreNum());
         }
 		myWriter.close();
     }
