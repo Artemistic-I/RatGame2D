@@ -38,6 +38,7 @@ public class Scoreboard {
                 line = new Scanner(in.nextLine());
                 String username = line.next();
                 int scoreNum = line.nextInt();
+                System.out.println("////" + " " + username + " " + scoreNum);
                 scores.add(new Score(PlayerProfile.getPlayerByUsername(username), scoreNum));
             }
             in.close();
@@ -57,12 +58,12 @@ public class Scoreboard {
             scores.add(newScore);
         } else {
             if (isInScoreboard) {
-                if (existingScore < newScore.getScoreNum()) {
+                if (existingScore <= newScore.getScoreNum()) {
                     removeScore(newScore.getPlayer());
                     insertScore(newScore);
                 }
             } else {
-                if (newScore.getScoreNum() > getSmallest().getScoreNum()) {
+                if (newScore.getScoreNum() >= getSmallest().getScoreNum()) {
                     if (isFull){
                         removeScore(getSmallest().getPlayer());
                         insertScore(newScore);
@@ -110,12 +111,12 @@ public class Scoreboard {
     }
     
     public static void saveScoreBoard() {
-        File scoreboard = new File("scoreboards/scoreslvl" + Level.getSelectedLevel() + ".txt");
+        File scoreboard = new File("scoreboards/scores_level" + Level.getSelectedLevel().getLevelNumber() + ".txt");
         PrintWriter myWriter = null;
         try {
             myWriter = new PrintWriter(scoreboard);
         } catch (FileNotFoundException e) {
-            System.out.println("Cannot open " + "scoreboards/scores_level" + Level.getSelectedLevel() + ".txt");
+            System.out.println("Cannot open " + "scoreboards/scores_level" + Level.getSelectedLevel().getLevelNumber() + ".txt");
             System.exit(0);
         }
 		for (Score scoreEntry : scores) {

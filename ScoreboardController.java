@@ -44,12 +44,12 @@ public class ScoreboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Scoreboard.loadScores(Level.getSelectedLevel().getLevelNumber());
-        ArrayList<Score> scores = Scoreboard.getScores();
         scoreList.getItems().add("Place - Usermane - Score");
-        for (int i = 0; i < scores.size(); i++) {
+        for (int i = 0; i < Scoreboard.getScores().size(); i++) {
             int position = i + 1;
             System.out.println("Scoreboard row should apear");
-            scoreList.getItems().add(position + " - " + scores.get(i).toString());
+            String lineEntry = position + " - " + Scoreboard.getScores().get(i).toString();
+            scoreList.getItems().add(lineEntry);
         }
     }
 
