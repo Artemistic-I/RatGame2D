@@ -52,7 +52,21 @@ public class NoEntry extends Item{
     */
     public void degradeHealth(int hp) {
         this.health = hp - 1;
-        noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic" + health + ".png");
+        switch(this.health){
+            case 4:
+                noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic4.png");
+                break;
+            case 3:
+                noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic3.png");
+                break;
+            case 2:
+                noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic2.png");
+                break;
+            case 1:
+                noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic1.png");
+                break;
+        }
+
     }
 
     public void itemAction(){
