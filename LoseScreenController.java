@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,6 +19,8 @@ import javafx.scene.Node;
  */
 
 public class LoseScreenController {
+
+	//Variables and scene's view
 	Stage stage;
 	Scene scene;
 
@@ -29,7 +30,14 @@ public class LoseScreenController {
     @FXML
     private Button retryBrn;
 
-    @FXML
+    
+	/** Method to return back to Menu
+	 * @param event --when the button is clicked
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
+	 */
+	@FXML
     private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playMenuMusic();
 		Inventory.reset();
@@ -48,7 +56,14 @@ public class LoseScreenController {
 
     }
 
-    @FXML
+    
+	/** Method to retry the level and restart
+	 * @param event --when the button is clicked
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
+	 */
+	@FXML
     private void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playGameMusic();
 		Inventory.reset();
@@ -61,11 +76,9 @@ public class LoseScreenController {
 		RatManager.setKilledRatCount(0);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 		Parent root = (Parent)fxmlLoader.load();          
-		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 		Gameboard.setIsLoadingGame(false);
 		Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-		TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController);  
-	    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();

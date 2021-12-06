@@ -175,9 +175,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the bomb item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragBombDragable(MouseEvent event) throws IOException{
@@ -190,8 +190,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the gas item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML 
 	private void dragGasDragable(MouseEvent event) throws IOException{
@@ -204,8 +205,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the poison item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragPoisonDragable(MouseEvent event) throws IOException{
@@ -218,8 +220,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sex change to female item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSexChFeDragable(MouseEvent event) throws IOException{
@@ -232,8 +235,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sex change to male item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSexChMaDragable(MouseEvent event) throws IOException{
@@ -246,8 +250,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the no entry sign item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragNoEntrySignDragable(MouseEvent event) throws IOException {
@@ -260,8 +265,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the death rat item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragDeathRatDragable(MouseEvent event) throws IOException{
@@ -274,8 +280,9 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * @param event
-	 * @throws IOException
+	 * Method to drag the sterilisation item
+	 * @param event when the item is clicked and mouse is moved
+	 * @throws IOException if stream to file cannot be written to or closed.
 	 */
 	@FXML
 	private void dragSterilisationDragable(MouseEvent event) throws IOException{

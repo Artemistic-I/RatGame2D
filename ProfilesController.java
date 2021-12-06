@@ -34,11 +34,21 @@ public class ProfilesController implements Initializable {
     @FXML
     private ListView<String> profileList;
 
+    
+    /** Profiles scene initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         refreshProfileList();
     }
     
+    
+    /** Add a new profile
+     * @param event when the button is clicked
+     * @throws IOException if stream to file cannot be written to or closed.
+     */
     @FXML
     private void addProfileBtnClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scenes/addNewProfile.fxml"));
@@ -48,6 +58,11 @@ public class ProfilesController implements Initializable {
         refreshProfileList();
     }
 
+    
+    /** Continue to the game with the selected profile
+     * @param event when the button is clicked
+     * @throws IOException if stream to file cannot be written to or closed.
+     */
     @FXML
     private void nextBtnClicked(ActionEvent event) throws IOException {
         int selectedIndex = profileList.getSelectionModel().getSelectedIndex();
@@ -68,6 +83,8 @@ public class ProfilesController implements Initializable {
             stage.show();
         }
     }
+
+    //Method to refresh the list of profiles
     private void refreshProfileList() {
         profileList.getItems().clear();
         for (PlayerProfile player : PlayerProfile.getProfiles()) {

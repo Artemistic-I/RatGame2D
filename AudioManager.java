@@ -115,7 +115,7 @@ public class AudioManager{
     
     /** 
      * Set the volume of the media player
-     * @param vol
+     * @param vol the value from the settings slider
      */
     public static void setVol(double vol){
         mediaPlayer.setVolume(vol);
