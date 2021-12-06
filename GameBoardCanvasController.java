@@ -295,6 +295,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
+	 * Accept things being dragged over the gameboard if they are items.
 	 * @param event
 	 */
 	@FXML
@@ -314,6 +315,7 @@ public class GameBoardCanvasController implements Initializable {
 	
 	
 	/** 
+	 * Update the gameboard and inventory when items are dropped on provide warning messages if a user tries to use an item that they don't have or does not drag it to an appropriate space.
 	 * @param event
 	 */
 	@FXML
@@ -451,6 +453,9 @@ public class GameBoardCanvasController implements Initializable {
 		}
 	}
 
+	/**
+	 * Update the count of how many of each item is remaining.
+	 */
 	public void updateItemCounts(){
 		this.bombAmount.setText(String.valueOf(Inventory.getInv(0)));
 		this.gasAmount.setText(String.valueOf(Inventory.getInv(1)));
