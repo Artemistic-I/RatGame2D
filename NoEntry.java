@@ -1,12 +1,18 @@
 import javafx.scene.image.Image;
 
+/**
+ * Models the NoEntry sign item.
+ * @author Sam Beard
+ *
+ */
 public class NoEntry extends Item{
 
     private int health;
     private static Image startingNoEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
     /**
-     * constructor method
+     * Construct a new No Entry Sign item.
+     * @param tileTheItemIsOn Tile that the item is on.
      */
     public NoEntry(TileInteractable tileTheItemIsOn) {
         super(startingNoEntryGraphic, tileTheItemIsOn);
@@ -15,6 +21,11 @@ public class NoEntry extends Item{
 
     }
 
+    /**
+     * Construct a pre-existing (e.g. saved) item.
+     * @param tileTheItemIsOn The tile the item is on.
+     * @param health How much health the sign has remaining.
+     */
     public NoEntry(TileInteractable tileTheItemIsOn, int health) {
         super(startingNoEntryGraphic, tileTheItemIsOn);
         this.health = health;
@@ -22,7 +33,7 @@ public class NoEntry extends Item{
     }
 
     /**
-     * health of no entry sign begins at 5
+     * Health of no entry sign begins at 5
      */
     private void setHealth() {
         health = 5;
@@ -40,11 +51,6 @@ public class NoEntry extends Item{
      * method to degrade health of sign
      * @param hp Current health of sign
      */
-    /*
-    also needs to change image to reflect how damaged it is
-    suggest using an array the length of it's health and 
-    changing image to the new one stored at the index of the new health
-    */
     public void degradeHealth() {
         this.health = health - 1;
         System.out.println(health);
@@ -57,14 +63,17 @@ public class NoEntry extends Item{
     }
 
     @Override
+	/**
+	 * Provide a text representation of the bomb.
+	 * @return text representation
+	 */
     public String toString() {
         String textEquivalent = super.toString();
         textEquivalent = String.format("%s %d", textEquivalent, this.health);
         return textEquivalent;
     }
+    
     @Override
-    void itemAction() {
-        // TODO Auto-generated method stub
-        
+    void itemAction() { 
     }
 }
