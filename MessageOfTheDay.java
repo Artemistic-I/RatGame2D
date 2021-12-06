@@ -34,7 +34,6 @@ public class MessageOfTheDay{
             in.close();
 
             String text = solve(temp);
-            System.out.println(text); // # testing
             URL uri =
                     new URL("http://cswebcat.swansea.ac.uk/message?solution=" +
                             text);
