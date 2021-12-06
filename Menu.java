@@ -72,16 +72,13 @@ import javafx.util.Duration;
 	    public void quitClicked(ActionEvent event) {
 			System.exit(0);
 		}
-
-	    /**
-	     * Handles the Delete Profile button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdDeleteProfileClick(MouseEvent mouseEvent) {
-	        //PlayerProfile.showDelete();
-	    }
-
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 * @throws UnsupportedAudioFileException
+		 * @throws LineUnavailableException
+		 */
 		@FXML
 		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -103,6 +100,13 @@ import javafx.util.Duration;
 			
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 * @throws UnsupportedAudioFileException
+		 * @throws LineUnavailableException
+		 */
 		@FXML
 		void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -121,6 +125,11 @@ import javafx.util.Duration;
 			
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
 		void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
@@ -130,6 +139,11 @@ import javafx.util.Duration;
 			stage.show();
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
 		void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
@@ -140,6 +154,11 @@ import javafx.util.Duration;
 
 		}
 
+		
+		/** 
+		 * @param event
+		 * @throws IOException
+		 */
 		@FXML
     	void credsClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/credits.fxml"));
@@ -156,6 +175,11 @@ import javafx.util.Duration;
 
     	}
 
+		
+		/** 
+		 * @param location
+		 * @param resources
+		 */
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
 			startBtn.setDisable(startButtonSwitch);
@@ -168,6 +192,10 @@ import javafx.util.Duration;
 			}
 			this.messageOfTheDay.setText(MessageOfTheDay.getMessage());
 		}
+		
+		/** 
+		 * @return TimelineMangaer
+		 */
 		public static TimelineMangaer getTimelineManager() {
 			return timelineManager;
 		}

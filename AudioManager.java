@@ -1,9 +1,5 @@
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import javafx.fxml.Initializable;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -11,9 +7,14 @@ import javafx.scene.media.MediaPlayer;
  * Class of Audio player
  * 
  * @author Alex Gingureanu
+ * @version 1.0.0
  */
 
 public class AudioManager{
+
+    /*
+    * Variables for creating the Audio Player
+    */
 
     private static File directory;
     private static File[] files;
@@ -26,7 +27,9 @@ public class AudioManager{
     private static MediaPlayer mediaPlayer;
 
 
-
+     /*
+    * Method to create the playlist with the music in the directory
+    */
     public static void createPlaylist(){
         
         music = new ArrayList<File>();
@@ -38,7 +41,7 @@ public class AudioManager{
         if(files != null){
             for(File file: files){
                 music.add(file);
-                System.out.println(file);
+                
             }
         }
         
@@ -47,6 +50,9 @@ public class AudioManager{
         
     }
 
+    /*
+    * Method to play the menu music
+    */
     public static void playMenuMusic(){
         mediaPlayer.stop();
         musicNumber = 3;
@@ -57,6 +63,9 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
+    /*
+    * Method to play the game music
+    */
     public static void playGameMusic(){
         mediaPlayer.stop();
         musicNumber = 2;
@@ -67,6 +76,9 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
+    /*
+    * Method to play the winning screen music
+    */
     public static void playWinMusic(){
         mediaPlayer.stop();
         musicNumber = 4;
@@ -77,16 +89,9 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
-    public static void playBombSound(){
-        mediaPlayer.stop();
-        musicNumber = 0;
-        
-        media = new Media(music.get(musicNumber).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-
-        mediaPlayer.play();
-    }
-
+    /*
+    * Method to play the losing screen music
+    */
     public static void playLoseMusic(){
         mediaPlayer.stop();
         musicNumber = 1;
@@ -97,16 +102,23 @@ public class AudioManager{
         mediaPlayer.play();
     }
 
+    /*
+    * Pause the current music
+    */
     public static void pauseMusic(){
         mediaPlayer.pause();
     }
 
+    /*
+    * Resume the current music
+    */
     public static void resumeMusic(){
         mediaPlayer.play();
     }
 
     
     /** 
+     * Set the volume of the media player
      * @param vol
      */
     public static void setVol(double vol){
