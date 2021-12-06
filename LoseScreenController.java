@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -61,11 +60,9 @@ public class LoseScreenController {
 		RatManager.setKilledRatCount(0);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 		Parent root = (Parent)fxmlLoader.load();          
-		GameBoardCanvasController gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 		Gameboard.setIsLoadingGame(false);
 		Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-		TimelineMangaer timelineManager = new TimelineMangaer(gameBoardCanvasController);  
-	    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
