@@ -40,15 +40,26 @@ public class DeathRat extends LethalItem {
 
 	private void move() {
 		ArrayList<String> possibleMoves = new ArrayList<String>(this.tileTheItemIsOn.possibleMoves());
-		if (possibleMoves.size() == 1) {
-			this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(turnAround(direction));
-			this.direction = turnAround(direction);
-		} else if (possibleMoves.size() > 1) {
-			possibleMoves.remove(turnAround(direction));
-			Random rand = new Random();
-			String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-			this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(randomDirection);
-			this.direction = randomDirection;
+		while (true) {
+			if (possibleMoves.size() == 1) {
+				this.tileTheItemIsOn = (TileInteractable) tileTheItemIsOn.getAdjacentTile(turnAround(direction));
+				this.direction = turnAround(direction);
+				break;
+			} else if (possibleMoves.size() > 1) {
+				Random rand = new Random();
+				String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
+				TileInteractable newTile = (TileInteractable) tileTheItemIsOn.getAdjacentTile(randomDirection);
+				if (newTile.getNoEntrySign() == null) {
+					if (randomDirection != turnAround(direction)) {
+						this.tileTheItemIsOn = newTile;
+						this.direction = randomDirection;
+					}
+					break;
+				} else {
+					newTile.getNoEntrySign().degradeHealth();
+					possibleMoves.remove(randomDirection);
+				}
+			}
 		}
 	}
 

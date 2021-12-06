@@ -20,15 +20,15 @@ public abstract class Tile {
     // RGB
     // Value between 0 - 255
     private int[] colour = {0,0,0};
-    // stores tiles adjecent to itself
-    // index 0 = North, index 3 = West
-    Tile[] adjacentTiles = new Tile[4];
+
+    private NoEntry noEntrySign;
 
     public Tile(Image tileGraphic, int row, int column) {
     	this.tileGraphic = tileGraphic;
     	this.xCoordinate = row;
     	this.yCoordinate = column;
         this.isInteractable = false;
+        this.noEntrySign = null;
     }
 
     public int[] getSizeOfTile() {
@@ -95,12 +95,19 @@ public abstract class Tile {
 		return yCoordinate;
 	}
 
-    public void setIsInteractable(boolean interactable) {
-		this.isInteractable = interactable;
-	}
+    protected void setIsInteractable(boolean isInteractable) {
+        this.isInteractable = isInteractable;
+    }
 
 	public boolean isInteractable() {
 		return this.isInteractable;
 	}
 
+    public NoEntry getNoEntrySign() {
+		return this.noEntrySign;
+	}
+
+	public void setNoEntrySign(NoEntry sign) {
+		this.noEntrySign = sign;
+	}
 }
