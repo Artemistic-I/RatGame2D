@@ -173,15 +173,26 @@ public class Rat {
 	 */
 	private void move() {
 		ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
-		if (possibleMoves.size() == 1) {
-			this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(reverseDirection());
-			this.direction = reverseDirection();
-		} else if (possibleMoves.size() > 1) {
-			possibleMoves.remove(reverseDirection());
-			Random rand = new Random();
-			String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-			this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
-			this.direction = randomDirection;
+		while (true) {
+			if (possibleMoves.size() == 1) {
+				this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(reverseDirection());
+				this.direction = reverseDirection();
+				break;
+			} else if (possibleMoves.size() > 1) {
+				Random rand = new Random();
+				String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
+				TileInteractable newTile = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
+				if (newTile.getNoEntrySign() == null) {
+					if (randomDirection != reverseDirection()) {
+						this.tileTheRatIsOn = newTile;
+						this.direction = randomDirection;
+						break;
+					}
+				} else {
+					newTile.getNoEntrySign().degradeHealth();
+					possibleMoves.remove(randomDirection);
+				}
+			}
 		}
 		updateGraphic();
 	}
