@@ -36,6 +36,15 @@ public class PlayerProfile {
 		}
 	}
 
+	public static PlayerProfile getPlayerByUsername(String username) {
+		for (PlayerProfile player : profiles) {
+			if (player.getPlayerUsername().equals(username)) {
+				return player;
+			}
+		}
+		return null;
+	}
+
 	public String getPlayerUsername() {
 		return username;
 	}
