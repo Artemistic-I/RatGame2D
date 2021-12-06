@@ -9,31 +9,7 @@
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
-<<<<<<< HEAD
             "vmArgs": "--module-path C:/Users/AlexG/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
-=======
-<<<<<<< Updated upstream
-            "vmArgs": "--module-path C:/Users/joshh/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
-            "projectName": "Rats_19308563"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "vmArgs": "--module-path C:/Users/joshh/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
-=======
-            "vmArgs": "--module-path C:/Users/AlexG/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
->>>>>>> Stashed changes
-            "projectName": "Rats_7a57e82d"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "vmArgs": "--module-path C:/Users/joshh/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
-            "mainClass": "Main",
->>>>>>> 15a18d3cf8e4619adb0479b5995ba9496c2109e6
             "projectName": "Rats_ef5fe406"
         },
         {
