@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 /**
  * subclass of LethalItem and therefore Item to describe a Bomb object
  * 
- * @author Mike, Josh and Alex Gingureanu
+ * @author Mike, Josh, Aidan English Stephen and Alex Gingureanu
  */
 public class Bomb extends LethalItem {
 	/**
@@ -63,13 +63,10 @@ public class Bomb extends LethalItem {
 				SoundManager.playSound("audio/0_explosion.wav");
 				SoundManager.setVolume(Settings.volume);
 			} catch (UnsupportedAudioFileException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ItemManager.removeItem(this);

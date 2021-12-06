@@ -80,21 +80,17 @@ import javafx.util.Duration;
 		 * @throws LineUnavailableException
 		 */
 		@FXML
-		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+		private void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.setIsLoadingGame(false);
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-
 			timelineManager = new TimelineMangaer(gameBoardCanvasController);
-
-			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-
 			AudioManager.playGameMusic();
 			AudioManager.setVol(Settings.getVolume());
 			
@@ -108,7 +104,7 @@ import javafx.util.Duration;
 		 * @throws LineUnavailableException
 		 */
 		@FXML
-		void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+		private void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
 			Parent root = (Parent)fxmlLoader.load();          
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
@@ -131,7 +127,7 @@ import javafx.util.Duration;
 		 * @throws IOException
 		 */
 		@FXML
-		void selectLevelBtnClicked(ActionEvent event) throws IOException {
+		private void selectLevelBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/levels.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -145,7 +141,7 @@ import javafx.util.Duration;
 		 * @throws IOException
 		 */
 		@FXML
-		void settingsBtnClicked(ActionEvent event) throws IOException {
+		private void settingsBtnClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/settings.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -160,7 +156,7 @@ import javafx.util.Duration;
 		 * @throws IOException
 		 */
 		@FXML
-    	void credsClicked(ActionEvent event) throws IOException {
+    	private void credsClicked(ActionEvent event) throws IOException {
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/credits.fxml"));
 			Scene scene = credsBtn.getScene();
 

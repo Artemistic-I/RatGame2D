@@ -5,7 +5,6 @@ import java.util.Stack;
 
 public class NoEntry extends Item{
 
-    static final int SHORTCUT_KEY = 115; //bound to F4
     private int health;
     private static Image noEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
@@ -18,7 +17,7 @@ public class NoEntry extends Item{
         setHealth();
 
     }
-    // constructor for loading
+
     public NoEntry(TileInteractable tileTheItemIsOn, int health) {
 
         super(noEntryGraphic, tileTheItemIsOn);
@@ -45,11 +44,6 @@ public class NoEntry extends Item{
      * method to degrade health of sign
      * @param hp Current health of sign
      */
-    /*
-    also needs to change image to reflect how damaged it is
-    suggest using an array the length of it's health and 
-    changing image to the new one stored at the index of the new health
-    */
     public void degradeHealth(int hp) {
         this.health = hp - 1;
         switch(this.health){
