@@ -49,4 +49,7 @@ public abstract class Item {
 		return textEquivalent;
 	}
 
+	public void setImage(Image image) {
+		itemGraphic = image;
+	}
 }

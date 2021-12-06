@@ -130,7 +130,9 @@ public class Rat {
 			if (this.ratMaturity == RatMaturity.BABY) {
 				this.move();
 			} else if ((gameDuration % TimelineMangaer.DELAY) == 0) {
-				this.move();
+				if ((gameDuration % 500) == 0) {
+					this.move();
+				}
 			}
 		}
 		this.ratAge++;
@@ -171,15 +173,26 @@ public class Rat {
 	 */
 	private void move() {
 		ArrayList<String> possibleMoves = new ArrayList<String>(tileTheRatIsOn.possibleMoves());
-		if (possibleMoves.size() == 1) {
-			this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(reverseDirection());
-			this.direction = reverseDirection();
-		} else if (possibleMoves.size() > 1) {
-			possibleMoves.remove(reverseDirection());
-			Random rand = new Random();
-			String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
-			this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
-			this.direction = randomDirection;
+		while (true) {
+			if (possibleMoves.size() == 1) {
+				this.tileTheRatIsOn = (TileInteractable) tileTheRatIsOn.getAdjacentTile(reverseDirection());
+				this.direction = reverseDirection();
+				break;
+			} else if (possibleMoves.size() > 1) {
+				Random rand = new Random();
+				String randomDirection = possibleMoves.get(rand.nextInt(possibleMoves.size()));
+				TileInteractable newTile = (TileInteractable) tileTheRatIsOn.getAdjacentTile(randomDirection);
+				if (newTile.getNoEntrySign() == null) {
+					if (randomDirection != reverseDirection()) {
+						this.tileTheRatIsOn = newTile;
+						this.direction = randomDirection;
+						break;
+					}
+				} else {
+					newTile.getNoEntrySign().degradeHealth();
+					possibleMoves.remove(randomDirection);
+				}
+			}
 		}
 		updateGraphic();
 	}
@@ -205,7 +218,7 @@ public class Rat {
 
 	/**
 	 * Draw the rat onto the gameboard.
-	 * @param graphicsContext what the drawing should be done upon.
+	 * @param graphicsContext What the drawing should be done upon.
 	 */
 	private void draw(Image graphic, GraphicsContext graphicsContext) {
 		if (!(tileTheRatIsOn instanceof TileTunnel)) {
