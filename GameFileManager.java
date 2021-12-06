@@ -220,8 +220,9 @@ public class GameFileManager {
                     int yPosition = line.nextInt();
                     int ratsKilled = line.nextInt();
                     String direction = line.next();
+                    int age = line.nextInt();
                     TileInteractable tile = (TileInteractable) Gameboard.getBoard()[xPosition][yPosition];
-                    ItemManager.addItem(new DeathRat(tile, direction, ratsKilled));
+                    ItemManager.addItem(new DeathRat(tile, direction, ratsKilled, age));
                 /////////SexChangeFemale////////////
                 } else if (itemType.equals("SexChangeFemale")) {
                     int xPosition = line.nextInt();

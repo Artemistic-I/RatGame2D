@@ -14,6 +14,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Class of Level scene
+ * 
+ * @author Alex Gingureanu
+ * @version 1.0.0
+ */
+
 public class LevelsController implements Initializable {
 
     private Stage stage;
@@ -37,7 +44,7 @@ public class LevelsController implements Initializable {
     
     //after selecting a level the start button gets enabled.
     @FXML
-    void backToMenulvlSelectedClicked(ActionEvent event) throws IOException {
+    private void backToMenulvlSelectedClicked(ActionEvent event) throws IOException {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             if (Level.getLevels().get(selectedIndex).isLocked()) {
@@ -66,7 +73,7 @@ public class LevelsController implements Initializable {
     }
 
     @FXML
-    void showScoreBoardBtnClicked(ActionEvent event) throws IOException {
+    private void showScoreBoardBtnClicked(ActionEvent event) throws IOException {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
         if (selectedIndex < 0) {
             Alert alert = new Alert(AlertType.ERROR);

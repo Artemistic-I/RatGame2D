@@ -1,15 +1,15 @@
 1
-female baby false false false 4 17 West 79 0 0 0 1
-male baby false false false 6 13 West 79 0 0 0 2
-male baby false false false 2 4 East 79 0 0 0 3
+male adult false false false 12 10 South 212 0 0 0 2
 
-44
-19750
-1
-0
-0
-0
+113
+53000
 0
 1
-1
+2
 0
+0
+2
+0
+0
+class NoEntry 17 4 5
+class DeathRat 2 17 0 East

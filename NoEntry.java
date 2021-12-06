@@ -6,7 +6,6 @@ import java.util.Stack;
 
 public class NoEntry extends Item{
 
-    static final int SHORTCUT_KEY = 115; //bound to F4
     private int health;
     private static Image startingNoEntryGraphic = new Image("images/ItemGraphics/NoEntrySignGraphic.png");
 
@@ -19,7 +18,7 @@ public class NoEntry extends Item{
         getItemLoc().setNoEntrySign(this);
 
     }
-    // constructor for loading
+
     public NoEntry(TileInteractable tileTheItemIsOn, int health) {
         super(startingNoEntryGraphic, tileTheItemIsOn);
         this.health = health;

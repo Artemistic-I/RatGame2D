@@ -8,6 +8,42 @@
         "c:\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
         "c:\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
         "c:\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+<<<<<<< HEAD
         "c:\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar"
+=======
+        "c:\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\AlexG\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\joshh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\Josh\\Desktop\\javafx-sdk-17.0.1\\lib\\javafx-swt.jar"
+>>>>>>> 417e91efe8b0f708f87cd0539727006dc1b3dbc8
     ]
 }

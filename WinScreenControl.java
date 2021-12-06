@@ -27,7 +27,7 @@ public class WinScreenControl {
     private Button menuBtn;
 
     @FXML
-    void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+    private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		Inventory.reset();
         ItemManager.removeAllItems();
 		for (Rat rat : RatManager.getRatPopulation()) {

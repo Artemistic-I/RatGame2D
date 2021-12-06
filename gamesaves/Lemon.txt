@@ -1,17 +1,16 @@
 1
-male adult false false false 3 10 North 177 0 0 0
+female adult true false false 1 6 South 118 136 116 3 1
+male adult false false false 3 6 North 118 0 116 0 2
+male adult false false false 10 11 North 118 0 0 0 3
+female adult false false false 11 16 North 118 0 0 0 4
 
+0
+29500
+0
+0
+0
 3
-71000
-0
-0
-0
 0
 0
 2
 0
-0
-class NoEntry 14 13 5
-class Sterilisation 9 13
-class Bomb 7 18 8
-class NoEntry 6 12 5

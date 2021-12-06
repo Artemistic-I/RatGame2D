@@ -24,10 +24,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.TransferMode;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
-	/**
+
+/**
  * Class of Gameboard control
  * 
- * @author Alex Gingureanu
+ * @author Alex Gingureanu and Aidan English Stephen
  */
 
 public class GameBoardCanvasController implements Initializable {
@@ -105,6 +106,15 @@ public class GameBoardCanvasController implements Initializable {
 	@FXML
 	private Label sterilisationAmount;
 	
+	
+	/** 
+	 * Method for pausing and resuming the game.
+	 * 
+	 * @param event --When the button is pressed
+	 * @throws UnsupportedAudioFileException
+	 * @throws IOException
+	 * @throws LineUnavailableException
+	 */
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (pauseButton.getText().equals("Pause")) {
@@ -117,12 +127,19 @@ public class GameBoardCanvasController implements Initializable {
 			saveButton.setDisable(true);
 			AudioManager.resumeMusic();
 			Menu.getTimelineManager().resumeTime();
-			SoundManager.resumeSound();
 		}
 	}
 
+	
+	/** 
+	 * Method to save the current game into a file
+	 * @param event --When the button is pressed
+	 * @throws IOException
+	 * @throws UnsupportedAudioFileException
+	 * @throws LineUnavailableException
+	 */
 	@FXML
-	void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+	private void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		String username = Gameboard.getCurrentPlayer().getPlayerUsername();
 		long totalDuration = Menu.getTimelineManager().getDuration();
 		GameFileManager.saveGame(username, totalDuration);
@@ -144,15 +161,26 @@ public class GameBoardCanvasController implements Initializable {
         stage.show();
 	}
 
+	
+	/** 
+	 * Method for when the board is initialized
+	 * @param arg0
+	 * @param arg1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		saveButton.setDisable(true);
 		graphicsContext = canvas.getGraphicsContext2D();
 	}
 
+	
+	/** 
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragBombDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragBombDragable(MouseEvent event) throws IOException{
 		Dragboard db = bombDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("bombDragable");
@@ -160,9 +188,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML 
-	void dragGasDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragGasDragable(MouseEvent event) throws IOException{
 		Dragboard db = gasDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("gasDragable");
@@ -170,9 +202,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragPoisonDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragPoisonDragable(MouseEvent event) throws IOException{
 		Dragboard db = poisonDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("poisonDragable");
@@ -180,9 +216,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragSexChFeDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSexChFeDragable(MouseEvent event) throws IOException{
 		Dragboard db = sexChFeDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sexChFeDragable");
@@ -190,9 +230,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragSexChMaDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSexChMaDragable(MouseEvent event) throws IOException{
 		Dragboard db = sexChMaDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sexChMaDragable");
@@ -200,8 +244,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragNoEntrySignDragable(MouseEvent event) throws IOException {
+	private void dragNoEntrySignDragable(MouseEvent event) throws IOException {
 		Dragboard db = noEntrySignDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("noEntrySignDragable");
@@ -209,9 +258,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragDeathRatDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragDeathRatDragable(MouseEvent event) throws IOException{
 		Dragboard db = deathRatDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("deathRatDragable");
@@ -219,9 +272,13 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
-	void dragSterilisationDragable(MouseEvent event) throws IOException{
-		//im.removeItem
+	private void dragSterilisationDragable(MouseEvent event) throws IOException{
 		Dragboard db = sterilisationDragable.startDragAndDrop(TransferMode.ANY);
 		ClipboardContent content = new ClipboardContent();
 		content.putString("sterilisationDragable");
@@ -229,8 +286,12 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	
+	/** 
+	 * @param event
+	 */
 	@FXML
-	void canvasDragOver(DragEvent event) {
+	private void canvasDragOver(DragEvent event) {
 		if (event.getGestureSource() == bombDragable || 
 					event.getGestureSource() == gasDragable || 
 					event.getGestureSource() == poisonDragable || 
@@ -244,10 +305,12 @@ public class GameBoardCanvasController implements Initializable {
 		}
 	}
 	
+	
+	/** 
+	 * @param event
+	 */
 	@FXML
-	void canvasDragDropOccured(DragEvent event) {
-		System.out.println("------drop"); // # just for testing
-		
+	private void canvasDragDropOccured(DragEvent event) {
 		double xCoordinate = event.getX();
         double yCoordinate = event.getY(); 
         int xGridRef = (int) xCoordinate / Gameboard.getTileSize();
@@ -329,14 +392,29 @@ public class GameBoardCanvasController implements Initializable {
         alert.showAndWait();
 	}
 
+	
+	/** 
+	 * @return GraphicsContext
+	 */
 	public GraphicsContext getGraphicContext() {
 		return graphicsContext;
 	}
 	
+	
+	/** 
+	 * @param winLoseRatio
+	 */
 	public void drawWinLoseIndicator(double winLoseRatio) {
 		this.winLoseIndicator.setProgress(winLoseRatio);
 	}
 	
+	
+	/** 
+	 * @param maleRatCount
+	 * @param femaleRatCount
+	 * @param ratLimit
+	 * @throws IOException
+	 */
 	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) throws IOException {
 		this.maleRatCount.setText(String.valueOf(maleRatCount));
 		this.femaleRatCount.setText(String.valueOf(femaleRatCount));
@@ -360,6 +438,9 @@ public class GameBoardCanvasController implements Initializable {
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
         	window.setScene(scene);	
+        	if (Level.getSelectedLevel().getLevelNumber() + 1 < Level.getLevels().size()) {
+        		Level.getLevels().get(Level.getSelectedLevel().getLevelNumber()).unlock();;
+        	}
 		}
 	}
 
