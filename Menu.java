@@ -72,7 +72,7 @@ import javafx.util.Duration;
 			System.exit(0);
 		}
 		
-		/** Starts the game and changes the scene to Gameboard
+		/** Starts the game
 		 * @param event --when the button is clicked
 		 * @throws IOException if stream to file cannot be written to or closed.
 		 * @throws UnsupportedAudioFileException if incorrect audio file format
@@ -97,7 +97,7 @@ import javafx.util.Duration;
 		}
 
 		
-		/** Loads the most recent saved game
+		/** Loads the most recent saved game and starts it
 		 * @param event --when the button is clicked
 		 * @throws IOException if stream to file cannot be written to or closed.
 		 * @throws UnsupportedAudioFileException if incorrect audio file format
@@ -121,7 +121,7 @@ import javafx.util.Duration;
 		}
 
 		
-		/** Opens the scene for choosing the levels
+		/** Opens levels selection
 		 * @param event when the button is clicked
 		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
@@ -171,7 +171,7 @@ import javafx.util.Duration;
     	}
 
 		
-		/** Intializes the scene
+		/** Intializes the menu
 		 * @param location
 		 * @param resources
 		 */
@@ -189,6 +189,7 @@ import javafx.util.Duration;
 		}
 		
 		/** 
+		 * Gets timeline mananger
 		 * @return TimelineMangaer
 		 */
 		public static TimelineMangaer getTimelineManager() {

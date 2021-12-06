@@ -17,7 +17,7 @@ public class Gameboard {
     private static Boolean isLoadingGame = false;
 
     /**
-     * 
+     * Switches the loading mode for generating tile grid on or off
      * @param value boolean value true if game is loading
      */
     public static void setIsLoadingGame(Boolean value) {
@@ -120,12 +120,12 @@ public class Gameboard {
     }
 
     /**
-     * Only used when game is loading to add rats to tiles
+     * Only used when game is loading to add baby rats to tiles
      * @param tileType determines what tile class to initilise
      * @param ratIndex used to specify gender of rat 0 - no rat, 1 - female, 2 - male
      * @param row what row the tile is at in the gameboard 2d array
      * @param column what column the tile is at in the gameboard 2d array
-     * @return
+     * @return created tile
      */
 	private static Tile createTile(String tileType, int ratIndex, int row, int column){
         final int femaleBabyRat = 1;
@@ -159,7 +159,7 @@ public class Gameboard {
      * @param tileType determines what tile class to initilise
      * @param row what row the tile is at in the gameboard 2d array
      * @param column what column the tile is at in the gameboard 2d array
-     * @return
+     * @return created tile
      */
     public static Tile createTileOnly(String tileType, int row, int column) {
         if (tileType.equalsIgnoreCase("G")) {
@@ -210,15 +210,15 @@ public class Gameboard {
     }
 
     /**
-     * 
-     * @return returns 2d array gameboard
+     * Gets all the tiles
+     * @return returns all tiles
      */
     public static Tile[][] getBoard() {
         return board;
     }
     
     /**
-     * 
+     * Draws the gameboard
      * @param graphicsContext
      */
     public static void drawGameboard(GraphicsContext graphicsContext) {

@@ -111,9 +111,9 @@ public class GameBoardCanvasController implements Initializable {
 	 * Method for pausing and resuming the game.
 	 * 
 	 * @param event --When the button is pressed
-	 * @throws UnsupportedAudioFileException
-	 * @throws IOException
-	 * @throws LineUnavailableException
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 	 */
 	@FXML
 	void pauseButtonClicked(ActionEvent event) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -132,11 +132,11 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * Method to save the current game into a file and reset everything
+	 * Method to initialise saving the current game into a file and reset everything
 	 * @param event --When the button is pressed
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
-	 * @throws LineUnavailableException
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 	 */
 	@FXML
 	private void saveButtonClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -393,6 +393,9 @@ public class GameBoardCanvasController implements Initializable {
 		event.consume();
 	}
 
+	/**
+	 * Displays an error message in case of insufficient inventory stock
+	 */
 	private void displayMissingInventoryMessage() {
 		Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Insufficient Inventory Stock");
@@ -403,6 +406,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
+	 * Gets graphic context
 	 * @return GraphicsContext
 	 */
 	public GraphicsContext getGraphicContext() {
@@ -411,7 +415,8 @@ public class GameBoardCanvasController implements Initializable {
 	
 	
 	/** 
-	 * @param winLoseRatio
+	 * Sets progress bar
+	 * @param winLoseRatio the value to set progress bar
 	 */
 	public void drawWinLoseIndicator(double winLoseRatio) {
 		this.winLoseIndicator.setProgress(winLoseRatio);
@@ -419,9 +424,10 @@ public class GameBoardCanvasController implements Initializable {
 	
 	
 	/** 
-	 * @param maleRatCount
-	 * @param femaleRatCount
-	 * @param ratLimit
+	 * Updates rat counters, determines the victory or defeat and adds score to scoreboard
+	 * @param maleRatCount number of currently alive male rats
+	 * @param femaleRatCount number of currently alive female rats
+	 * @param ratLimit the number of rats to lose
 	 * @throws IOException
 	 */
 	public void updateRatCounts(int maleRatCount, int femaleRatCount, int ratLimit) throws IOException {
@@ -442,12 +448,9 @@ public class GameBoardCanvasController implements Initializable {
 			Menu.getTimelineManager().stopTime();	
 			AudioManager.playWinMusic();
 			AudioManager.setVol(Settings.getVolume());
-			//win
 			Level.unlock(Level.getSelectedLevel().getLevelNumber() + 1);
 			Gameboard.getCurrentPlayer().savePlayerDetails();
-
 			Scoreboard.addScore(new Score(Gameboard.getCurrentPlayer(), Gameboard.calculateScore()));
-
 			Parent root = FXMLLoader.load(getClass().getResource("scenes/winScreen.fxml"));
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
