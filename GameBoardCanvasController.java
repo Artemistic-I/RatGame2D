@@ -360,6 +360,12 @@ public class GameBoardCanvasController implements Initializable {
         	Stage window = (Stage) pauseButton.getScene().getWindow();
         	scene = new Scene(root);
         	window.setScene(scene);	
+        	if (Level.getSelectedLevel().getLevelNumber() + 1 < Level.getLevels().size()) {
+        		Level.getLevels().get(Level.getSelectedLevel().getLevelNumber()).unlock();;
+        		//for (PlayerProfile playerProfile: PlayerProfile.getProfiles()) {
+        		//	playerProfile.
+        		//}
+        	}
 		}
 	}
 
