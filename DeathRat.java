@@ -15,7 +15,7 @@ public class DeathRat extends LethalItem {
 
 	private static final Image DEATH_RAT_GRAPHIC = new Image("images/ItemGraphics/DeathRatGraphic.png");
 	private static final int KILL_LIMIT = 5;
-	private static final int WAIT_TIME = 10;
+	private static final int WAIT_TIME = 8;
 	private int age;
 	private int ratsKilled;
 	private String direction;

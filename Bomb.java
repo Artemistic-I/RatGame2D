@@ -109,7 +109,7 @@ public class Bomb extends LethalItem {
 	public void draw(GraphicsContext graphicsContext) {
 		graphicsContext.drawImage(itemGraphic, this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(),
 		this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize());
-		graphicsContext.fillText(String.valueOf(this.remainingTime / 2), this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize(), Gameboard.getTileSize());
+		graphicsContext.fillText(String.valueOf(this.remainingTime / 4), this.tileTheItemIsOn.getyCoordinate() * Gameboard.getTileSize(), this.tileTheItemIsOn.getxCoordinate() * Gameboard.getTileSize(), Gameboard.getTileSize());
 	}
 	
 	/**
