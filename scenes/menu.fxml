@@ -33,17 +33,17 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="268.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="293.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/bomb.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="273.0" fitWidth="227.0" layoutX="473.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="273.0" fitWidth="227.0" layoutX="447.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/evil_rat_gif.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="243.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="232.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/CursorIconTransparent.png" />
                </image>
