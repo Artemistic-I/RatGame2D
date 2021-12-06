@@ -1,5 +1,12 @@
 # Rats
 
+Instructions to compile:
+
+Referenced Libraries needed: JavaFX (we used the latest version 17.0.1)
+Java Version: jdk-17 (however should work with other versions)
+compile all files and run the main.java file
+we mainly used vscode to code, compile and run the program
+
 Sources:
 
 Sounds/Music

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * used to save/load games
+ * @author Sam/Artem
+ * 
+ */
 public class GameFileManager {
 
     private static long duration;
@@ -12,6 +17,12 @@ public class GameFileManager {
     // next lines store each individual rats attributes seperated by white space.
     // each rats attributes are seperated by a new line "\n
     
+    /**
+     * takes all the values it needs and saves everything from a paused game
+     * this means a player can cme back later and resume the level where they left it
+     * @param username the player username - used to determine filename
+     * @param duration how long the level has been played for
+     */
     public static void saveGame(String username, long duration) {
         // saves file to a directory with the name of the players username
         String outputFile = "gamesaves/" + username + ".txt";
@@ -61,6 +72,12 @@ public class GameFileManager {
         }
         myWriter.close();
     }
+
+    /**
+     * loads all values from saved file
+     * constructs new instances of classes that are needed 
+     * ensuring they are the same as when the game was saved
+     */
     public static void loadGame() {
         String username = Gameboard.getCurrentPlayer().getPlayerUsername();
         File savedGame = new File("gamesaves/" + username + ".txt");
@@ -241,6 +258,11 @@ public class GameFileManager {
             in.close();
         }
     }
+
+    /**
+     * 
+     * @return returns game duration
+     */
     public static long getSavedDuration() {
         return duration;
     }

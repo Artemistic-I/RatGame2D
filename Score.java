@@ -18,9 +18,10 @@ public class Score {
         this.player = player;
         this.scoreNum = scoreNum;
     }
+
     /**
-     * Gets player
-     * @return player
+     * 
+     * @return returns playerProfile
      */
     public PlayerProfile getPlayer() {
         return player;
@@ -34,7 +35,7 @@ public class Score {
     }
 
     /**
-     * Converts score into a text to be used by scoreboard
+     * outputs information in string format
      */
     public String toString() {
         return player.getPlayerUsername() + " - " + scoreNum;
