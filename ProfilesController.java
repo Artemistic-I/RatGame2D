@@ -72,7 +72,6 @@ public class ProfilesController implements Initializable {
         profileList.getItems().clear();
         for (PlayerProfile player : PlayerProfile.getProfiles()) {
             profileList.getItems().add(player.getPlayerUsername());
-            System.out.print((player.getPlayerUsername()) + " ");
         }
     }
 }

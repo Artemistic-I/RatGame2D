@@ -73,15 +73,6 @@ import javafx.util.Duration;
 			System.exit(0);
 		}
 
-	    /**
-	     * Handles the Delete Profile button click event
-	     *
-	     * @param mouseEvent Event
-	     */
-	    public void cmdDeleteProfileClick(MouseEvent mouseEvent) {
-	        //PlayerProfile.showDelete();
-	    }
-
 		@FXML
 		void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("scenes/gameBoard.fxml"));     
@@ -89,15 +80,11 @@ import javafx.util.Duration;
 			gameBoardCanvasController = fxmlLoader.<GameBoardCanvasController>getController();
 			Gameboard.setIsLoadingGame(false);
 			Gameboard.generateBoard(Level.getSelectedLevel().getLevelFile());
-
 			timelineManager = new TimelineMangaer(gameBoardCanvasController);
-
-			//Parent root = (Parent)fxmlLoader.load();   
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-
 			AudioManager.playGameMusic();
 			AudioManager.setVol(Settings.getVolume());
 			
