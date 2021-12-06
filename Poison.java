@@ -4,20 +4,27 @@ import java.util.Stack;
 
 import javafx.scene.image.Image;
 
+/**
+ * Model the poison item.
+ * @author aidan
+ *
+ */
 public class Poison extends LethalItem{
 
 	private static final Image POISON_GRAPHIC = new Image("images/ItemGraphics/PoisonGraphic.png");
 
     /**
-     * constructor
+     * Construct a poison item.
+     * @param tileTheItemIsOn Tile that the posion is placed on.
      */
     public Poison(TileInteractable tileTheItemIsOn) {
-
         super(POISON_GRAPHIC, tileTheItemIsOn);
-
     }
 
 	@Override
+	/**
+	 * Kill the first rat that comes into contact with the poison.
+	 */
 	public void itemAction() {
 		Boolean hasPoisoned = false;
     	Stack<Rat> ratsOnTile = RatManager.ratsOnTiles(new ArrayList<TileInteractable>(Arrays.asList(tileTheItemIsOn)));
