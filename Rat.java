@@ -130,7 +130,9 @@ public class Rat {
 			if (this.ratMaturity == RatMaturity.BABY) {
 				this.move();
 			} else if ((gameDuration % TimelineMangaer.DELAY) == 0) {
-				this.move();
+				if ((gameDuration % 500) == 0) {
+					this.move();
+				}
 			}
 		}
 		this.ratAge++;
@@ -205,7 +207,7 @@ public class Rat {
 
 	/**
 	 * Draw the rat onto the gameboard.
-	 * @param graphicsContext what the drawing should be done upon.
+	 * @param graphicsContext What the drawing should be done upon.
 	 */
 	private void draw(Image graphic, GraphicsContext graphicsContext) {
 		if (!(tileTheRatIsOn instanceof TileTunnel)) {
