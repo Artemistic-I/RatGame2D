@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * keeps track of the players inventory
  * as well as handling adding and removing of items from it
- * @author Josh/Mike
+ * @author Josh/Mike/Sam
  * @version 1.0
  */
 public class Inventory {
@@ -70,6 +70,9 @@ public class Inventory {
         }
     }
 
+    /**
+     * used to reset the inventory when a game is over
+     */
     public static void reset() {
         for (int i = 0; i < inv.length; i++) {
             inv[i] = 0;
@@ -88,13 +91,28 @@ public class Inventory {
         Menu.getTimelineManager().getGameboardCanvassController().updateItemCounts();
     }
 
+    /**
+     * 
+     * @return returns the inventory array
+     */
     public static int[] getInv() {
         return inv;
     }
+
+    /**
+     * setter for inv
+     * @param i index of inventory you want to change
+     * @param value value you want to add to inventory
+     */
     public static void setInv(int i, int value) {
         inv[i] = value;
     }
 
+    /**
+     * getter for inv
+     * @param index index where value is that you want returned
+     * @return returns value at inv[index]
+     */
     public static int getInv(int index) {
         return inv[index];
     }

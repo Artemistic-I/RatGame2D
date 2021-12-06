@@ -1,4 +1,7 @@
-
+/**
+ * 
+ * @author Artem
+ */
 public class Score {
     
     private PlayerProfile player;
@@ -8,14 +11,26 @@ public class Score {
         this.player = player;
         this.scoreNum = scoreNum;
     }
+
+    /**
+     * 
+     * @return returns playerProfile
+     */
     public PlayerProfile getPlayer() {
         return player;
     }
 
+    /**
+     * 
+     * @return returns the score
+     */
     public int getScoreNum() {
         return scoreNum;
     }
 
+    /**
+     * outputs information in string format
+     */
     public String toString() {
         return player.getPlayerUsername() + " - " + scoreNum;
     }

@@ -3,6 +3,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+/**
+ * 
+ * @author Aiden
+ * 
+ */
 public class Sterilisation extends Item{
 	
 	private static final Image STERILISATION_GRAPHIC = new Image("images/ItemGraphics/SterilisationGraphic.png");
@@ -11,22 +16,31 @@ public class Sterilisation extends Item{
     private int timeSpentSterilising;
     private CopyOnWriteArrayList<Tile> sterilisedTiles = new CopyOnWriteArrayList<>();;
 
+	/**
+	 * used for new game
+	 * @param tileTheItemIsOn tile the item has been placed on
+	 */
     public Sterilisation(TileInteractable tileTheItemIsOn) {
         super(STERILISATION_GRAPHIC, tileTheItemIsOn);
         setSterilisationTiles();
     }
     
+	/**
+	 * used when loading
+	 * @param tileTheItemIsOn tile the item has been placed on
+	 * @param timeSpentSterilising how long item has been on board for
+	 */
     public Sterilisation(TileInteractable tileTheItemIsOn, int timeSpentSterilising) {
         super(STERILISATION_GRAPHIC, tileTheItemIsOn);
         this.timeSpentSterilising = timeSpentSterilising;
         setSterilisationTiles();
     }
-
-    public String toString() {
-		String textEquivalent = String.format("%s %d %d %d" , this.getClass().toString(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate(), this.timeSpentSterilising);
-		return textEquivalent;
-	}
     
+	/**
+	 * makes surrounding tiles also sterilised
+	 * any rats on these sterilised tiles becomes sterile
+	 * removes item once it has been on tile for x amount of time
+	 */
     @Override
     public void itemAction() { 
     	timeSpentSterilising++;
@@ -44,6 +58,9 @@ public class Sterilisation extends Item{
     	}
     }
     
+	/**
+	 * sets the tiles around the item to sterile as well
+	 */
     private void setSterilisationTiles() {
     	sterilisedTiles.add((Tile) tileTheItemIsOn);
     	for (int i = 0; i < STERILISATION_RADIUS; i++) {
@@ -64,11 +81,21 @@ public class Sterilisation extends Item{
     		
     	}
     }
-    
 
+	/**
+	 * draws the item on the canvas
+	 */
     public void draw(GraphicsContext graphicsContext) {
     	for (Tile tile: this.sterilisedTiles) {
     		graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
     	}
     }
+
+	/**
+	 * outputs item information in string form
+	 */
+	public String toString() {
+		String textEquivalent = String.format("%s %d %d %d" , this.getClass().toString(), tileTheItemIsOn.getxCoordinate(), tileTheItemIsOn.getyCoordinate(), this.timeSpentSterilising);
+		return textEquivalent;
+	}
 }
