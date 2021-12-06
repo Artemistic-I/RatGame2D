@@ -94,7 +94,7 @@
                   <Image url="@../images/NoEntry.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="deathRatDragable" fitHeight="40.0" fitWidth="40.0" layoutX="64.0" layoutY="527.0" onDragDetected="#dragDeathRatDragable" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="deathRatDragable" fitHeight="40.0" fitWidth="40.0" layoutX="65.0" layoutY="537.0" onDragDetected="#dragDeathRatDragable" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/DeathRat.png" />
                </image>
