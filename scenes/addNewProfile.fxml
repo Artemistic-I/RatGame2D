@@ -10,16 +10,12 @@
    <children>
       <Label layoutX="90.0" layoutY="25.0" prefHeight="30.0" prefWidth="116.0" text="New Profile" textFill="#281ae4">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Gill Sans Ultra Bold Condensed" size="20.0" />
          </font>
       </Label>
       <TextField fx:id="usernameBox" layoutX="64.0" layoutY="98.0" />
-      <Button fx:id="confirmBtn" layoutX="43.0" layoutY="159.0" mnemonicParsing="false" onAction="#confirmBtnClicked" prefHeight="39.0" prefWidth="85.0" text="confirm" />
-      <Button fx:id="cancelBtn" layoutX="148.0" layoutY="159.0" mnemonicParsing="false" onAction="#cancelBtnClicked" prefHeight="39.0" prefWidth="85.0" text="cancel" />
-      <Label layoutX="96.0" layoutY="72.0" text="Enter username:" textFill="#0b2def">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-      </Label>
+      <Button fx:id="confirmBtn" layoutX="14.0" layoutY="159.0" mnemonicParsing="false" onAction="#confirmBtnClicked" prefHeight="49.0" prefWidth="116.0" styleClass="button-red" stylesheets="@style.css" text="confirm" />
+      <Button fx:id="cancelBtn" layoutX="148.0" layoutY="159.0" mnemonicParsing="false" onAction="#cancelBtnClicked" prefHeight="49.0" prefWidth="116.0" styleClass="button-red" stylesheets="@style.css" text="cancel" />
+      <Label layoutX="96.0" layoutY="72.0" text="Enter username:" textFill="#0b2def" />
    </children>
 </AnchorPane>

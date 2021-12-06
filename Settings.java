@@ -103,6 +103,7 @@ public class Settings implements Initializable {
      */
     @FXML
     void deleteProfileBtnClicked(ActionEvent event) throws IOException {
+        //ScoreboardController.removeScore(Gameboard.getCurrentPlayer()); needs to remove from every scoreboard level
         Gameboard.getCurrentPlayer().removePlayer();
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("");
