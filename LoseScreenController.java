@@ -33,9 +33,9 @@ public class LoseScreenController {
     
 	/** Method to return back to Menu
 	 * @param event --when the button is clicked
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
-	 * @throws LineUnavailableException
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 	 */
 	@FXML
     private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -59,9 +59,9 @@ public class LoseScreenController {
     
 	/** Method to retry the level and restart
 	 * @param event --when the button is clicked
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
-	 * @throws LineUnavailableException
+	 * @throws IOException if stream to file cannot be written to or closed.
+	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 	 */
 	@FXML
     private void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {

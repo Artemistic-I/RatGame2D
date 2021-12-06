@@ -51,7 +51,7 @@ public class LevelsController implements Initializable {
     /** Method to go back to menu 
      * after selecting a level the start button gets enabled.
      * @param event --when the button is clicked
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     private void backToMenulvlSelectedClicked(ActionEvent event) throws IOException {
@@ -85,7 +85,7 @@ public class LevelsController implements Initializable {
     
     /** Method to show the scoreboard of a specific level
      * @param event --when the button is clicked
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     private void showScoreBoardBtnClicked(ActionEvent event) throws IOException {

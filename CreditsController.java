@@ -35,7 +35,7 @@ public class CreditsController {
     /** 
      * Method to return back to menu
      * @param event --when button is pressed
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     private void backToMenuBtnClicked(ActionEvent event) throws IOException {

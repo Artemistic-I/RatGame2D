@@ -27,11 +27,11 @@ public class WinScreenControl {
     private Button menuBtn;
 
     
-    /** 
-     * @param event
-     * @throws IOException
-     * @throws UnsupportedAudioFileException
-     * @throws LineUnavailableException
+    /** Method to return to the menu and reset the gameboard
+     * @param event when the button is clicked
+     * @throws IOException if stream to file cannot be written to or closed.
+ 	 * @throws UnsupportedAudioFileException if incorrect audio file format
+	 * @throws LineUnavailableException if a line is unavailable and cannot be opened
      */
     @FXML
     private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
