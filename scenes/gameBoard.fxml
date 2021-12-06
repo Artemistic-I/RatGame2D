@@ -91,7 +91,7 @@
             </ImageView>
             <ImageView fx:id="noEntrySignDragable" fitHeight="40.0" fitWidth="40.0" layoutX="65.0" layoutY="478.0" onDragDetected="#dragNoEntrySignDragable" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/NoEntry.png" />
+                  <Image url="@../images/ItemGraphics/NoEntrySignGraphic.png" />
                </image>
             </ImageView>
             <ImageView fx:id="deathRatDragable" fitHeight="40.0" fitWidth="40.0" layoutX="65.0" layoutY="537.0" onDragDetected="#dragDeathRatDragable" pickOnBounds="true" preserveRatio="true">
