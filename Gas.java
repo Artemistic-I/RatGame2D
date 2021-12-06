@@ -9,9 +9,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * 
+ * @author Aidan English Stephen
+ *
+ */
 public class Gas extends LethalItem{
 
 	private static final Image GAS_GRAPHIC = new Image("images/ItemGraphics/GasGraphic.png");
+	private static final String GAS_SOUND_URL = "audio/Lit Fus.wav";
 	private static final int RAT_EXPOSURE_LIMIT = 3;
 	private static final int GAS_EXPAND_TIME = 5;
 	private static final int GAS_EXIST_TIME = 15;
@@ -19,7 +25,10 @@ public class Gas extends LethalItem{
     private CopyOnWriteArrayList<TileInteractable> gassedTiles;
     private ArrayList<Rat> gassedRats;
 
-    // for new item
+    /**
+     * Constructor for new gas.
+     * @param tileTheItemIsOn Tile that the gas is placed on.
+     */
     public Gas(TileInteractable tileTheItemIsOn) {
         super(GAS_GRAPHIC, tileTheItemIsOn);
         gassedTiles = new CopyOnWriteArrayList<>();
@@ -28,7 +37,13 @@ public class Gas extends LethalItem{
         this.gasTimeElapsed = 0;
     }
 
-    // for loaded items
+    /**
+     * Constructor for a pre-created (e.g. saved) gas.
+     * @param tileTheItemIsOn Tile the gas is places on.
+     * @param gasTimeElapsed How long since the gas was first released.
+     * @param gassedTiles All the tiles that are subject to the gas.
+     * @param gassedRats Rats each time they are exposed to the gas.
+     */
     public Gas(TileInteractable tileTheItemIsOn, int gasTimeElapsed, CopyOnWriteArrayList<TileInteractable> gassedTiles, ArrayList<Rat> gassedRats) {
         super(GAS_GRAPHIC, tileTheItemIsOn);
         this.gassedTiles = gassedTiles;
@@ -37,18 +52,18 @@ public class Gas extends LethalItem{
     }
     
     @Override
+    /**
+     * If the gas is still able to expand it should expand. Rats that have been exposed to too much gas should be killed.
+     */
     void itemAction() { 
         try {
-            SoundManager.playSound("audio/Lit Fus.wav");
+            SoundManager.playSound(GAS_SOUND_URL);
             SoundManager.setVolume(Settings.volume);
         } catch (UnsupportedAudioFileException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (LineUnavailableException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     	if (gasTimeElapsed <= GAS_EXPAND_TIME) {
@@ -66,6 +81,9 @@ public class Gas extends LethalItem{
         gasTimeElapsed++;
     }
 
+    /**
+     * Expand the tiles that are covered by the gas.
+     */
     private void expand(){
         for (TileInteractable tile: this.gassedTiles) {
         	ArrayList<String> possibleMoves = new ArrayList<String>(tile.possibleMoves());
@@ -77,15 +95,21 @@ public class Gas extends LethalItem{
         }
     }
     
+    /**
+     * Draw on each of the tiles tiles subject to gassing.
+     * @param graphicsContext Where the gas should be drawn.
+     */
     public void draw(GraphicsContext graphicsContext) {
     	for (TileInteractable tile: gassedTiles) {
-    		if (!(tile instanceof TileTunnel)) {
-    			graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
-    		}
+    		graphicsContext.drawImage(itemGraphic, tile.getyCoordinate() * Gameboard.getTileSize(), tile.getxCoordinate() * Gameboard.getTileSize());
     	}
     }
 
     @Override
+	/**
+	 * Provide a text representation of the bomb.
+	 * @return text representation
+	 */
     public String toString() {
         String textEquivalent = super.toString();
         textEquivalent = String.format("%s %d", textEquivalent, gasTimeElapsed);
