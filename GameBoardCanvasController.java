@@ -132,7 +132,7 @@ public class GameBoardCanvasController implements Initializable {
 
 	
 	/** 
-	 * Method to save the current game into a file
+	 * Method to save the current game into a file and reset everything
 	 * @param event --When the button is pressed
 	 * @throws IOException
 	 * @throws UnsupportedAudioFileException

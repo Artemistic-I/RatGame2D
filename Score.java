@@ -1,4 +1,9 @@
 
+/**
+ * Class to model a score for scoreboard
+ * 
+ * @author Artem Iakovlev
+ */
 public class Score {
     
     private PlayerProfile player;

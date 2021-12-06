@@ -5,6 +5,11 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class that models player profiles
+ * 
+ * @author Artem Iakovlev
+ */
 public class PlayerProfile {
 
 	private String username;

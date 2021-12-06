@@ -17,11 +17,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Class that manages the scoreboard's contents
+ * 
+ * @author Artem Iakovlev
+ */
 public class Scoreboard {
     
     private static ArrayList<Score> scores = new ArrayList<>();
     private static final int MAX_NUMBER_OF_SCORES = 10; // only top 10 scores are saved
 
+    /**
+     * Reads scores from a file and ititialises the scoreboard
+     * @param levelNumber the level we want to load scoreboard for
+     */
     public static void loadScores(int levelNumber) {
         scores.clear();
         File file = new File("scoreboards/scores_level" + levelNumber + ".txt");
@@ -46,10 +55,18 @@ public class Scoreboard {
         }
     }
 
+    /**
+     * Get all the scores from the scoreboard
+     * @return all score entries
+     */
     public static ArrayList<Score> getScores() {
         return scores;
     }
 
+    /**
+     * Adds new score to the scoreboard if appropriate
+     * @param newScore the score to be added
+     */
     public static void addScore(Score newScore) {
         int existingScore = getScoreNumByPlayer(newScore);
         Boolean isInScoreboard = getScoreNumByPlayer(newScore) != -1;
@@ -80,7 +97,10 @@ public class Scoreboard {
         saveScoreBoard();
     }
 
-    // removes existing score
+    /**
+     * Removes the score of a particular player from scoreboard
+     * @param player the player whose score is getting deleted
+     */
     public static void removeScore(PlayerProfile player) {
         for (Score score : scores) {
             if (score.getPlayer().equals(player)) {
@@ -89,10 +109,19 @@ public class Scoreboard {
         }
         saveScoreBoard();
     }
+    /**
+     * Gets the smallest score that is currently in the scoreboard
+     * @return the smallest score
+     */
     private static Score getSmallest() {
         return scores.get(scores.size() - 1);
     }
-    // returns existing score of a player who achieved a new score
+    
+    /**
+     * Gets the existing score value of a player who just got a new score
+     * @param scoreToCheck the new score of a player we want to get an existing (old) score from
+     * @return score value (a number)
+     */
     private static int getScoreNumByPlayer(Score scoreToCheck) {
         for (Score score : scores) {
             if (score.getPlayer().getPlayerUsername().equals(scoreToCheck.getPlayer().getPlayerUsername())) {
@@ -101,7 +130,11 @@ public class Scoreboard {
         }
         return -1;
     }
-    // insert preserving descending order
+    
+    /**
+     * Inserts scores into scoreboard in descending order
+     * @param scoreToInsert the score to be inserted
+     */
     private static void insertScore(Score scoreToInsert) {
         int i = scores.size() - 1;
         while ((i > -1) && (scoreToInsert.getScoreNum() > scores.get(i).getScoreNum())) {
@@ -110,6 +143,9 @@ public class Scoreboard {
         scores.add(i + 1, scoreToInsert);
     }
     
+    /**
+     * The method to permanently save the scoreboard.
+     */
     public static void saveScoreBoard() {
         File scoreboard = new File("scoreboards/scores_level" + Level.getSelectedLevel().getLevelNumber() + ".txt");
         PrintWriter myWriter = null;
