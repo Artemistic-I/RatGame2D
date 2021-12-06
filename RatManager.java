@@ -77,6 +77,7 @@ public class RatManager {
 	/**
 	 * For each rat in existence, update it.
 	 * @param graphicsContext Where rats should be drawn.
+	 * @param gameDuration The amount of time in milliseconds that the game has been running.
 	 */
 	public static void updateRats(GraphicsContext graphicsContext, long gameDuration) {
 		for (Rat rat : liveRats) {
