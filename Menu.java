@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -30,6 +29,7 @@ import javafx.util.Duration;
 	 */
 	public class Menu implements Initializable {
 		
+		//Variables and scene objects
 		private GameBoardCanvasController gameBoardCanvasController;
 		private Scene scene;
 		private Stage stage;
@@ -66,18 +66,17 @@ import javafx.util.Duration;
 		
 	    /**
 	     * Handles the Quit button click event
-	     *
 	     * @param mouseEvent Event
 	     */
 	    public void quitClicked(ActionEvent event) {
 			System.exit(0);
 		}
 		
-		/** 
-		 * @param event
-		 * @throws IOException
-		 * @throws UnsupportedAudioFileException
-		 * @throws LineUnavailableException
+		/** Starts the game and changes the scene to Gameboard
+		 * @param event --when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
+		 * @throws UnsupportedAudioFileException if incorrect audio file format
+		 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 		 */
 		@FXML
 		private void onStartBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -97,11 +96,11 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
-		 * @throws UnsupportedAudioFileException
-		 * @throws LineUnavailableException
+		/** Loads the most recent saved game
+		 * @param event --when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
+		 * @throws UnsupportedAudioFileException if incorrect audio file format
+		 * @throws LineUnavailableException if a line is unavailable and cannot be opened
 		 */
 		@FXML
 		private void loadBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -122,9 +121,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the scene for choosing the levels
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
 		private void selectLevelBtnClicked(ActionEvent event) throws IOException {
@@ -136,9 +135,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the settings
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
 		private void settingsBtnClicked(ActionEvent event) throws IOException {
@@ -151,9 +150,9 @@ import javafx.util.Duration;
 		}
 
 		
-		/** 
-		 * @param event
-		 * @throws IOException
+		/** Opens the credits
+		 * @param event when the button is clicked
+		 * @throws IOException if stream to file cannot be written to or closed.
 		 */
 		@FXML
     	private void credsClicked(ActionEvent event) throws IOException {
@@ -172,7 +171,7 @@ import javafx.util.Duration;
     	}
 
 		
-		/** 
+		/** Intializes the scene
 		 * @param location
 		 * @param resources
 		 */

@@ -35,6 +35,11 @@ public class LevelsController implements Initializable {
 	@FXML
 	private Button backToMenulvlSelected;
 
+    
+    /** Initialise a list of levels available
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 		for (Level lvl : Level.getLevels()) {
@@ -42,7 +47,12 @@ public class LevelsController implements Initializable {
         }
     }
     
-    //after selecting a level the start button gets enabled.
+    
+    /** Method to go back to menu 
+     * after selecting a level the start button gets enabled.
+     * @param event --when the button is clicked
+     * @throws IOException
+     */
     @FXML
     private void backToMenulvlSelectedClicked(ActionEvent event) throws IOException {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();
@@ -72,6 +82,11 @@ public class LevelsController implements Initializable {
        
     }
 
+    
+    /** Method to show the scoreboard of a specific level
+     * @param event --when the button is clicked
+     * @throws IOException
+     */
     @FXML
     private void showScoreBoardBtnClicked(ActionEvent event) throws IOException {
         int selectedIndex = levelsList.getSelectionModel().getSelectedIndex();

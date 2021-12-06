@@ -57,7 +57,7 @@ public class Settings implements Initializable {
     /** 
      * Method to return back to menu when button is clicked
      * @param event -- when button is clicked
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     void backToMenuBtnClicked(ActionEvent event) throws IOException {
@@ -73,7 +73,7 @@ public class Settings implements Initializable {
     /** 
      * Method to save the changes
      * @param event -- when the button is clicked
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     void saveChangesBtnClicked(ActionEvent event) throws IOException {
@@ -99,7 +99,7 @@ public class Settings implements Initializable {
     /** 
      * Method to delete the profile from the system
      * @param event --when the button is clicked
-     * @throws IOException
+     * @throws IOException if stream to file cannot be written to or closed.
      */
     @FXML
     void deleteProfileBtnClicked(ActionEvent event) throws IOException {
@@ -147,7 +147,7 @@ public class Settings implements Initializable {
     
     /** 
      * Method to set the volume of the settings
-     * @param volume
+     * @param volume the number from the slider
      */
     public static void setVolume(double volume){
         Settings.volume = volume;

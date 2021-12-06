@@ -20,6 +20,8 @@ import javafx.scene.Node;
  */
 
 public class LoseScreenController {
+
+	//Variables and scene's view
 	Stage stage;
 	Scene scene;
 
@@ -29,7 +31,14 @@ public class LoseScreenController {
     @FXML
     private Button retryBrn;
 
-    @FXML
+    
+	/** Method to return back to Menu
+	 * @param event --when the button is clicked
+	 * @throws IOException
+	 * @throws UnsupportedAudioFileException
+	 * @throws LineUnavailableException
+	 */
+	@FXML
     private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playMenuMusic();
 		Inventory.reset();
@@ -48,7 +57,14 @@ public class LoseScreenController {
 
     }
 
-    @FXML
+    
+	/** Method to retry the level and restart
+	 * @param event --when the button is clicked
+	 * @throws IOException
+	 * @throws UnsupportedAudioFileException
+	 * @throws LineUnavailableException
+	 */
+	@FXML
     private void onRetryBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		AudioManager.playGameMusic();
 		Inventory.reset();

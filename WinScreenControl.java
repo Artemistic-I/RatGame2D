@@ -26,6 +26,13 @@ public class WinScreenControl {
     @FXML
     private Button menuBtn;
 
+    
+    /** 
+     * @param event
+     * @throws IOException
+     * @throws UnsupportedAudioFileException
+     * @throws LineUnavailableException
+     */
     @FXML
     private void onMenuBtnClicked(ActionEvent event) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		Inventory.reset();

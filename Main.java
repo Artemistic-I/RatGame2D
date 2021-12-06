@@ -13,10 +13,7 @@ import javafx.stage.Stage;
 	 * @version 1.0
 	 */
 
-public class Main extends Application { 
-
-	
-	
+public class Main extends Application { 	
 	/** 
 	 * Runs the program and open the profiles window
 	 * @param primaryStage
@@ -34,10 +31,8 @@ public class Main extends Application {
 		AudioManager.playMenuMusic();
 
 	}
-	
-	
-	
-	/** 
+		
+	/** Launches the application
 	 * @param args
 	 */
 	public static void main(String[] args) {
