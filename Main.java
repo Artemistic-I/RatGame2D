@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 	 * Controls the Main Menu {@link javafx.scene.Scene}
 	 *
 	 * @author Alex Gingureanu
-	 * @version 1.0
+	 * 
 	 */
 
 public class Main extends Application { 	
