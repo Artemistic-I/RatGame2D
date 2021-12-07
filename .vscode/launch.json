@@ -8,9 +8,9 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "vmArgs": "--module-path C:/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
             "mainClass": "Main",
-            "projectName": "Rats_ba31debf"
-        }
+            "vmArgs": "--module-path C:/Users/joshh/Desktop/javafx-sdk-17.0.1/lib --add-modules javafx.controls,javafx.media,javafx.fxml",
+            "projectName": "Rats_19308563"
+        },
     ]
 }

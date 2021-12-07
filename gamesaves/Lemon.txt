@@ -1,14 +1,16 @@
 1
-male adult false false false 18 9 East 367 0 0 0 2
+female baby false false false 2 18 North 0 0 0 0 42
+male baby false false false 3 1 North 0 0 0 0 43
+male baby false false false 18 7 North 0 0 0 0 44
+female baby false false false 18 17 North 0 0 0 0 45
 
-6
-91750
-4
-4
-1
-1
-1
-2
-3
 0
-class DeathRat 14 14 1 East 239
+95000
+0
+0
+0
+0
+0
+0
+0
+0
