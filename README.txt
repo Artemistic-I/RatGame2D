@@ -1,4 +1,4 @@
-# Rats
+# Rats 2D game (team project)
 
 Instructions to compile:
 
